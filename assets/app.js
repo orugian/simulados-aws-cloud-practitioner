@@ -317,6 +317,7 @@
       let c = 'cel', st = 'em branco';
       if (!prova && s.trav[id]) { const ok = acertou(q, s.resp[id]); c += ok ? ' ok' : ' err'; st = ok ? 'correta' : 'errada'; }
       else if (completa(q, s.resp[id])) { c += ' resp'; st = 'respondida'; }
+      else if (s.resp[id] && s.resp[id].length) { c += ' parcial'; st = 'incompleta'; }
       if (s.marc[id]) { c += ' marc'; st += ', marcada'; }
       if (i === atualIdx && !naRevisao) c += ' atual';
       return `<button class="${c}" data-ir="${i}" data-k="cel-${i}" aria-label="Questão ${i + 1}, ${st}"${i === atualIdx && !naRevisao ? ' aria-current="true"' : ''}>${i + 1}</button>`;
@@ -327,14 +328,14 @@
     return `
       ${marcaHTML}
       <div class="rail-bloco">
-        <div class="modo-linha"><span class="chip ${prova ? 'cheio' : 'claro'}">Modo ${prova ? 'prova' : 'estudo'}</span><button class="btn contorno-claro pq mapa-toggle" data-acao="folha" aria-expanded="${ui.folhaAberta}" data-k="folha">${ic('grid')}Folha</button></div>
+        <div class="modo-linha"><span class="chip ${prova ? 'cheio' : 'claro'}">Modo ${prova ? 'prova' : 'estudo'}</span><button class="btn contorno-claro pq mapa-toggle" data-acao="folha" aria-expanded="${ui.folhaAberta}" aria-controls="folha" data-k="folha">${ic('grid')}Folha</button></div>
         <div class="titulo-prova">${esc(s.nome)}</div>
       </div>
       <div class="relogio" id="relogio"><span class="t" id="rel-t">${prova ? relogio(s.deadline - Date.now()) : relogio(s.gasto)}</span><span class="s">${prova ? 'restantes de 90:00' : 'tempo de estudo'}</span></div>
       <div class="contadores">${cont}</div>
-      <div class="rail-bloco bloco-folha"><span class="rail-rot">Folha de respostas</span><div class="folha">${celulas}</div><div class="legenda">${legenda}</div></div>
+      <div class="rail-bloco bloco-folha"><span class="rail-rot">Folha de respostas</span><div class="folha" id="folha">${celulas}</div><div class="legenda">${legenda}</div></div>
       <div class="rail-acoes">
-        ${prova ? `<button class="btn claro" data-acao="revisar" data-k="rv">${ic('send')}Revisar e enviar</button>` : `<button class="btn claro" data-acao="encerrar" data-sid="${s.sid}" data-k="enc">Encerrar estudo</button>`}
+        ${prova ? (naRevisao ? '' : `<button class="btn claro" data-acao="revisar" data-k="rv">${ic('send')}Revisar e enviar</button>`) : `<button class="btn claro" data-acao="encerrar" data-sid="${s.sid}" data-k="enc">Encerrar estudo</button>`}
         <button class="btn contorno-claro" data-acao="sair" data-k="sair">${ic('exit')}Sair e salvar</button>
       </div>`;
   }
@@ -353,7 +354,7 @@
         porque = `<span class="porque">${esc(a.porque)}</span>`;
       } else if (sel) { cls += ' sel'; selo = `<span class="marca-sel">${ic('check')}</span>`; }
       const attrs = corrigir ? 'aria-disabled="true"' : `data-alt="${orig}" role="${multi ? 'checkbox' : 'radio'}" aria-checked="${sel}"`;
-      return `<li><button class="${cls}" ${attrs} data-k="alt-${pos}"><span class="letra">${L[pos]}</span><span><span class="txt">${esc(a.texto)}</span>${porque}</span>${selo}</button></li>`;
+      return `<li role="none"><button class="${cls}" ${attrs} data-k="alt-${pos}"><span class="letra">${L[pos]}</span><span><span class="txt">${esc(a.texto)}</span>${porque}</span>${selo}</button></li>`;
     }).join('')}</ul>`;
   }
 
@@ -387,12 +388,12 @@
     let principal;
     if (!prova && !trav) principal = `<button class="btn" data-acao="responder" data-k="resp" ${completa(q, r) ? '' : 'disabled'}>${ic('check')}<span class="rot">Responder</span> <kbd>Enter</kbd></button>`;
     else if (ultima) principal = prova ? `<button class="btn" data-acao="revisar" data-k="rv2">${ic('send')}<span class="rot">Revisar e enviar</span></button>` : `<button class="btn" data-acao="encerrar" data-sid="${s.sid}" data-k="enc2">Encerrar estudo</button>`;
-    else principal = `<button class="btn" data-acao="prox" data-k="prox"><span class="rot">Próxima</span>${ic('right')}</button>`;
+    else principal = `<button class="btn" data-acao="prox" data-k="prox" aria-label="Próxima questão"><span class="rot">Próxima</span>${ic('right')}</button>`;
     const barraH = `<div class="barra-acoes">
-      <button class="btn sec2" data-acao="ant" data-k="ant" ${s.idx === 0 ? 'disabled' : ''}>${ic('left')}<span class="rot">Anterior</span></button>
+      <button class="btn sec2" data-acao="ant" data-k="ant" aria-label="Questão anterior" ${s.idx === 0 ? 'disabled' : ''}>${ic('left')}<span class="rot">Anterior</span></button>
       ${!prova && !trav ? `<button class="btn ghost" data-acao="prox" data-k="pular" ${ultima ? 'disabled' : ''}>Pular</button>` : ''}
       <span class="espaco"></span>
-      <span class="dica">A–${L[q.alternativas.length - 1]} escolhe · ← → navega · M marca${prova ? '' : ' · Enter responde'}</span>
+      <span class="dica" aria-hidden="true">A–${L[q.alternativas.length - 1]} escolhe · ← → navega · M marca${prova ? '' : ' · Enter responde'}</span>
       ${principal}
     </div>`;
     return { rail: railSessao(s, s.idx), main: mainH, barra: barraH, railClasse: 'prova', titulo: `Questão ${s.idx + 1}` };
@@ -463,7 +464,7 @@
       <h1>${esc(h.nome)}</h1>
       <p class="lead">Modo ${h.modo} · concluído em ${dataHora(h.fim)} · ${minutos(h.dur)}${h.porTempo ? ' · enviado automaticamente quando o tempo acabou' : ''}</p>
       <div class="res-topo">
-        <div class="pct-grande" aria-label="${p} por cento de acertos">${p}<small>%</small></div>
+        <div class="pct-grande"><span aria-hidden="true">${p}<small>%</small></span><span class="sr">${p} por cento de acertos</span></div>
         <div class="veredito">
           <span class="linha ${ok ? 'ok' : 'baixo'}">${ok ? 'Acima da meta de treino' : 'Abaixo da meta de treino'}</span>
           <div class="dados"><span><b>${h.acertos}</b> de ${h.total} corretas</span>${prova ? `<span><b>${brancos}</b> em branco</span>` : ''}<span>Meta <b>${META_TREINO}%</b></span></div>
@@ -510,11 +511,13 @@
       else { r.push(orig); ui.avisoMulti = null; }
     } else r = [orig];
     s.resp[id] = r; salvar(); render();
+    if (q.tipo === 'multipla') anunciar(`${r.length} de ${q.selecionar} selecionadas`);
   }
   function responder(s) {
     const id = s.ids[s.idx], q = QB[id];
     if (s.trav[id] || !completa(q, s.resp[id])) return;
-    s.trav[id] = true; registrar(id, acertou(q, s.resp[id])); salvar(); render({ focar: '[data-k="prox"], [data-k="enc2"]' });
+    s.trav[id] = true; const ok = acertou(q, s.resp[id]); registrar(id, ok); salvar(); render({ focar: '[data-k="prox"], [data-k="enc2"]' });
+    anunciar(ok ? 'Acertou.' : 'Errou. ' + q.explicacao);
   }
 
   async function iniciar(sid) {
@@ -534,11 +537,13 @@
   function confirmar({ titulo, texto, ok = 'Confirmar', perigo = false, cancelar = 'Cancelar' }) {
     return new Promise(res => {
       dlg.innerHTML = `<form method="dialog" class="d-corpo"><h2>${esc(titulo)}</h2><p>${texto}</p>
-        <div class="acoes-linha"><button class="btn sec2" value="nao">${esc(cancelar)}</button><button class="btn${perigo ? ' armado' : ''}" value="sim" autofocus>${esc(ok)}</button></div></form>`;
+        <div class="acoes-linha"><button class="btn sec2" value="nao"${perigo ? ' autofocus' : ''}>${esc(cancelar)}</button><button class="btn${perigo ? ' armado' : ''}" value="sim"${perigo ? '' : ' autofocus'}>${esc(ok)}</button></div></form>`;
       dlg.onclose = () => res(dlg.returnValue === 'sim');
       dlg.returnValue = ''; dlg.showModal();
     });
   }
+  const viva = document.createElement('div'); viva.className = 'sr'; viva.setAttribute('aria-live', 'polite'); document.body.appendChild(viva);
+  const anunciar = m => { viva.textContent = ''; setTimeout(() => { viva.textContent = m; }, 30); };
   let toastT;
   function toast(msg) {
     let t = $('#toast'); if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
@@ -654,6 +659,7 @@
       const t = $('#rel-t'); if (t) t.textContent = relogio(rest);
       const rv = $('#rev-t'); if (rv) rv.textContent = relogio(rest);
       const rel = $('#relogio'); if (rel) rel.classList.toggle('urgente', rest < 5 * 60 * 1000);
+      for (const m of [15, 5]) if (rest < m * 60000 && rest > (m * 60000 - 60000) && !(s.avisos || []).includes(m)) { (s.avisos = s.avisos || []).push(m); salvar(); toast(`Faltam ${m} minutos.`); }
     } else {
       s.gasto += Math.min(agora - (s.tick || agora), 60000); s.tick = agora;
       const t = $('#rel-t'); if (t) t.textContent = relogio(s.gasto);
