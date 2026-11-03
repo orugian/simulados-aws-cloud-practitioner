@@ -1,0 +1,1450 @@
+[
+  {
+    "id": "D3-b-001",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Um site com milhões de leitores no mundo todo usa um banco Amazon RDS que está sobrecarregado por consultas de leitura. Qual é a MELHOR forma de aumentar a capacidade de leitura do banco?",
+    "alternativas": [
+      {
+        "texto": "Criar Read Replicas do Amazon RDS",
+        "correta": true,
+        "porque": "Réplicas de leitura recebem cópias assíncronas e absorvem consultas, aliviando a instância primária."
+      },
+      {
+        "texto": "Habilitar uma implantação Multi-AZ",
+        "correta": false,
+        "porque": "A instância standby do Multi-AZ clássico serve para failover e não atende leituras."
+      },
+      {
+        "texto": "Enfileirar as requisições no Amazon SQS",
+        "correta": false,
+        "porque": "Desacopla componentes, mas não aumenta a capacidade de leitura do banco."
+      },
+      {
+        "texto": "Aumentar o armazenamento provisionado da instância",
+        "correta": false,
+        "porque": "Mais espaço em disco não distribui a carga de consultas."
+      }
+    ],
+    "explicacao": "Read Replicas escalam leituras horizontalmente; Multi-AZ é para alta disponibilidade, não para desempenho de leitura.",
+    "servicos": [
+      "Amazon RDS"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A33"
+  },
+  {
+    "id": "D3-b-002",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Qual recurso do Amazon RDS deve ser habilitado para obter alta disponibilidade com failover automático do banco de dados?",
+    "alternativas": [
+      {
+        "texto": "Amazon RDS Performance Insights",
+        "correta": false,
+        "porque": "Ajuda a analisar desempenho de consultas; não oferece failover."
+      },
+      {
+        "texto": "Implantação Amazon RDS Multi-AZ",
+        "correta": true,
+        "porque": "Mantém uma standby síncrona em outra AZ e faz failover automático mantendo o mesmo endpoint."
+      },
+      {
+        "texto": "Snapshots manuais do Amazon RDS",
+        "correta": false,
+        "porque": "Permitem restaurar dados, mas a restauração é manual e gera nova instância."
+      },
+      {
+        "texto": "Read Replica na mesma Zona de Disponibilidade",
+        "correta": false,
+        "porque": "Escala leituras; a promoção é manual e, na mesma AZ, não protege contra falha da zona."
+      }
+    ],
+    "explicacao": "RDS Multi-AZ replica de forma síncrona para uma standby em outra AZ e faz failover automático.",
+    "servicos": [
+      "Amazon RDS"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A62"
+  },
+  {
+    "id": "D3-b-003",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma equipe precisa migrar um banco MySQL on-premises para o Amazon RDS for MySQL com o mínimo de tempo de inatividade. Qual serviço da AWS atende a essa tarefa?",
+    "alternativas": [
+      {
+        "texto": "AWS Schema Conversion Tool (AWS SCT)",
+        "correta": false,
+        "porque": "Converte esquemas entre engines diferentes; numa migração MySQL para MySQL não há conversão a fazer."
+      },
+      {
+        "texto": "AWS Glue",
+        "correta": false,
+        "porque": "É um serviço de ETL e catálogo de dados, não de migração de bancos com replicação contínua."
+      },
+      {
+        "texto": "AWS Database Migration Service (AWS DMS)",
+        "correta": true,
+        "porque": "Migra bancos para a AWS mantendo a origem operacional, com replicação contínua (CDC)."
+      },
+      {
+        "texto": "AWS Application Migration Service",
+        "correta": false,
+        "porque": "Faz rehost de servidores inteiros, não migração para um banco gerenciado."
+      }
+    ],
+    "explicacao": "Migração homogênea (mesma engine) usa apenas o DMS; o SCT só é necessário quando a engine muda.",
+    "servicos": [
+      "AWS DMS"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B08"
+  },
+  {
+    "id": "D3-b-004",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma startup precisa executar um banco Microsoft SQL Server na AWS. Quais opções permitem hospedar esse banco? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon RDS for SQL Server",
+        "correta": true,
+        "porque": "O RDS oferece SQL Server como engine gerenciada."
+      },
+      {
+        "texto": "Amazon Neptune",
+        "correta": false,
+        "porque": "É um banco de grafos; não executa SQL Server."
+      },
+      {
+        "texto": "Amazon EC2 com SQL Server instalado",
+        "correta": true,
+        "porque": "O cliente pode instalar e gerenciar o SQL Server em uma instância EC2 (autogerenciado)."
+      },
+      {
+        "texto": "Amazon Aurora",
+        "correta": false,
+        "porque": "O Aurora é compatível apenas com MySQL e PostgreSQL."
+      },
+      {
+        "texto": "Amazon Redshift",
+        "correta": false,
+        "porque": "É um data warehouse analítico, não uma engine SQL Server."
+      }
+    ],
+    "explicacao": "SQL Server roda na AWS de forma gerenciada no RDS ou autogerenciada no EC2; Aurora suporta só MySQL e PostgreSQL.",
+    "servicos": [
+      "Amazon RDS",
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B22 (reescrita)"
+  },
+  {
+    "id": "D3-b-005",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS executa um banco PostgreSQL gerenciado para processamento de transações online (OLTP)?",
+    "alternativas": [
+      {
+        "texto": "Amazon DynamoDB",
+        "correta": false,
+        "porque": "É NoSQL chave-valor, não executa a engine PostgreSQL."
+      },
+      {
+        "texto": "Amazon Athena",
+        "correta": false,
+        "porque": "Executa consultas SQL ad hoc sobre dados no S3; não é um banco transacional."
+      },
+      {
+        "texto": "Amazon EMR",
+        "correta": false,
+        "porque": "Processa big data com Spark/Hadoop; não é banco OLTP."
+      },
+      {
+        "texto": "Amazon RDS",
+        "correta": true,
+        "porque": "O RDS oferece PostgreSQL gerenciado, adequado a cargas transacionais."
+      }
+    ],
+    "explicacao": "Amazon RDS é o serviço relacional gerenciado para OLTP com engines como PostgreSQL, MySQL, MariaDB, Oracle e SQL Server.",
+    "servicos": [
+      "Amazon RDS"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B74"
+  },
+  {
+    "id": "D3-b-006",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa executar um banco relacional que exige acesso ao sistema operacional e uma versão de software não suportada pelos serviços gerenciados. Qual opção da AWS atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Amazon RDS",
+        "correta": false,
+        "porque": "É gerenciado e só suporta as engines e versões oferecidas pela AWS, com acesso limitado ao sistema operacional."
+      },
+      {
+        "texto": "Amazon EC2",
+        "correta": true,
+        "porque": "Permite instalar qualquer software de banco com controle total do sistema operacional (autogerenciado)."
+      },
+      {
+        "texto": "Amazon Aurora",
+        "correta": false,
+        "porque": "É gerenciado e limitado a compatibilidade com MySQL e PostgreSQL."
+      },
+      {
+        "texto": "Amazon DynamoDB",
+        "correta": false,
+        "porque": "É um NoSQL serverless; não executa software relacional do cliente."
+      }
+    ],
+    "explicacao": "Banco no EC2 dá controle total (SO, versão, configuração), mas o cliente assume patches, backups e alta disponibilidade.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k7#22 (reescrita)"
+  },
+  {
+    "id": "D3-b-007",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais são benefícios de usar o Amazon RDS em vez de instalar um banco relacional em instâncias Amazon EC2? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Backups automatizados",
+        "correta": true,
+        "porque": "O RDS faz backups automáticos com recuperação point-in-time."
+      },
+      {
+        "texto": "Modelagem do esquema do banco",
+        "correta": false,
+        "porque": "O esquema continua sendo responsabilidade do cliente."
+      },
+      {
+        "texto": "Criação de índices nas tabelas",
+        "correta": false,
+        "porque": "Índices e otimização de consultas continuam com o cliente."
+      },
+      {
+        "texto": "Aplicação de patches no software do banco",
+        "correta": true,
+        "porque": "A AWS aplica patches no SO e na engine na janela de manutenção."
+      },
+      {
+        "texto": "Gestão de processos de ETL",
+        "correta": false,
+        "porque": "ETL não é função do RDS; é tarefa de serviços como o AWS Glue."
+      }
+    ],
+    "explicacao": "No RDS a AWS cuida de provisionamento, patches, backups e alta disponibilidade; esquema, índices e consultas ficam com o cliente.",
+    "servicos": [
+      "Amazon RDS",
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k22#40"
+  },
+  {
+    "id": "D3-b-008",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Qual banco de dados gerenciado da AWS é compatível com MySQL e PostgreSQL, aumenta o armazenamento automaticamente conforme a necessidade e mantém seis cópias dos dados em três Zonas de Disponibilidade?",
+    "alternativas": [
+      {
+        "texto": "Amazon RDS for MySQL",
+        "correta": false,
+        "porque": "É compatível só com MySQL e não usa o volume de cluster com seis cópias em três AZs."
+      },
+      {
+        "texto": "Amazon Redshift",
+        "correta": false,
+        "porque": "É um data warehouse colunar para análise, não um banco transacional compatível com MySQL."
+      },
+      {
+        "texto": "Amazon Aurora",
+        "correta": true,
+        "porque": "Aurora usa armazenamento distribuído que cresce sozinho e replica seis cópias em três AZs."
+      },
+      {
+        "texto": "Amazon DocumentDB",
+        "correta": false,
+        "porque": "É um banco de documentos compatível com MongoDB."
+      }
+    ],
+    "explicacao": "Aurora é o banco relacional nativo da AWS, compatível com MySQL/PostgreSQL, com mais desempenho e armazenamento auto escalável.",
+    "servicos": [
+      "Amazon Aurora"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k16#33 (reescrita)"
+  },
+  {
+    "id": "D3-b-009",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Um desenvolvedor precisa de um banco NoSQL de chave-valor, serverless, com latência de milissegundos em qualquer escala e sem gerenciar servidores ou software. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Amazon DynamoDB",
+        "correta": true,
+        "porque": "É NoSQL chave-valor e documento, totalmente gerenciado e serverless, com latência de milissegundos."
+      },
+      {
+        "texto": "Amazon Aurora",
+        "correta": false,
+        "porque": "É relacional, não NoSQL chave-valor."
+      },
+      {
+        "texto": "Amazon RDS",
+        "correta": false,
+        "porque": "Oferece engines relacionais em instâncias de banco."
+      },
+      {
+        "texto": "Amazon Neptune",
+        "correta": false,
+        "porque": "É NoSQL, mas de grafos, voltado a relacionamentos."
+      }
+    ],
+    "explicacao": "DynamoDB é o NoSQL chave-valor serverless da AWS, escalável e com latência de milissegundos.",
+    "servicos": [
+      "Amazon DynamoDB"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k21#1 (reescrita)"
+  },
+  {
+    "id": "D3-b-010",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação de leilões usa Amazon DynamoDB e precisa reduzir a latência de leituras de milissegundos para microssegundos sem alterar a lógica de acesso aos dados. O que deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "Amazon CloudFront",
+        "correta": false,
+        "porque": "Faz cache de conteúdo web em edge locations, não de itens do DynamoDB."
+      },
+      {
+        "texto": "Read Replicas do Amazon RDS",
+        "correta": false,
+        "porque": "Aplicam-se a bancos RDS, não ao DynamoDB."
+      },
+      {
+        "texto": "DynamoDB Accelerator (DAX)",
+        "correta": true,
+        "porque": "É um cache em memória totalmente gerenciado e compatível com a API do DynamoDB, com leituras em microssegundos."
+      },
+      {
+        "texto": "DynamoDB global tables",
+        "correta": false,
+        "porque": "Replicam tabelas entre Regiões, mas não reduzem a latência para microssegundos."
+      }
+    ],
+    "explicacao": "DAX é o cache em memória nativo do DynamoDB: leituras em microssegundos com mudanças mínimas na aplicação.",
+    "servicos": [
+      "Amazon DynamoDB",
+      "DAX"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-011",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Qual serviço é o MAIS adequado para armazenar em memória os resultados de consultas frequentes a um banco relacional, reduzindo a carga sobre ele?",
+    "alternativas": [
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "É uma fila de mensagens, não um cache de consultas."
+      },
+      {
+        "texto": "Amazon EC2 instance store",
+        "correta": false,
+        "porque": "É disco efêmero local de uma instância, não um cache gerenciado compartilhado."
+      },
+      {
+        "texto": "Amazon S3",
+        "correta": false,
+        "porque": "É armazenamento de objetos, sem latência de submilissegundos de um cache em memória."
+      },
+      {
+        "texto": "Amazon ElastiCache",
+        "correta": true,
+        "porque": "Oferece Redis/Valkey/Memcached gerenciados em memória, com latência de submilissegundos."
+      }
+    ],
+    "explicacao": "ElastiCache é o armazenamento de dados em memória gerenciado, usado como cache para aliviar bancos e acelerar aplicações.",
+    "servicos": [
+      "Amazon ElastiCache"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k10#20"
+  },
+  {
+    "id": "D3-b-012",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa executa um banco MongoDB autogerenciado em instâncias EC2 e quer migrar para um serviço gerenciado compatível, com o MENOR esforço de mudança na aplicação. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon DynamoDB",
+        "correta": false,
+        "porque": "É NoSQL gerenciado, mas exigiria reescrever o acesso aos dados, pois não é compatível com MongoDB."
+      },
+      {
+        "texto": "Amazon DocumentDB",
+        "correta": true,
+        "porque": "É um banco de documentos gerenciado com compatibilidade com MongoDB."
+      },
+      {
+        "texto": "Amazon Neptune",
+        "correta": false,
+        "porque": "É um banco de grafos."
+      },
+      {
+        "texto": "Amazon ElastiCache",
+        "correta": false,
+        "porque": "É um cache em memória, não um banco de documentos."
+      }
+    ],
+    "explicacao": "Amazon DocumentDB (compatível com MongoDB) é o banco de documentos JSON gerenciado da AWS.",
+    "servicos": [
+      "Amazon DocumentDB"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-013",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma rede social precisa armazenar e consultar rapidamente relacionamentos altamente conectados, como amigos de amigos e recomendações. Qual banco de dados da AWS é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "Amazon Redshift",
+        "correta": false,
+        "porque": "É data warehouse para análises em lote, não para percorrer relacionamentos."
+      },
+      {
+        "texto": "Amazon RDS for MySQL",
+        "correta": false,
+        "porque": "Relacionamentos profundos exigem muitos joins, o que é ineficiente nesse cenário."
+      },
+      {
+        "texto": "Amazon Neptune",
+        "correta": true,
+        "porque": "É um banco de grafos gerenciado, otimizado para navegar relacionamentos."
+      },
+      {
+        "texto": "Amazon DocumentDB",
+        "correta": false,
+        "porque": "Armazena documentos JSON, sem otimização para consultas de grafo."
+      }
+    ],
+    "explicacao": "Amazon Neptune é o banco de grafos da AWS: redes sociais, recomendações, detecção de fraude e grafos de conhecimento.",
+    "servicos": [
+      "Amazon Neptune"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-014",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer consolidar petabytes de dados históricos de vendas e executar consultas SQL analíticas complexas para relatórios de BI. Qual serviço da AWS é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "Amazon Redshift",
+        "correta": true,
+        "porque": "É um data warehouse colunar gerenciado, otimizado para consultas analíticas (OLAP) em grande escala."
+      },
+      {
+        "texto": "Amazon RDS for PostgreSQL",
+        "correta": false,
+        "porque": "É otimizado para transações (OLTP), não para análise de petabytes."
+      },
+      {
+        "texto": "Amazon DynamoDB",
+        "correta": false,
+        "porque": "É NoSQL chave-valor, sem suporte a consultas SQL analíticas complexas."
+      },
+      {
+        "texto": "Amazon ElastiCache",
+        "correta": false,
+        "porque": "É cache em memória, não armazenamento analítico de longo prazo."
+      }
+    ],
+    "explicacao": "Redshift é o data warehouse da AWS (OLAP); RDS e Aurora atendem cargas transacionais (OLTP).",
+    "servicos": [
+      "Amazon Redshift"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-015",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa quer migrar um banco Oracle on-premises para o Amazon Aurora PostgreSQL. Quais ferramentas da AWS devem ser usadas? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "AWS Schema Conversion Tool (AWS SCT)",
+        "correta": true,
+        "porque": "Converte o esquema e o código do Oracle para PostgreSQL, necessário em migração heterogênea."
+      },
+      {
+        "texto": "AWS DataSync",
+        "correta": false,
+        "porque": "Transfere arquivos e objetos, não converte nem replica bancos."
+      },
+      {
+        "texto": "AWS Database Migration Service (AWS DMS)",
+        "correta": true,
+        "porque": "Move os dados da origem Oracle para o Aurora, com replicação contínua."
+      },
+      {
+        "texto": "AWS Application Migration Service",
+        "correta": false,
+        "porque": "Replica servidores inteiros (rehost), sem trocar a engine do banco."
+      },
+      {
+        "texto": "AWS Storage Gateway",
+        "correta": false,
+        "porque": "Integra armazenamento on-premises à nuvem, não migra bancos."
+      }
+    ],
+    "explicacao": "Migração heterogênea (engines diferentes): SCT converte o esquema e DMS migra os dados.",
+    "servicos": [
+      "AWS DMS",
+      "AWS SCT"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-016",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa Amazon RDS na Região us-east-1 e quer oferecer leituras de baixa latência a usuários na Europa, além de ter uma cópia dos dados que possa ser promovida em caso de falha da Região. Qual recurso atende a esses requisitos?",
+    "alternativas": [
+      {
+        "texto": "Implantação Multi-AZ",
+        "correta": false,
+        "porque": "Protege contra falha de AZ dentro da mesma Região e a standby não atende leituras."
+      },
+      {
+        "texto": "Snapshots automáticos",
+        "correta": false,
+        "porque": "Ficam na Região de origem por padrão e não atendem leituras."
+      },
+      {
+        "texto": "Provisioned IOPS",
+        "correta": false,
+        "porque": "Melhora o desempenho de armazenamento, sem criar cópia em outra Região."
+      },
+      {
+        "texto": "Read Replica entre Regiões",
+        "correta": true,
+        "porque": "Atende leituras perto dos usuários europeus e pode ser promovida a primária em um desastre regional."
+      }
+    ],
+    "explicacao": "Read Replicas entre Regiões servem a leituras globais e à recuperação de desastres; Multi-AZ é alta disponibilidade dentro de uma Região.",
+    "servicos": [
+      "Amazon RDS"
+    ],
+    "dificuldade": 3,
+    "fonte": "kananinirav-k16#7 (reescrita)"
+  },
+  {
+    "id": "D3-b-017",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Um cliente quer reduzir custos do Amazon S3 com dados acessados com pouca frequência. Os dados são uma cópia secundária que pode ser recriada, mas as leituras exigem latência de milissegundos. Qual classe de armazenamento é a MENOS cara para esse caso?",
+    "alternativas": [
+      {
+        "texto": "S3 Glacier Deep Archive",
+        "correta": false,
+        "porque": "É a mais barata, mas a recuperação leva horas."
+      },
+      {
+        "texto": "S3 Standard",
+        "correta": false,
+        "porque": "Atende a latência, mas custa mais que as classes IA para dados pouco acessados."
+      },
+      {
+        "texto": "S3 One Zone-IA",
+        "correta": true,
+        "porque": "Armazena em uma só AZ, custa menos que o Standard-IA e mantém acesso em milissegundos; serve para dados recriáveis."
+      },
+      {
+        "texto": "S3 Glacier Flexible Retrieval",
+        "correta": false,
+        "porque": "A recuperação leva de minutos a horas, sem leitura em milissegundos."
+      }
+    ],
+    "explicacao": "One Zone-IA é a opção de acesso infrequente mais barata com leitura imediata, para dados que podem ser reproduzidos se a AZ for perdida.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-A02"
+  },
+  {
+    "id": "D3-b-018",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Qual opção de armazenamento oferece armazenamento em bloco temporário, fisicamente ligado ao host, com leitura e gravação muito rápidas para uma instância EC2?",
+    "alternativas": [
+      {
+        "texto": "EBS Provisioned IOPS SSD (io2)",
+        "correta": false,
+        "porque": "É rápido, mas é armazenamento persistente acessado pela rede, não temporário."
+      },
+      {
+        "texto": "Amazon EFS",
+        "correta": false,
+        "porque": "É armazenamento de arquivos compartilhado e persistente."
+      },
+      {
+        "texto": "EBS Throughput Optimized HDD (st1)",
+        "correta": false,
+        "porque": "É HDD persistente para throughput sequencial, não temporário."
+      },
+      {
+        "texto": "Instance store",
+        "correta": true,
+        "porque": "Discos locais do host: muito rápidos, mas efêmeros, perdidos ao parar ou encerrar a instância."
+      }
+    ],
+    "explicacao": "Instance store é bloco efêmero de alto desempenho, ideal para cache, buffers e dados temporários.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A08"
+  },
+  {
+    "id": "D3-b-019",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Uma startup hospedou um site estático no Amazon S3, mas os visitantes recebem erros de acesso negado. O que deve ser ajustado para resolver o problema?",
+    "alternativas": [
+      {
+        "texto": "Corrigir a bucket policy para permitir leitura pública dos objetos",
+        "correta": true,
+        "porque": "Um site estático exige permissão de leitura para os visitantes, concedida pela bucket policy."
+      },
+      {
+        "texto": "Habilitar a S3 Cross-Region Replication",
+        "correta": false,
+        "porque": "Replica objetos para outra Região, sem alterar permissões de acesso."
+      },
+      {
+        "texto": "Desabilitar a criptografia do bucket",
+        "correta": false,
+        "porque": "A criptografia padrão (SSE-S3) é transparente e não causa acesso negado."
+      },
+      {
+        "texto": "Ativar o S3 Versioning",
+        "correta": false,
+        "porque": "Mantém versões de objetos, sem relação com permissões."
+      }
+    ],
+    "explicacao": "No S3, o acesso é controlado por bucket policies, Block Public Access e IAM; site público exige leitura liberada na política.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A10"
+  },
+  {
+    "id": "D3-b-020",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Uma empresa grava vídeos grandes no S3 Standard. Após o upload, cada vídeo é baixado uma única vez pelo cliente e raramente volta a ser lido, mas precisa estar disponível em milissegundos quando solicitado. Qual mudança reduz MAIS o custo de armazenamento?",
+    "alternativas": [
+      {
+        "texto": "Criar uma lifecycle policy que mova os vídeos para S3 Glacier Flexible Retrieval",
+        "correta": false,
+        "porque": "A recuperação levaria minutos a horas, o que viola o requisito de milissegundos."
+      },
+      {
+        "texto": "Criar uma lifecycle policy que mova os vídeos para S3 Standard-IA após 30 dias",
+        "correta": false,
+        "porque": "Reduz custo, mas os vídeos ficam 30 dias no Standard antes da transição."
+      },
+      {
+        "texto": "Gravar os vídeos diretamente na classe S3 Standard-IA",
+        "correta": true,
+        "porque": "Evita o período no Standard e já paga a tarifa de acesso infrequente com leitura em milissegundos."
+      },
+      {
+        "texto": "Habilitar o S3 Versioning no bucket",
+        "correta": false,
+        "porque": "Versionamento aumenta o armazenamento ao reter versões antigas."
+      }
+    ],
+    "explicacao": "Se o padrão de acesso infrequente já é conhecido no upload, gravar direto em Standard-IA economiza mais que esperar a transição por lifecycle.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-A21 (reescrita)"
+  },
+  {
+    "id": "D3-b-021",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais alternativas descrevem corretamente o Amazon S3? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Um dispositivo de borda para transferência de grandes volumes de dados",
+        "correta": false,
+        "porque": "Descreve o AWS Snowball Edge."
+      },
+      {
+        "texto": "Um sistema de armazenamento de objetos altamente durável",
+        "correta": true,
+        "porque": "O S3 armazena objetos com durabilidade de 11 noves (99,999999999%)."
+      },
+      {
+        "texto": "Um sistema de arquivos compartilhado compatível com Windows",
+        "correta": false,
+        "porque": "Descreve o Amazon FSx for Windows File Server."
+      },
+      {
+        "texto": "Um serviço de armazenamento com capacidade praticamente ilimitada",
+        "correta": true,
+        "porque": "Não há limite para o volume total de dados armazenados em um bucket."
+      },
+      {
+        "texto": "Um volume em bloco anexado a uma instância EC2",
+        "correta": false,
+        "porque": "Descreve o Amazon EBS."
+      }
+    ],
+    "explicacao": "Amazon S3 é armazenamento de objetos durável e escalável sem limite prático de capacidade.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A22"
+  },
+  {
+    "id": "D3-b-022",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Um estúdio envia diariamente para o Amazon S3 gravações 4K de vários gigabytes cada. O que o estúdio deve usar para MINIMIZAR o tempo de upload de cada arquivo?",
+    "alternativas": [
+      {
+        "texto": "A API BatchWriteItem",
+        "correta": false,
+        "porque": "É uma API do DynamoDB, não do S3."
+      },
+      {
+        "texto": "A classe S3 Intelligent-Tiering",
+        "correta": false,
+        "porque": "Otimiza custo de armazenamento, não velocidade de upload."
+      },
+      {
+        "texto": "Cross-Origin Resource Sharing (CORS) no bucket",
+        "correta": false,
+        "porque": "Controla acesso entre domínios no navegador, sem efeito na velocidade."
+      },
+      {
+        "texto": "S3 Multipart Upload",
+        "correta": true,
+        "porque": "Divide o arquivo em partes enviadas em paralelo, acelerando uploads grandes e permitindo reenviar só partes com falha."
+      }
+    ],
+    "explicacao": "Multipart Upload é recomendado para objetos grandes (acima de ~100 MB) e paraleliza o envio.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A39"
+  },
+  {
+    "id": "D3-b-023",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Uma regulamentação exige que todos os datasets de um instituto, armazenados no Amazon S3, sejam mantidos também em uma Região da AWS distante. Qual é a forma MAIS eficiente de atender a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Executar um job noturno em EC2 para copiar os novos objetos",
+        "correta": false,
+        "porque": "Funciona, mas exige código e servidor para manter, com atraso de até um dia."
+      },
+      {
+        "texto": "Habilitar a S3 Cross-Region Replication (CRR)",
+        "correta": true,
+        "porque": "Replica automaticamente cada novo objeto para um bucket em outra Região, sem código."
+      },
+      {
+        "texto": "Habilitar a S3 Same-Region Replication (SRR)",
+        "correta": false,
+        "porque": "Replica dentro da mesma Região e não atende ao requisito geográfico."
+      },
+      {
+        "texto": "Criar uma função Lambda que copie cada objeto enviado",
+        "correta": false,
+        "porque": "Resolve com código personalizado; é menos eficiente que um recurso nativo."
+      }
+    ],
+    "explicacao": "CRR replica objetos de forma automática e assíncrona entre Regiões (exige versionamento nos dois buckets).",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A42"
+  },
+  {
+    "id": "D3-b-024",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços da AWS são adequados para armazenar dados que mudam rapidamente e exigem baixa latência de leitura e gravação? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon S3 Glacier Deep Archive",
+        "correta": false,
+        "porque": "É arquivamento de longo prazo com recuperação em horas."
+      },
+      {
+        "texto": "Amazon EBS",
+        "correta": true,
+        "porque": "Volumes em bloco de baixa latência, ideais para dados alterados com frequência, como bancos e sistemas de arquivos."
+      },
+      {
+        "texto": "AWS Glue",
+        "correta": false,
+        "porque": "É serviço de ETL e catálogo de dados, não armazenamento."
+      },
+      {
+        "texto": "Amazon RDS",
+        "correta": true,
+        "porque": "Bancos relacionais suportam leituras e gravações frequentes com baixa latência."
+      },
+      {
+        "texto": "AWS Storage Gateway Tape Gateway",
+        "correta": false,
+        "porque": "Fitas virtuais servem a backup e arquivamento, não a dados de mudança rápida."
+      }
+    ],
+    "explicacao": "Dados transacionais e voláteis pedem armazenamento em bloco (EBS) ou bancos de dados; arquivamento e fitas servem a dados frios.",
+    "servicos": [
+      "Amazon EBS",
+      "Amazon RDS"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A44"
+  },
+  {
+    "id": "D3-b-025",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Qual recurso move automaticamente objetos de um bucket do Amazon S3 para uma classe de armazenamento MAIS barata após um número definido de dias, e pode expirá-los depois?",
+    "alternativas": [
+      {
+        "texto": "Uma access control list (ACL) do S3",
+        "correta": false,
+        "porque": "Concede permissões a objetos e buckets; não move dados."
+      },
+      {
+        "texto": "AWS Transfer Family",
+        "correta": false,
+        "porque": "Fornece SFTP/FTPS para dentro do S3; não gerencia classes."
+      },
+      {
+        "texto": "Uma S3 Lifecycle policy",
+        "correta": true,
+        "porque": "Define transições entre classes e expiração de objetos com base na idade."
+      },
+      {
+        "texto": "AWS Storage Gateway",
+        "correta": false,
+        "porque": "Conecta armazenamento on-premises à nuvem; não faz transição entre classes."
+      }
+    ],
+    "explicacao": "Lifecycle policies automatizam transições (ex.: Standard → Standard-IA → Glacier) e exclusões com base na idade dos objetos.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A55"
+  },
+  {
+    "id": "D3-b-026",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Um cluster de processamento de logs em EC2 lê grandes arquivos de forma sequencial e com frequência. A empresa quer volumes Amazon EBS de bom throughput com o MENOR custo. Qual tipo de volume deve escolher?",
+    "alternativas": [
+      {
+        "texto": "Throughput Optimized HDD (st1)",
+        "correta": true,
+        "porque": "HDD de baixo custo, projetado para cargas frequentes e sequenciais que exigem throughput, como big data e logs."
+      },
+      {
+        "texto": "Cold HDD (sc1)",
+        "correta": false,
+        "porque": "É o mais barato, mas para dados acessados raramente e com throughput menor."
+      },
+      {
+        "texto": "Provisioned IOPS SSD (io2)",
+        "correta": false,
+        "porque": "Atende cargas de IOPS críticas, como bancos de dados, com custo alto."
+      },
+      {
+        "texto": "General Purpose SSD (gp3)",
+        "correta": false,
+        "porque": "É versátil, mas custa mais por GB que o st1 para throughput sequencial."
+      }
+    ],
+    "explicacao": "EBS: gp3 (uso geral SSD), io2 (IOPS alto e crítico), st1 (HDD para throughput frequente) e sc1 (HDD frio, mais barato).",
+    "servicos": [
+      "Amazon EBS"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-B01 (reescrita)"
+  },
+  {
+    "id": "D3-b-027",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Usuários em outros continentes precisam enviar e baixar objetos de um bucket do Amazon S3 específico MAIS rapidamente pela internet pública. Qual recurso do S3 atende a esse objetivo?",
+    "alternativas": [
+      {
+        "texto": "Amazon Route 53",
+        "correta": false,
+        "porque": "Resolve nomes DNS; não acelera transferências de objetos."
+      },
+      {
+        "texto": "S3 Transfer Acceleration",
+        "correta": true,
+        "porque": "Encaminha as transferências por edge locations do CloudFront e pela rede global da AWS."
+      },
+      {
+        "texto": "Elastic Load Balancing",
+        "correta": false,
+        "porque": "Distribui tráfego entre destinos como EC2; não se aplica a buckets S3."
+      },
+      {
+        "texto": "S3 Same-Region Replication",
+        "correta": false,
+        "porque": "Copia objetos na mesma Região, sem reduzir a distância até usuários remotos."
+      }
+    ],
+    "explicacao": "S3 Transfer Acceleration usa edge locations para acelerar transferências de longa distância de e para um bucket.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B02"
+  },
+  {
+    "id": "D3-b-028",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços da AWS fornecem armazenamento em nível de bloco? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon Elastic Block Store (EBS)",
+        "correta": true,
+        "porque": "Fornece volumes em bloco persistentes para instâncias EC2."
+      },
+      {
+        "texto": "Amazon Elastic File System (EFS)",
+        "correta": false,
+        "porque": "É armazenamento de arquivos (NFS)."
+      },
+      {
+        "texto": "Amazon S3",
+        "correta": false,
+        "porque": "É armazenamento de objetos."
+      },
+      {
+        "texto": "Amazon FSx for Windows File Server",
+        "correta": false,
+        "porque": "É armazenamento de arquivos via SMB."
+      },
+      {
+        "texto": "Amazon EC2 instance store",
+        "correta": true,
+        "porque": "Fornece armazenamento em bloco temporário em discos do host."
+      }
+    ],
+    "explicacao": "Bloco: EBS e instance store. Arquivo: EFS e FSx. Objeto: S3.",
+    "servicos": [
+      "Amazon EBS",
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B03"
+  },
+  {
+    "id": "D3-b-029",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa transferir dezenas de terabytes de arquivos de um servidor NFS on-premises para o Amazon S3 pela rede, de forma automatizada, com verificação de integridade e agendamento. Qual serviço é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "AWS Site-to-Site VPN",
+        "correta": false,
+        "porque": "Cria um túnel criptografado entre as redes, mas não automatiza nem gerencia a cópia de arquivos."
+      },
+      {
+        "texto": "AWS Storage Gateway (File Gateway)",
+        "correta": false,
+        "porque": "Oferece acesso híbrido contínuo a arquivos com cache local; não é a ferramenta de migração em massa agendada."
+      },
+      {
+        "texto": "AWS Transit Gateway",
+        "correta": false,
+        "porque": "Interconecta VPCs e redes on-premises; não transfere dados."
+      },
+      {
+        "texto": "AWS DataSync",
+        "correta": true,
+        "porque": "Automatiza e acelera a transferência online de arquivos (NFS, SMB, HDFS) para S3, EFS e FSx, com verificação de integridade e agendamento."
+      }
+    ],
+    "explicacao": "Transferência online em massa de arquivos para a AWS = DataSync. Observação: o AWS Snowball Edge não está mais disponível para novos clientes; a AWS indica DataSync (online) ou AWS Data Transfer Terminal (física).",
+    "servicos": [
+      "AWS DataSync"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B07 (reescrita)"
+  },
+  {
+    "id": "D3-b-030",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Qual classe de armazenamento do Amazon S3 é a MELHOR para dados com padrão de acesso desconhecido ou que muda ao longo do tempo?",
+    "alternativas": [
+      {
+        "texto": "S3 Intelligent-Tiering",
+        "correta": true,
+        "porque": "Move objetos automaticamente entre camadas de acesso conforme o uso, sem taxa de recuperação."
+      },
+      {
+        "texto": "S3 Glacier Flexible Retrieval",
+        "correta": false,
+        "porque": "É para arquivamento, com recuperação em minutos a horas."
+      },
+      {
+        "texto": "S3 Standard",
+        "correta": false,
+        "porque": "É para acesso frequente; cobra caro por dados que deixam de ser acessados."
+      },
+      {
+        "texto": "S3 Standard-IA",
+        "correta": false,
+        "porque": "Cobra recuperação por GB e só compensa para dados sabidamente infrequentes."
+      }
+    ],
+    "explicacao": "Intelligent-Tiering otimiza custo automaticamente quando o padrão de acesso é imprevisível.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k2#4"
+  },
+  {
+    "id": "D3-b-031",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Um banco precisa reter registros por 10 anos para conformidade. Os dados quase nunca são lidos e, quando necessário, podem ser recuperados em até 48 horas. Qual classe do Amazon S3 tem o MENOR custo de armazenamento?",
+    "alternativas": [
+      {
+        "texto": "S3 Glacier Instant Retrieval",
+        "correta": false,
+        "porque": "Oferece recuperação em milissegundos, custando mais que o necessário."
+      },
+      {
+        "texto": "S3 Glacier Flexible Retrieval",
+        "correta": false,
+        "porque": "É barata, mas o armazenamento custa mais que o Deep Archive."
+      },
+      {
+        "texto": "S3 Glacier Deep Archive",
+        "correta": true,
+        "porque": "É a classe mais barata do S3, com recuperação em até 12 horas (ou 48 h no modo em lote)."
+      },
+      {
+        "texto": "S3 One Zone-IA",
+        "correta": false,
+        "porque": "É para acesso infrequente com leitura imediata, mais cara e com menor resiliência."
+      }
+    ],
+    "explicacao": "Deep Archive é o menor custo para retenção de longo prazo (7–10+ anos) quando horas de espera são aceitáveis.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-032",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Um hospital arquiva imagens médicas acessadas cerca de uma vez por trimestre, mas que devem abrir em milissegundos quando um médico as solicita. Qual classe do Amazon S3 é a MAIS econômica?",
+    "alternativas": [
+      {
+        "texto": "S3 Glacier Deep Archive",
+        "correta": false,
+        "porque": "A recuperação leva horas."
+      },
+      {
+        "texto": "S3 Glacier Instant Retrieval",
+        "correta": true,
+        "porque": "É arquivamento de baixo custo para dados raramente acessados com recuperação em milissegundos."
+      },
+      {
+        "texto": "S3 Glacier Flexible Retrieval",
+        "correta": false,
+        "porque": "A recuperação leva de minutos a horas."
+      },
+      {
+        "texto": "S3 Standard",
+        "correta": false,
+        "porque": "Atende a latência, mas custa mais para dados acessados uma vez por trimestre."
+      }
+    ],
+    "explicacao": "Glacier Instant Retrieval: dados de arquivo acessados ~1 vez por trimestre que precisam de leitura imediata.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-033",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa quer proteger objetos críticos do Amazon S3 contra exclusão ou sobrescrita acidental. Quais recursos ajudam nisso? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "S3 Versioning",
+        "correta": true,
+        "porque": "Mantém versões anteriores, permitindo recuperar objetos excluídos ou sobrescritos."
+      },
+      {
+        "texto": "S3 Lifecycle policies",
+        "correta": false,
+        "porque": "Movem ou expiram objetos; podem até excluir dados, não protegê-los."
+      },
+      {
+        "texto": "MFA Delete",
+        "correta": true,
+        "porque": "Exige MFA para excluir versões permanentemente ou desligar o versionamento."
+      },
+      {
+        "texto": "S3 Transfer Acceleration",
+        "correta": false,
+        "porque": "Acelera transferências; não protege contra exclusão."
+      },
+      {
+        "texto": "S3 Intelligent-Tiering",
+        "correta": false,
+        "porque": "Otimiza custos por camada de acesso; não protege objetos."
+      }
+    ],
+    "explicacao": "Versionamento preserva versões anteriores e MFA Delete adiciona proteção extra contra exclusões permanentes.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k7#33 (reescrita)"
+  },
+  {
+    "id": "D3-b-034",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Um administrador precisa usar os dados de um volume Amazon EBS em uma instância EC2 de outra Zona de Disponibilidade. Qual é a abordagem correta?",
+    "alternativas": [
+      {
+        "texto": "Desanexar o volume e anexá-lo diretamente à instância na outra AZ",
+        "correta": false,
+        "porque": "Volumes EBS são zonais e só podem ser anexados a instâncias da mesma AZ."
+      },
+      {
+        "texto": "Converter o volume em instance store",
+        "correta": false,
+        "porque": "Não há essa conversão; instance store é efêmero e ligado ao host."
+      },
+      {
+        "texto": "Habilitar a S3 Cross-Region Replication no volume",
+        "correta": false,
+        "porque": "CRR se aplica a buckets S3, não a volumes EBS."
+      },
+      {
+        "texto": "Criar um snapshot e restaurar um novo volume na AZ de destino",
+        "correta": true,
+        "porque": "Snapshots são incrementais, ficam armazenados de forma regional e permitem criar volumes em qualquer AZ."
+      }
+    ],
+    "explicacao": "EBS é zonal; snapshots servem de backup e permitem mover dados entre AZs (e copiar entre Regiões).",
+    "servicos": [
+      "Amazon EBS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-035",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Várias instâncias EC2 Linux, em diferentes Zonas de Disponibilidade, precisam acessar simultaneamente o mesmo sistema de arquivos, que deve crescer automaticamente. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Amazon EBS",
+        "correta": false,
+        "porque": "Volumes EBS são zonais e, em geral, anexados a uma única instância."
+      },
+      {
+        "texto": "Amazon EFS",
+        "correta": true,
+        "porque": "Sistema de arquivos NFS gerenciado e elástico, montável por muitas instâncias Linux em várias AZs."
+      },
+      {
+        "texto": "Amazon S3",
+        "correta": false,
+        "porque": "É armazenamento de objetos, não um sistema de arquivos montável nativamente."
+      },
+      {
+        "texto": "Instance store",
+        "correta": false,
+        "porque": "É local e efêmero, ligado a uma única instância."
+      }
+    ],
+    "explicacao": "Amazon EFS é o sistema de arquivos compartilhado, elástico e multi-AZ para cargas Linux.",
+    "servicos": [
+      "Amazon EFS"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k20#27 (reescrita)"
+  },
+  {
+    "id": "D3-b-036",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Uma empresa migra servidores Windows que usam compartilhamentos de arquivos SMB integrados ao Microsoft Active Directory. Qual serviço gerenciado da AWS deve ser usado para esses compartilhamentos?",
+    "alternativas": [
+      {
+        "texto": "Amazon EFS",
+        "correta": false,
+        "porque": "Usa o protocolo NFS e é voltado a cargas Linux."
+      },
+      {
+        "texto": "Amazon FSx for Lustre",
+        "correta": false,
+        "porque": "É um sistema de arquivos para computação de alto desempenho, não compartilhamentos Windows com AD."
+      },
+      {
+        "texto": "Amazon FSx for Windows File Server",
+        "correta": true,
+        "porque": "Fornece compartilhamentos SMB nativos do Windows, integrados ao Active Directory."
+      },
+      {
+        "texto": "Amazon S3",
+        "correta": false,
+        "porque": "É armazenamento de objetos, sem compartilhamento SMB nativo."
+      }
+    ],
+    "explicacao": "FSx for Windows File Server = sistema de arquivos Windows gerenciado (SMB, NTFS, AD); EFS = NFS para Linux.",
+    "servicos": [
+      "Amazon FSx"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-037",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa storage NAS NetApp on-premises e quer levar seus dados para a AWS mantendo os recursos do ONTAP, como snapshots e acesso por NFS e SMB. Qual serviço deve escolher?",
+    "alternativas": [
+      {
+        "texto": "Amazon FSx for NetApp ONTAP",
+        "correta": true,
+        "porque": "Oferece sistemas de arquivos ONTAP totalmente gerenciados, com NFS, SMB e iSCSI."
+      },
+      {
+        "texto": "Amazon EFS",
+        "correta": false,
+        "porque": "Oferece só NFS, sem os recursos de gerenciamento de dados do ONTAP."
+      },
+      {
+        "texto": "AWS Storage Gateway File Gateway",
+        "correta": false,
+        "porque": "Expõe buckets S3 como compartilhamentos on-premises; não executa ONTAP."
+      },
+      {
+        "texto": "Amazon EBS",
+        "correta": false,
+        "porque": "É armazenamento em bloco para uma instância, não um NAS compartilhado."
+      }
+    ],
+    "explicacao": "A família FSx oferece sistemas de arquivos de terceiros gerenciados: Windows File Server, NetApp ONTAP, OpenZFS e Lustre.",
+    "servicos": [
+      "Amazon FSx"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-038",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Aplicações on-premises precisam usar armazenamento na nuvem AWS por meio de protocolos padrão de arquivo, com cache local para acesso de baixa latência aos dados mais usados. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "É uma conexão de rede dedicada, não um serviço de armazenamento."
+      },
+      {
+        "texto": "AWS Snowball Edge",
+        "correta": false,
+        "porque": "Faz transferência offline em lote, sem integração contínua por protocolo de arquivo."
+      },
+      {
+        "texto": "Amazon EFS",
+        "correta": false,
+        "porque": "É um sistema de arquivos na nuvem sem cache local híbrido gerenciado."
+      },
+      {
+        "texto": "AWS Storage Gateway",
+        "correta": true,
+        "porque": "Serviço híbrido (File, Volume e Tape Gateway) que expõe armazenamento AWS on-premises com cache local."
+      }
+    ],
+    "explicacao": "Storage Gateway conecta o ambiente on-premises ao armazenamento da AWS com cache local: file, volume e tape gateway.",
+    "servicos": [
+      "AWS Storage Gateway"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k16#14 (reescrita)"
+  },
+  {
+    "id": "D3-b-039",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer definir políticas centralizadas de backup e retenção para volumes EBS, bancos RDS, tabelas DynamoDB e sistemas de arquivos EFS em várias contas. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS Elastic Disaster Recovery",
+        "correta": false,
+        "porque": "Replica servidores para recuperação rápida, não gerencia políticas de backup de vários serviços."
+      },
+      {
+        "texto": "AWS Backup",
+        "correta": true,
+        "porque": "Centraliza e automatiza backups de vários serviços AWS com planos de backup e retenção, inclusive entre contas."
+      },
+      {
+        "texto": "S3 Lifecycle policies",
+        "correta": false,
+        "porque": "Gerenciam classes e expiração de objetos S3 apenas."
+      },
+      {
+        "texto": "AWS Storage Gateway",
+        "correta": false,
+        "porque": "Integra armazenamento on-premises à nuvem; não orquestra backups de serviços AWS."
+      }
+    ],
+    "explicacao": "AWS Backup é o serviço de backup centralizado e baseado em políticas para EBS, RDS, DynamoDB, EFS, FSx, EC2 e outros.",
+    "servicos": [
+      "AWS Backup"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-b-040",
+    "dominio": 3,
+    "task": "3.6",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer replicar continuamente seus servidores on-premises para a AWS, de forma a recuperá-los em minutos após um desastre e com baixo custo enquanto não há falha. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "AWS Backup",
+        "correta": false,
+        "porque": "Faz backups agendados, sem replicação contínua de servidores para recuperação em minutos."
+      },
+      {
+        "texto": "Amazon S3 Cross-Region Replication",
+        "correta": false,
+        "porque": "Replica objetos S3, não servidores inteiros."
+      },
+      {
+        "texto": "AWS Elastic Disaster Recovery",
+        "correta": true,
+        "porque": "Replica servidores em nível de bloco para uma área de staging de baixo custo e os inicia rapidamente na AWS."
+      },
+      {
+        "texto": "AWS Database Migration Service",
+        "correta": false,
+        "porque": "Migra e replica bancos de dados, não servidores completos."
+      }
+    ],
+    "explicacao": "Elastic Disaster Recovery (AWS DRS) oferece RPO de segundos e RTO de minutos para servidores físicos, virtuais ou na nuvem.",
+    "servicos": [
+      "AWS Elastic Disaster Recovery"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  }
+]

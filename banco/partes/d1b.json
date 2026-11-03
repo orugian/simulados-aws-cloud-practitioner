@@ -1,0 +1,1782 @@
+[
+  {
+    "id": "D1-b-001",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma seguradora vai mover todas as cargas de produção para a AWS e precisa projetar uma arquitetura de nuvem escalável, com engenharia de plataforma, provisionamento automatizado e pipelines de entrega modernos. Segundo o AWS CAF, qual perspectiva trata dessas capacidades?",
+    "alternativas": [
+      {
+        "texto": "Perspectiva de Governança",
+        "correta": false,
+        "porque": "Trata de gestão de programas, riscos, benefícios e finanças da nuvem, não da arquitetura técnica."
+      },
+      {
+        "texto": "Perspectiva de Negócios",
+        "correta": false,
+        "porque": "Garante que os investimentos em nuvem acelerem a estratégia e os resultados de negócio; não cuida da engenharia da plataforma."
+      },
+      {
+        "texto": "Perspectiva de Plataforma",
+        "correta": true,
+        "porque": "Reúne arquitetura e engenharia de plataforma, provisionamento e orquestração, desenvolvimento moderno de aplicações e CI/CD."
+      },
+      {
+        "texto": "Perspectiva de Pessoas",
+        "correta": false,
+        "porque": "Foca em cultura, liderança, fluência em nuvem e estrutura organizacional."
+      }
+    ],
+    "explicacao": "A perspectiva de Plataforma do AWS CAF ajuda a construir uma plataforma de nuvem híbrida escalável e corporativa, modernizar cargas e implementar novas soluções nativas de nuvem.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A32 (reescrita)"
+  },
+  {
+    "id": "D1-b-002",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais capacidades pertencem à perspectiva de Governança do AWS CAF? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Data Architecture",
+        "correta": false,
+        "porque": "Arquitetura de dados é capacidade da perspectiva de Plataforma."
+      },
+      {
+        "texto": "Data Protection",
+        "correta": false,
+        "porque": "Proteção de dados é capacidade da perspectiva de Segurança."
+      },
+      {
+        "texto": "Data Science",
+        "correta": false,
+        "porque": "Ciência de dados é capacidade da perspectiva de Negócios."
+      },
+      {
+        "texto": "Data Curation",
+        "correta": true,
+        "porque": "Curadoria de dados (catalogar e organizar dados para uso) é capacidade da perspectiva de Governança."
+      },
+      {
+        "texto": "Data Governance",
+        "correta": true,
+        "porque": "Governança de dados (políticas de propriedade, qualidade e uso) pertence à perspectiva de Governança."
+      }
+    ],
+    "explicacao": "A perspectiva de Governança inclui gestão de programas e projetos, gestão de benefícios, gestão de riscos, gestão financeira da nuvem, gestão do portfólio de aplicações, governança de dados e curadoria de dados.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-B26"
+  },
+  {
+    "id": "D1-b-003",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa coletar dados dos servidores on-premises, como hostnames, endereços IP e MAC, utilização e dependências entre sistemas, para planejar a migração. Qual serviço da AWS deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "AWS Database Migration Service (AWS DMS)",
+        "correta": false,
+        "porque": "Migra e replica bancos de dados; não faz inventário de servidores."
+      },
+      {
+        "texto": "AWS Application Migration Service",
+        "correta": false,
+        "porque": "Executa a migração (rehost) dos servidores, mas não é a ferramenta de descoberta e planejamento."
+      },
+      {
+        "texto": "AWS DataSync",
+        "correta": false,
+        "porque": "Transfere arquivos e objetos entre armazenamentos; não coleta dados de configuração de servidores."
+      },
+      {
+        "texto": "AWS Application Discovery Service",
+        "correta": true,
+        "porque": "Coleta configuração, utilização e dependências dos servidores on-premises para planejar a migração."
+      }
+    ],
+    "explicacao": "O AWS Application Discovery Service descobre o inventário on-premises (com ou sem agente) e alimenta o planejamento no AWS Migration Hub.",
+    "servicos": [
+      "AWS Application Discovery Service"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B48"
+  },
+  {
+    "id": "D1-b-004",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma equipe quer adotar capacidades de observabilidade, gerenciamento de eventos e gerenciamento de patches seguindo o AWS Cloud Adoption Framework (AWS CAF). Qual perspectiva do CAF reúne essas capacidades?",
+    "alternativas": [
+      {
+        "texto": "Operações (Operations)",
+        "correta": true,
+        "porque": "É a perspectiva do CAF que garante que os serviços de nuvem sejam entregues no nível acordado, com observabilidade, eventos, incidentes e patches."
+      },
+      {
+        "texto": "Eficiência de Performance (Performance Efficiency)",
+        "correta": false,
+        "porque": "É um pilar do AWS Well-Architected Framework, não uma perspectiva do CAF."
+      },
+      {
+        "texto": "Confiabilidade (Reliability)",
+        "correta": false,
+        "porque": "É um pilar do AWS Well-Architected Framework, não uma perspectiva do CAF."
+      },
+      {
+        "texto": "Sustentabilidade (Sustainability)",
+        "correta": false,
+        "porque": "É um pilar do AWS Well-Architected Framework, não uma perspectiva do CAF."
+      }
+    ],
+    "explicacao": "Não confunda: o CAF tem 6 perspectivas (Negócios, Pessoas, Governança, Plataforma, Segurança, Operações); o Well-Architected tem 6 pilares.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B51 (reescrita)"
+  },
+  {
+    "id": "D1-b-005",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais capacidades fazem parte da perspectiva de Plataforma do AWS CAF? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Gerenciamento de desempenho e capacidade",
+        "correta": false,
+        "porque": "É capacidade da perspectiva de Operações."
+      },
+      {
+        "texto": "Engenharia de dados",
+        "correta": true,
+        "porque": "Data engineering é capacidade da perspectiva de Plataforma."
+      },
+      {
+        "texto": "Integração e entrega contínuas (CI/CD)",
+        "correta": true,
+        "porque": "CI/CD é capacidade da perspectiva de Plataforma, junto com provisionamento e orquestração."
+      },
+      {
+        "texto": "Proteção de infraestrutura",
+        "correta": false,
+        "porque": "É capacidade da perspectiva de Segurança."
+      },
+      {
+        "texto": "Gerenciamento de mudanças e releases",
+        "correta": false,
+        "porque": "É capacidade da perspectiva de Operações."
+      }
+    ],
+    "explicacao": "Plataforma: arquitetura de plataforma, arquitetura de dados, engenharia de plataforma, engenharia de dados, provisionamento e orquestração, desenvolvimento moderno de aplicações e CI/CD.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-B67"
+  },
+  {
+    "id": "D1-b-006",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "A diretoria quer garantir que os investimentos em nuvem acelerem as metas de transformação digital e os resultados de negócio, com gestão de estratégia, de portfólio e de inovação. Qual perspectiva do AWS CAF aborda esse objetivo?",
+    "alternativas": [
+      {
+        "texto": "Plataforma",
+        "correta": false,
+        "porque": "Cuida da arquitetura e engenharia técnica da nuvem, não da estratégia de negócio."
+      },
+      {
+        "texto": "Negócios",
+        "correta": true,
+        "porque": "A perspectiva de Negócios garante que a nuvem acelere ambições de transformação digital e resultados, com estratégia, portfólio, inovação e produtos."
+      },
+      {
+        "texto": "Operações",
+        "correta": false,
+        "porque": "Trata da entrega dos serviços de nuvem no nível acordado, não da estratégia."
+      },
+      {
+        "texto": "Segurança",
+        "correta": false,
+        "porque": "Trata de confidencialidade, integridade e disponibilidade de dados e cargas."
+      }
+    ],
+    "explicacao": "Perspectiva de Negócios: gestão de estratégia, portfólio, inovação, produtos, parcerias estratégicas, monetização de dados, business insight e ciência de dados.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-007",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa percebe resistência das equipes à nuvem e falta de habilidades. Ela quer desenvolver fluência em nuvem, evoluir a cultura e redesenhar a estrutura organizacional. Qual perspectiva do AWS CAF trata desses temas?",
+    "alternativas": [
+      {
+        "texto": "Governança",
+        "correta": false,
+        "porque": "Orquestra programas, riscos e finanças da nuvem; não foca em cultura e capacitação."
+      },
+      {
+        "texto": "Negócios",
+        "correta": false,
+        "porque": "Foca em estratégia e resultados de negócio, não em pessoas e cultura."
+      },
+      {
+        "texto": "Pessoas",
+        "correta": true,
+        "porque": "A perspectiva de Pessoas cobre evolução cultural, liderança transformacional, fluência em nuvem, transformação da força de trabalho e design organizacional."
+      },
+      {
+        "texto": "Operações",
+        "correta": false,
+        "porque": "Trata de observabilidade, incidentes e entrega dos serviços, não de mudança cultural."
+      }
+    ],
+    "explicacao": "A perspectiva de Pessoas funciona como ponte entre tecnologia e negócio, acelerando a mudança cultural e a capacitação para a nuvem.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-008",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Qual perspectiva do AWS CAF inclui as capacidades de gerenciamento de identidade e acesso, detecção de ameaças e gerenciamento de vulnerabilidades?",
+    "alternativas": [
+      {
+        "texto": "Operações",
+        "correta": false,
+        "porque": "Cobre observabilidade, eventos, patches e continuidade, mas não identidade e detecção de ameaças."
+      },
+      {
+        "texto": "Plataforma",
+        "correta": false,
+        "porque": "Cobre arquitetura, engenharia e CI/CD da plataforma de nuvem."
+      },
+      {
+        "texto": "Governança",
+        "correta": false,
+        "porque": "Cobre riscos e finanças da nuvem de forma ampla, sem as capacidades técnicas de segurança."
+      },
+      {
+        "texto": "Segurança",
+        "correta": true,
+        "porque": "A perspectiva de Segurança inclui IAM, detecção de ameaças, gestão de vulnerabilidades, proteção de dados e de infraestrutura e resposta a incidentes."
+      }
+    ],
+    "explicacao": "A perspectiva de Segurança ajuda a garantir confidencialidade, integridade e disponibilidade de dados e cargas de trabalho na nuvem.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-009",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "O CFO quer que a adoção da nuvem tenha gestão financeira da nuvem, gestão de benefícios e gestão de riscos, maximizando o valor e minimizando os riscos da transformação. Qual perspectiva do AWS CAF reúne essas capacidades?",
+    "alternativas": [
+      {
+        "texto": "Negócios",
+        "correta": false,
+        "porque": "Trata de estratégia, portfólio e inovação, mas a gestão financeira da nuvem e de riscos fica em Governança."
+      },
+      {
+        "texto": "Governança",
+        "correta": true,
+        "porque": "A perspectiva de Governança inclui gestão financeira da nuvem, de benefícios, de riscos e de programas e projetos."
+      },
+      {
+        "texto": "Operações",
+        "correta": false,
+        "porque": "Trata da operação diária dos serviços de nuvem, não de finanças e riscos do programa."
+      },
+      {
+        "texto": "Pessoas",
+        "correta": false,
+        "porque": "Trata de cultura, liderança e capacitação."
+      }
+    ],
+    "explicacao": "Governança orquestra as iniciativas de nuvem para maximizar benefícios e minimizar riscos, incluindo o controle financeiro (Cloud Financial Management).",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-010",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "multipla",
+    "selecionar": 3,
+    "enunciado": "Quais perspectivas do AWS CAF são consideradas perspectivas técnicas? (Selecione TRÊS.)",
+    "alternativas": [
+      {
+        "texto": "Plataforma",
+        "correta": true,
+        "porque": "É uma das três perspectivas técnicas, focada na plataforma de nuvem."
+      },
+      {
+        "texto": "Negócios",
+        "correta": false,
+        "porque": "É uma perspectiva de negócio, voltada a estratégia e resultados."
+      },
+      {
+        "texto": "Segurança",
+        "correta": true,
+        "porque": "É uma perspectiva técnica, focada em proteger dados e cargas."
+      },
+      {
+        "texto": "Pessoas",
+        "correta": false,
+        "porque": "É uma perspectiva de negócio, voltada a cultura e capacitação."
+      },
+      {
+        "texto": "Operações",
+        "correta": true,
+        "porque": "É uma perspectiva técnica, focada em entregar os serviços de nuvem com o nível acordado."
+      },
+      {
+        "texto": "Governança",
+        "correta": false,
+        "porque": "É uma perspectiva de negócio, voltada a riscos, finanças e programas."
+      }
+    ],
+    "explicacao": "Negócios, Pessoas e Governança são perspectivas de negócio; Plataforma, Segurança e Operações são perspectivas técnicas.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-011",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Segundo o AWS CAF, quais são benefícios de negócio de uma transformação digital apoiada pela nuvem? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Redução do risco de negócio",
+        "correta": true,
+        "porque": "Menor risco de negócio (mais confiabilidade, desempenho e segurança) é um dos quatro benefícios citados pelo CAF."
+      },
+      {
+        "texto": "Transferência total da responsabilidade de segurança para a AWS",
+        "correta": false,
+        "porque": "O modelo de responsabilidade compartilhada continua valendo; o cliente segue responsável pela segurança na nuvem."
+      },
+      {
+        "texto": "Melhoria do desempenho em ESG",
+        "correta": true,
+        "porque": "Melhor desempenho ambiental, social e de governança (ESG) é benefício listado pelo CAF."
+      },
+      {
+        "texto": "Eliminação dos custos operacionais de TI",
+        "correta": false,
+        "porque": "A nuvem reduz e torna variáveis os custos, mas não os elimina."
+      },
+      {
+        "texto": "Conformidade regulatória garantida automaticamente",
+        "correta": false,
+        "porque": "A AWS oferece controles e relatórios, mas a conformidade da carga continua dependendo do cliente."
+      }
+    ],
+    "explicacao": "Os quatro benefícios do AWS CAF: menor risco de negócio, melhor desempenho em ESG, aumento de receita e maior eficiência operacional.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-012",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa já identificou e priorizou suas oportunidades de transformação na nuvem. Agora precisa identificar lacunas de capacidade e dependências entre áreas e criar estratégias para melhorar sua prontidão. Em qual fase da jornada do AWS CAF ela está?",
+    "alternativas": [
+      {
+        "texto": "Envision",
+        "correta": false,
+        "porque": "Envision é a fase anterior: identificar e priorizar oportunidades alinhadas aos objetivos estratégicos."
+      },
+      {
+        "texto": "Align",
+        "correta": true,
+        "porque": "Align identifica lacunas de capacidade nas seis perspectivas e dependências entre áreas, gerando o plano de prontidão."
+      },
+      {
+        "texto": "Launch",
+        "correta": false,
+        "porque": "Launch entrega iniciativas-piloto em produção e demonstra valor incremental."
+      },
+      {
+        "texto": "Scale",
+        "correta": false,
+        "porque": "Scale expande os pilotos e o valor de negócio para a escala desejada."
+      }
+    ],
+    "explicacao": "Fases da jornada do CAF, em ordem: Envision, Align, Launch e Scale.",
+    "servicos": [
+      "AWS CAF"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-013",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa sair do data center em três meses, quando o contrato vence, e vai mover seus servidores para o Amazon EC2 sem alterar as aplicações. Qual estratégia de migração é essa?",
+    "alternativas": [
+      {
+        "texto": "Replatform",
+        "correta": false,
+        "porque": "Replatform faz pequenas otimizações durante a migração, como trocar o banco por um serviço gerenciado."
+      },
+      {
+        "texto": "Rehost",
+        "correta": true,
+        "porque": "Rehost (lift and shift) move as aplicações sem mudanças, sendo a opção mais rápida para grandes volumes."
+      },
+      {
+        "texto": "Refactor",
+        "correta": false,
+        "porque": "Refactor reescreve a aplicação com recursos nativos de nuvem, o que leva mais tempo."
+      },
+      {
+        "texto": "Relocate",
+        "correta": false,
+        "porque": "Relocate move a infraestrutura no nível do hypervisor (ex.: VMware) sem converter para instâncias EC2."
+      }
+    ],
+    "explicacao": "Rehost, ou lift and shift, é a estratégia indicada quando o prazo é curto e não se quer alterar as aplicações.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-014",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Durante a migração, uma empresa mantém a arquitetura da aplicação, mas troca o MySQL autogerenciado pelo Amazon RDS for MySQL para reduzir a administração. Qual estratégia dos 7 Rs descreve essa decisão?",
+    "alternativas": [
+      {
+        "texto": "Rehost",
+        "correta": false,
+        "porque": "No rehost nada é alterado; aqui houve troca do banco por um serviço gerenciado."
+      },
+      {
+        "texto": "Refactor",
+        "correta": false,
+        "porque": "Refactor muda a arquitetura da aplicação, o que não ocorreu."
+      },
+      {
+        "texto": "Replatform",
+        "correta": true,
+        "porque": "Replatform (lift, tinker and shift) faz otimizações pontuais, como adotar um banco gerenciado, sem mudar a arquitetura central."
+      },
+      {
+        "texto": "Repurchase",
+        "correta": false,
+        "porque": "Repurchase troca a aplicação por outro produto, geralmente SaaS."
+      }
+    ],
+    "explicacao": "Replatform obtém benefícios da nuvem com poucas mudanças, por exemplo migrando o banco para Amazon RDS.",
+    "servicos": [
+      "Amazon RDS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-015",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação monolítica não suporta picos de demanda e demora a receber novos recursos. A empresa decide reescrevê-la em microsserviços com AWS Lambda e Amazon DynamoDB. Qual estratégia de migração é essa?",
+    "alternativas": [
+      {
+        "texto": "Replatform",
+        "correta": false,
+        "porque": "Replatform faz ajustes pontuais sem redesenhar a aplicação."
+      },
+      {
+        "texto": "Rehost",
+        "correta": false,
+        "porque": "Rehost move a aplicação como está, mantendo o monólito."
+      },
+      {
+        "texto": "Retain",
+        "correta": false,
+        "porque": "Retain mantém a aplicação onde está, sem migrar."
+      },
+      {
+        "texto": "Refactor (re-architect)",
+        "correta": true,
+        "porque": "Refactor redesenha a aplicação com recursos nativos de nuvem para ganhar agilidade, escala e desempenho."
+      }
+    ],
+    "explicacao": "Refactor/re-architect é a estratégia de maior esforço e maior benefício, motivada por necessidades de negócio que a arquitetura atual não atende.",
+    "servicos": [
+      "AWS Lambda",
+      "Amazon DynamoDB"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-016",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai abandonar seu CRM instalado on-premises e passar a usar um CRM oferecido como software como serviço (SaaS). Qual estratégia de migração é essa?",
+    "alternativas": [
+      {
+        "texto": "Repurchase",
+        "correta": true,
+        "porque": "Repurchase (drop and shop) troca a aplicação por outro produto, normalmente SaaS."
+      },
+      {
+        "texto": "Retire",
+        "correta": false,
+        "porque": "Retire desliga a aplicação sem substituí-la."
+      },
+      {
+        "texto": "Replatform",
+        "correta": false,
+        "porque": "Replatform mantém a mesma aplicação com pequenas otimizações."
+      },
+      {
+        "texto": "Relocate",
+        "correta": false,
+        "porque": "Relocate move a infraestrutura virtualizada para a nuvem sem trocar o software."
+      }
+    ],
+    "explicacao": "Repurchase substitui a solução atual por uma nova, geralmente com outro modelo de licenciamento (SaaS).",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-017",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "No levantamento do portfólio para a migração, a empresa descobre aplicações que não são mais usadas por ninguém. Qual estratégia é recomendada para elas?",
+    "alternativas": [
+      {
+        "texto": "Retain",
+        "correta": false,
+        "porque": "Retain mantém a aplicação funcionando on-premises, o que continuaria gerando custo sem valor."
+      },
+      {
+        "texto": "Retire",
+        "correta": true,
+        "porque": "Retire desativa aplicações sem uso, reduzindo custos e a superfície de ataque."
+      },
+      {
+        "texto": "Rehost",
+        "correta": false,
+        "porque": "Migrar algo que ninguém usa só transfere o desperdício para a nuvem."
+      },
+      {
+        "texto": "Repurchase",
+        "correta": false,
+        "porque": "Não faz sentido comprar um substituto para uma aplicação sem uso."
+      }
+    ],
+    "explicacao": "Retire elimina aplicações desnecessárias identificadas na descoberta, simplificando e barateando a migração.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-018",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação depende de um mainframe que acabou de receber investimento e tem requisitos de latência com equipamentos locais. A empresa decide mantê-la on-premises e reavaliar no futuro. Qual estratégia de migração é essa?",
+    "alternativas": [
+      {
+        "texto": "Retire",
+        "correta": false,
+        "porque": "Retire desativaria a aplicação, mas ela continua necessária."
+      },
+      {
+        "texto": "Relocate",
+        "correta": false,
+        "porque": "Relocate moveria a infraestrutura para a nuvem, o que não foi decidido."
+      },
+      {
+        "texto": "Retain",
+        "correta": true,
+        "porque": "Retain (revisit) mantém a aplicação no ambiente de origem por motivos de negócio, técnicos ou de investimento recente."
+      },
+      {
+        "texto": "Rehost",
+        "correta": false,
+        "porque": "Rehost migraria a aplicação para o EC2 agora."
+      }
+    ],
+    "explicacao": "Retain é usada para aplicações que ainda não devem migrar, como as com investimento recente, dependências ou requisitos de conformidade.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-019",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa executa centenas de VMs em VMware vSphere on-premises e quer movê-las rapidamente para a AWS sem comprar hardware, sem converter as VMs e sem mudar seus processos de operação. Qual estratégia de migração é essa?",
+    "alternativas": [
+      {
+        "texto": "Rehost",
+        "correta": false,
+        "porque": "Rehost converte os servidores em instâncias EC2, alterando a forma de operar as VMs."
+      },
+      {
+        "texto": "Replatform",
+        "correta": false,
+        "porque": "Replatform inclui otimizações, como trocar componentes por serviços gerenciados."
+      },
+      {
+        "texto": "Refactor",
+        "correta": false,
+        "porque": "Refactor reescreve as aplicações, o oposto do que se pede."
+      },
+      {
+        "texto": "Relocate",
+        "correta": true,
+        "porque": "Relocate move a infraestrutura no nível do hypervisor (ex.: VMware Cloud on AWS) sem novo hardware, sem reescrever e sem mudar operações."
+      }
+    ],
+    "explicacao": "Relocate é o 7º R: transfere ambientes virtualizados inteiros para a nuvem mantendo a mesma plataforma de virtualização.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-020",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa várias ferramentas da AWS e de parceiros na migração e quer um local único para acompanhar o progresso da migração de todas as aplicações. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "AWS Migration Hub",
+        "correta": true,
+        "porque": "Centraliza o acompanhamento do status das migrações feitas com diversas ferramentas da AWS e de parceiros."
+      },
+      {
+        "texto": "AWS Application Discovery Service",
+        "correta": false,
+        "porque": "Coleta dados dos servidores para o planejamento, mas não acompanha a execução da migração."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Registra e avalia configurações de recursos AWS; não acompanha projetos de migração."
+      },
+      {
+        "texto": "Migration Evaluator",
+        "correta": false,
+        "porque": "Gera o business case de custos antes da migração, não acompanha o progresso."
+      }
+    ],
+    "explicacao": "O AWS Migration Hub é o painel central para descobrir, planejar e acompanhar migrações de portfólio.",
+    "servicos": [
+      "AWS Migration Hub"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-021",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Antes de aprovar a migração, a diretoria pede um business case com a projeção dos custos na AWS, baseada na utilização real dos servidores on-premises e nas licenças existentes. Qual serviço da AWS ajuda a criar esse caso de negócio?",
+    "alternativas": [
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Define orçamentos e alertas sobre gastos já existentes na AWS."
+      },
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": false,
+        "porque": "Analisa custos históricos e previstos de recursos que já estão na AWS."
+      },
+      {
+        "texto": "Migration Evaluator",
+        "correta": true,
+        "porque": "Coleta dados de utilização on-premises e gera um business case com custos projetados e opções de licenciamento na AWS."
+      },
+      {
+        "texto": "AWS Migration Hub",
+        "correta": false,
+        "porque": "Acompanha o progresso da migração, mas não constrói o business case financeiro."
+      }
+    ],
+    "explicacao": "O Migration Evaluator (antigo TSO Logic) cria business cases de migração baseados em dados, considerando rightsizing e licenças.",
+    "servicos": [
+      "Migration Evaluator"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-022",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer fazer rehost de centenas de servidores físicos e virtuais para o Amazon EC2, com replicação contínua em nível de bloco e cutover com mínimo tempo de inatividade. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS Database Migration Service (AWS DMS)",
+        "correta": false,
+        "porque": "Migra bancos de dados, não servidores inteiros."
+      },
+      {
+        "texto": "AWS DataSync",
+        "correta": false,
+        "porque": "Copia arquivos e objetos, não servidores completos com SO e aplicações."
+      },
+      {
+        "texto": "AWS Application Discovery Service",
+        "correta": false,
+        "porque": "Faz o inventário para planejamento; não replica servidores."
+      },
+      {
+        "texto": "AWS Application Migration Service",
+        "correta": true,
+        "porque": "O MGN replica continuamente os servidores de origem e automatiza a conversão e o cutover para o EC2."
+      }
+    ],
+    "explicacao": "O AWS Application Migration Service (MGN) é o serviço recomendado para lift and shift de servidores para a AWS.",
+    "servicos": [
+      "AWS Application Migration Service"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-023",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai migrar um banco de dados de produção para a AWS e não pode deixar o sistema parado por horas. Qual abordagem MINIMIZA o tempo de inatividade?",
+    "alternativas": [
+      {
+        "texto": "Replicar continuamente o banco de origem para o destino e fazer o cutover após a sincronização",
+        "correta": true,
+        "porque": "A replicação contínua (ex.: com AWS DMS) mantém a origem em uso até o destino estar sincronizado, reduzindo a parada ao cutover."
+      },
+      {
+        "texto": "Gerar um backup completo, transportá-lo e restaurá-lo em uma janela de fim de semana",
+        "correta": false,
+        "porque": "Exige parar as gravações durante todo o transporte e a restauração, gerando longa indisponibilidade."
+      },
+      {
+        "texto": "Parar a aplicação, copiar os arquivos de dados para o Amazon S3 e reiniciar na AWS",
+        "correta": false,
+        "porque": "Mantém o sistema parado durante toda a cópia, o oposto do requisito."
+      },
+      {
+        "texto": "Copiar os arquivos do banco em execução com o AWS DataSync",
+        "correta": false,
+        "porque": "Copiar arquivos de um banco ativo não garante consistência transacional nem replica alterações contínuas."
+      }
+    ],
+    "explicacao": "A replicação de banco de dados é uma estratégia de migração: carga inicial mais captura contínua de alterações (CDC) permite migrar com mínima parada.",
+    "servicos": [
+      "AWS DMS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-024",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma equipe procura guias, padrões e estratégias testados pela AWS e por parceiros para planejar e executar a migração e a modernização de suas cargas de trabalho. Qual recurso da AWS oferece esse conteúdo?",
+    "alternativas": [
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Fornece relatórios de conformidade e acordos da AWS, não guias de migração."
+      },
+      {
+        "texto": "AWS Prescriptive Guidance",
+        "correta": true,
+        "porque": "Reúne estratégias, guias e padrões validados pela AWS e parceiros para migração e modernização."
+      },
+      {
+        "texto": "AWS re:Post",
+        "correta": false,
+        "porque": "É uma comunidade de perguntas e respostas, não um acervo curado de padrões de migração."
+      },
+      {
+        "texto": "AWS Marketplace",
+        "correta": false,
+        "porque": "É um catálogo para comprar software de terceiros."
+      }
+    ],
+    "explicacao": "O AWS Prescriptive Guidance é um recurso de apoio à jornada para a nuvem, com estratégias, guias e padrões de migração.",
+    "servicos": [
+      "AWS Prescriptive Guidance"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-025",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa vai migrar do data center on-premises para a AWS e quer ajuda prática de especialistas na execução do projeto. Quais opções atendem a essa necessidade? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Contratar o AWS Professional Services",
+        "correta": true,
+        "porque": "A equipe global de especialistas da AWS ajuda a planejar e executar migrações, inclusive a configurar landing zones."
+      },
+      {
+        "texto": "Abrir um caso no AWS Support",
+        "correta": false,
+        "porque": "O AWS Support resolve problemas técnicos e dúvidas, mas não executa projetos de migração."
+      },
+      {
+        "texto": "Escolher um parceiro da AWS Partner Network (APN)",
+        "correta": true,
+        "porque": "Parceiros de consultoria da APN são especializados em conduzir migrações para a AWS."
+      },
+      {
+        "texto": "Executar o AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Gera recomendações automatizadas sobre a conta, não ajuda prática em um projeto."
+      },
+      {
+        "texto": "Comprar uma licença no AWS Marketplace",
+        "correta": false,
+        "porque": "O Marketplace vende software e serviços de terceiros, não é um canal de apoio direto à migração."
+      }
+    ],
+    "explicacao": "Para ajuda prática na migração, recorra ao AWS Professional Services ou a parceiros da AWS Partner Network.",
+    "servicos": [
+      "AWS Professional Services",
+      "AWS Partner Network"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k19#13 (reescrita)"
+  },
+  {
+    "id": "D1-b-026",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Ao migrar do data center on-premises para a AWS e desativar o ambiente local, quais benefícios a empresa obtém? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Adiamento do pagamento das despesas operacionais",
+        "correta": false,
+        "porque": "A AWS cobra o uso conforme ele ocorre; não há adiamento de despesas operacionais."
+      },
+      {
+        "texto": "Menor tempo para lançar produtos no mercado",
+        "correta": true,
+        "porque": "Recursos ficam disponíveis em minutos, sem esperar compra e instalação de hardware, acelerando o time to market."
+      },
+      {
+        "texto": "Redução do custo total de propriedade (TCO)",
+        "correta": true,
+        "porque": "Elimina custos de hardware, instalações, energia e manutenção do data center, reduzindo o TCO."
+      },
+      {
+        "texto": "Descontos de atacado na compra de servidores bare-metal",
+        "correta": false,
+        "porque": "O cliente deixa de comprar servidores; a economia de escala vem dos preços menores dos serviços AWS."
+      },
+      {
+        "texto": "Troca de custos variáveis baixos por grandes gastos de capital antecipados",
+        "correta": false,
+        "porque": "É o inverso: a nuvem troca gastos de capital antecipados por custos variáveis."
+      }
+    ],
+    "explicacao": "Sair do data center reduz o TCO e aumenta a agilidade (menor time to market), trocando CapEx por custo variável.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "usuario-B32"
+  },
+  {
+    "id": "D1-b-027",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai sair do data center on-premises e mover suas cargas para a AWS. Qual mudança financeira ela deve esperar?",
+    "alternativas": [
+      {
+        "texto": "Passar de despesa operacional variável (OpEx) para despesa de capital antecipada (CapEx)",
+        "correta": false,
+        "porque": "É o oposto: na nuvem o investimento antecipado em hardware dá lugar ao pagamento pelo uso."
+      },
+      {
+        "texto": "Eliminar tanto as despesas de capital quanto as despesas operacionais",
+        "correta": false,
+        "porque": "O uso dos serviços AWS continua sendo uma despesa operacional."
+      },
+      {
+        "texto": "Passar de despesa de capital antecipada (CapEx) para despesa operacional variável (OpEx)",
+        "correta": true,
+        "porque": "Em vez de comprar servidores antecipadamente, a empresa paga mensalmente pelo que consome."
+      },
+      {
+        "texto": "Passar a pagar uma taxa fixa mensal independente do uso",
+        "correta": false,
+        "porque": "O modelo padrão da AWS é pay-as-you-go: o valor varia conforme o consumo."
+      }
+    ],
+    "explicacao": "Um benefício econômico central da nuvem é trocar CapEx (compra antecipada de infraestrutura) por OpEx variável.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k11#32"
+  },
+  {
+    "id": "D1-b-028",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Qual item é um exemplo de custo FIXO?",
+    "alternativas": [
+      {
+        "texto": "O aluguel do espaço do data center, pago integralmente mesmo com servidores ociosos",
+        "correta": true,
+        "porque": "Custo fixo não varia com o volume de uso; o aluguel é pago independentemente da carga."
+      },
+      {
+        "texto": "O valor cobrado por GB transferido para a internet a partir da AWS",
+        "correta": false,
+        "porque": "Cobrança por volume transferido é custo variável, proporcional ao uso."
+      },
+      {
+        "texto": "As horas de instância Amazon EC2 On-Demand de um ambiente de testes",
+        "correta": false,
+        "porque": "On-Demand é cobrado pelo tempo de uso: custo variável."
+      },
+      {
+        "texto": "As invocações cobradas de uma função AWS Lambda",
+        "correta": false,
+        "porque": "Lambda cobra por requisição e duração: custo variável."
+      }
+    ],
+    "explicacao": "Custo fixo independe do uso (aluguel, hardware comprado); custo variável acompanha o consumo, como no modelo pay-as-you-go da AWS.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-029",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Ao comparar o custo total de propriedade (TCO) da infraestrutura on-premises com o de uma arquitetura na nuvem, quais custos devem ser considerados? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Taxas de processamento de cartão de crédito das transações da aplicação",
+        "correta": false,
+        "porque": "São custos do negócio, iguais em qualquer infraestrutura."
+      },
+      {
+        "texto": "Compra e instalação dos servidores no data center on-premises",
+        "correta": true,
+        "porque": "O hardware e sua instalação são custos diretos da infraestrutura on-premises que a nuvem elimina."
+      },
+      {
+        "texto": "Administração da infraestrutura: instalação de SO, patches, backups e recuperação de falhas",
+        "correta": true,
+        "porque": "O trabalho de operar a infraestrutura é parte relevante do TCO e muda bastante na nuvem."
+      },
+      {
+        "texto": "Testes de intrusão contratados de terceiros",
+        "correta": false,
+        "porque": "São necessários nos dois cenários e não diferenciam a infraestrutura."
+      },
+      {
+        "texto": "Custos de publicidade de uma campanha corporativa",
+        "correta": false,
+        "porque": "Não têm relação com a infraestrutura de TI."
+      }
+    ],
+    "explicacao": "A análise de TCO compara os custos de infraestrutura e de operá-la: hardware, instalações, energia, pessoal de TI e administração.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k18#39"
+  },
+  {
+    "id": "D1-b-030",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Qual custo deve ser incluído ao comparar o TCO on-premises com o TCO na AWS?",
+    "alternativas": [
+      {
+        "texto": "Gestão de projetos",
+        "correta": false,
+        "porque": "Existe nos dois cenários e não depende da infraestrutura escolhida."
+      },
+      {
+        "texto": "Análise de negócios",
+        "correta": false,
+        "porque": "É atividade do negócio, independente de onde a infraestrutura roda."
+      },
+      {
+        "texto": "Desenvolvimento de software",
+        "correta": false,
+        "porque": "O código precisa ser escrito em qualquer ambiente."
+      },
+      {
+        "texto": "Segurança física do data center",
+        "correta": true,
+        "porque": "Vigilância, controle de acesso e instalações são custos on-premises que, na AWS, ficam a cargo do provedor."
+      }
+    ],
+    "explicacao": "No TCO entram os custos que mudam entre os cenários: instalações, segurança física, energia, hardware e pessoal de infraestrutura.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k17#2"
+  },
+  {
+    "id": "D1-b-031",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Um varejista dimensiona seu data center para o pico da Black Friday. No restante do ano, a maior parte dos servidores roda com baixa utilização. Qual custo on-premises esse cenário ilustra e como a AWS o reduz?",
+    "alternativas": [
+      {
+        "texto": "Custo de transferência de dados, reduzido com o Amazon CloudFront",
+        "correta": false,
+        "porque": "O problema descrito é capacidade ociosa paga, não tráfego de rede."
+      },
+      {
+        "texto": "Custo de licenças, reduzido com o AWS License Manager",
+        "correta": false,
+        "porque": "O License Manager controla licenças, mas não resolve servidores parados."
+      },
+      {
+        "texto": "Custo de superprovisionamento, reduzido com capacidade sob demanda paga pelo uso",
+        "correta": true,
+        "porque": "Na AWS a capacidade cresce e diminui com a demanda, e paga-se só pelo que se usa, sem hardware parado."
+      },
+      {
+        "texto": "Custo de suporte, reduzido com o plano AWS Enterprise Support",
+        "correta": false,
+        "porque": "Um plano de suporte não elimina capacidade ociosa e é um custo adicional."
+      }
+    ],
+    "explicacao": "On-premises é preciso comprar para o pico e pagar pelo hardware ocioso; na nuvem o custo variável acompanha a demanda.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-032",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "multipla",
+    "selecionar": 3,
+    "enunciado": "Uma empresa está montando a análise de custos do seu data center próprio para compará-lo com a AWS. Quais custos de instalações on-premises costumam ser esquecidos e devem entrar na análise? (Selecione TRÊS.)",
+    "alternativas": [
+      {
+        "texto": "Energia elétrica dos servidores e equipamentos",
+        "correta": true,
+        "porque": "O consumo de energia é um custo contínuo do data center que, na AWS, está embutido no preço do serviço."
+      },
+      {
+        "texto": "Refrigeração do ambiente",
+        "correta": true,
+        "porque": "Sistemas de ar-condicionado e seu consumo são custos relevantes on-premises."
+      },
+      {
+        "texto": "Horas de instância Amazon EC2",
+        "correta": false,
+        "porque": "É custo da AWS, não um custo de instalações on-premises."
+      },
+      {
+        "texto": "Imóvel, aluguel ou espaço físico do data center",
+        "correta": true,
+        "porque": "O espaço que abriga os racks tem custo de compra ou aluguel, impostos e manutenção."
+      },
+      {
+        "texto": "Assinatura do plano AWS Business Support+",
+        "correta": false,
+        "porque": "É um custo opcional da AWS, não das instalações próprias."
+      },
+      {
+        "texto": "Armazenamento de objetos no Amazon S3",
+        "correta": false,
+        "porque": "É custo de uso da AWS, não do data center próprio."
+      }
+    ],
+    "explicacao": "Custos de instalações (energia, refrigeração, imóvel e segurança física) muitas vezes ficam fora da conta on-premises, mas fazem parte do TCO.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-033",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer trazer para a AWS licenças de software cobradas por socket e por núcleo físico, com visibilidade do servidor físico usado. Qual opção do Amazon EC2 atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Dedicated Instances",
+        "correta": false,
+        "porque": "Rodam em hardware dedicado ao cliente, mas não dão visibilidade nem controle de sockets e núcleos do servidor físico."
+      },
+      {
+        "texto": "Dedicated Hosts",
+        "correta": true,
+        "porque": "Oferecem um servidor físico inteiro, com visibilidade de sockets e núcleos, permitindo BYOL de licenças vinculadas ao servidor."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": false,
+        "porque": "Usam capacidade compartilhada e podem ser interrompidas; não atendem licenças por núcleo físico."
+      },
+      {
+        "texto": "On-Demand Instances",
+        "correta": false,
+        "porque": "Rodam em hardware compartilhado, sem visibilidade de sockets e núcleos."
+      }
+    ],
+    "explicacao": "Dedicated Hosts são a opção de EC2 para BYOL de licenças por socket, por núcleo ou por VM, além de requisitos de conformidade.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "kananinirav-k20#48 (reescrita)"
+  },
+  {
+    "id": "D1-b-034",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Qual prática ajuda a REDUZIR custos ao migrar cargas de trabalho para a AWS?",
+    "alternativas": [
+      {
+        "texto": "Executar as cargas de produção em edge locations em vez de Regiões",
+        "correta": false,
+        "porque": "Edge locations servem para cache e entrega de conteúdo, não para hospedar toda a produção."
+      },
+      {
+        "texto": "Usar servidores autogerenciados em vez de serviços gerenciados",
+        "correta": false,
+        "porque": "Autogerenciar aumenta o esforço operacional e o custo de pessoal."
+      },
+      {
+        "texto": "Usar o AWS Outposts para todas as cargas de trabalho",
+        "correta": false,
+        "porque": "Outposts levam infraestrutura AWS ao local do cliente para casos específicos, não para economizar em geral."
+      },
+      {
+        "texto": "Reaproveitar licenças de software de terceiros que a empresa já possui (BYOL)",
+        "correta": true,
+        "porque": "Trazer licenças existentes, quando os termos permitem, evita pagar a licença de novo embutida no preço."
+      }
+    ],
+    "explicacao": "BYOL (Bring Your Own License) aproveita o investimento em licenças já feito e reduz o custo da migração.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k5#40"
+  },
+  {
+    "id": "D1-b-035",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa que leva suas licenças de software para a AWS (BYOL) quer controlar o uso das licenças e evitar exceder os limites contratados. Qual serviço ajuda nisso?",
+    "alternativas": [
+      {
+        "texto": "AWS License Manager",
+        "correta": true,
+        "porque": "Gerencia licenças de software na AWS e on-premises, aplicando regras de uso para evitar excesso e riscos em auditorias."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Fornece relatórios de conformidade e acordos da AWS, não controle de licenças de software."
+      },
+      {
+        "texto": "AWS Marketplace",
+        "correta": false,
+        "porque": "Vende software de terceiros, mas não rastreia licenças trazidas pelo cliente."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Acompanha gastos frente a orçamentos, não contagem de licenças."
+      }
+    ],
+    "explicacao": "O AWS License Manager centraliza o controle de licenças (Microsoft, Oracle, SAP etc.), facilitando o BYOL com conformidade.",
+    "servicos": [
+      "AWS License Manager"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-036",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma startup precisa de servidores Windows Server na AWS, mas não possui nenhuma licença da Microsoft e não quer comprar licenças antecipadamente. Qual modelo de licenciamento é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "BYOL em Dedicated Hosts",
+        "correta": false,
+        "porque": "BYOL exige licenças já adquiridas, que a startup não tem."
+      },
+      {
+        "texto": "Comprar licenças perpétuas e importá-las para a AWS",
+        "correta": false,
+        "porque": "Exige o investimento antecipado que a empresa quer evitar."
+      },
+      {
+        "texto": "Licença incluída, usando AMIs de Windows Server do Amazon EC2",
+        "correta": true,
+        "porque": "No modelo licença incluída, o custo da licença vem embutido no preço por uso da instância."
+      },
+      {
+        "texto": "AWS License Manager para gerar novas licenças",
+        "correta": false,
+        "porque": "O License Manager controla o uso de licenças, não as fornece."
+      }
+    ],
+    "explicacao": "Licença incluída: o custo da licença é pago junto com o uso do recurso; BYOL: o cliente reaproveita licenças que já possui.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-037",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma equipe de TI gasta muitas horas aplicando patches manualmente em centenas de instâncias Amazon EC2. Qual benefício a empresa obtém ao automatizar essa tarefa com o AWS Systems Manager?",
+    "alternativas": [
+      {
+        "texto": "A AWS assume a responsabilidade pelos patches do sistema operacional das instâncias",
+        "correta": false,
+        "porque": "No EC2 o patch do SO continua sendo responsabilidade do cliente, mesmo automatizado."
+      },
+      {
+        "texto": "Menor esforço da equipe e menos erros humanos, com execução consistente",
+        "correta": true,
+        "porque": "A automação reduz trabalho manual repetitivo, custo de pessoal e erros, aplicando o mesmo processo em toda a frota."
+      },
+      {
+        "texto": "Eliminação da cobrança pelas instâncias durante o patch",
+        "correta": false,
+        "porque": "As instâncias continuam sendo cobradas normalmente."
+      },
+      {
+        "texto": "Dispensa de testar as aplicações após atualizações",
+        "correta": false,
+        "porque": "Automatizar o patch não elimina a necessidade de testes."
+      }
+    ],
+    "explicacao": "A automação reduz custo operacional e erros humanos e libera a equipe para trabalho de maior valor.",
+    "servicos": [
+      "AWS Systems Manager"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-038",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai migrar seu banco de dados on-premises para o Amazon RDS. O que ela deve fazer para manter os custos do RDS no MÍNIMO?",
+    "alternativas": [
+      {
+        "texto": "Fazer o rightsizing antes e depois da migração",
+        "correta": true,
+        "porque": "Dimensionar a instância pela utilização real antes da migração e ajustar após observar a carga evita pagar por capacidade sobrando."
+      },
+      {
+        "texto": "Usar uma arquitetura multi-Região ativo-passivo",
+        "correta": false,
+        "porque": "Aumenta a resiliência, mas também aumenta o custo."
+      },
+      {
+        "texto": "Combinar Capacity Reservations com Savings Plans",
+        "correta": false,
+        "porque": "Capacity Reservations são do EC2 e reservam capacidade sem desconto; não reduzem o custo por si."
+      },
+      {
+        "texto": "Usar uma arquitetura multi-Região ativo-ativo",
+        "correta": false,
+        "porque": "Duplica a infraestrutura e eleva o custo."
+      }
+    ],
+    "explicacao": "Rightsizing é ajustar tipo e tamanho dos recursos à demanda real; deve ser feito na migração e de forma contínua.",
+    "servicos": [
+      "Amazon RDS"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k3#4"
+  },
+  {
+    "id": "D1-b-039",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS analisa as métricas de utilização das instâncias Amazon EC2 e recomenda tipos e tamanhos mais adequados para reduzir custos e melhorar o desempenho?",
+    "alternativas": [
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": false,
+        "porque": "Analisa e projeta gastos; o rightsizing baseado em utilização é o foco do Compute Optimizer."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Coleta as métricas, mas não gera recomendações de tipo de instância."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Alerta quando os gastos ultrapassam orçamentos, sem recomendar tamanhos."
+      },
+      {
+        "texto": "AWS Compute Optimizer",
+        "correta": true,
+        "porque": "Usa machine learning sobre o histórico de utilização para recomendar o rightsizing de EC2, Auto Scaling, EBS, Lambda e outros."
+      }
+    ],
+    "explicacao": "O AWS Compute Optimizer é a ferramenta de rightsizing: identifica recursos superdimensionados ou subdimensionados.",
+    "servicos": [
+      "AWS Compute Optimizer"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-040",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma instância Amazon EC2 de produção roda o mês inteiro com cerca de 10% de uso de CPU e memória. Qual ação representa o rightsizing desse recurso?",
+    "alternativas": [
+      {
+        "texto": "Comprar uma Reserved Instance do mesmo tipo atual",
+        "correta": false,
+        "porque": "Dá desconto, mas mantém pagando por capacidade que não é usada."
+      },
+      {
+        "texto": "Migrar a instância para um Dedicated Host",
+        "correta": false,
+        "porque": "Aumenta o custo e não ajusta o tamanho à carga."
+      },
+      {
+        "texto": "Adicionar mais instâncias iguais atrás de um load balancer",
+        "correta": false,
+        "porque": "Aumenta a capacidade ociosa e o custo."
+      },
+      {
+        "texto": "Trocar a instância por um tipo menor, compatível com a carga real",
+        "correta": true,
+        "porque": "Rightsizing é adequar tipo e tamanho do recurso à utilização observada."
+      }
+    ],
+    "explicacao": "Faça o rightsizing antes de comprar compromissos (RIs/Savings Plans); caso contrário, você reserva desperdício.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-041",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa monta manualmente cada novo ambiente de testes, o que leva dias e gera diferenças entre os ambientes. Qual abordagem traz ambientes idênticos, rápidos de criar e fáceis de remover quando não forem mais necessários?",
+    "alternativas": [
+      {
+        "texto": "Documentar o passo a passo em uma planilha compartilhada",
+        "correta": false,
+        "porque": "Continua manual: lento e sujeito a erros e divergências."
+      },
+      {
+        "texto": "Infraestrutura como código com o AWS CloudFormation",
+        "correta": true,
+        "porque": "Templates criam e excluem ambientes repetíveis e consistentes em minutos, evitando recursos esquecidos e erros manuais."
+      },
+      {
+        "texto": "Manter um ambiente de testes permanente para todas as equipes",
+        "correta": false,
+        "porque": "Gera custo contínuo e conflitos entre equipes."
+      },
+      {
+        "texto": "Usar o AWS Trusted Advisor para criar os ambientes",
+        "correta": false,
+        "porque": "O Trusted Advisor faz recomendações; não provisiona ambientes."
+      }
+    ],
+    "explicacao": "Automação com infraestrutura como código reduz tempo, erros e custo, pois os ambientes podem ser criados e destruídos sob demanda.",
+    "servicos": [
+      "AWS CloudFormation"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-042",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "As instâncias Amazon EC2 de desenvolvimento de uma empresa ficam ligadas 24 horas por dia, mas só são usadas em horário comercial. Qual medida reduz o custo com o MENOR esforço operacional contínuo?",
+    "alternativas": [
+      {
+        "texto": "Automatizar o desligamento fora do horário e o religamento no início do expediente",
+        "correta": true,
+        "porque": "Com cobrança por uso, parar instâncias automaticamente fora do horário elimina horas pagas sem uso, sem depender de ação manual."
+      },
+      {
+        "texto": "Pedir aos desenvolvedores que desliguem as instâncias ao sair",
+        "correta": false,
+        "porque": "Depende de ação manual e costuma falhar."
+      },
+      {
+        "texto": "Comprar Reserved Instances de 3 anos para essas instâncias",
+        "correta": false,
+        "porque": "Dá desconto, mas continua pagando pelas horas ociosas."
+      },
+      {
+        "texto": "Migrar as instâncias para Dedicated Hosts",
+        "correta": false,
+        "porque": "Aumenta o custo e não resolve as horas ociosas."
+      }
+    ],
+    "explicacao": "Automatizar o liga/desliga de ambientes não produtivos é um benefício direto da automação e do custo variável da nuvem.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-043",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa migrou para a AWS e percebeu que o preço por GB armazenado no Amazon S3 diminuiu ao longo dos anos, sem nenhuma ação da equipe. Qual conceito de economia da nuvem explica essa redução?",
+    "alternativas": [
+      {
+        "texto": "Rightsizing contínuo dos recursos",
+        "correta": false,
+        "porque": "Rightsizing exige ação do cliente para ajustar o tamanho dos recursos; aqui a redução veio da AWS."
+      },
+      {
+        "texto": "Troca de custo variável por custo fixo",
+        "correta": false,
+        "porque": "É o inverso do modelo da nuvem, que troca despesas fixas (CapEx) por variáveis (OpEx)."
+      },
+      {
+        "texto": "Economias de escala da AWS repassadas em reduções de preço",
+        "correta": true,
+        "porque": "Com o uso agregado de milhões de clientes, a AWS reduz seus custos e repassa a economia em quedas periódicas de preço."
+      },
+      {
+        "texto": "Desconto por compromisso de Savings Plans",
+        "correta": false,
+        "porque": "Savings Plans exigem compromisso de gasto por 1 ou 3 anos e não se aplicam ao armazenamento S3."
+      }
+    ],
+    "explicacao": "Economias de escala: a AWS já reduziu preços dezenas de vezes desde o lançamento, repassando ao cliente os ganhos de operar em grande volume.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-044",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa ainda cria e configura servidores manualmente e registra muitos erros humanos e atrasos. Qual benefício econômico ela obtém ao automatizar o provisionamento na AWS com infraestrutura como código?",
+    "alternativas": [
+      {
+        "texto": "Desconto automático de Reserved Instances nos recursos criados por template",
+        "correta": false,
+        "porque": "IaC não altera o modelo de preço; descontos dependem de compromissos como RIs e Savings Plans."
+      },
+      {
+        "texto": "Menos horas de trabalho operacional e menos retrabalho causado por erros",
+        "correta": true,
+        "porque": "Automatizar torna o provisionamento rápido, repetível e consistente, reduzindo custo de mão de obra e de falhas."
+      },
+      {
+        "texto": "Isenção de cobrança pelos recursos provisionados por automação",
+        "correta": false,
+        "porque": "Recursos criados por automação são cobrados normalmente; o CloudFormation em si não tem custo adicional."
+      },
+      {
+        "texto": "Eliminação da responsabilidade do cliente pela segurança dos recursos",
+        "correta": false,
+        "porque": "A automação não muda o modelo de responsabilidade compartilhada."
+      }
+    ],
+    "explicacao": "Automação (IaC, scripts, Auto Scaling) reduz esforço manual e erros, liberando a equipe para atividades de maior valor: é um dos aspectos de economia da nuvem.",
+    "servicos": [
+      "AWS CloudFormation"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-045",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai criar novas aplicações na AWS em vez de usar recursos on-premises. Qual despesa é reduzida ao usar a AWS?",
+    "alternativas": [
+      {
+        "texto": "O custo de escrever código personalizado em Java ou Node.js",
+        "correta": false,
+        "porque": "O desenvolvimento do código continua necessário em qualquer ambiente."
+      },
+      {
+        "texto": "Os testes de intrusão de segurança da aplicação",
+        "correta": false,
+        "porque": "A segurança da aplicação continua sendo responsabilidade do cliente."
+      },
+      {
+        "texto": "A escrita de casos de teste para aplicações de terceiros",
+        "correta": false,
+        "porque": "Testes de software não dependem da infraestrutura."
+      },
+      {
+        "texto": "A compra do hardware necessário para suportar as novas aplicações",
+        "correta": true,
+        "porque": "Na AWS não é preciso comprar servidores antecipadamente; paga-se pelos recursos usados."
+      }
+    ],
+    "explicacao": "A nuvem elimina o investimento em hardware próprio, um custo fixo e antecipado do modelo on-premises.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k18#32"
+  },
+  {
+    "id": "D1-b-046",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Hoje, a equipe de TI de uma empresa gasta a maior parte do tempo trocando discos, instalando racks e mantendo o data center. Qual vantagem econômica a migração para a AWS traz em relação a esse custo de pessoal?",
+    "alternativas": [
+      {
+        "texto": "A empresa pode concentrar a equipe em atividades que diferenciam o negócio",
+        "correta": true,
+        "porque": "A AWS assume o trabalho pesado indiferenciado da infraestrutura física, liberando o pessoal para projetos de valor."
+      },
+      {
+        "texto": "A empresa deixa de ter qualquer conta de TI",
+        "correta": false,
+        "porque": "Continua pagando pelos serviços usados na AWS."
+      },
+      {
+        "texto": "A empresa pode deixar os servidores sem patches",
+        "correta": false,
+        "porque": "Patches do sistema operacional em EC2 continuam sendo responsabilidade do cliente."
+      },
+      {
+        "texto": "A AWS passa a operar as aplicações do cliente",
+        "correta": false,
+        "porque": "A AWS cuida da infraestrutura; as aplicações continuam com o cliente."
+      }
+    ],
+    "explicacao": "Parte do TCO on-premises é o custo de pessoal para manter instalações e hardware; na AWS esse trabalho fica com o provedor.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k11#41 (reescrita)"
+  },
+  {
+    "id": "D1-b-047",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa de ingressos tem picos de acesso apenas em poucos dias por mês, quando abre vendas de grandes shows. Qual característica econômica da AWS MAIS beneficia esse padrão de uso?",
+    "alternativas": [
+      {
+        "texto": "Contratos de capacidade fixa de longo prazo",
+        "correta": false,
+        "porque": "Capacidade fixa ficaria ociosa na maior parte do mês."
+      },
+      {
+        "texto": "Custo variável, pagando apenas pelos recursos consumidos em cada momento",
+        "correta": true,
+        "porque": "Com pay-as-you-go, a empresa paga mais nos picos e menos no restante do mês, sem manter capacidade ociosa."
+      },
+      {
+        "texto": "Compra antecipada de servidores com desconto",
+        "correta": false,
+        "porque": "Esse é o modelo de CapEx on-premises, que leva a hardware ocioso fora dos picos."
+      },
+      {
+        "texto": "Uso de Dedicated Hosts para isolamento físico",
+        "correta": false,
+        "porque": "Isolamento físico não resolve a variação de demanda e custa mais."
+      }
+    ],
+    "explicacao": "Cargas variáveis se beneficiam do custo variável: o gasto acompanha a demanda, sem pagar pelo pico o tempo todo.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-048",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Qual item é classificado como despesa de capital (CapEx)?",
+    "alternativas": [
+      {
+        "texto": "A fatura mensal dos serviços AWS usados no mês",
+        "correta": false,
+        "porque": "É despesa operacional (OpEx), paga conforme o uso."
+      },
+      {
+        "texto": "O salário mensal dos administradores de sistemas",
+        "correta": false,
+        "porque": "Despesas recorrentes com pessoal são OpEx."
+      },
+      {
+        "texto": "A compra de servidores e storage para um novo data center",
+        "correta": true,
+        "porque": "Aquisição antecipada de ativos físicos que serão depreciados é CapEx."
+      },
+      {
+        "texto": "A conta de energia elétrica do escritório",
+        "correta": false,
+        "porque": "Contas recorrentes de consumo são OpEx."
+      }
+    ],
+    "explicacao": "CapEx é investimento antecipado em ativos físicos; OpEx é despesa contínua com a operação, como o consumo de serviços de nuvem.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-049",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais são benefícios econômicos de automatizar o provisionamento e a operação da infraestrutura na AWS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Redução de erros humanos e do retrabalho que eles geram",
+        "correta": true,
+        "porque": "Processos automatizados se repetem do mesmo jeito, evitando falhas manuais caras."
+      },
+      {
+        "texto": "Eliminação de toda a responsabilidade do cliente pela segurança",
+        "correta": false,
+        "porque": "A responsabilidade compartilhada continua valendo, com ou sem automação."
+      },
+      {
+        "texto": "Desconto automático de 72% em todas as instâncias",
+        "correta": false,
+        "porque": "Descontos dependem de compromissos (RIs, Savings Plans), não de automação."
+      },
+      {
+        "texto": "Menos horas de trabalho manual da equipe em tarefas repetitivas",
+        "correta": true,
+        "porque": "A automação reduz o custo de pessoal com tarefas operacionais rotineiras."
+      },
+      {
+        "texto": "Dispensa de monitorar os recursos em produção",
+        "correta": false,
+        "porque": "Monitoramento continua necessário; a automação inclusive depende dele."
+      }
+    ],
+    "explicacao": "A automação (IaC, scripts, Auto Scaling) reduz custo operacional, erros e tempo de entrega.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-b-050",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "A cada quatro anos, uma empresa precisa substituir todos os servidores do seu data center por estarem obsoletos. Como a AWS elimina esse custo do ciclo de renovação de hardware?",
+    "alternativas": [
+      {
+        "texto": "A AWS mantém e renova o hardware físico, e o cliente usa os recursos pagando pelo consumo",
+        "correta": true,
+        "porque": "A renovação de hardware é responsabilidade da AWS, sem novo investimento de capital pelo cliente."
+      },
+      {
+        "texto": "O cliente envia seus servidores antigos para a AWS reaproveitá-los",
+        "correta": false,
+        "porque": "A AWS não recebe hardware dos clientes para reuso."
+      },
+      {
+        "texto": "O cliente compra servidores com desconto pelo AWS Marketplace",
+        "correta": false,
+        "porque": "O Marketplace vende software e serviços, e comprar hardware manteria o ciclo de CapEx."
+      },
+      {
+        "texto": "O cliente contrata Dedicated Hosts, que nunca precisam ser substituídos",
+        "correta": false,
+        "porque": "Dedicated Hosts também rodam em hardware mantido pela AWS; não são ativos do cliente."
+      }
+    ],
+    "explicacao": "Na nuvem, depreciação e renovação de hardware deixam de ser custos do cliente.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  }
+]

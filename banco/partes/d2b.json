@@ -1,0 +1,2192 @@
+[
+  {
+    "id": "D2-b-001",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma rede de agências de viagem vai habilitar MFA para funcionários que vivem viajando e prefere uma opção que não exija hardware dedicado. Qual opção de MFA é a MAIS adequada?",
+    "alternativas": [
+      {
+        "texto": "Dispositivo MFA virtual (aplicativo autenticador no smartphone)",
+        "correta": true,
+        "porque": "Roda em um app no celular que o funcionário já carrega, sem hardware extra, e é suportado pelo IAM."
+      },
+      {
+        "texto": "Token TOTP de hardware",
+        "correta": false,
+        "porque": "É suportado pelo IAM, mas exige um dispositivo físico dedicado, o que a empresa quer evitar."
+      },
+      {
+        "texto": "Chave de segurança FIDO (U2F)",
+        "correta": false,
+        "porque": "Também é um dispositivo físico que precisa ser carregado e pode ser perdido em viagem."
+      },
+      {
+        "texto": "Senha de uso único enviada por e-mail corporativo",
+        "correta": false,
+        "porque": "Não é um tipo de MFA suportado pelo IAM para login no console."
+      }
+    ],
+    "explicacao": "O IAM suporta MFA virtual (app autenticador), chaves de segurança FIDO e tokens TOTP de hardware; o MFA virtual é o único que dispensa hardware dedicado.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A01"
+  },
+  {
+    "id": "D2-b-002",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Qual recurso da AWS fornece credenciais temporárias da AWS tanto a usuários que fizeram login por redes sociais quanto a visitantes anônimos (não autenticados) de um aplicativo móvel?",
+    "alternativas": [
+      {
+        "texto": "Amazon Cognito user pool",
+        "correta": false,
+        "porque": "É um diretório de usuários para cadastro e login; emite tokens da aplicação, não credenciais da AWS para convidados."
+      },
+      {
+        "texto": "Amazon Cognito identity pool",
+        "correta": true,
+        "porque": "Troca tokens de provedores de identidade por credenciais temporárias da AWS e também suporta identidades não autenticadas (convidados)."
+      },
+      {
+        "texto": "AWS IAM Identity Center",
+        "correta": false,
+        "porque": "Centraliza o acesso da força de trabalho a contas e aplicações, não de usuários finais anônimos de apps."
+      },
+      {
+        "texto": "AWS AppSync",
+        "correta": false,
+        "porque": "É um serviço de APIs GraphQL; não distribui credenciais temporárias da AWS."
+      }
+    ],
+    "explicacao": "No Cognito, o user pool autentica (diretório de usuários) e o identity pool autoriza, entregando credenciais temporárias da AWS, inclusive para convidados.",
+    "servicos": [
+      "Cognito"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-A17"
+  },
+  {
+    "id": "D2-b-003",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma startup acabou de migrar para a AWS e precisa definir o que cada funcionário pode ou não fazer. Qual elemento do IAM expressa e impõe essas permissões?",
+    "alternativas": [
+      {
+        "texto": "IAM user",
+        "correta": false,
+        "porque": "É uma identidade; sozinho não define permissões, que vêm das políticas anexadas."
+      },
+      {
+        "texto": "IAM group",
+        "correta": false,
+        "porque": "Agrupa usuários para facilitar a gestão, mas as permissões vêm das políticas anexadas ao grupo."
+      },
+      {
+        "texto": "IAM policy",
+        "correta": true,
+        "porque": "É o documento JSON que define quais ações são permitidas ou negadas em quais recursos."
+      },
+      {
+        "texto": "IAM role",
+        "correta": false,
+        "porque": "É uma identidade assumível com credenciais temporárias; suas permissões também vêm de políticas."
+      }
+    ],
+    "explicacao": "No IAM, identidades (users, groups, roles) recebem permissões por meio de políticas (policies), que são documentos JSON.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A25"
+  },
+  {
+    "id": "D2-b-004",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Um usuário do IAM recebe duas políticas: uma permite (Allow) excluir objetos de um bucket S3 e outra nega (Deny) explicitamente a mesma ação. O que acontece quando ele tenta excluir um objeto?",
+    "alternativas": [
+      {
+        "texto": "A exclusão é permitida, porque o Allow foi anexado primeiro",
+        "correta": false,
+        "porque": "A ordem de anexação das políticas não influencia a avaliação."
+      },
+      {
+        "texto": "A exclusão é negada, porque um Deny explícito sempre prevalece",
+        "correta": true,
+        "porque": "Na avaliação do IAM, um Deny explícito sobrepõe qualquer Allow."
+      },
+      {
+        "texto": "A exclusão é permitida, porque o Allow é mais específico",
+        "correta": false,
+        "porque": "Especificidade não importa: o Deny explícito vence."
+      },
+      {
+        "texto": "A AWS pede aprovação do root user para decidir",
+        "correta": false,
+        "porque": "Não existe aprovação em tempo real pelo root; a avaliação de políticas é automática."
+      }
+    ],
+    "explicacao": "Por padrão tudo é negado (deny implícito); um Allow concede acesso; um Deny explícito sempre prevalece sobre qualquer Allow.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A46 (reescrita)"
+  },
+  {
+    "id": "D2-b-005",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Vários usuários do IAM precisam do mesmo conjunto de permissões. Qual abordagem permite manter essas permissões com o MENOR esforço?",
+    "alternativas": [
+      {
+        "texto": "Criar um IAM group, anexar as políticas a ele e adicionar os usuários ao grupo",
+        "correta": true,
+        "porque": "Uma alteração na política do grupo vale para todos os membros de uma só vez."
+      },
+      {
+        "texto": "Anexar a mesma política individualmente a cada usuário",
+        "correta": false,
+        "porque": "Funciona, mas cada mudança precisa ser repetida usuário por usuário."
+      },
+      {
+        "texto": "Anexar a política a uma IAM role e anexar a role a cada usuário",
+        "correta": false,
+        "porque": "Roles não são anexadas a usuários; elas são assumidas temporariamente."
+      },
+      {
+        "texto": "Usar uma role entre contas para conceder as permissões aos usuários",
+        "correta": false,
+        "porque": "Roles entre contas servem para acesso a recursos de outra conta, não para agrupar permissões de usuários."
+      }
+    ],
+    "explicacao": "IAM groups simplificam a gestão: as permissões ficam no grupo e os usuários herdam ao entrar nele.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A56"
+  },
+  {
+    "id": "D2-b-006",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais tipos de política podem conceder acesso a objetos de um bucket do Amazon S3? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Políticas de roteamento do Amazon Route 53",
+        "correta": false,
+        "porque": "Controlam respostas de DNS, não permissões de acesso a dados."
+      },
+      {
+        "texto": "Regras de network ACL",
+        "correta": false,
+        "porque": "Filtram tráfego de rede em sub-redes da VPC; não concedem permissões de API do S3."
+      },
+      {
+        "texto": "Regras de Security Group",
+        "correta": false,
+        "porque": "Controlam tráfego de rede de instâncias e não se aplicam a permissões de buckets."
+      },
+      {
+        "texto": "Políticas baseadas em identidade anexadas a usuários do IAM",
+        "correta": true,
+        "porque": "Podem permitir ações do S3, como s3:GetObject, para o usuário ao qual estão anexadas."
+      },
+      {
+        "texto": "Bucket policies",
+        "correta": true,
+        "porque": "São políticas baseadas em recurso anexadas ao bucket e definem quem pode acessá-lo."
+      }
+    ],
+    "explicacao": "O acesso ao S3 é concedido por políticas de identidade (users, groups, roles) e por políticas de recurso (bucket policies).",
+    "servicos": [
+      "IAM",
+      "S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A60"
+  },
+  {
+    "id": "D2-b-007",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa o Amazon CloudFront na frente de um bucket do Amazon S3 e quer que os objetos só possam ser obtidos pela distribuição, nunca diretamente pela URL do bucket. Qual recurso deve usar?",
+    "alternativas": [
+      {
+        "texto": "Server Name Indication (SNI)",
+        "correta": false,
+        "porque": "Serve para apresentar o certificado TLS correto por nome de host, não para restringir acesso à origem."
+      },
+      {
+        "texto": "Origin Access Control (OAC)",
+        "correta": true,
+        "porque": "Permite que somente a distribuição do CloudFront leia o bucket, por meio de uma bucket policy restritiva."
+      },
+      {
+        "texto": "Service control policies (SCPs)",
+        "correta": false,
+        "porque": "Limitam as permissões máximas de contas no AWS Organizations, não quem acessa um bucket por uma distribuição."
+      },
+      {
+        "texto": "Sticky sessions",
+        "correta": false,
+        "porque": "É afinidade de sessão em load balancers, sem relação com o acesso ao S3."
+      }
+    ],
+    "explicacao": "Com Origin Access Control, o bucket aceita leituras apenas do CloudFront, bloqueando o acesso direto pela URL do S3.",
+    "servicos": [
+      "CloudFront",
+      "S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B13"
+  },
+  {
+    "id": "D2-b-008",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa de EdTech quer que os usuários finais de seus aplicativos web e mobile se autentiquem por um provedor de identidade externo antes de acessar as aplicações, sem construir a própria camada de autenticação. Qual serviço da AWS atende?",
+    "alternativas": [
+      {
+        "texto": "AWS IAM Identity Center",
+        "correta": false,
+        "porque": "É voltado ao acesso da força de trabalho a contas AWS e aplicações corporativas, não a clientes de um app."
+      },
+      {
+        "texto": "AWS IAM",
+        "correta": false,
+        "porque": "Gerencia identidades que acessam recursos da AWS, não milhões de usuários finais de uma aplicação."
+      },
+      {
+        "texto": "Amazon Cognito",
+        "correta": true,
+        "porque": "Oferece autenticação e gestão de usuários finais para apps web e mobile, com federação a provedores externos."
+      },
+      {
+        "texto": "AWS Directory Service",
+        "correta": false,
+        "porque": "Fornece Microsoft Active Directory gerenciado, não um serviço de login para usuários de apps."
+      }
+    ],
+    "explicacao": "Amazon Cognito é o serviço de identidade para usuários finais de aplicações web e mobile, inclusive com login federado (Google, Apple, SAML).",
+    "servicos": [
+      "Cognito"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B18"
+  },
+  {
+    "id": "D2-b-009",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Usar o IAM para conceder acesso apenas aos recursos necessários para executar uma tarefa específica é um conceito conhecido como:",
+    "alternativas": [
+      {
+        "texto": "Acesso sob demanda",
+        "correta": false,
+        "porque": "Não é o nome do princípio de segurança recomendado pela AWS."
+      },
+      {
+        "texto": "Acesso por token",
+        "correta": false,
+        "porque": "Descreve um mecanismo de autenticação, não um princípio de concessão de permissões."
+      },
+      {
+        "texto": "Acesso restrito",
+        "correta": false,
+        "porque": "É um termo genérico, não o princípio formal usado pela AWS."
+      },
+      {
+        "texto": "Princípio do menor privilégio",
+        "correta": true,
+        "porque": "É exatamente conceder só as permissões necessárias para a tarefa, e nada além."
+      }
+    ],
+    "explicacao": "Menor privilégio (least privilege): conceder apenas as permissões necessárias para a tarefa, reduzindo o impacto de erros e credenciais comprometidas.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B52"
+  },
+  {
+    "id": "D2-b-010",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Qual serviço ou recurso da AWS identifica se um bucket do Amazon S3 ou uma IAM role foi compartilhado com uma entidade externa à conta?",
+    "alternativas": [
+      {
+        "texto": "AWS IAM Access Analyzer",
+        "correta": true,
+        "porque": "Analisa políticas de recursos e aponta acessos concedidos a entidades fora da conta ou da organização."
+      },
+      {
+        "texto": "AWS Service Catalog",
+        "correta": false,
+        "porque": "Gerencia catálogos de produtos aprovados para implantação, não analisa compartilhamento externo."
+      },
+      {
+        "texto": "AWS Systems Manager",
+        "correta": false,
+        "porque": "Gerencia e opera recursos como instâncias, não avalia políticas de acesso externo."
+      },
+      {
+        "texto": "AWS Organizations",
+        "correta": false,
+        "porque": "Agrupa e governa contas, mas não identifica recursos compartilhados externamente."
+      }
+    ],
+    "explicacao": "O IAM Access Analyzer encontra recursos (buckets, roles, chaves KMS etc.) acessíveis por entidades externas e ajuda a validar o menor privilégio.",
+    "servicos": [
+      "IAM Access Analyzer"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B65"
+  },
+  {
+    "id": "D2-b-011",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Em quais situações uma empresa deve criar um IAM user em vez de uma IAM role? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Quando precisa adicionar administradores a um IAM group",
+        "correta": true,
+        "porque": "IAM groups contêm apenas IAM users; roles não podem ser membros de grupos."
+      },
+      {
+        "texto": "Quando os funcionários já se autenticam no Active Directory corporativo e querem SSO na AWS",
+        "correta": false,
+        "porque": "Usa-se federação ou IAM Identity Center, que funcionam com roles e credenciais temporárias."
+      },
+      {
+        "texto": "Quando precisa de credenciais de longo prazo para um desenvolvedor específico",
+        "correta": true,
+        "porque": "IAM users têm credenciais permanentes (senha e access keys) associadas a uma pessoa."
+      },
+      {
+        "texto": "Quando um aplicativo móvel precisa de permissões temporárias para enviar fotos ao Amazon S3",
+        "correta": false,
+        "porque": "Usa-se Cognito com roles, que fornecem credenciais temporárias."
+      },
+      {
+        "texto": "Quando uma aplicação em uma instância Amazon EC2 precisa acessar outros serviços da AWS",
+        "correta": false,
+        "porque": "O recomendado é uma role anexada à instância, com credenciais temporárias."
+      }
+    ],
+    "explicacao": "IAM users representam pessoas ou sistemas com credenciais de longo prazo; roles fornecem credenciais temporárias para serviços, apps e identidades federadas.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B75"
+  },
+  {
+    "id": "D2-b-012",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais ações são práticas recomendadas de segurança no uso do AWS IAM? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Usar access keys para entrar no AWS Management Console",
+        "correta": false,
+        "porque": "O console usa nome de usuário e senha; access keys são para acesso programático."
+      },
+      {
+        "texto": "Configurar uma política de senha forte",
+        "correta": true,
+        "porque": "Exige complexidade e expiração, dificultando senhas fracas."
+      },
+      {
+        "texto": "Usar IAM users permanentes em vez de roles para acesso entre contas",
+        "correta": false,
+        "porque": "Roles com credenciais temporárias são a prática recomendada entre contas."
+      },
+      {
+        "texto": "Compartilhar credenciais entre usuários da mesma Região",
+        "correta": false,
+        "porque": "Credenciais nunca devem ser compartilhadas; cada pessoa deve ter a sua identidade."
+      },
+      {
+        "texto": "Rotacionar access keys regularmente",
+        "correta": true,
+        "porque": "Reduz a janela de uso de uma chave vazada."
+      }
+    ],
+    "explicacao": "Boas práticas do IAM incluem política de senha forte, MFA, rotação de access keys, roles para acesso temporário e menor privilégio.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B87"
+  },
+  {
+    "id": "D2-b-013",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais tarefas só podem ser realizadas com as credenciais do root user da conta AWS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Criar uma nova política do IAM",
+        "correta": false,
+        "porque": "Qualquer identidade com as permissões do IAM adequadas pode criar políticas."
+      },
+      {
+        "texto": "Fechar a conta AWS",
+        "correta": true,
+        "porque": "Encerrar a conta é uma tarefa reservada ao root user."
+      },
+      {
+        "texto": "Gerar access keys para IAM users",
+        "correta": false,
+        "porque": "Administradores do IAM podem gerar access keys para outros usuários."
+      },
+      {
+        "texto": "Anexar uma role a uma instância Amazon EC2",
+        "correta": false,
+        "porque": "É uma operação comum feita por IAM users ou roles com permissão."
+      },
+      {
+        "texto": "Alterar o plano de AWS Support",
+        "correta": true,
+        "porque": "Mudar ou cancelar o plano de suporte exige o root user."
+      }
+    ],
+    "explicacao": "Tarefas exclusivas do root incluem fechar a conta, alterar o plano de suporte e alterar configurações da conta, como e-mail e senha do root.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k21#49"
+  },
+  {
+    "id": "D2-b-014",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Qual destas tarefas exige que o administrador entre com o root user da conta AWS?",
+    "alternativas": [
+      {
+        "texto": "Visualizar as faturas no console de Billing",
+        "correta": false,
+        "porque": "IAM users podem ver faturas quando o acesso do IAM ao Billing está ativado e há permissão."
+      },
+      {
+        "texto": "Alterar o e-mail de login e a senha do root user",
+        "correta": true,
+        "porque": "Mudar as configurações da conta ligadas ao root, como e-mail e senha, é tarefa exclusiva do root."
+      },
+      {
+        "texto": "Criar um IAM user com permissões administrativas",
+        "correta": false,
+        "porque": "Qualquer identidade com permissão no IAM pode criar usuários administrativos."
+      },
+      {
+        "texto": "Ativar uma trilha do AWS CloudTrail em todas as Regiões",
+        "correta": false,
+        "porque": "Administradores do IAM com as permissões certas podem criar trilhas."
+      }
+    ],
+    "explicacao": "Use o root apenas para o que só ele pode fazer, como alterar configurações da conta (e-mail, senha do root) e fechar a conta.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-015",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Um administrador aplicou por engano uma bucket policy que nega todas as ações a todos os principals, inclusive aos administradores do IAM. Quem pode corrigir a situação removendo essa política?",
+    "alternativas": [
+      {
+        "texto": "Um IAM user com a política AdministratorAccess",
+        "correta": false,
+        "porque": "Uma negação explícita prevalece sobre qualquer permissão concedida, inclusive de administrador."
+      },
+      {
+        "texto": "A equipe do AWS Support, editando a política",
+        "correta": false,
+        "porque": "A AWS não altera políticas de recursos do cliente; isso é responsabilidade do cliente."
+      },
+      {
+        "texto": "O root user da conta dona do bucket",
+        "correta": true,
+        "porque": "O root pode excluir uma bucket policy que bloqueou todos os principals; é uma das tarefas exclusivas do root."
+      },
+      {
+        "texto": "A management account, por meio de uma SCP",
+        "correta": false,
+        "porque": "SCPs apenas limitam permissões; não concedem acesso nem removem bucket policies."
+      }
+    ],
+    "explicacao": "Se uma bucket policy negar acesso a todos, só o root user da conta pode removê-la; negação explícita vence qualquer Allow no IAM.",
+    "servicos": [
+      "IAM",
+      "S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-016",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer vender no Reserved Instance Marketplace as Reserved Instances que não usa mais. Qual identidade precisa fazer o registro como vendedor?",
+    "alternativas": [
+      {
+        "texto": "Um IAM user com a política AdministratorAccess",
+        "correta": false,
+        "porque": "Mesmo com acesso administrativo, um IAM user não pode fazer esse registro."
+      },
+      {
+        "texto": "Uma IAM role com permissões de Billing",
+        "correta": false,
+        "porque": "Permissões de faturamento não habilitam o registro como vendedor."
+      },
+      {
+        "texto": "Um usuário do IAM Identity Center com permission set de administrador",
+        "correta": false,
+        "porque": "O usuário acessa a conta assumindo uma IAM role gerada pelo permission set, que não pode executar tarefas exclusivas do root."
+      },
+      {
+        "texto": "O root user da conta AWS",
+        "correta": true,
+        "porque": "O registro como vendedor no Reserved Instance Marketplace é uma tarefa exclusiva do root."
+      }
+    ],
+    "explicacao": "Registrar-se como vendedor de Reserved Instances no Marketplace está na lista de tarefas que exigem o root user.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-017",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Qual prática ajuda a proteger o root user de uma conta AWS?",
+    "alternativas": [
+      {
+        "texto": "Excluir as access keys do root user e não criar novas",
+        "correta": true,
+        "porque": "Sem access keys, o root não pode ser usado programaticamente se a chave vazar."
+      },
+      {
+        "texto": "Ativar MFA no root e usá-lo para todo o trabalho diário",
+        "correta": false,
+        "porque": "MFA é recomendado, mas o root não deve ser usado no dia a dia."
+      },
+      {
+        "texto": "Acessar o root somente pelo celular pessoal do administrador",
+        "correta": false,
+        "porque": "O dispositivo usado não protege a credencial nem reduz o uso indevido."
+      },
+      {
+        "texto": "Compartilhar a senha do root apenas com pessoas de confiança",
+        "correta": false,
+        "porque": "As credenciais do root nunca devem ser compartilhadas."
+      }
+    ],
+    "explicacao": "Proteja o root: ative MFA, não crie (ou exclua) access keys do root e use-o apenas nas tarefas que exigem o root.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k6#22"
+  },
+  {
+    "id": "D2-b-018",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Um administrador criou uma conta AWS e usa o root user no dia a dia para criar instâncias e configurar serviços. Qual é a recomendação da AWS?",
+    "alternativas": [
+      {
+        "texto": "Continuar usando o root, já que ele tem MFA ativado",
+        "correta": false,
+        "porque": "MFA reduz o risco de login indevido, mas não justifica usar credenciais irrestritas no dia a dia."
+      },
+      {
+        "texto": "Criar identidades administrativas no IAM Identity Center ou no IAM e reservar o root para tarefas que o exigem",
+        "correta": true,
+        "porque": "Separa o uso cotidiano das credenciais mais poderosas da conta."
+      },
+      {
+        "texto": "Criar access keys do root para automatizar as tarefas",
+        "correta": false,
+        "porque": "Access keys do root são desaconselhadas: dão acesso irrestrito se vazarem."
+      },
+      {
+        "texto": "Compartilhar o root com a equipe de operações, protegido por senha forte",
+        "correta": false,
+        "porque": "Credenciais do root não devem ser compartilhadas, independentemente da senha."
+      }
+    ],
+    "explicacao": "O root user tem acesso irrestrito; use identidades com menor privilégio no dia a dia e o root só nas tarefas exclusivas dele.",
+    "servicos": [
+      "IAM",
+      "IAM Identity Center"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-019",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "O administrador da conta AWS de uma empresa foi desligado. Ele criou vários IAM users e access keys e talvez conheça as credenciais do root user. O que a empresa deve fazer de imediato? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Alterar a senha e o e-mail do root user e ativar MFA",
+        "correta": true,
+        "porque": "Bloqueia o acesso ao root caso ele conheça as credenciais."
+      },
+      {
+        "texto": "Mover os recursos para outra Região da AWS",
+        "correta": false,
+        "porque": "Credenciais do IAM valem em todas as Regiões; mudar de Região não protege nada."
+      },
+      {
+        "texto": "Desativar e rotacionar todas as access keys que ele possa ter usado",
+        "correta": true,
+        "porque": "Impede o uso de chaves que ele conhecia ou criou."
+      },
+      {
+        "texto": "Baixar todas as políticas anexadas para um local seguro",
+        "correta": false,
+        "porque": "Não impede nenhum acesso indevido."
+      },
+      {
+        "texto": "Fechar a conta AWS e criar uma nova",
+        "correta": false,
+        "porque": "É desproporcional e interromperia as cargas de trabalho."
+      }
+    ],
+    "explicacao": "Com suspeita de credenciais comprometidas, rotacione access keys e senhas, proteja o root (senha, e-mail, MFA) e revise as identidades criadas.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k8#33 (reescrita)"
+  },
+  {
+    "id": "D2-b-020",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação em uma instância Amazon EC2 precisa gravar dados em um bucket do Amazon S3 sem usar credenciais de longo prazo. Qual é a MELHOR opção?",
+    "alternativas": [
+      {
+        "texto": "Gravar access keys de um IAM user no código da aplicação",
+        "correta": false,
+        "porque": "São credenciais de longo prazo e podem vazar pelo código."
+      },
+      {
+        "texto": "Usar um Amazon Cognito user pool",
+        "correta": false,
+        "porque": "Serve para autenticar usuários finais de aplicações, não para dar permissão a uma instância."
+      },
+      {
+        "texto": "Anexar uma IAM role à instância",
+        "correta": true,
+        "porque": "A role entrega credenciais temporárias, rotacionadas automaticamente, à aplicação."
+      },
+      {
+        "texto": "Tornar o bucket público para escrita",
+        "correta": false,
+        "porque": "Exporia o bucket a qualquer pessoa na internet."
+      }
+    ],
+    "explicacao": "Para serviços da AWS (como EC2) acessarem outros serviços, use IAM roles: credenciais temporárias, sem chaves no código.",
+    "servicos": [
+      "IAM",
+      "EC2",
+      "S3"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k21#43"
+  },
+  {
+    "id": "D2-b-021",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer conceder rapidamente acesso somente leitura ao Amazon S3, usando uma política pronta que a AWS cria e mantém atualizada. Qual tipo de política deve usar?",
+    "alternativas": [
+      {
+        "texto": "Política gerenciada pelo cliente (customer managed policy)",
+        "correta": false,
+        "porque": "É criada e mantida pela própria empresa, não pela AWS."
+      },
+      {
+        "texto": "Política em linha (inline policy)",
+        "correta": false,
+        "porque": "É escrita pela empresa e embutida em uma única identidade."
+      },
+      {
+        "texto": "Service control policy (SCP)",
+        "correta": false,
+        "porque": "Limita permissões máximas de contas no Organizations e não concede acesso."
+      },
+      {
+        "texto": "Política gerenciada pela AWS (AWS managed policy)",
+        "correta": true,
+        "porque": "É criada e atualizada pela AWS para casos de uso comuns, como AmazonS3ReadOnlyAccess."
+      }
+    ],
+    "explicacao": "Políticas gerenciadas pela AWS são prontas e mantidas pela AWS; as gerenciadas pelo cliente são criadas pela empresa e podem ser reutilizadas.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-022",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma política precisa ficar estritamente vinculada a um único IAM user, sem poder ser anexada a outras identidades, e deve ser excluída junto com ele. Qual tipo de política atende?",
+    "alternativas": [
+      {
+        "texto": "Inline policy",
+        "correta": true,
+        "porque": "Fica embutida em uma única identidade, numa relação 1:1, e é excluída junto com ela."
+      },
+      {
+        "texto": "AWS managed policy",
+        "correta": false,
+        "porque": "É uma política independente, mantida pela AWS e anexável a muitas identidades."
+      },
+      {
+        "texto": "Customer managed policy",
+        "correta": false,
+        "porque": "É independente e reutilizável; continua existindo se o usuário for excluído."
+      },
+      {
+        "texto": "Service control policy (SCP)",
+        "correta": false,
+        "porque": "Aplica-se a contas e OUs do Organizations, não a um usuário específico."
+      }
+    ],
+    "explicacao": "Inline policies têm relação estrita 1:1 com a identidade; políticas gerenciadas (AWS ou cliente) são objetos independentes e reutilizáveis.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-023",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "A equipe de segurança quer escrever suas próprias permissões em uma política reutilizável por vários users, groups e roles, com controle de versões e alteração centralizada. Qual tipo de política deve criar?",
+    "alternativas": [
+      {
+        "texto": "AWS managed policy",
+        "correta": false,
+        "porque": "A empresa não pode editar seu conteúdo, pois ela é mantida pela AWS."
+      },
+      {
+        "texto": "Customer managed policy",
+        "correta": true,
+        "porque": "É criada e mantida pela empresa, pode ser anexada a várias identidades e guarda versões."
+      },
+      {
+        "texto": "Inline policy",
+        "correta": false,
+        "porque": "Fica embutida em uma única identidade e não pode ser reutilizada."
+      },
+      {
+        "texto": "Access control list (ACL) do Amazon S3",
+        "correta": false,
+        "porque": "Controla acesso a buckets e objetos, não permissões gerais de identidades do IAM."
+      }
+    ],
+    "explicacao": "Customer managed policies oferecem controle total e reutilização; são a escolha quando as políticas da AWS são amplas demais para o menor privilégio.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-024",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa com várias contas no AWS Organizations quer que os funcionários façam login uma única vez e acessem as contas e as aplicações de negócio atribuídas a eles, com gestão centralizada. Qual serviço atende com o MENOR esforço operacional?",
+    "alternativas": [
+      {
+        "texto": "Amazon Cognito",
+        "correta": false,
+        "porque": "É voltado a usuários finais de aplicações web e mobile, não à força de trabalho em várias contas."
+      },
+      {
+        "texto": "IAM users criados em cada conta",
+        "correta": false,
+        "porque": "Duplica credenciais de longo prazo em cada conta, com mais esforço e menos segurança."
+      },
+      {
+        "texto": "AWS IAM Identity Center",
+        "correta": true,
+        "porque": "Oferece SSO da força de trabalho para várias contas e aplicações, com gestão central de acesso."
+      },
+      {
+        "texto": "AWS Directory Service",
+        "correta": false,
+        "porque": "Fornece Active Directory gerenciado, mas sozinho não oferece SSO entre contas AWS."
+      }
+    ],
+    "explicacao": "IAM Identity Center (sucessor do AWS SSO) centraliza o acesso da força de trabalho a várias contas e aplicações.",
+    "servicos": [
+      "IAM Identity Center",
+      "Organizations"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-025",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "No AWS IAM Identity Center, qual recurso define o nível de acesso que um usuário ou grupo recebe em uma conta AWS atribuída?",
+    "alternativas": [
+      {
+        "texto": "Service control policy (SCP)",
+        "correta": false,
+        "porque": "Limita as permissões máximas da conta, mas não concede acesso a usuários."
+      },
+      {
+        "texto": "IAM group criado em cada conta",
+        "correta": false,
+        "porque": "O Identity Center não depende de IAM groups locais em cada conta."
+      },
+      {
+        "texto": "Amazon Cognito identity pool",
+        "correta": false,
+        "porque": "Fornece credenciais a usuários de aplicativos, não à força de trabalho no Identity Center."
+      },
+      {
+        "texto": "Permission set",
+        "correta": true,
+        "porque": "É um modelo de permissões que o Identity Center provisiona como role em cada conta atribuída."
+      }
+    ],
+    "explicacao": "No IAM Identity Center, usuários e grupos são atribuídos a contas com permission sets, que viram roles nas contas de destino.",
+    "servicos": [
+      "IAM Identity Center"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-026",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Qual recurso permite que funcionários entrem nas contas AWS usando as credenciais corporativas que já possuem, sem criar IAM users para eles?",
+    "alternativas": [
+      {
+        "texto": "Federação de identidades (por exemplo, SAML 2.0)",
+        "correta": true,
+        "porque": "Confia no provedor de identidade corporativo e concede acesso temporário por roles."
+      },
+      {
+        "texto": "Access keys",
+        "correta": false,
+        "porque": "São credenciais de longo prazo de IAM users para acesso programático."
+      },
+      {
+        "texto": "Política de senha do IAM",
+        "correta": false,
+        "porque": "Define regras de senha para IAM users; não reutiliza credenciais corporativas."
+      },
+      {
+        "texto": "Autenticação multifator (MFA)",
+        "correta": false,
+        "porque": "Adiciona um fator de autenticação, mas não permite usar as credenciais corporativas."
+      }
+    ],
+    "explicacao": "Federação permite usar um IdP externo (SAML 2.0, OIDC, Active Directory) para acessar a AWS com credenciais temporárias.",
+    "servicos": [
+      "IAM",
+      "IAM Identity Center"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k7#45"
+  },
+  {
+    "id": "D2-b-027",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer um Microsoft Active Directory gerenciado na AWS para aplicações compatíveis com AD, com possibilidade de integrá-lo ao AD local. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon Cognito",
+        "correta": false,
+        "porque": "Gerencia usuários finais de aplicações web e mobile, não um Active Directory."
+      },
+      {
+        "texto": "AWS Directory Service",
+        "correta": true,
+        "porque": "Oferece AWS Managed Microsoft AD e AD Connector para integração com o AD local."
+      },
+      {
+        "texto": "AWS IAM Identity Center",
+        "correta": false,
+        "porque": "Pode usar o AD como fonte de identidades, mas não fornece um Active Directory gerenciado."
+      },
+      {
+        "texto": "Amazon Cloud Directory",
+        "correta": false,
+        "porque": "É um armazenamento de diretórios hierárquicos para aplicações, não um Active Directory."
+      }
+    ],
+    "explicacao": "AWS Directory Service fornece Active Directory gerenciado e conectores, base comum para federação com identidades corporativas.",
+    "servicos": [
+      "Directory Service"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-028",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Auditores que trabalham em uma conta AWS de auditoria precisam de acesso somente leitura a recursos de uma conta de produção, sem criar credenciais de longo prazo na produção. Qual é a MELHOR abordagem?",
+    "alternativas": [
+      {
+        "texto": "Criar IAM users compartilhados na conta de produção",
+        "correta": false,
+        "porque": "Gera credenciais de longo prazo compartilhadas, contra as boas práticas."
+      },
+      {
+        "texto": "Entregar aos auditores as access keys do root user da produção",
+        "correta": false,
+        "porque": "Daria acesso irrestrito e viola as práticas de proteção do root."
+      },
+      {
+        "texto": "Criar na conta de produção uma IAM role confiável pela conta de auditoria, que os auditores assumem",
+        "correta": true,
+        "porque": "Roles entre contas entregam credenciais temporárias e permissões limitadas."
+      },
+      {
+        "texto": "Aplicar uma SCP na conta de auditoria",
+        "correta": false,
+        "porque": "SCPs apenas limitam permissões; não concedem acesso a outra conta."
+      }
+    ],
+    "explicacao": "Para acesso entre contas, use IAM roles com relação de confiança: credenciais temporárias e menor privilégio.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-029",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais componentes de credencial um IAM user precisa para acessar a AWS de forma programática, pela AWS CLI ou por um SDK? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Nome de usuário e senha do console",
+        "correta": false,
+        "porque": "São usados para entrar no AWS Management Console, não para chamadas de API."
+      },
+      {
+        "texto": "Key pair do Amazon EC2",
+        "correta": false,
+        "porque": "Serve para acesso SSH/RDP a instâncias, não para chamadas à API da AWS."
+      },
+      {
+        "texto": "Access key ID",
+        "correta": true,
+        "porque": "É a parte pública da access key, que identifica a credencial."
+      },
+      {
+        "texto": "Chave do AWS KMS",
+        "correta": false,
+        "porque": "É usada para criptografar dados, não para autenticar chamadas de API."
+      },
+      {
+        "texto": "Secret access key",
+        "correta": true,
+        "porque": "É a parte secreta da access key, usada para assinar as requisições."
+      }
+    ],
+    "explicacao": "Acesso programático usa access keys (access key ID + secret access key); o console usa nome de usuário, senha e, idealmente, MFA.",
+    "servicos": [
+      "IAM",
+      "CLI"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k11#20"
+  },
+  {
+    "id": "D2-b-030",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer garantir que os usuários do AWS Management Console cumpram requisitos de complexidade de senha. Como deve configurar isso?",
+    "alternativas": [
+      {
+        "texto": "Com uma política do IAM anexada aos usuários",
+        "correta": false,
+        "porque": "Políticas do IAM definem permissões, não regras de complexidade de senha."
+      },
+      {
+        "texto": "Com uma service control policy (SCP) do Organizations",
+        "correta": false,
+        "porque": "SCPs limitam permissões máximas, não regras de senha."
+      },
+      {
+        "texto": "Com um insight gerenciado do AWS Security Hub",
+        "correta": false,
+        "porque": "Insights agrupam achados de segurança; não aplicam regras de senha."
+      },
+      {
+        "texto": "Com a política de senha da conta (IAM account password policy)",
+        "correta": true,
+        "porque": "Define tamanho mínimo, tipos de caracteres, expiração e reutilização para IAM users."
+      }
+    ],
+    "explicacao": "A password policy do IAM impõe regras de complexidade, expiração e não reutilização para senhas de IAM users.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k23#8"
+  },
+  {
+    "id": "D2-b-031",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação guarda a senha do banco Amazon RDS no próprio código. A equipe quer armazená-la com segurança e com rotação automática periódica. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS Secrets Manager",
+        "correta": true,
+        "porque": "Armazena segredos criptografados e os rotaciona automaticamente, com integração nativa ao RDS."
+      },
+      {
+        "texto": "AWS Systems Manager Parameter Store",
+        "correta": false,
+        "porque": "Armazena parâmetros e segredos simples, mas não tem rotação automática nativa."
+      },
+      {
+        "texto": "AWS Key Management Service (AWS KMS)",
+        "correta": false,
+        "porque": "Gerencia chaves de criptografia, não armazena nem rotaciona senhas de banco."
+      },
+      {
+        "texto": "AWS IAM",
+        "correta": false,
+        "porque": "Gerencia identidades e permissões, não segredos de aplicação."
+      }
+    ],
+    "explicacao": "Secrets Manager guarda e rotaciona segredos automaticamente; o Parameter Store guarda parâmetros e segredos simples, sem rotação nativa.",
+    "servicos": [
+      "Secrets Manager",
+      "RDS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-032",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma equipe precisa guardar centralmente parâmetros de configuração, como URLs e nomes de ambiente, e alguns valores criptografados. Não há necessidade de rotação automática e o requisito é o MENOR custo. Qual opção atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Secrets Manager",
+        "correta": false,
+        "porque": "Atende tecnicamente, mas cobra por segredo armazenado; o diferencial dele é a rotação, que não é necessária."
+      },
+      {
+        "texto": "AWS Systems Manager Parameter Store",
+        "correta": true,
+        "porque": "Armazena parâmetros em texto ou criptografados com KMS; parâmetros padrão não têm custo adicional."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Registra a configuração de recursos da AWS para conformidade, não parâmetros de aplicação."
+      },
+      {
+        "texto": "AWS Certificate Manager (ACM)",
+        "correta": false,
+        "porque": "Gerencia certificados SSL/TLS, não parâmetros de configuração."
+      }
+    ],
+    "explicacao": "Parameter Store é a opção econômica para configurações e segredos simples; Secrets Manager se justifica quando há rotação automática.",
+    "servicos": [
+      "Systems Manager",
+      "Secrets Manager"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-033",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Um aplicativo móvel precisa de um diretório de usuários com cadastro, login, recuperação de senha e MFA para seus clientes. Qual componente atende?",
+    "alternativas": [
+      {
+        "texto": "Amazon Cognito identity pool",
+        "correta": false,
+        "porque": "Entrega credenciais temporárias da AWS; não é um diretório de usuários."
+      },
+      {
+        "texto": "AWS IAM Identity Center",
+        "correta": false,
+        "porque": "Gerencia identidades da força de trabalho, não de clientes de um app."
+      },
+      {
+        "texto": "Amazon Cognito user pool",
+        "correta": true,
+        "porque": "É o diretório de usuários do Cognito, com sign-up, sign-in, recuperação de senha e MFA."
+      },
+      {
+        "texto": "IAM group",
+        "correta": false,
+        "porque": "Agrupa IAM users da conta, não usuários finais de aplicativos."
+      }
+    ],
+    "explicacao": "Cognito user pool = autenticação e diretório de usuários; identity pool = autorização com credenciais temporárias da AWS.",
+    "servicos": [
+      "Cognito"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-034",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa o AWS Organizations e quer impedir que as contas de desenvolvimento usem determinados serviços, independentemente das permissões do IAM nessas contas. O que deve usar?",
+    "alternativas": [
+      {
+        "texto": "Políticas do IAM em cada conta",
+        "correta": false,
+        "porque": "Podem ser alteradas pelos administradores das próprias contas."
+      },
+      {
+        "texto": "Regras do AWS Config",
+        "correta": false,
+        "porque": "Avaliam a conformidade das configurações, mas não impedem chamadas de API."
+      },
+      {
+        "texto": "AWS IAM Access Analyzer",
+        "correta": false,
+        "porque": "Identifica acessos externos e valida políticas, mas não bloqueia serviços."
+      },
+      {
+        "texto": "Service control policies (SCPs)",
+        "correta": true,
+        "porque": "Definem as permissões máximas das contas; nem os administradores locais conseguem ultrapassá-las."
+      }
+    ],
+    "explicacao": "SCPs são guardrails de permissões no Organizations: limitam o que contas e OUs podem fazer, mas não concedem permissões.",
+    "servicos": [
+      "Organizations",
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k3#33"
+  },
+  {
+    "id": "D2-b-035",
+    "dominio": 2,
+    "task": "2.3",
+    "tipo": "unica",
+    "enunciado": "Um novo IAM user, sem nenhuma política anexada, tenta criar um bucket do Amazon S3 e recebe erro de acesso negado. Qual é a causa?",
+    "alternativas": [
+      {
+        "texto": "Por padrão, toda ação é negada implicitamente até que uma política a permita",
+        "correta": true,
+        "porque": "No IAM, novas identidades começam sem permissões; o acesso precisa ser concedido explicitamente."
+      },
+      {
+        "texto": "Somente o root user pode criar buckets do S3",
+        "correta": false,
+        "porque": "Qualquer identidade com a permissão s3:CreateBucket pode criar buckets."
+      },
+      {
+        "texto": "O usuário precisa ser ativado pelo AWS Support",
+        "correta": false,
+        "porque": "IAM users ficam ativos assim que criados; o AWS Support não participa."
+      },
+      {
+        "texto": "O Amazon S3 exige MFA para qualquer criação de bucket",
+        "correta": false,
+        "porque": "O S3 não exige MFA por padrão para criar buckets."
+      }
+    ],
+    "explicacao": "Avaliação de políticas do IAM: negação implícita por padrão, um Allow concede o acesso e um Deny explícito sempre prevalece.",
+    "servicos": [
+      "IAM",
+      "S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k5#25 (reescrita)"
+  },
+  {
+    "id": "D2-b-036",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS permite escrever regras que filtram requisições HTTP(S) por atributos como IP de origem, cabeçalhos ou padrões de caminho (path) da URL?",
+    "alternativas": [
+      {
+        "texto": "Security Groups",
+        "correta": false,
+        "porque": "Filtram tráfego por protocolo, porta e IP no nível da instância, sem inspecionar cabeçalhos ou caminhos HTTP."
+      },
+      {
+        "texto": "AWS WAF",
+        "correta": true,
+        "porque": "É um firewall de aplicações web que inspeciona requisições HTTP(S) com regras sobre IP, cabeçalhos, URI, query strings e corpo."
+      },
+      {
+        "texto": "Network ACLs",
+        "correta": false,
+        "porque": "Filtram tráfego por IP, porta e protocolo na sub-rede, sem visibilidade da camada de aplicação."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Faz recomendações de boas práticas; não filtra tráfego."
+      }
+    ],
+    "explicacao": "AWS WAF atua na camada 7 (HTTP/HTTPS); Security Groups e NACLs atuam nas camadas 3/4 (IP, porta, protocolo).",
+    "servicos": [
+      "WAF"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A19"
+  },
+  {
+    "id": "D2-b-037",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS protege aplicações web públicas contra explorações comuns, como SQL injection e cross-site scripting (XSS)?",
+    "alternativas": [
+      {
+        "texto": "AWS Shield Standard",
+        "correta": false,
+        "porque": "Protege contra DDoS nas camadas de rede e transporte, não contra injeção de código na aplicação."
+      },
+      {
+        "texto": "Security Groups",
+        "correta": false,
+        "porque": "Permitem ou bloqueiam portas e IPs, sem inspecionar o conteúdo das requisições."
+      },
+      {
+        "texto": "AWS WAF",
+        "correta": true,
+        "porque": "Oferece regras, inclusive gerenciadas, que bloqueiam padrões de SQL injection e XSS nas requisições."
+      },
+      {
+        "texto": "Amazon Inspector",
+        "correta": false,
+        "porque": "Varre vulnerabilidades de software (CVEs) e exposição de rede, mas não bloqueia requisições maliciosas."
+      }
+    ],
+    "explicacao": "Ataques na camada de aplicação, como SQL injection e XSS, são bloqueados pelo AWS WAF.",
+    "servicos": [
+      "WAF"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B55 (reescrita)"
+  },
+  {
+    "id": "D2-b-038",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS protege recursos contra ataques DDoS comuns de forma proativa e sempre ativa?",
+    "alternativas": [
+      {
+        "texto": "AWS WAF",
+        "correta": false,
+        "porque": "Filtra requisições na camada de aplicação; ajuda contra floods HTTP, mas não é o serviço dedicado a DDoS."
+      },
+      {
+        "texto": "Amazon Inspector",
+        "correta": false,
+        "porque": "Varre vulnerabilidades em cargas de trabalho, não mitiga tráfego de ataque."
+      },
+      {
+        "texto": "Security Groups da VPC",
+        "correta": false,
+        "porque": "Controlam portas e IPs permitidos, mas não mitigam ataques volumétricos."
+      },
+      {
+        "texto": "AWS Shield",
+        "correta": true,
+        "porque": "Faz detecção sempre ativa e mitigação automática inline de ataques DDoS."
+      }
+    ],
+    "explicacao": "AWS Shield é o serviço gerenciado de proteção contra DDoS; o Shield Standard já protege todos os clientes sem custo adicional.",
+    "servicos": [
+      "Shield"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B11"
+  },
+  {
+    "id": "D2-b-039",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa de proteção contra ataques DDoS de grande escala no seu site e exige suporte 24/7 de especialistas da AWS durante um ataque. Qual serviço atende a esses requisitos?",
+    "alternativas": [
+      {
+        "texto": "AWS Shield Advanced",
+        "correta": true,
+        "porque": "Proteção avançada contra DDoS com acesso 24/7 à Shield Response Team (SRT)."
+      },
+      {
+        "texto": "AWS Shield Standard",
+        "correta": false,
+        "porque": "É gratuito e automático, mas não inclui acesso à equipe de resposta da AWS."
+      },
+      {
+        "texto": "AWS Firewall Manager",
+        "correta": false,
+        "porque": "Gerencia centralmente regras de segurança, mas não oferece uma equipe de resposta a ataques."
+      },
+      {
+        "texto": "AWS WAF",
+        "correta": false,
+        "porque": "Filtra requisições web, mas sozinho não inclui suporte especializado durante ataques DDoS."
+      }
+    ],
+    "explicacao": "Shield Advanced é pago e acrescenta detecção avançada, Shield Response Team 24/7 e proteção de custos ao Shield Standard.",
+    "servicos": [
+      "Shield"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B57"
+  },
+  {
+    "id": "D2-b-040",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Um cliente quer fazer testes de intrusão (penetration testing) em suas próprias instâncias Amazon EC2 e Elastic Load Balancers. O que a política da AWS exige?",
+    "alternativas": [
+      {
+        "texto": "Abrir um caso no AWS Support e aguardar aprovação",
+        "correta": false,
+        "porque": "A exigência de aprovação prévia deixou de existir para os serviços listados."
+      },
+      {
+        "texto": "Realizar os testes sem aprovação prévia da AWS, seguindo a política",
+        "correta": true,
+        "porque": "A AWS permite pentest sem aprovação prévia em serviços listados, como EC2, ELB, RDS e Lambda."
+      },
+      {
+        "texto": "Contratar a AWS para executar os testes",
+        "correta": false,
+        "porque": "A AWS não executa pentest nas cargas de trabalho dos clientes."
+      },
+      {
+        "texto": "Usar somente o Amazon Inspector, pois pentest manual é proibido",
+        "correta": false,
+        "porque": "O Inspector faz varredura de vulnerabilidades, mas pentest manual também é permitido."
+      }
+    ],
+    "explicacao": "Clientes podem fazer pentest sem aprovação prévia nos serviços da lista permitida, desde que sigam a política de testes da AWS.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B53 (reescrita)"
+  },
+  {
+    "id": "D2-b-041",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer monitorar Security Groups mal configurados que permitem acesso irrestrito (0.0.0.0/0) a portas específicas. Qual serviço da AWS ajuda de forma MAIS simples?",
+    "alternativas": [
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Monitora métricas e logs, mas não avalia regras de Security Groups contra boas práticas."
+      },
+      {
+        "texto": "Amazon GuardDuty",
+        "correta": false,
+        "porque": "Detecta ameaças em logs, mas não revisa regras de Security Groups."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": true,
+        "porque": "Tem verificação de segurança que aponta Security Groups com portas abertas sem restrição."
+      },
+      {
+        "texto": "AWS Health Dashboard",
+        "correta": false,
+        "porque": "Informa eventos e saúde dos serviços da AWS, não configurações do cliente."
+      }
+    ],
+    "explicacao": "As verificações de segurança do Trusted Advisor identificam portas irrestritas em Security Groups, entre outros problemas.",
+    "servicos": [
+      "Trusted Advisor"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B70"
+  },
+  {
+    "id": "D2-b-042",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "multipla",
+    "selecionar": 3,
+    "enunciado": "Um usuário quer um único relatório que mostre a situação de várias verificações de segurança da conta. Quais itens o AWS Trusted Advisor verifica? (Selecione TRÊS.)",
+    "alternativas": [
+      {
+        "texto": "Security Groups com acesso irrestrito a portas",
+        "correta": true,
+        "porque": "É uma das verificações de segurança clássicas do Trusted Advisor."
+      },
+      {
+        "texto": "Chamadas de API feitas a partir de IPs maliciosos conhecidos",
+        "correta": false,
+        "porque": "Detecção de ameaças em logs é função do Amazon GuardDuty."
+      },
+      {
+        "texto": "Buckets do Amazon S3 com permissões de acesso abertas",
+        "correta": true,
+        "porque": "O Trusted Advisor alerta sobre buckets com permissão de listagem ou escrita aberta."
+      },
+      {
+        "texto": "Vulnerabilidades de software (CVEs) em imagens de contêiner",
+        "correta": false,
+        "porque": "Varredura de CVEs é função do Amazon Inspector."
+      },
+      {
+        "texto": "Se o MFA está ativado no root user",
+        "correta": true,
+        "porque": "É uma verificação de segurança do Trusted Advisor."
+      },
+      {
+        "texto": "Dados pessoais (PII) armazenados em buckets do S3",
+        "correta": false,
+        "porque": "Identificar dados sensíveis é função do Amazon Macie."
+      }
+    ],
+    "explicacao": "O Trusted Advisor compara a configuração da conta com boas práticas: MFA no root, buckets abertos, Security Groups irrestritos, entre outras.",
+    "servicos": [
+      "Trusted Advisor"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k20#47 (reescrita)"
+  },
+  {
+    "id": "D2-b-043",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "O que o AWS Trusted Advisor faz ao detectar que access keys da conta foram publicadas em repositórios de código públicos?",
+    "alternativas": [
+      {
+        "texto": "Gera um relatório de conformidade no AWS Artifact",
+        "correta": false,
+        "porque": "O Artifact disponibiliza relatórios de auditoria da AWS, não alertas da conta do cliente."
+      },
+      {
+        "texto": "Cria uma regra no AWS WAF para bloquear quem usar a chave",
+        "correta": false,
+        "porque": "O Trusted Advisor não cria regras de WAF; e access keys não passam pelo WAF."
+      },
+      {
+        "texto": "Abre uma investigação no Amazon Detective",
+        "correta": false,
+        "porque": "O Trusted Advisor não aciona o Detective; ele apenas aponta o problema."
+      },
+      {
+        "texto": "Sinaliza as chaves expostas para o cliente rotacioná-las",
+        "correta": true,
+        "porque": "A verificação de access keys expostas aponta chaves encontradas em repositórios públicos."
+      }
+    ],
+    "explicacao": "Entre as verificações de segurança do Trusted Advisor está a de access keys expostas publicamente.",
+    "servicos": [
+      "Trusted Advisor",
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-044",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Qual afirmação descreve o AWS Shield Standard?",
+    "alternativas": [
+      {
+        "texto": "É automático e sem custo adicional contra DDoS comuns",
+        "correta": true,
+        "porque": "É a proteção básica de DDoS incluída para todos os clientes."
+      },
+      {
+        "texto": "Precisa ser assinado e cobra uma taxa mensal por organização",
+        "correta": false,
+        "porque": "Essa é uma característica do Shield Advanced."
+      },
+      {
+        "texto": "Inclui acesso 24/7 à Shield Response Team",
+        "correta": false,
+        "porque": "A SRT faz parte apenas do Shield Advanced."
+      },
+      {
+        "texto": "Reembolsa custos de escalabilidade causados por ataques",
+        "correta": false,
+        "porque": "A proteção de custos é exclusiva do Shield Advanced."
+      }
+    ],
+    "explicacao": "Shield Standard: gratuito, automático, contra ataques comuns de camada 3/4. Shield Advanced: pago, com SRT, proteção de custos e visibilidade avançada.",
+    "servicos": [
+      "Shield"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k18#31 (reescrita)"
+  },
+  {
+    "id": "D2-b-045",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa teme que um ataque DDoS faça seu Auto Scaling e o Amazon CloudFront escalarem e gerem uma fatura muito alta. Qual recurso oferece proteção de custos contra esse cenário?",
+    "alternativas": [
+      {
+        "texto": "AWS Shield Standard",
+        "correta": false,
+        "porque": "Mitiga ataques comuns, mas não oferece proteção de custos."
+      },
+      {
+        "texto": "AWS Shield Advanced",
+        "correta": true,
+        "porque": "Inclui proteção de custos: créditos para picos de uso causados por ataques DDoS em recursos protegidos."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Avisa quando os gastos passam de um limite, mas não compensa custos causados por ataques."
+      },
+      {
+        "texto": "AWS WAF",
+        "correta": false,
+        "porque": "Bloqueia requisições maliciosas, mas não oferece créditos por custos de ataques."
+      }
+    ],
+    "explicacao": "A proteção de custos (DDoS cost protection) é um benefício exclusivo do Shield Advanced.",
+    "servicos": [
+      "Shield"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-046",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa com dezenas de contas no AWS Organizations quer configurar e gerenciar centralmente as regras do AWS WAF em todas as contas e aplicações. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS Shield Advanced",
+        "correta": false,
+        "porque": "Protege contra DDoS, mas não é a ferramenta de gestão central de regras de WAF."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Avalia a conformidade das configurações, mas não implanta regras de WAF."
+      },
+      {
+        "texto": "AWS Firewall Manager",
+        "correta": true,
+        "porque": "Administra centralmente regras de WAF, proteções do Shield Advanced e Security Groups em várias contas."
+      },
+      {
+        "texto": "Amazon GuardDuty",
+        "correta": false,
+        "porque": "Detecta ameaças a partir de logs, mas não gerencia regras de firewall."
+      }
+    ],
+    "explicacao": "Firewall Manager é a gestão central de segurança de rede (WAF, Shield Advanced, Security Groups) em toda a organização.",
+    "servicos": [
+      "Firewall Manager",
+      "WAF",
+      "Organizations"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-047",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa padronizou um firewall de próxima geração de um fornecedor específico e quer usar o mesmo produto na AWS, com cobrança integrada à fatura da AWS. Onde ela deve obtê-lo?",
+    "alternativas": [
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Disponibiliza relatórios de conformidade da AWS, não produtos de terceiros."
+      },
+      {
+        "texto": "AWS Marketplace",
+        "correta": true,
+        "porque": "Catálogo de software de terceiros (inclusive segurança) pronto para rodar na AWS, com cobrança na fatura da AWS."
+      },
+      {
+        "texto": "AWS Service Catalog",
+        "correta": false,
+        "porque": "Publica produtos aprovados internamente pela própria organização; não é a loja de fornecedores."
+      },
+      {
+        "texto": "AWS Firewall Manager",
+        "correta": false,
+        "porque": "Gerencia centralmente WAF, Shield Advanced e Security Groups; não vende produtos de terceiros."
+      }
+    ],
+    "explicacao": "Produtos de segurança de terceiros (firewalls, antivírus, SIEM) estão disponíveis no AWS Marketplace, com faturamento consolidado na conta AWS.",
+    "servicos": [
+      "AWS Marketplace"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-048",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "O Amazon GuardDuty gerou um achado de possível credencial comprometida. A equipe agora precisa analisar a causa raiz e visualizar as entidades e atividades relacionadas ao longo do tempo. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon Inspector",
+        "correta": false,
+        "porque": "Varre vulnerabilidades de software e exposição de rede; não investiga incidentes."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Verifica boas práticas de configuração; não analisa causa raiz de achados."
+      },
+      {
+        "texto": "Amazon Detective",
+        "correta": true,
+        "porque": "Correlaciona logs e cria gráficos de comportamento para investigar a causa raiz de achados de segurança."
+      },
+      {
+        "texto": "Amazon Macie",
+        "correta": false,
+        "porque": "Descobre dados sensíveis no Amazon S3; não investiga credenciais comprometidas."
+      }
+    ],
+    "explicacao": "GuardDuty detecta a ameaça; Detective investiga a causa raiz; Security Hub agrega os achados.",
+    "servicos": [
+      "Amazon Detective",
+      "Amazon GuardDuty"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-049",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Onde os clientes encontram um catálogo de soluções de segurança de fornecedores terceiros, como firewalls e antivírus, prontas para implantar na AWS?",
+    "alternativas": [
+      {
+        "texto": "AWS Service Catalog",
+        "correta": false,
+        "porque": "Gerencia catálogos de produtos aprovados internamente pela empresa, não de fornecedores externos."
+      },
+      {
+        "texto": "AWS Marketplace",
+        "correta": true,
+        "porque": "É o catálogo digital de software de terceiros, incluindo produtos de segurança, com implantação e cobrança pela AWS."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Disponibiliza relatórios de conformidade e acordos, não software."
+      },
+      {
+        "texto": "AWS Security Hub",
+        "correta": false,
+        "porque": "Agrega achados de segurança, mas não é uma loja de produtos."
+      }
+    ],
+    "explicacao": "O AWS Marketplace reúne produtos de segurança de terceiros (firewalls, IDS/IPS, antimalware) para comprar e implantar na AWS.",
+    "servicos": [
+      "Marketplace"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k18#18 (reescrita)"
+  },
+  {
+    "id": "D2-b-050",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa um firewall de próxima geração de um fornecedor no data center e quer a mesma solução na AWS, paga por hora de uso e cobrada na fatura da AWS. Como deve obtê-la?",
+    "alternativas": [
+      {
+        "texto": "Pedindo ao AWS Support que instale o software",
+        "correta": false,
+        "porque": "O AWS Support não instala software de terceiros nas contas dos clientes."
+      },
+      {
+        "texto": "Usando o AWS Firewall Manager para importar a licença",
+        "correta": false,
+        "porque": "O Firewall Manager gerencia regras de serviços da AWS, não vende software de terceiros."
+      },
+      {
+        "texto": "Assinando o produto do fornecedor no AWS Marketplace",
+        "correta": true,
+        "porque": "O Marketplace oferece software de terceiros com cobrança por uso integrada à fatura da AWS."
+      },
+      {
+        "texto": "Comprando o software pelo AWS Artifact",
+        "correta": false,
+        "porque": "O Artifact fornece documentos de conformidade, não software."
+      }
+    ],
+    "explicacao": "O AWS Marketplace permite usar ferramentas de segurança de terceiros conhecidas, com preço por uso ou BYOL e faturamento consolidado na AWS.",
+    "servicos": [
+      "Marketplace"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-051",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Um administrador procura respostas da AWS para dúvidas e problemas comuns, como \"como restringir o acesso a um bucket do S3?\". Qual recurso oferece artigos e vídeos com essas respostas?",
+    "alternativas": [
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Fornece relatórios de conformidade, não guias de solução de problemas."
+      },
+      {
+        "texto": "AWS Health Dashboard",
+        "correta": false,
+        "porque": "Mostra eventos e a saúde dos serviços, não respostas a dúvidas comuns."
+      },
+      {
+        "texto": "AWS Marketplace",
+        "correta": false,
+        "porque": "É um catálogo de software de terceiros."
+      },
+      {
+        "texto": "AWS Knowledge Center",
+        "correta": true,
+        "porque": "Reúne respostas da AWS às perguntas e solicitações mais frequentes dos clientes."
+      }
+    ],
+    "explicacao": "O AWS Knowledge Center é a base de perguntas frequentes e soluções publicadas pela AWS.",
+    "servicos": [
+      "AWS Support"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-052",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Qual recurso da AWS reúne em um só lugar informações sobre segurança da nuvem, conformidade, boletins de segurança e serviços de segurança da AWS?",
+    "alternativas": [
+      {
+        "texto": "AWS Security Center",
+        "correta": true,
+        "porque": "É o portal central de segurança da AWS, com boletins, conformidade, boas práticas e serviços."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Verifica a conta do cliente, mas não é um portal de informações de segurança."
+      },
+      {
+        "texto": "AWS Security Hub",
+        "correta": false,
+        "porque": "Agrega achados de segurança da conta, não conteúdo informativo da AWS."
+      },
+      {
+        "texto": "AWS Service Catalog",
+        "correta": false,
+        "porque": "Gerencia produtos de TI aprovados pela empresa."
+      }
+    ],
+    "explicacao": "O AWS Security Center (aws.amazon.com/security) centraliza informações de segurança, conformidade e boletins da AWS.",
+    "servicos": [
+      "AWS Support"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-053",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma equipe quer acompanhar artigos de especialistas da AWS sobre novos recursos de segurança, boas práticas e guias passo a passo. Qual fonte é a MAIS indicada?",
+    "alternativas": [
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Oferece relatórios de auditoria e acordos, não artigos técnicos."
+      },
+      {
+        "texto": "AWS Security Blog",
+        "correta": true,
+        "porque": "Publica posts de especialistas da AWS sobre recursos, boas práticas e soluções de segurança."
+      },
+      {
+        "texto": "AWS Health Dashboard",
+        "correta": false,
+        "porque": "Informa eventos operacionais dos serviços."
+      },
+      {
+        "texto": "AWS Marketplace",
+        "correta": false,
+        "porque": "Vende software de terceiros, não publica artigos de boas práticas."
+      }
+    ],
+    "explicacao": "O AWS Security Blog é a fonte de artigos e novidades de segurança escritos por especialistas da AWS.",
+    "servicos": [
+      "AWS Support"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-054",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais recursos de informação sobre segurança a AWS oferece gratuitamente a qualquer cliente? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Technical Account Manager (TAM) designado",
+        "correta": false,
+        "porque": "Está incluído apenas nos planos Enterprise Support e Unified Operations."
+      },
+      {
+        "texto": "AWS Knowledge Center",
+        "correta": true,
+        "porque": "É público e gratuito, com respostas a dúvidas comuns."
+      },
+      {
+        "texto": "AWS Professional Services",
+        "correta": false,
+        "porque": "É uma consultoria paga da AWS."
+      },
+      {
+        "texto": "AWS Security Blog",
+        "correta": true,
+        "porque": "É público e gratuito, com artigos de especialistas da AWS."
+      },
+      {
+        "texto": "Shield Response Team (SRT)",
+        "correta": false,
+        "porque": "O acesso é exclusivo de clientes do Shield Advanced."
+      }
+    ],
+    "explicacao": "Security Blog, Knowledge Center e Security Center são gratuitos; TAM, SRT e Professional Services dependem de planos ou contratos pagos.",
+    "servicos": [
+      "AWS Support",
+      "Shield"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k7#32 (reescrita)"
+  },
+  {
+    "id": "D2-b-055",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Segundo a política de testes de segurança da AWS, qual atividade NÃO pode ser feita livremente pelo cliente em seus próprios recursos?",
+    "alternativas": [
+      {
+        "texto": "Pentest em instâncias Amazon EC2",
+        "correta": false,
+        "porque": "O EC2 está na lista de serviços que podem ser testados sem aprovação prévia."
+      },
+      {
+        "texto": "Varredura de portas nas próprias instâncias",
+        "correta": false,
+        "porque": "Varrer as próprias instâncias faz parte de testes permitidos."
+      },
+      {
+        "texto": "Simular ataques de negação de serviço (DoS/DDoS) ou flooding de requisições",
+        "correta": true,
+        "porque": "Testes de DoS/DDoS são proibidos fora da política específica de testes de DDoS, com fornecedor autorizado."
+      },
+      {
+        "texto": "Pentest em funções AWS Lambda",
+        "correta": false,
+        "porque": "O Lambda está na lista de serviços permitidos para testes."
+      }
+    ],
+    "explicacao": "Pentest é permitido sem aprovação nos serviços listados; DoS, flooding e ataques à infraestrutura da AWS são proibidos.",
+    "servicos": [
+      "EC2",
+      "Lambda"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-056",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "A quais recursos o AWS WAF pode ser associado diretamente para proteger aplicações? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Application Load Balancers",
+        "correta": true,
+        "porque": "O WAF pode ser associado a ALBs para filtrar requisições HTTP(S)."
+      },
+      {
+        "texto": "NAT gateways",
+        "correta": false,
+        "porque": "Fazem tradução de endereços para saída à internet e não suportam WAF."
+      },
+      {
+        "texto": "Distribuições do Amazon CloudFront",
+        "correta": true,
+        "porque": "O WAF protege distribuições do CloudFront nas edge locations."
+      },
+      {
+        "texto": "Instâncias de banco Amazon RDS",
+        "correta": false,
+        "porque": "Não recebem tráfego HTTP de clientes web e não se associam ao WAF."
+      },
+      {
+        "texto": "Volumes do Amazon EBS",
+        "correta": false,
+        "porque": "São armazenamento em bloco; não recebem tráfego HTTP."
+      }
+    ],
+    "explicacao": "O AWS WAF protege recursos que recebem HTTP(S), como CloudFront, Application Load Balancer e API Gateway.",
+    "servicos": [
+      "WAF",
+      "CloudFront",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-057",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Um site está recebendo milhares de requisições por minuto de alguns poucos endereços IP, típicas de bots. A empresa quer limitar automaticamente quantas requisições cada IP pode fazer. Qual recurso deve usar?",
+    "alternativas": [
+      {
+        "texto": "Regra de entrada em um Security Group",
+        "correta": false,
+        "porque": "Permite ou nega portas e IPs, mas não limita a taxa de requisições."
+      },
+      {
+        "texto": "Política de senha do IAM",
+        "correta": false,
+        "porque": "Controla senhas de IAM users, sem relação com tráfego web."
+      },
+      {
+        "texto": "Verificação do AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Aponta problemas de configuração, mas não bloqueia tráfego."
+      },
+      {
+        "texto": "Regra baseada em taxa (rate-based rule) do AWS WAF",
+        "correta": true,
+        "porque": "Bloqueia temporariamente IPs que excedem um limite de requisições em um intervalo."
+      }
+    ],
+    "explicacao": "Regras baseadas em taxa do WAF mitigam floods HTTP e bots limitando requisições por IP.",
+    "servicos": [
+      "WAF"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-058",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços da AWS ajudam a proteger uma aplicação web contra ataques DDoS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon CloudFront",
+        "correta": true,
+        "porque": "Distribui e absorve o tráfego nas edge locations e integra-se ao Shield e ao WAF."
+      },
+      {
+        "texto": "Amazon Macie",
+        "correta": false,
+        "porque": "Descobre dados sensíveis no S3, sem relação com DDoS."
+      },
+      {
+        "texto": "AWS Shield",
+        "correta": true,
+        "porque": "É o serviço dedicado de proteção contra DDoS."
+      },
+      {
+        "texto": "Amazon Inspector",
+        "correta": false,
+        "porque": "Varre vulnerabilidades, mas não mitiga tráfego de ataque."
+      },
+      {
+        "texto": "AWS Secrets Manager",
+        "correta": false,
+        "porque": "Armazena e rotaciona segredos; não mitiga ataques."
+      }
+    ],
+    "explicacao": "Uma arquitetura resistente a DDoS combina Shield com serviços de borda como CloudFront (e Route 53), além do WAF na camada 7.",
+    "servicos": [
+      "Shield",
+      "CloudFront"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k12#21 (reescrita)"
+  },
+  {
+    "id": "D2-b-059",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa só pode atender clientes no Brasil e precisa bloquear requisições web vindas de outros países para sua aplicação atrás de um Application Load Balancer. Qual serviço atende?",
+    "alternativas": [
+      {
+        "texto": "AWS WAF com regra de correspondência geográfica",
+        "correta": true,
+        "porque": "Regras geográficas do WAF permitem ou bloqueiam requisições pelo país de origem."
+      },
+      {
+        "texto": "AWS Shield Standard",
+        "correta": false,
+        "porque": "Mitiga DDoS, mas não filtra requisições por país."
+      },
+      {
+        "texto": "Network ACLs",
+        "correta": false,
+        "porque": "Filtram faixas de IP, mas não têm regras por país."
+      },
+      {
+        "texto": "AWS Firewall Manager sozinho",
+        "correta": false,
+        "porque": "Gerencia políticas centralmente, mas a filtragem em si é feita pelo WAF."
+      }
+    ],
+    "explicacao": "AWS WAF permite regras de geolocalização (geo match) para restringir acesso por país.",
+    "servicos": [
+      "WAF",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-b-060",
+    "dominio": 2,
+    "task": "2.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer proteger seu site contra DDoS avançados, bloquear SQL injection e administrar essas proteções de forma centralizada em todas as contas da organização. Qual combinação atende?",
+    "alternativas": [
+      {
+        "texto": "GuardDuty, Inspector e Security Hub",
+        "correta": false,
+        "porque": "Detectam ameaças e vulnerabilidades, mas não bloqueiam tráfego de ataque."
+      },
+      {
+        "texto": "Shield Advanced, AWS WAF e AWS Firewall Manager",
+        "correta": true,
+        "porque": "Shield Advanced cuida de DDoS, WAF bloqueia ataques na aplicação e Firewall Manager centraliza a gestão."
+      },
+      {
+        "texto": "Shield Standard, Security Groups e AWS Config",
+        "correta": false,
+        "porque": "Não bloqueiam SQL injection nem centralizam regras de WAF entre contas."
+      },
+      {
+        "texto": "Amazon Macie, AWS WAF e SCPs",
+        "correta": false,
+        "porque": "Macie descobre dados sensíveis e SCPs limitam permissões; nenhum gerencia proteção de rede."
+      }
+    ],
+    "explicacao": "Shield (DDoS), WAF (camada 7) e Firewall Manager (gestão central) se complementam na proteção de aplicações web.",
+    "servicos": [
+      "Shield",
+      "WAF",
+      "Firewall Manager"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  }
+]

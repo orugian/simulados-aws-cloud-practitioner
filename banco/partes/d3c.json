@@ -1,0 +1,1565 @@
+[
+  {
+    "id": "D3-c-001",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Qual serviço permite provisionar uma rede virtual logicamente isolada na AWS, com faixa de IPs e subnets próprias, onde as cargas de trabalho são executadas?",
+    "alternativas": [
+      {
+        "texto": "Amazon VPC",
+        "correta": true,
+        "porque": "Cria uma rede virtual isolada na qual o cliente define a faixa CIDR, as subnets, as route tables e os gateways."
+      },
+      {
+        "texto": "Internet Gateway",
+        "correta": false,
+        "porque": "É um componente anexado à VPC para comunicação com a internet; não é a rede em si."
+      },
+      {
+        "texto": "Amazon EC2",
+        "correta": false,
+        "porque": "Fornece servidores virtuais que rodam dentro de uma VPC, mas não cria a rede."
+      },
+      {
+        "texto": "AWS Elastic Beanstalk",
+        "correta": false,
+        "porque": "Implanta e gerencia aplicações; usa uma VPC, mas não é o serviço que a define."
+      }
+    ],
+    "explicacao": "A Amazon VPC é a rede privada virtual do cliente na AWS: ele controla endereçamento, subnets, roteamento e gateways.",
+    "servicos": [
+      "Amazon VPC"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A28"
+  },
+  {
+    "id": "D3-c-002",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Qual componente permite que instâncias EC2 em uma subnet pública se comuniquem com a internet?",
+    "alternativas": [
+      {
+        "texto": "NAT Gateway",
+        "correta": false,
+        "porque": "Dá apenas saída à internet para instâncias em subnets privadas e depende ele próprio de um Internet Gateway."
+      },
+      {
+        "texto": "Internet Gateway",
+        "correta": true,
+        "porque": "Anexado à VPC e referenciado na route table, permite tráfego de entrada e saída entre a subnet pública e a internet."
+      },
+      {
+        "texto": "VPC endpoint",
+        "correta": false,
+        "porque": "Conecta a VPC de forma privada a serviços da AWS, sem dar acesso à internet."
+      },
+      {
+        "texto": "Amazon API Gateway",
+        "correta": false,
+        "porque": "Cria e publica APIs; não é um componente de roteamento da VPC."
+      }
+    ],
+    "explicacao": "Uma subnet é pública quando sua route table tem rota para um Internet Gateway; é ele que liga a VPC à internet.",
+    "servicos": [
+      "Amazon VPC",
+      "Internet Gateway"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B24"
+  },
+  {
+    "id": "D3-c-003",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Instâncias EC2 em uma subnet privada precisam baixar atualizações da internet, mas não podem receber conexões iniciadas de fora. O que deve ser adicionado à arquitetura?",
+    "alternativas": [
+      {
+        "texto": "Uma rota da subnet privada direto para o Internet Gateway",
+        "correta": false,
+        "porque": "Tornaria a subnet pública e, com IPs públicos, exporia as instâncias a conexões de entrada."
+      },
+      {
+        "texto": "Uma conexão de VPC peering",
+        "correta": false,
+        "porque": "Liga duas VPCs por IPs privados; não fornece acesso à internet."
+      },
+      {
+        "texto": "Um NAT Gateway em uma subnet pública",
+        "correta": true,
+        "porque": "Permite que instâncias privadas iniciem conexões de saída para a internet e bloqueia conexões iniciadas de fora."
+      },
+      {
+        "texto": "Um Virtual Private Gateway",
+        "correta": false,
+        "porque": "É o ponto de terminação de VPN na VPC; não dá acesso à internet."
+      }
+    ],
+    "explicacao": "NAT Gateway: saída para a internet a partir de subnets privadas, sem permitir entrada. A route table da subnet privada aponta para ele.",
+    "servicos": [
+      "NAT Gateway",
+      "Amazon VPC"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-004",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais afirmações sobre Security Groups e network ACLs são verdadeiras? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Uma network ACL é stateful: o tráfego de retorno de uma requisição de saída é permitido automaticamente.",
+        "correta": false,
+        "porque": "A network ACL é stateless: o tráfego de retorno precisa de regra explícita."
+      },
+      {
+        "texto": "Um Security Group contém regras numeradas e as avalia em ordem numérica.",
+        "correta": false,
+        "porque": "O Security Group avalia todas as regras em conjunto antes de decidir; regras numeradas são da network ACL."
+      },
+      {
+        "texto": "Uma network ACL contém regras numeradas e as avalia em ordem para permitir ou negar o tráfego.",
+        "correta": true,
+        "porque": "A NACL processa as regras da menor para a maior numeração e aplica a primeira que corresponder."
+      },
+      {
+        "texto": "Um Security Group é stateless: o tráfego de retorno exige uma regra de allow própria.",
+        "correta": false,
+        "porque": "O Security Group é stateful, então o retorno não precisa de regra."
+      },
+      {
+        "texto": "Um Security Group é stateful: o tráfego de retorno de uma requisição permitida é liberado automaticamente.",
+        "correta": true,
+        "porque": "O Security Group rastreia o estado da conexão e libera a resposta automaticamente."
+      }
+    ],
+    "explicacao": "Security Group: nível de instância, stateful, só regras de allow. Network ACL: nível de subnet, stateless, regras numeradas de allow e deny.",
+    "servicos": [
+      "Security Group",
+      "Network ACL"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A57"
+  },
+  {
+    "id": "D3-c-005",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Qual controle de segurança da Amazon VPC filtra o tráfego no nível da subnet e aceita tanto regras de permissão (allow) quanto de negação (deny)?",
+    "alternativas": [
+      {
+        "texto": "Security Group",
+        "correta": false,
+        "porque": "Atua no nível da instância (interface de rede) e só aceita regras de allow."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Registra e avalia configurações de recursos; não filtra tráfego."
+      },
+      {
+        "texto": "Políticas do IAM",
+        "correta": false,
+        "porque": "Controlam permissões de chamadas às APIs da AWS, não tráfego de rede."
+      },
+      {
+        "texto": "Network ACL",
+        "correta": true,
+        "porque": "É o firewall stateless associado à subnet, com regras numeradas de allow e deny; útil, por exemplo, para bloquear um IP específico."
+      }
+    ],
+    "explicacao": "A network ACL é a camada de proteção da subnet; o Security Group protege a instância. Bloquear explicitamente um IP só é possível com NACL.",
+    "servicos": [
+      "Network ACL",
+      "Security Group"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B33 (reescrita)"
+  },
+  {
+    "id": "D3-c-006",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Qual recurso conecta duas VPCs para que as instâncias se comuniquem usando endereços IP privados?",
+    "alternativas": [
+      {
+        "texto": "VPC endpoint",
+        "correta": false,
+        "porque": "Conecta a VPC de forma privada a serviços da AWS ou a serviços via PrivateLink, não duas VPCs inteiras."
+      },
+      {
+        "texto": "NAT Gateway",
+        "correta": false,
+        "porque": "Fornece saída à internet para subnets privadas; não liga VPCs."
+      },
+      {
+        "texto": "VPC peering",
+        "correta": true,
+        "porque": "Cria uma conexão de rede ponto a ponto entre duas VPCs (mesma conta, outra conta ou outra Região) usando IPs privados."
+      },
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "Liga um ambiente on-premises à AWS por link dedicado, não duas VPCs entre si."
+      }
+    ],
+    "explicacao": "VPC peering liga duas VPCs com IPs privados; não é transitivo, por isso muitas VPCs pedem Transit Gateway.",
+    "servicos": [
+      "VPC peering"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B62"
+  },
+  {
+    "id": "D3-c-007",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Uma empresa tem centenas de VPCs em várias contas e quer interligá-las, e também à rede on-premises, por um hub central, sem gerenciar dezenas de conexões ponto a ponto. Qual serviço atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Transit Gateway",
+        "correta": true,
+        "porque": "Funciona como hub regional que conecta milhares de VPCs e redes on-premises, simplificando o roteamento."
+      },
+      {
+        "texto": "VPC peering",
+        "correta": false,
+        "porque": "É ponto a ponto e não transitivo: centenas de VPCs exigiriam uma malha enorme de conexões."
+      },
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "Fornece link dedicado com o on-premises, mas não interliga VPCs entre si."
+      },
+      {
+        "texto": "AWS Global Accelerator",
+        "correta": false,
+        "porque": "Melhora o caminho de usuários da internet até aplicações; não conecta VPCs."
+      }
+    ],
+    "explicacao": "Transit Gateway é o modelo hub-and-spoke para conectar muitas VPCs e redes on-premises em escala.",
+    "servicos": [
+      "AWS Transit Gateway"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k21#37 (reescrita)"
+  },
+  {
+    "id": "D3-c-008",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Aplicações em uma subnet privada precisam acessar o Amazon S3 e outros serviços da AWS sem que o tráfego passe pela internet e sem Internet Gateway ou NAT Gateway. O que deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "Liga o data center on-premises à AWS; não resolve o acesso privado a partir da VPC."
+      },
+      {
+        "texto": "VPC peering",
+        "correta": false,
+        "porque": "Liga VPCs entre si; não dá acesso privado aos endpoints dos serviços da AWS."
+      },
+      {
+        "texto": "Um Elastic IP nas instâncias",
+        "correta": false,
+        "porque": "É um IP público: o acesso continuaria pela internet e exigiria Internet Gateway."
+      },
+      {
+        "texto": "VPC endpoints",
+        "correta": true,
+        "porque": "Gateway endpoints (S3, DynamoDB) e interface endpoints (AWS PrivateLink) mantêm o tráfego na rede da AWS."
+      }
+    ],
+    "explicacao": "VPC endpoints, inclusive os baseados em AWS PrivateLink, dão acesso privado a serviços da AWS e de terceiros sem expor o tráfego à internet.",
+    "servicos": [
+      "VPC endpoints",
+      "AWS PrivateLink"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-009",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços estabelecem um link de rede entre um data center on-premises e recursos hospedados na AWS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon Connect",
+        "correta": false,
+        "porque": "É um serviço de contact center em nuvem, apesar do nome."
+      },
+      {
+        "texto": "AWS Directory Service",
+        "correta": false,
+        "porque": "Fornece Active Directory gerenciado; não cria conexão de rede."
+      },
+      {
+        "texto": "AWS Direct Connect",
+        "correta": true,
+        "porque": "Cria uma conexão física dedicada e privada entre o on-premises e a AWS."
+      },
+      {
+        "texto": "AWS Site-to-Site VPN",
+        "correta": true,
+        "porque": "Cria túneis IPsec criptografados pela internet entre a rede local e a VPC."
+      },
+      {
+        "texto": "Amazon Route 53",
+        "correta": false,
+        "porque": "É um serviço de DNS; resolve nomes, não cria links de rede."
+      }
+    ],
+    "explicacao": "Conectividade híbrida: Site-to-Site VPN (rápida, pela internet, criptografada) e Direct Connect (dedicada, privada, latência consistente).",
+    "servicos": [
+      "AWS Direct Connect",
+      "AWS Site-to-Site VPN"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B37"
+  },
+  {
+    "id": "D3-c-010",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Funcionários em home office precisam acessar com segurança, a partir de seus notebooks, recursos em uma Amazon VPC. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "AWS Site-to-Site VPN",
+        "correta": false,
+        "porque": "Liga redes inteiras (data center ou escritório) à VPC, não dispositivos individuais."
+      },
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "É um link físico dedicado entre uma instalação e a AWS; não atende usuários remotos."
+      },
+      {
+        "texto": "AWS Client VPN",
+        "correta": true,
+        "porque": "É uma VPN gerenciada baseada em cliente que permite a cada usuário se conectar à VPC de qualquer lugar."
+      },
+      {
+        "texto": "AWS Transit Gateway",
+        "correta": false,
+        "porque": "Interliga VPCs e redes; não fornece acesso de usuários finais."
+      }
+    ],
+    "explicacao": "Client VPN: usuário individual para a AWS. Site-to-Site VPN: rede para a AWS. Direct Connect: link dedicado.",
+    "servicos": [
+      "AWS Client VPN",
+      "AWS Site-to-Site VPN"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-011",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Qual das ações a seguir pode ser realizada com o Amazon Route 53?",
+    "alternativas": [
+      {
+        "texto": "Criptografar dados em trânsito pela internet",
+        "correta": false,
+        "porque": "Criptografia em trânsito usa TLS e certificados (ex.: ACM), não o DNS."
+      },
+      {
+        "texto": "Registrar nomes de domínio",
+        "correta": true,
+        "porque": "Além de DNS gerenciado, o Route 53 é um registrador de domínios."
+      },
+      {
+        "texto": "Gerar e gerenciar certificados SSL/TLS",
+        "correta": false,
+        "porque": "Essa é a função do AWS Certificate Manager (ACM)."
+      },
+      {
+        "texto": "Estabelecer uma conexão de rede dedicada com a AWS",
+        "correta": false,
+        "porque": "Essa é a função do AWS Direct Connect."
+      }
+    ],
+    "explicacao": "Route 53 = registro de domínios + DNS gerenciado + health checks + políticas de roteamento.",
+    "servicos": [
+      "Amazon Route 53"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B68"
+  },
+  {
+    "id": "D3-c-012",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação roda em duas Regiões da AWS. A empresa quer que o Amazon Route 53 envie cada usuário para a Região que oferece a MENOR latência para ele. Qual política de roteamento deve ser usada?",
+    "alternativas": [
+      {
+        "texto": "Simple routing",
+        "correta": false,
+        "porque": "Retorna um único registro sem considerar a latência do usuário."
+      },
+      {
+        "texto": "Weighted routing",
+        "correta": false,
+        "porque": "Distribui o tráfego por pesos definidos (ex.: 80/20), não pela latência."
+      },
+      {
+        "texto": "Failover routing",
+        "correta": false,
+        "porque": "Envia o tráfego ao recurso secundário só quando o primário falha no health check."
+      },
+      {
+        "texto": "Latency-based routing",
+        "correta": true,
+        "porque": "Responde com o endpoint da Região que apresenta a menor latência medida para o usuário."
+      }
+    ],
+    "explicacao": "Políticas do Route 53: simple, weighted, latency, failover, geolocation, geoproximity e multivalue; cada uma atende a um objetivo de roteamento.",
+    "servicos": [
+      "Amazon Route 53"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-013",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços da AWS mantêm os usuários alheios a falhas breves ao enviar as requisições apenas para os recursos de back-end que continuam saudáveis? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Elastic Load Balancing",
+        "correta": true,
+        "porque": "Faz health checks nos destinos e distribui requisições somente para os saudáveis."
+      },
+      {
+        "texto": "Amazon ECS Service Connect",
+        "correta": false,
+        "porque": "Facilita a comunicação entre serviços dentro do ECS; não é o ponto de entrada dos usuários."
+      },
+      {
+        "texto": "Amazon EC2 Auto Scaling",
+        "correta": false,
+        "porque": "Substitui instâncias com falha e ajusta a capacidade, mas não roteia as requisições."
+      },
+      {
+        "texto": "Amazon Route 53",
+        "correta": true,
+        "porque": "Com health checks e failover, deixa de responder com endpoints não saudáveis no DNS."
+      },
+      {
+        "texto": "Route tables da VPC",
+        "correta": false,
+        "porque": "Definem rotas por faixa de IP, sem verificar a saúde das aplicações."
+      }
+    ],
+    "explicacao": "ELB (dentro da Região) e Route 53 com health checks (no DNS, inclusive entre Regiões) direcionam tráfego só para destinos saudáveis.",
+    "servicos": [
+      "Elastic Load Balancing",
+      "Amazon Route 53"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A26"
+  },
+  {
+    "id": "D3-c-014",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Usuários do mundo todo reclamam do carregamento lento das imagens em alta resolução de um blog de viagens. Quais serviços a equipe deve combinar para entregar esses arquivos com a MENOR latência? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "AWS Storage Gateway",
+        "correta": false,
+        "porque": "Integra armazenamento on-premises à nuvem; não entrega conteúdo a usuários globais."
+      },
+      {
+        "texto": "Amazon CloudFront",
+        "correta": true,
+        "porque": "CDN que guarda cópias das imagens em cache nas edge locations próximas aos usuários."
+      },
+      {
+        "texto": "Amazon S3",
+        "correta": true,
+        "porque": "Armazena as imagens de forma durável e serve de origem para a distribuição do CloudFront."
+      },
+      {
+        "texto": "Amazon S3 Glacier Flexible Retrieval",
+        "correta": false,
+        "porque": "É uma classe de arquivamento, com recuperação em minutos ou horas."
+      },
+      {
+        "texto": "Amazon Elastic File System",
+        "correta": false,
+        "porque": "É um sistema de arquivos para instâncias, não uma solução de entrega global."
+      }
+    ],
+    "explicacao": "O par clássico para conteúdo estático global é S3 como origem e CloudFront como CDN.",
+    "servicos": [
+      "Amazon CloudFront",
+      "Amazon S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A40"
+  },
+  {
+    "id": "D3-c-015",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS entrega também as páginas dinâmicas de uma aplicação web a usuários de qualquer lugar do mundo com baixa latência?",
+    "alternativas": [
+      {
+        "texto": "Amazon S3",
+        "correta": false,
+        "porque": "Armazena e serve objetos estáticos; não gera nem acelera conteúdo dinâmico."
+      },
+      {
+        "texto": "Amazon Route 53",
+        "correta": false,
+        "porque": "Resolve nomes DNS; não entrega o conteúdo das páginas."
+      },
+      {
+        "texto": "Elastic Load Balancing",
+        "correta": false,
+        "porque": "Distribui requisições dentro de uma Região; não aproxima o conteúdo dos usuários."
+      },
+      {
+        "texto": "Amazon CloudFront",
+        "correta": true,
+        "porque": "Acelera conteúdo estático e dinâmico usando edge locations e a rede global da AWS até a origem."
+      }
+    ],
+    "explicacao": "CloudFront não serve só arquivos estáticos: também acelera conteúdo dinâmico, APIs e streaming.",
+    "servicos": [
+      "Amazon CloudFront"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A50"
+  },
+  {
+    "id": "D3-c-016",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer reduzir a latência para usuários do mundo todo que baixam vídeos e imagens do seu site, sem alterar a origem. Qual serviço da AWS deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon S3 Transfer Acceleration",
+        "correta": false,
+        "porque": "Acelera transferências, sobretudo uploads, para um bucket S3; não faz cache para os usuários."
+      },
+      {
+        "texto": "Amazon CloudFront",
+        "correta": true,
+        "porque": "É a CDN da AWS: armazena o conteúdo em cache nas edge locations e o entrega com baixa latência."
+      },
+      {
+        "texto": "AWS Global Accelerator",
+        "correta": false,
+        "porque": "Otimiza o caminho de rede até a aplicação, mas não faz cache de conteúdo."
+      },
+      {
+        "texto": "Amazon Route 53",
+        "correta": false,
+        "porque": "Faz a resolução DNS; não armazena nem entrega o conteúdo."
+      }
+    ],
+    "explicacao": "Cache em edge location = CloudFront. Global Accelerator não faz cache; S3 Transfer Acceleration foca em envio para o S3.",
+    "servicos": [
+      "Amazon CloudFront"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B36 (reescrita)"
+  },
+  {
+    "id": "D3-c-017",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Qual é um benefício do AWS Global Accelerator?",
+    "alternativas": [
+      {
+        "texto": "Aumenta a capacidade de CPU das instâncias EC2",
+        "correta": false,
+        "porque": "Não altera o desempenho de computação das instâncias."
+      },
+      {
+        "texto": "Reduz o custo das instâncias de servidor",
+        "correta": false,
+        "porque": "É um serviço pago à parte; não reduz o preço de servidores."
+      },
+      {
+        "texto": "Menor latência e mais disponibilidade para as aplicações",
+        "correta": true,
+        "porque": "Leva o tráfego pela rede global da AWS por IPs anycast estáticos até endpoints saudáveis."
+      },
+      {
+        "texto": "Armazenamento de dados altamente durável",
+        "correta": false,
+        "porque": "Não armazena dados; durabilidade é característica de serviços como o S3."
+      }
+    ],
+    "explicacao": "Global Accelerator: IPs estáticos e rede global da AWS para TCP/UDP, com failover entre endpoints regionais e sem cache.",
+    "servicos": [
+      "AWS Global Accelerator"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A48"
+  },
+  {
+    "id": "D3-c-018",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Uma equipe quer criar, publicar e proteger APIs REST que acionam funções AWS Lambda, com controle de limite de requisições (throttling). Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon API Gateway",
+        "correta": true,
+        "porque": "Serviço gerenciado para criar, publicar, proteger e monitorar APIs REST, HTTP e WebSocket em qualquer escala."
+      },
+      {
+        "texto": "Elastic Load Balancing",
+        "correta": false,
+        "porque": "Distribui tráfego entre destinos, mas não oferece gestão de APIs como chaves e throttling por cliente."
+      },
+      {
+        "texto": "Amazon CloudFront",
+        "correta": false,
+        "porque": "Acelera a entrega de conteúdo; não é a ferramenta para definir e publicar APIs."
+      },
+      {
+        "texto": "AWS Step Functions",
+        "correta": false,
+        "porque": "Orquestra fluxos de trabalho; não expõe APIs para clientes externos."
+      }
+    ],
+    "explicacao": "API Gateway é a porta de entrada gerenciada para APIs, muito usada com Lambda em arquiteturas serverless.",
+    "servicos": [
+      "Amazon API Gateway"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-019",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Para investigar problemas de conectividade entre instâncias EC2, a equipe precisa registrar informações sobre o tráfego IP aceito e rejeitado nas interfaces de rede da VPC. Qual recurso deve usar?",
+    "alternativas": [
+      {
+        "texto": "VPC Flow Logs",
+        "correta": true,
+        "porque": "Capturam metadados do tráfego IP (origem, destino, porta, ACCEPT/REJECT) das interfaces de rede."
+      },
+      {
+        "texto": "AWS CloudHSM",
+        "correta": false,
+        "porque": "Fornece HSMs dedicados para chaves criptográficas; não registra tráfego."
+      },
+      {
+        "texto": "AWS Certificate Manager (ACM)",
+        "correta": false,
+        "porque": "Gerencia certificados SSL/TLS; não captura informações de rede."
+      },
+      {
+        "texto": "AWS CloudTrail",
+        "correta": false,
+        "porque": "Registra chamadas de API, não o tráfego IP entre instâncias."
+      }
+    ],
+    "explicacao": "VPC Flow Logs mostram o tráfego aceito ou rejeitado por Security Groups e NACLs, o que ajuda a diagnosticar conectividade.",
+    "servicos": [
+      "VPC Flow Logs"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B49"
+  },
+  {
+    "id": "D3-c-020",
+    "dominio": 3,
+    "task": "3.5",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer identificar automaticamente instâncias EC2 com portas alcançáveis a partir da internet, além de vulnerabilidades de software conhecidas (CVEs). Qual serviço atende?",
+    "alternativas": [
+      {
+        "texto": "Amazon GuardDuty",
+        "correta": false,
+        "porque": "Detecta ameaças e atividades maliciosas analisando logs, não a exposição de rede nem as CVEs."
+      },
+      {
+        "texto": "Amazon Inspector",
+        "correta": true,
+        "porque": "Avalia continuamente vulnerabilidades e a alcançabilidade de rede de EC2, imagens no ECR e funções Lambda."
+      },
+      {
+        "texto": "Amazon Detective",
+        "correta": false,
+        "porque": "Ajuda a investigar a causa raiz de achados de segurança; não varre vulnerabilidades."
+      },
+      {
+        "texto": "Amazon Macie",
+        "correta": false,
+        "porque": "Descobre dados sensíveis (PII) no Amazon S3."
+      }
+    ],
+    "explicacao": "Inspector = vulnerabilidades (CVEs) e exposição de rede indesejada. GuardDuty = detecção de ameaças por logs.",
+    "servicos": [
+      "Amazon Inspector"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-021",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS executa frameworks open source de big data, como Apache Spark e Hadoop, em clusters gerenciados para cargas de ETL e analytics a baixo custo?",
+    "alternativas": [
+      {
+        "texto": "Amazon OpenSearch Service",
+        "correta": false,
+        "porque": "Serve para busca, análise de logs e observabilidade, não para executar Spark e Hadoop."
+      },
+      {
+        "texto": "Amazon Redshift",
+        "correta": false,
+        "porque": "É um data warehouse para consultas SQL analíticas, não uma plataforma de clusters Spark e Hadoop."
+      },
+      {
+        "texto": "Amazon RDS",
+        "correta": false,
+        "porque": "É um banco relacional gerenciado para cargas transacionais."
+      },
+      {
+        "texto": "Amazon EMR",
+        "correta": true,
+        "porque": "Plataforma gerenciada de big data que roda Spark, Hadoop, Hive e outros frameworks, inclusive em instâncias Spot."
+      }
+    ],
+    "explicacao": "EMR = clusters gerenciados de frameworks open source de big data (Spark, Hadoop) para processar grandes volumes de dados.",
+    "servicos": [
+      "Amazon EMR"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A04"
+  },
+  {
+    "id": "D3-c-022",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma startup está criando um chatbot que precisa entender a entrada falada e digitada dos clientes. Qual serviço da AWS ajuda a entregar essa interface conversacional?",
+    "alternativas": [
+      {
+        "texto": "Amazon Lex",
+        "correta": true,
+        "porque": "Cria interfaces conversacionais de voz e texto, com reconhecimento de fala e compreensão de linguagem natural."
+      },
+      {
+        "texto": "Amazon Polly",
+        "correta": false,
+        "porque": "Converte texto em fala; não interpreta a intenção do usuário."
+      },
+      {
+        "texto": "Amazon Personalize",
+        "correta": false,
+        "porque": "Gera recomendações personalizadas; não cria chatbots."
+      },
+      {
+        "texto": "Amazon Translate",
+        "correta": false,
+        "porque": "Traduz texto entre idiomas; não conduz uma conversa."
+      }
+    ],
+    "explicacao": "Lex é o serviço de chatbots (a mesma tecnologia da Alexa): entende fala e texto e reconhece intenções.",
+    "servicos": [
+      "Amazon Lex"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A24"
+  },
+  {
+    "id": "D3-c-023",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Para ingerir e processar em tempo real grandes volumes de dados de streaming, como cliques de um site e telemetria, qual serviço da AWS é a escolha natural?",
+    "alternativas": [
+      {
+        "texto": "AWS CloudTrail",
+        "correta": false,
+        "porque": "Registra chamadas de API para auditoria; não é uma plataforma de streaming de dados."
+      },
+      {
+        "texto": "Amazon Kinesis Data Streams",
+        "correta": true,
+        "porque": "Captura e armazena fluxos contínuos de dados para processamento em tempo real por várias aplicações."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Coleta métricas e logs para monitoramento, não para ingerir streams de dados de negócio."
+      },
+      {
+        "texto": "AWS Glue",
+        "correta": false,
+        "porque": "Faz ETL e catalogação de dados, com foco em jobs e não em ingestão de streams em tempo real."
+      }
+    ],
+    "explicacao": "Kinesis é a família de serviços de streaming em tempo real: Data Streams para ingestão e processamento, Data Firehose para entrega a destinos.",
+    "servicos": [
+      "Amazon Kinesis"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A54 (reescrita)"
+  },
+  {
+    "id": "D3-c-024",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Qual capacidade o Amazon Rekognition oferece pronta para uso, sem treinar um modelo personalizado?",
+    "alternativas": [
+      {
+        "texto": "Extrair texto e tabelas de formulários digitalizados",
+        "correta": false,
+        "porque": "Extração de texto, formulários e tabelas de documentos é o foco do Amazon Textract."
+      },
+      {
+        "texto": "Identificar objetos, pessoas e cenas em imagens e vídeos",
+        "correta": true,
+        "porque": "É uma análise pré-treinada de imagem e vídeo, que também detecta rostos e conteúdo impróprio."
+      },
+      {
+        "texto": "Redimensionar imagens em massa",
+        "correta": false,
+        "porque": "É processamento de imagem comum, não um recurso de visão computacional do Rekognition."
+      },
+      {
+        "texto": "Converter fala de vídeos em legendas",
+        "correta": false,
+        "porque": "Transcrever áudio em texto é a função do Amazon Transcribe."
+      }
+    ],
+    "explicacao": "Rekognition = visão computacional pronta: rótulos de objetos e cenas, análise facial e moderação de conteúdo em imagens e vídeos.",
+    "servicos": [
+      "Amazon Rekognition"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A65 (reescrita)"
+  },
+  {
+    "id": "D3-c-025",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS é totalmente gerenciado e serverless, usado especificamente para descobrir, catalogar e executar jobs de extração, transformação e carga (ETL) de dados?",
+    "alternativas": [
+      {
+        "texto": "Amazon Athena",
+        "correta": false,
+        "porque": "Consulta dados no S3 com SQL; não é a ferramenta de ETL e catalogação."
+      },
+      {
+        "texto": "Amazon EMR",
+        "correta": false,
+        "porque": "Executa ETL com Spark e Hadoop, mas em clusters que o cliente dimensiona; não é a opção ETL serverless dedicada."
+      },
+      {
+        "texto": "AWS Glue",
+        "correta": true,
+        "porque": "Serviço serverless de integração de dados com crawlers, Data Catalog e jobs de ETL."
+      },
+      {
+        "texto": "Amazon Kinesis Data Streams",
+        "correta": false,
+        "porque": "Ingere streams em tempo real; não cataloga nem transforma dados em lote."
+      }
+    ],
+    "explicacao": "Glue = ETL serverless + Data Catalog, que também é usado pelo Athena para consultar dados no S3.",
+    "servicos": [
+      "AWS Glue"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B85"
+  },
+  {
+    "id": "D3-c-026",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Cientistas de dados querem construir, treinar e implantar modelos próprios de machine learning em um ambiente totalmente gerenciado. Qual serviço deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "Amazon Rekognition",
+        "correta": false,
+        "porque": "Oferece visão computacional pré-treinada; não é uma plataforma para construir modelos próprios de qualquer tipo."
+      },
+      {
+        "texto": "Amazon Comprehend",
+        "correta": false,
+        "porque": "É um serviço de PLN pronto, para entidades e sentimento, e não uma plataforma geral de ML."
+      },
+      {
+        "texto": "Amazon SageMaker AI",
+        "correta": true,
+        "porque": "Cobre todo o ciclo de ML: preparar dados, construir, treinar, ajustar e implantar modelos."
+      },
+      {
+        "texto": "Amazon EMR",
+        "correta": false,
+        "porque": "Processa big data em clusters, mas não é o serviço gerenciado de ponta a ponta para ML."
+      }
+    ],
+    "explicacao": "SageMaker AI é a plataforma para modelos de ML personalizados; os serviços de IA prontos (Rekognition, Comprehend etc.) dispensam treinar modelos.",
+    "servicos": [
+      "Amazon SageMaker AI"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-027",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa quer analisar as gravações das ligações do seu SAC: converter o áudio em texto e depois identificar o sentimento (positivo ou negativo) de cada cliente. Quais serviços devem ser usados? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon Transcribe",
+        "correta": true,
+        "porque": "Converte fala em texto (speech-to-text) a partir das gravações."
+      },
+      {
+        "texto": "Amazon Polly",
+        "correta": false,
+        "porque": "Faz o contrário: converte texto em fala realista."
+      },
+      {
+        "texto": "Amazon Comprehend",
+        "correta": true,
+        "porque": "Usa processamento de linguagem natural para detectar sentimento, entidades e frases-chave no texto."
+      },
+      {
+        "texto": "Amazon Translate",
+        "correta": false,
+        "porque": "Traduz texto entre idiomas; não analisa sentimento."
+      },
+      {
+        "texto": "Amazon Rekognition",
+        "correta": false,
+        "porque": "Analisa imagens e vídeos, não áudio nem texto."
+      }
+    ],
+    "explicacao": "Transcribe (fala para texto), Polly (texto para fala), Translate (tradução) e Comprehend (PLN e sentimento) se combinam em pipelines de análise.",
+    "servicos": [
+      "Amazon Transcribe",
+      "Amazon Comprehend"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-028",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma seguradora recebe milhares de formulários digitalizados e quer extrair automaticamente texto, campos e tabelas, indo além de um OCR simples. Qual serviço atende?",
+    "alternativas": [
+      {
+        "texto": "Amazon Comprehend",
+        "correta": false,
+        "porque": "Analisa texto já extraído (sentimento, entidades), mas não lê documentos digitalizados."
+      },
+      {
+        "texto": "Amazon Rekognition",
+        "correta": false,
+        "porque": "Detecta objetos e textos simples em imagens, mas não interpreta a estrutura de formulários e tabelas."
+      },
+      {
+        "texto": "Amazon Transcribe",
+        "correta": false,
+        "porque": "Converte áudio em texto; não processa documentos."
+      },
+      {
+        "texto": "Amazon Textract",
+        "correta": true,
+        "porque": "Extrai texto, pares chave-valor de formulários e tabelas de documentos digitalizados com ML."
+      }
+    ],
+    "explicacao": "Textract = extração inteligente de documentos (formulários e tabelas), além do OCR tradicional.",
+    "servicos": [
+      "Amazon Textract"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-029",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer que os funcionários façam perguntas em linguagem natural e recebam respostas baseadas em documentos, wikis e sistemas internos da empresa, respeitando as permissões de acesso. Qual serviço da AWS atende?",
+    "alternativas": [
+      {
+        "texto": "Amazon Q Developer",
+        "correta": false,
+        "porque": "É o assistente de IA generativa voltado a desenvolvedores: código, IDE e operações na AWS."
+      },
+      {
+        "texto": "Amazon Q Business",
+        "correta": true,
+        "porque": "Assistente de IA generativa que se conecta às fontes de dados corporativas e responde respeitando as permissões."
+      },
+      {
+        "texto": "Amazon Lex",
+        "correta": false,
+        "porque": "Cria chatbots com intenções definidas pelo desenvolvedor, não um assistente sobre todo o conteúdo corporativo."
+      },
+      {
+        "texto": "Amazon Comprehend",
+        "correta": false,
+        "porque": "Extrai entidades e sentimento de textos; não responde perguntas sobre os dados da empresa."
+      }
+    ],
+    "explicacao": "Amazon Q Business = assistente generativo sobre os dados da empresa; Amazon Q Developer = assistente para desenvolvimento e operação na AWS.",
+    "servicos": [
+      "Amazon Q Business",
+      "Amazon Q Developer"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-030",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Analistas querem executar consultas SQL ad hoc diretamente sobre arquivos de log armazenados no Amazon S3, sem provisionar servidores e pagando apenas pelos dados verificados. Qual serviço deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "Amazon Redshift",
+        "correta": false,
+        "porque": "É um data warehouse para análises recorrentes em grande escala; exige carregar dados ou configurar o ambiente."
+      },
+      {
+        "texto": "Amazon OpenSearch Service",
+        "correta": false,
+        "porque": "Exige ingerir os dados em um domínio para busca e análise; não consulta o S3 com SQL sob demanda."
+      },
+      {
+        "texto": "Amazon Athena",
+        "correta": true,
+        "porque": "É um serviço de consulta serverless que roda SQL sobre dados no S3 e cobra pelos dados verificados."
+      },
+      {
+        "texto": "Amazon RDS",
+        "correta": false,
+        "porque": "É um banco relacional transacional; os dados teriam de ser importados para ele."
+      }
+    ],
+    "explicacao": "Athena = SQL serverless direto no S3, sem infraestrutura, com cobrança por dados verificados.",
+    "servicos": [
+      "Amazon Athena"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-031",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma empresa tem várias fontes de dados e quer consolidá-las em um único data warehouse para executar consultas analíticas complexas com alto desempenho. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon Redshift",
+        "correta": true,
+        "porque": "É o data warehouse em escala de petabytes da AWS, com armazenamento colunar e processamento paralelo."
+      },
+      {
+        "texto": "Amazon DynamoDB",
+        "correta": false,
+        "porque": "É um banco NoSQL de chave-valor para cargas transacionais de baixa latência."
+      },
+      {
+        "texto": "Amazon Athena",
+        "correta": false,
+        "porque": "Consulta dados no S3 de forma ad hoc; não é o data warehouse que consolida as fontes."
+      },
+      {
+        "texto": "Amazon Quick",
+        "correta": false,
+        "porque": "Faz BI e dashboards sobre os dados, mas não armazena nem consolida o data warehouse."
+      }
+    ],
+    "explicacao": "Redshift = data warehouse (OLAP) para consultas analíticas sobre dados consolidados; RDS e DynamoDB atendem a cargas transacionais.",
+    "servicos": [
+      "Amazon Redshift"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k22#42"
+  },
+  {
+    "id": "D3-c-032",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "A diretoria quer dashboards interativos e relatórios de BI, inclusive com perguntas em linguagem natural, sobre dados no Redshift e no S3. Qual serviço da AWS atende?",
+    "alternativas": [
+      {
+        "texto": "Amazon Athena",
+        "correta": false,
+        "porque": "Executa consultas SQL, mas não cria dashboards nem visualizações para usuários de negócio."
+      },
+      {
+        "texto": "Amazon OpenSearch Service",
+        "correta": false,
+        "porque": "Seus painéis focam em busca, logs e observabilidade, não em BI corporativo."
+      },
+      {
+        "texto": "AWS Glue",
+        "correta": false,
+        "porque": "Prepara e cataloga os dados (ETL), mas não os visualiza."
+      },
+      {
+        "texto": "Amazon Quick (antigo QuickSight)",
+        "correta": true,
+        "porque": "É o serviço de BI da AWS: dashboards interativos, relatórios e recursos de IA para consultar dados em linguagem natural."
+      }
+    ],
+    "explicacao": "Amazon Quick (antigo QuickSight) é o serviço de BI e visualização da AWS, hoje com recursos de IA generativa.",
+    "servicos": [
+      "Amazon Quick"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-033",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS orquestra aplicações distribuídas e microsserviços serverless, coordenando vários serviços por meio de state machines visuais com tratamento de erros e novas tentativas?",
+    "alternativas": [
+      {
+        "texto": "Amazon API Gateway",
+        "correta": false,
+        "porque": "Publica e protege APIs, mas não coordena as etapas de um fluxo de trabalho."
+      },
+      {
+        "texto": "AWS Batch",
+        "correta": false,
+        "porque": "Executa jobs de computação em lote; não orquestra serviços em state machines."
+      },
+      {
+        "texto": "AWS Step Functions",
+        "correta": true,
+        "porque": "Coordena serviços da AWS em fluxos de trabalho visuais, com estados, ramificações, retries e cobrança por transição de estado."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "Enfileira mensagens entre componentes, mas não define a sequência e a lógica de um fluxo."
+      }
+    ],
+    "explicacao": "Step Functions é o orquestrador serverless da AWS: define o fluxo de trabalho como uma state machine e trata falhas sem código de coordenação.",
+    "servicos": [
+      "AWS Step Functions"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A41"
+  },
+  {
+    "id": "D3-c-034",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços da AWS ajudam a construir uma arquitetura fracamente acoplada (loosely coupled)? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "AWS Step Functions",
+        "correta": true,
+        "porque": "Coordena componentes independentes por meio de um fluxo de trabalho, sem que um chame o outro diretamente."
+      },
+      {
+        "texto": "Amazon Connect",
+        "correta": false,
+        "porque": "É um contact center em nuvem; não serve para desacoplar componentes de aplicação."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Dá recomendações de boas práticas; não integra componentes."
+      },
+      {
+        "texto": "Amazon WorkSpaces",
+        "correta": false,
+        "porque": "Fornece desktops virtuais para usuários finais."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": true,
+        "porque": "A fila armazena as mensagens entre produtor e consumidor, que passam a trabalhar e escalar de forma independente."
+      }
+    ],
+    "explicacao": "Serviços de integração (SQS, SNS, EventBridge, Step Functions) desacoplam componentes: a falha ou a lentidão de um não derruba o outro.",
+    "servicos": [
+      "Amazon SQS",
+      "AWS Step Functions"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B44"
+  },
+  {
+    "id": "D3-c-035",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Uma arquitetura serverless precisa receber eventos de várias aplicações, inclusive SaaS de terceiros, e roteá-los por regras para os destinos certos sem escrever código de integração. Qual serviço atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Lambda",
+        "correta": false,
+        "porque": "Executa código acionado por eventos; usá-lo para rotear exigiria escrever a integração."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "É uma fila ponto a ponto; não filtra nem roteia eventos de várias fontes por regras."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Monitora métricas e logs; não é o barramento de eventos entre aplicações."
+      },
+      {
+        "texto": "Amazon EventBridge",
+        "correta": true,
+        "porque": "É um barramento de eventos serverless que recebe eventos de serviços da AWS, de aplicações próprias e de SaaS e os roteia por regras."
+      }
+    ],
+    "explicacao": "EventBridge conecta produtores e consumidores de eventos por regras (arquitetura orientada a eventos) e também agenda tarefas.",
+    "servicos": [
+      "Amazon EventBridge"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B69 (reescrita)"
+  },
+  {
+    "id": "D3-c-036",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação precisa publicar uma mensagem uma única vez e entregá-la imediatamente a vários assinantes ao mesmo tempo, como e-mail, SMS e funções Lambda. Qual serviço deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "Amazon SNS",
+        "correta": true,
+        "porque": "É um serviço pub/sub: um tópico entrega a mensagem por push a todos os assinantes (fan-out)."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "A fila guarda a mensagem até um consumidor buscá-la (pull); não faz push para vários assinantes."
+      },
+      {
+        "texto": "Amazon SES",
+        "correta": false,
+        "porque": "Envia e-mails, mas não entrega SMS nem aciona Lambda como assinantes de um tópico."
+      },
+      {
+        "texto": "AWS Step Functions",
+        "correta": false,
+        "porque": "Orquestra etapas sequenciais de um fluxo; não é um serviço de notificação pub/sub."
+      }
+    ],
+    "explicacao": "SNS = pub/sub com push para muitos assinantes. SQS = fila com pull e retenção. Os dois se combinam no padrão fan-out.",
+    "servicos": [
+      "Amazon SNS",
+      "Amazon SQS"
+    ],
+    "dificuldade": 3,
+    "fonte": "kananinirav-k23#33 (reescrita)"
+  },
+  {
+    "id": "D3-c-037",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Uma empresa enfrenta problemas com seu contact center tradicional e quer uma central de atendimento omnichannel em nuvem, pagando pelo uso. Qual serviço da AWS deve adotar?",
+    "alternativas": [
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "Apesar do nome, é um link de rede dedicado entre o on-premises e a AWS."
+      },
+      {
+        "texto": "Amazon Connect",
+        "correta": true,
+        "porque": "É o contact center em nuvem da AWS, com voz, chat e tarefas, cobrado pelo uso."
+      },
+      {
+        "texto": "Amazon Lex",
+        "correta": false,
+        "porque": "Cria chatbots que podem ser integrados a um contact center, mas não é o contact center em si."
+      },
+      {
+        "texto": "Amazon SNS",
+        "correta": false,
+        "porque": "Envia notificações; não gerencia filas de atendimento nem agentes."
+      }
+    ],
+    "explicacao": "Amazon Connect = contact center em nuvem; integra-se a Lex, Transcribe e Comprehend para automação e análise.",
+    "servicos": [
+      "Amazon Connect"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k7#5"
+  },
+  {
+    "id": "D3-c-038",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Um e-commerce precisa enviar e-mails transacionais (confirmação de pedido, redefinição de senha) e campanhas de marketing em grande volume a partir da sua aplicação. Qual serviço da AWS é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "Amazon SNS",
+        "correta": false,
+        "porque": "Envia notificações simples, mas não é voltado a e-mails transacionais e de marketing personalizados em volume."
+      },
+      {
+        "texto": "Amazon Connect",
+        "correta": false,
+        "porque": "É um contact center para atendimento a clientes."
+      },
+      {
+        "texto": "Amazon SES",
+        "correta": true,
+        "porque": "É o serviço de envio de e-mail em escala, com alta entregabilidade, para mensagens transacionais e de marketing."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "Enfileira mensagens entre componentes de software; não envia e-mails."
+      }
+    ],
+    "explicacao": "Amazon SES (Simple Email Service) é o serviço de e-mail em massa da AWS; SNS é para notificações pub/sub.",
+    "servicos": [
+      "Amazon SES"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-039",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma equipe quer automatizar seu pipeline de CI/CD: a cada alteração no repositório, compilar o código, executar os testes e liberar a nova versão por etapas. Quais serviços atendem a esses requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "AWS CodeBuild",
+        "correta": true,
+        "porque": "Serviço de build gerenciado que compila o código-fonte, roda testes e gera artefatos, sem servidores de build."
+      },
+      {
+        "texto": "AWS X-Ray",
+        "correta": false,
+        "porque": "Rastreia requisições em aplicações em execução; não faz build nem pipeline."
+      },
+      {
+        "texto": "AWS CodePipeline",
+        "correta": true,
+        "porque": "Orquestra as etapas de origem, build, teste e implantação a cada alteração (entrega contínua)."
+      },
+      {
+        "texto": "AWS CloudTrail",
+        "correta": false,
+        "porque": "Registra chamadas de API para auditoria; não automatiza entregas."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Avalia a conformidade das configurações dos recursos; não compila nem libera código."
+      }
+    ],
+    "explicacao": "CodePipeline orquestra o fluxo de CI/CD e CodeBuild executa a compilação e os testes dentro dele.",
+    "servicos": [
+      "AWS CodeBuild",
+      "AWS CodePipeline"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-040",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação de microsserviços está lenta e a equipe precisa rastrear as requisições de ponta a ponta para descobrir qual serviço causa o gargalo. Qual serviço da AWS deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "AWS X-Ray",
+        "correta": true,
+        "porque": "Faz rastreamento distribuído (tracing) e exibe um mapa de serviços com latências e erros de cada componente."
+      },
+      {
+        "texto": "AWS CloudTrail",
+        "correta": false,
+        "porque": "Registra quem fez quais chamadas de API na conta, não o desempenho das requisições da aplicação."
+      },
+      {
+        "texto": "VPC Flow Logs",
+        "correta": false,
+        "porque": "Registram metadados de tráfego IP; não mostram o tempo gasto em cada serviço."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Rastreia mudanças de configuração dos recursos, não as requisições da aplicação."
+      }
+    ],
+    "explicacao": "X-Ray = tracing distribuído para analisar e depurar aplicações, sobretudo de microsserviços.",
+    "servicos": [
+      "AWS X-Ray"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-041",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer que funcionários terceirizados acessem aplicações web internas apenas por um navegador, a partir de dispositivos próprios, sem desktop virtual completo e sem guardar dados localmente. Qual serviço é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "Amazon WorkSpaces",
+        "correta": false,
+        "porque": "Fornece um desktop virtual persistente completo (Windows ou Linux), o que vai além do pedido."
+      },
+      {
+        "texto": "Amazon WorkSpaces Applications (antigo AppStream 2.0)",
+        "correta": false,
+        "porque": "Faz streaming de aplicações desktop instaladas, não é o acesso seguro a sites internos pelo navegador."
+      },
+      {
+        "texto": "AWS Client VPN",
+        "correta": false,
+        "porque": "Colocaria o dispositivo não gerenciado dentro da rede, aumentando o risco."
+      },
+      {
+        "texto": "Amazon WorkSpaces Secure Browser",
+        "correta": true,
+        "porque": "Oferece um navegador isolado e gerenciado para acessar sites e apps web internos, sem dados no dispositivo local."
+      }
+    ],
+    "explicacao": "End-user computing: WorkSpaces (desktop virtual completo), WorkSpaces Applications, antigo AppStream 2.0 (streaming de aplicações desktop), e WorkSpaces Secure Browser (acesso seguro a apps web pelo navegador).",
+    "servicos": [
+      "Amazon WorkSpaces Secure Browser",
+      "Amazon WorkSpaces",
+      "Amazon WorkSpaces Applications"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-042",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Desenvolvedores front-end querem criar, conectar a um back-end e hospedar aplicações web e mobile full-stack rapidamente, com autenticação e CI/CD integrados. Qual serviço da AWS atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Amplify",
+        "correta": true,
+        "porque": "Reúne ferramentas e hospedagem para construir, implantar e hospedar apps web e mobile full-stack."
+      },
+      {
+        "texto": "AWS Elastic Beanstalk",
+        "correta": false,
+        "porque": "Implanta aplicações em servidores gerenciados, mas não é focado em front-end e mobile."
+      },
+      {
+        "texto": "Amazon API Gateway",
+        "correta": false,
+        "porque": "Publica APIs; é só uma peça do back-end."
+      },
+      {
+        "texto": "Amazon Lightsail",
+        "correta": false,
+        "porque": "Fornece servidores virtuais simples com preço fixo, sem as ferramentas de desenvolvimento front-end."
+      }
+    ],
+    "explicacao": "Amplify é o serviço de desenvolvimento e hospedagem front-end web e mobile da AWS.",
+    "servicos": [
+      "AWS Amplify"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-c-043",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Um fabricante quer conectar com segurança milhões de sensores à nuvem, receber suas mensagens (por exemplo, via MQTT) e encaminhá-las a outros serviços da AWS. Qual serviço deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "Amazon Kinesis Data Streams",
+        "correta": false,
+        "porque": "Ingere streams de dados, mas não gerencia a conexão, a autenticação e o protocolo dos dispositivos."
+      },
+      {
+        "texto": "AWS IoT Core",
+        "correta": true,
+        "porque": "Conecta dispositivos IoT à nuvem com segurança, recebe mensagens MQTT e as roteia por regras a outros serviços."
+      },
+      {
+        "texto": "Amazon SNS",
+        "correta": false,
+        "porque": "Envia notificações pub/sub, mas não é a plataforma de conexão de dispositivos."
+      },
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "É um link dedicado de rede entre o on-premises e a AWS."
+      }
+    ],
+    "explicacao": "AWS IoT Core é o serviço gerenciado para conectar e comunicar dispositivos IoT com a nuvem.",
+    "servicos": [
+      "AWS IoT Core"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  }
+]

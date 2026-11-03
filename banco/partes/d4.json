@@ -1,0 +1,1829 @@
+[
+  {
+    "id": "D4-x-001",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais duas dimensões de uso determinam a cobrança do AWS Lambda? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A linguagem de runtime usada pela função",
+        "correta": false,
+        "porque": "O preço não muda conforme a linguagem; Python, Node.js ou Java são cobrados da mesma forma."
+      },
+      {
+        "texto": "O número de requisições (invocações) da função",
+        "correta": true,
+        "porque": "O Lambda cobra por requisição, além da duração da execução."
+      },
+      {
+        "texto": "A quantidade de linhas de código da função",
+        "correta": false,
+        "porque": "O tamanho do código-fonte não é dimensão de cobrança."
+      },
+      {
+        "texto": "A duração da execução, proporcional à memória alocada",
+        "correta": true,
+        "porque": "A duração é cobrada em milissegundos, ponderada pela memória configurada (GB-segundo)."
+      },
+      {
+        "texto": "O tamanho do pacote de implantação da função",
+        "correta": false,
+        "porque": "O tamanho do pacote não é uma das dimensões de preço do Lambda."
+      }
+    ],
+    "explicacao": "AWS Lambda é cobrado por número de requisições e pela duração da execução (tempo x memória), sem pagar por servidor ocioso.",
+    "servicos": [
+      "Lambda"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A20"
+  },
+  {
+    "id": "D4-x-002",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Qual é o desconto MÁXIMO que as Reserved Instances do Amazon EC2 podem oferecer em relação ao preço On-Demand?",
+    "alternativas": [
+      {
+        "texto": "72%",
+        "correta": true,
+        "porque": "Standard Reserved Instances de 3 anos com pagamento All Upfront chegam a até 72% de desconto."
+      },
+      {
+        "texto": "50%",
+        "correta": false,
+        "porque": "Fica abaixo do desconto máximo publicado para Reserved Instances."
+      },
+      {
+        "texto": "90%",
+        "correta": false,
+        "porque": "Até 90% é o desconto das Spot Instances, que podem ser interrompidas."
+      },
+      {
+        "texto": "40%",
+        "correta": false,
+        "porque": "Fica bem abaixo do desconto máximo das Reserved Instances."
+      }
+    ],
+    "explicacao": "Reserved Instances: até 72% (Standard) ou 66% (Convertible). Spot: até 90%, com risco de interrupção.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A45"
+  },
+  {
+    "id": "D4-x-003",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação executa cargas de trabalho que não podem ser interrompidas, de forma contínua, durante três anos, sem mudanças previstas de configuração. Qual opção de compra do EC2 oferece o MENOR custo total?",
+    "alternativas": [
+      {
+        "texto": "On-Demand Instances",
+        "correta": false,
+        "porque": "Não exige compromisso, mas é a opção mais cara para uso contínuo e previsível."
+      },
+      {
+        "texto": "Standard Reserved Instances de 3 anos",
+        "correta": true,
+        "porque": "Oferecem o maior desconto das RIs (até 72%) para uso estável e previsível."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": false,
+        "porque": "São baratas, mas podem ser interrompidas, o que a carga não tolera."
+      },
+      {
+        "texto": "Convertible Reserved Instances de 3 anos",
+        "correta": false,
+        "porque": "Dão flexibilidade de troca, mas com desconto menor (até 66%), desnecessária aqui."
+      }
+    ],
+    "explicacao": "Uso estável, contínuo e sem mudanças previstas por longo prazo: Standard RI de 3 anos dá o maior desconto.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A49"
+  },
+  {
+    "id": "D4-x-004",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "multipla",
+    "selecionar": 3,
+    "enunciado": "Quais opções de pagamento a AWS oferece na compra de Reserved Instances Standard ou Convertible? (Selecione TRÊS.)",
+    "alternativas": [
+      {
+        "texto": "Pagamento adiado (Deferred Payment)",
+        "correta": false,
+        "porque": "Não é uma opção de pagamento de Reserved Instances."
+      },
+      {
+        "texto": "All Upfront",
+        "correta": true,
+        "porque": "Paga todo o prazo adiantado e obtém o maior desconto."
+      },
+      {
+        "texto": "Pagamento por lance (bid)",
+        "correta": false,
+        "porque": "Lances eram associados ao modelo antigo de Spot, não a Reserved Instances."
+      },
+      {
+        "texto": "Partial Upfront",
+        "correta": true,
+        "porque": "Paga parte adiantada e o restante em taxa horária reduzida."
+      },
+      {
+        "texto": "Bill-Me-Later",
+        "correta": false,
+        "porque": "Não existe essa modalidade para Reserved Instances."
+      },
+      {
+        "texto": "No Upfront",
+        "correta": true,
+        "porque": "Nada é pago adiantado; o desconto vem na taxa mensal, com o menor desconto das três."
+      }
+    ],
+    "explicacao": "RIs têm 3 opções de pagamento: All Upfront (maior desconto), Partial Upfront e No Upfront (menor desconto), em prazos de 1 ou 3 anos.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A63"
+  },
+  {
+    "id": "D4-x-005",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Qual modelo de preço do Amazon EC2 varia de acordo com a oferta e a demanda de capacidade ociosa da AWS?",
+    "alternativas": [
+      {
+        "texto": "Standard Reserved Instances",
+        "correta": false,
+        "porque": "Têm preço fixo com desconto, definido no momento da compra do compromisso."
+      },
+      {
+        "texto": "On-Demand Instances",
+        "correta": false,
+        "porque": "Têm preço fixo por segundo ou hora, sem variação por oferta e demanda."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": true,
+        "porque": "Usam capacidade ociosa da AWS, com preço que se ajusta gradualmente à oferta e à demanda."
+      },
+      {
+        "texto": "Convertible Reserved Instances",
+        "correta": false,
+        "porque": "Têm preço com desconto fixo durante o prazo de 1 ou 3 anos."
+      }
+    ],
+    "explicacao": "Spot Instances usam capacidade ociosa do EC2, com preço variável e desconto de até 90%, mas podem ser interrompidas com aviso de 2 minutos.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B05"
+  },
+  {
+    "id": "D4-x-006",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma instância do Amazon EC2 é iniciada apenas quando um procedimento ad hoc é necessário. Uma vez iniciada, ela deve ficar disponível até o fim do procedimento, sem risco de interrupção. Qual opção de compra é a MAIS adequada?",
+    "alternativas": [
+      {
+        "texto": "Dedicated Instances",
+        "correta": false,
+        "porque": "Isolam o hardware, mas custam mais e não há requisito de isolamento."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": false,
+        "porque": "Podem ser interrompidas pela AWS, o que o procedimento não tolera."
+      },
+      {
+        "texto": "Reserved Instances",
+        "correta": false,
+        "porque": "Exigem compromisso de 1 ou 3 anos, inadequado para uso esporádico."
+      },
+      {
+        "texto": "On-Demand Instances",
+        "correta": true,
+        "porque": "Não têm compromisso, cobram só pelo tempo de uso e não são interrompidas pela AWS."
+      }
+    ],
+    "explicacao": "Uso esporádico, imprevisível e que não pode ser interrompido: On-Demand.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B61"
+  },
+  {
+    "id": "D4-x-007",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer reduzir custos de computação de longo prazo que incluem AWS Lambda, AWS Fargate e Amazon EC2 em várias Regiões. Qual opção de compra atende a TODOS esses serviços?",
+    "alternativas": [
+      {
+        "texto": "Compute Savings Plans",
+        "correta": true,
+        "porque": "Aplicam o desconto ao EC2 de qualquer família e Região, ao Fargate e ao Lambda."
+      },
+      {
+        "texto": "EC2 Instance Savings Plans",
+        "correta": false,
+        "porque": "Valem só para uma família de instância EC2 em uma Região; não cobrem Lambda nem Fargate."
+      },
+      {
+        "texto": "Reserved Instances",
+        "correta": false,
+        "porque": "Não cobrem AWS Lambda nem AWS Fargate."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": false,
+        "porque": "Não se aplicam ao Lambda e podem ser interrompidas."
+      }
+    ],
+    "explicacao": "Compute Savings Plans são o compromisso mais flexível: cobrem EC2 (qualquer família, tamanho, Região e SO), Fargate e Lambda.",
+    "servicos": [
+      "Savings Plans",
+      "Lambda",
+      "Fargate",
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B84"
+  },
+  {
+    "id": "D4-x-008",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa usar licenças de software existentes, vinculadas a sockets e núcleos físicos (BYOL), e um requisito de conformidade exige um servidor físico dedicado a ela. Qual opção do EC2 atende?",
+    "alternativas": [
+      {
+        "texto": "Dedicated Instances",
+        "correta": false,
+        "porque": "Isolam o hardware, mas não dão visibilidade de sockets e núcleos para licenciamento."
+      },
+      {
+        "texto": "Dedicated Hosts",
+        "correta": true,
+        "porque": "Dão um servidor físico inteiro com visibilidade de sockets e núcleos, atendendo BYOL e conformidade."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": false,
+        "porque": "Rodam em hardware compartilhado e podem ser interrompidas."
+      },
+      {
+        "texto": "On-Demand Capacity Reservations",
+        "correta": false,
+        "porque": "Reservam capacidade em uma AZ, mas não dedicam um servidor físico."
+      }
+    ],
+    "explicacao": "Dedicated Hosts servem para licenças por socket/core/VM (BYOL) e requisitos de conformidade que exigem servidor físico dedicado.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k10#18 (reescrita)"
+  },
+  {
+    "id": "D4-x-009",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai assumir um compromisso de 3 anos com Amazon EC2, mas prevê trocar a família de instâncias durante o período. Qual opção permite trocar a reserva por outra configuração, desde que de valor igual ou maior?",
+    "alternativas": [
+      {
+        "texto": "Standard Reserved Instances",
+        "correta": false,
+        "porque": "Permitem algumas modificações (como AZ e tamanho na mesma família), mas não trocar de família."
+      },
+      {
+        "texto": "EC2 Instance Savings Plans",
+        "correta": false,
+        "porque": "Ficam presos a uma família de instância em uma Região."
+      },
+      {
+        "texto": "Convertible Reserved Instances",
+        "correta": true,
+        "porque": "Podem ser trocadas por outras com família, SO ou tenancy diferentes, se o valor for igual ou maior."
+      },
+      {
+        "texto": "On-Demand Capacity Reservations",
+        "correta": false,
+        "porque": "Não são compromisso de prazo nem dão desconto; apenas reservam capacidade."
+      }
+    ],
+    "explicacao": "Convertible RI troca flexibilidade por desconto menor (até 66% x 72% da Standard): permite trocar atributos por RIs de valor igual ou maior.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "kananinirav-k10#19 (reescrita)"
+  },
+  {
+    "id": "D4-x-010",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma carga de análise de dados roda esporadicamente, é tolerante a falhas e pode ser interrompida sem prejuízo. Qual opção de compra do EC2 oferece o MENOR custo?",
+    "alternativas": [
+      {
+        "texto": "On-Demand Instances",
+        "correta": false,
+        "porque": "Não têm desconto; servem quando a carga não pode ser interrompida."
+      },
+      {
+        "texto": "Reserved Instances",
+        "correta": false,
+        "porque": "Exigem compromisso de 1 ou 3 anos, ruim para uso esporádico."
+      },
+      {
+        "texto": "Dedicated Hosts",
+        "correta": false,
+        "porque": "São a opção mais cara, voltada a licenciamento e conformidade."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": true,
+        "porque": "Dão até 90% de desconto para cargas flexíveis que toleram interrupção."
+      }
+    ],
+    "explicacao": "Cargas flexíveis, tolerantes a falhas e interrompíveis (batch, análise, renderização) são o caso clássico de Spot Instances.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k21#41"
+  },
+  {
+    "id": "D4-x-011",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa que suas instâncias EC2 rodem em hardware não compartilhado com outros clientes da AWS, mas não precisa de visibilidade de sockets e núcleos nem controlar o posicionamento no servidor físico. Qual opção atende com MENOR esforço de gestão?",
+    "alternativas": [
+      {
+        "texto": "Dedicated Instances",
+        "correta": true,
+        "porque": "Rodam em hardware dedicado a uma conta, sem exigir a gestão de um host físico."
+      },
+      {
+        "texto": "Dedicated Hosts",
+        "correta": false,
+        "porque": "Também isolam, mas exigem gerenciar o host e só se justificam por BYOL ou controle de posicionamento."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": false,
+        "porque": "Usam capacidade compartilhada e podem ser interrompidas."
+      },
+      {
+        "texto": "Compute Savings Plans",
+        "correta": false,
+        "porque": "São um modelo de desconto, não garantem isolamento de hardware."
+      }
+    ],
+    "explicacao": "Dedicated Instances: isolamento de hardware sem controle do host. Dedicated Hosts: servidor físico inteiro com visibilidade de sockets/cores para licenças.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-012",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa garantir capacidade do EC2 em uma Availability Zone específica durante um evento de duas semanas, sem assumir compromisso de 1 ou 3 anos. Qual opção atende?",
+    "alternativas": [
+      {
+        "texto": "Standard Reserved Instances zonais",
+        "correta": false,
+        "porque": "Reservam capacidade, mas exigem compromisso de 1 ou 3 anos."
+      },
+      {
+        "texto": "On-Demand Capacity Reservations",
+        "correta": true,
+        "porque": "Reservam capacidade em uma AZ por qualquer duração, sem prazo mínimo, pagando o preço On-Demand."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": false,
+        "porque": "Não garantem capacidade e podem ser interrompidas."
+      },
+      {
+        "texto": "Compute Savings Plans",
+        "correta": false,
+        "porque": "Dão desconto em troca de compromisso de 1 ou 3 anos, mas não reservam capacidade."
+      }
+    ],
+    "explicacao": "Capacity Reservations garantem capacidade em uma AZ sem compromisso de prazo e sem desconto (podem ser combinadas com Savings Plans para ter desconto).",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-013",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais transferências de dados normalmente NÃO são cobradas pela AWS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Entrada de dados da internet para a AWS",
+        "correta": true,
+        "porque": "A transferência de entrada (inbound) da internet é gratuita."
+      },
+      {
+        "texto": "Saída de dados da AWS para a internet",
+        "correta": false,
+        "porque": "A saída (outbound) para a internet é cobrada por GB."
+      },
+      {
+        "texto": "Transferência entre Regiões da AWS",
+        "correta": false,
+        "porque": "Dados trafegados entre Regiões são cobrados."
+      },
+      {
+        "texto": "Tráfego entre instâncias na mesma AZ usando IPs privados",
+        "correta": true,
+        "porque": "Dentro da mesma AZ, por IP privado, a transferência é gratuita."
+      },
+      {
+        "texto": "Transferência entre AZs diferentes da mesma Região",
+        "correta": false,
+        "porque": "O tráfego entre AZs na mesma Região normalmente é cobrado por GB em cada sentido."
+      }
+    ],
+    "explicacao": "Entrada é gratuita; saída para a internet, entre Regiões e entre AZs é cobrada; mesma AZ por IP privado é gratuita. CloudFront ajuda a reduzir custo de saída.",
+    "servicos": [
+      "EC2",
+      "VPC"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-014",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais fatores influenciam o valor cobrado pelo armazenamento de objetos no Amazon S3? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A classe de armazenamento usada pelos objetos",
+        "correta": true,
+        "porque": "Cada classe (Standard, Standard-IA, Glacier etc.) tem preço por GB diferente."
+      },
+      {
+        "texto": "A quantidade de buckets criados e excluídos",
+        "correta": false,
+        "porque": "Criar ou excluir buckets não gera cobrança de armazenamento."
+      },
+      {
+        "texto": "O volume total em GB armazenado",
+        "correta": true,
+        "porque": "O armazenamento é cobrado por GB-mês efetivamente guardado."
+      },
+      {
+        "texto": "O uso da criptografia padrão SSE-S3",
+        "correta": false,
+        "porque": "A criptografia padrão SSE-S3 não tem custo adicional."
+      },
+      {
+        "texto": "O número de volumes EBS da conta",
+        "correta": false,
+        "porque": "Volumes EBS são cobrados no EBS, não afetam o preço do S3."
+      }
+    ],
+    "explicacao": "No S3 você paga pelo GB armazenado conforme a classe, além de requisições, recuperação (em algumas classes) e transferência de saída.",
+    "servicos": [
+      "S3"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k7#3"
+  },
+  {
+    "id": "D4-x-015",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa moveu dados pouco acessados do S3 Standard para o S3 Standard-IA para pagar menos por GB armazenado. Qual cobrança passa a existir que NÃO havia no S3 Standard?",
+    "alternativas": [
+      {
+        "texto": "Cobrança pela entrada de dados vindos da internet",
+        "correta": false,
+        "porque": "A entrada de dados na AWS é gratuita em qualquer classe."
+      },
+      {
+        "texto": "Taxa mensal fixa por bucket criado",
+        "correta": false,
+        "porque": "O S3 não cobra taxa fixa por bucket."
+      },
+      {
+        "texto": "Taxa por GB recuperado (retrieval)",
+        "correta": true,
+        "porque": "Standard-IA tem armazenamento mais barato, mas cobra por GB lido e exige mínimo de 30 dias."
+      },
+      {
+        "texto": "Taxa por objeto monitorado para troca automática de camada",
+        "correta": false,
+        "porque": "Essa taxa de monitoramento é do S3 Intelligent-Tiering, não do Standard-IA."
+      }
+    ],
+    "explicacao": "Classes de acesso infrequente e de arquivamento trocam preço de armazenamento menor por taxa de recuperação e duração mínima de armazenamento.",
+    "servicos": [
+      "S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-016",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa há anos a mesma família de instâncias EC2 na mesma Região e não pretende mudar. Ela quer o MAIOR desconto possível assumindo um compromisso de gasto por hora (US$/h) por 3 anos. Qual opção escolher?",
+    "alternativas": [
+      {
+        "texto": "Compute Savings Plans",
+        "correta": false,
+        "porque": "São mais flexíveis, mas oferecem desconto menor (até 66%)."
+      },
+      {
+        "texto": "Spot Instances",
+        "correta": false,
+        "porque": "Não são compromisso de gasto e podem ser interrompidas."
+      },
+      {
+        "texto": "On-Demand Capacity Reservations",
+        "correta": false,
+        "porque": "Reservam capacidade sem nenhum desconto."
+      },
+      {
+        "texto": "EC2 Instance Savings Plans",
+        "correta": true,
+        "porque": "Dão até 72% de desconto em troca de fixar a família de instância e a Região."
+      }
+    ],
+    "explicacao": "Savings Plans: EC2 Instance (família + Região fixas, até 72%) x Compute (qualquer família/Região, Fargate e Lambda, até 66%).",
+    "servicos": [
+      "Savings Plans",
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-017",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Qual afirmação sobre o AWS Free Tier está correta?",
+    "alternativas": [
+      {
+        "texto": "Alguns serviços têm ofertas sempre gratuitas até um limite mensal de uso",
+        "correta": true,
+        "porque": "Ex.: o AWS Lambda inclui 1 milhão de requisições gratuitas por mês, sem prazo de expiração."
+      },
+      {
+        "texto": "Todos os serviços são gratuitos e ilimitados no primeiro ano",
+        "correta": false,
+        "porque": "As ofertas têm limites de uso e nem todo serviço está incluído."
+      },
+      {
+        "texto": "Exige um compromisso de 1 ano, como as Reserved Instances",
+        "correta": false,
+        "porque": "O Free Tier não exige compromisso de prazo."
+      },
+      {
+        "texto": "Vale apenas para o uso de Spot Instances",
+        "correta": false,
+        "porque": "Abrange diversos serviços, não um modelo de compra do EC2."
+      }
+    ],
+    "explicacao": "O AWS Free Tier oferece uso gratuito limitado: ofertas sempre gratuitas, períodos de avaliação e créditos para novos clientes; acima dos limites, paga-se o preço normal.",
+    "servicos": [
+      "Lambda"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-018",
+    "dominio": 4,
+    "task": "4.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa comprou Reserved Instances em uma de suas contas AWS e quer que instâncias equivalentes em outras contas da empresa também recebam o desconto. Como isso é possível?",
+    "alternativas": [
+      {
+        "texto": "Usando Dedicated Instances nas outras contas",
+        "correta": false,
+        "porque": "Dedicated Instances tratam de isolamento de hardware, não de compartilhar descontos."
+      },
+      {
+        "texto": "Usando o consolidated billing do AWS Organizations",
+        "correta": true,
+        "porque": "Contas da mesma organização compartilham por padrão os descontos de RIs e Savings Plans."
+      },
+      {
+        "texto": "Usando o AWS Cost Explorer",
+        "correta": false,
+        "porque": "Cost Explorer visualiza custos e recomenda reservas, mas não compartilha descontos."
+      },
+      {
+        "texto": "Usando o AWS Budgets",
+        "correta": false,
+        "porque": "Budgets monitora e alerta sobre gastos, mas não aplica descontos entre contas."
+      }
+    ],
+    "explicacao": "No consolidated billing, descontos de RIs e Savings Plans não usados numa conta se aplicam a uso elegível de outras contas da organização (o compartilhamento pode ser desligado).",
+    "servicos": [
+      "Organizations",
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k12#10"
+  },
+  {
+    "id": "D4-x-019",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Em qual Região ficam armazenadas as métricas de cobrança (billing metrics) do Amazon CloudWatch, usadas para criar alarmes de faturamento?",
+    "alternativas": [
+      {
+        "texto": "Na Região em que a conta foi criada",
+        "correta": false,
+        "porque": "A Região de criação da conta não define onde ficam as métricas de cobrança."
+      },
+      {
+        "texto": "Na Região em que cada recurso é executado",
+        "correta": false,
+        "porque": "Os dados de cobrança são globais e centralizados em uma única Região."
+      },
+      {
+        "texto": "us-east-1 (Norte da Virgínia)",
+        "correta": true,
+        "porque": "As métricas de cobrança de todas as Regiões ficam em us-east-1."
+      },
+      {
+        "texto": "us-west-2 (Oregon)",
+        "correta": false,
+        "porque": "Não é a Região que armazena as métricas de cobrança."
+      }
+    ],
+    "explicacao": "Billing metrics do CloudWatch (EstimatedCharges) ficam em us-east-1; é lá que se cria o alarme de cobrança.",
+    "servicos": [
+      "CloudWatch"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A23"
+  },
+  {
+    "id": "D4-x-020",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Com o consolidated billing do AWS Organizations, o uso de todas as contas é somado para alcançar faixas de preço por volume. Qual serviço é um exemplo típico desse benefício?",
+    "alternativas": [
+      {
+        "texto": "AWS IAM",
+        "correta": false,
+        "porque": "O IAM não tem custo, então não há faixa de volume a alcançar."
+      },
+      {
+        "texto": "AWS CloudFormation",
+        "correta": false,
+        "porque": "O CloudFormation não tem custo próprio para recursos da AWS; não há faixa de volume a alcançar."
+      },
+      {
+        "texto": "Amazon SNS",
+        "correta": false,
+        "porque": "O SNS cobra por requisição e entrega sem as faixas de armazenamento por volume que são o exemplo clássico; o caso típico é o S3."
+      },
+      {
+        "texto": "Amazon S3",
+        "correta": true,
+        "porque": "O preço por GB do S3 cai em faixas de volume, e o uso somado das contas atinge faixas mais baratas."
+      }
+    ],
+    "explicacao": "O consolidated billing trata todas as contas como uma só para preços em camadas (ex.: armazenamento S3 e transferência de dados).",
+    "servicos": [
+      "Organizations",
+      "S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A30"
+  },
+  {
+    "id": "D4-x-021",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Qual ferramenta oferece relatórios de utilização e de cobertura de Reserved Instances, permitindo analisar ao longo do tempo quanto das reservas está sendo aproveitado?",
+    "alternativas": [
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": true,
+        "porque": "Traz relatórios de utilização e de cobertura de RIs e Savings Plans com histórico."
+      },
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": false,
+        "porque": "Estima custos de uso futuro; não analisa reservas já compradas."
+      },
+      {
+        "texto": "AWS Price List API",
+        "correta": false,
+        "porque": "Consulta preços publicados dos serviços, não o uso das reservas da conta."
+      },
+      {
+        "texto": "AWS Compute Optimizer",
+        "correta": false,
+        "porque": "Recomenda tamanhos de recursos (rightsizing), sem relatórios de reservas."
+      }
+    ],
+    "explicacao": "Cost Explorer tem relatórios de utilização e cobertura de RIs/SPs; para ser ALERTADO quando ficam abaixo da meta, use AWS Budgets.",
+    "servicos": [
+      "Cost Explorer"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-A37 (reescrita)"
+  },
+  {
+    "id": "D4-x-022",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer definir uma meta percentual de cobertura de Reserved Instances e ser notificada sempre que a cobertura real ficar abaixo dessa meta. Qual serviço atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Faz verificações de boas práticas, mas não permite definir meta de cobertura com alerta."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": true,
+        "porque": "Permite criar orçamentos de cobertura e de utilização de RIs/SPs com alertas por limite."
+      },
+      {
+        "texto": "AWS Cost Anomaly Detection",
+        "correta": false,
+        "porque": "Detecta gastos incomuns com ML, sem metas de cobertura de reservas."
+      },
+      {
+        "texto": "AWS Cost and Usage Report",
+        "correta": false,
+        "porque": "Entrega dados detalhados de cobrança, mas não envia alertas."
+      }
+    ],
+    "explicacao": "AWS Budgets tem tipos de orçamento de custo, uso, utilização e cobertura de RIs/Savings Plans, todos com alertas.",
+    "servicos": [
+      "Budgets"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A59"
+  },
+  {
+    "id": "D4-x-023",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais duas afirmações sobre as cost allocation tags da AWS estão corretas? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Somente as tags definidas pelo usuário precisam ser ativadas antes de aparecer no Cost Explorer",
+        "correta": false,
+        "porque": "As tags geradas pela AWS também precisam ser ativadas."
+      },
+      {
+        "texto": "Todos os recursos precisam ter tags antes que qualquer relatório de custo seja gerado",
+        "correta": false,
+        "porque": "Relatórios de custo funcionam sem tags; elas apenas permitem agrupar os custos."
+      },
+      {
+        "texto": "Uma mesma chave de tag pode ter vários valores no mesmo recurso",
+        "correta": false,
+        "porque": "Cada chave tem um único valor por recurso."
+      },
+      {
+        "texto": "Cada recurso aceita um único valor por chave, e as chaves são únicas naquele recurso",
+        "correta": true,
+        "porque": "Em um recurso, cada chave é única e tem apenas um valor."
+      },
+      {
+        "texto": "Tanto as tags geradas pela AWS quanto as definidas pelo usuário precisam ser ativadas no console de Billing",
+        "correta": true,
+        "porque": "Só depois de ativadas aparecem no Cost Explorer e no Cost and Usage Report."
+      }
+    ],
+    "explicacao": "Cost allocation tags (geradas pela AWS ou definidas pelo usuário) precisam ser ativadas no Billing para aparecerem no Cost Explorer e no CUR.",
+    "servicos": [
+      "Cost Explorer",
+      "Cost and Usage Reports"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-B12"
+  },
+  {
+    "id": "D4-x-024",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Qual recurso permite categorizar e acompanhar os custos da AWS por projeto, departamento ou centro de custo?",
+    "alternativas": [
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": false,
+        "porque": "Estima custos antes da implantação, sem categorizar gastos reais."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Alerta sobre limites de gasto, mas depende de tags para separar por projeto."
+      },
+      {
+        "texto": "Cost allocation tags",
+        "correta": true,
+        "porque": "Rótulos chave-valor nos recursos permitem agrupar e filtrar custos por projeto ou departamento."
+      },
+      {
+        "texto": "AWS Cost Explorer sem filtros",
+        "correta": false,
+        "porque": "Mostra custos por serviço e conta, mas sem tags não separa por projeto."
+      }
+    ],
+    "explicacao": "Cost allocation tags categorizam os custos em nível detalhado (projeto, equipe, ambiente) no Cost Explorer, no Budgets e no CUR.",
+    "servicos": [
+      "Cost Explorer"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B23"
+  },
+  {
+    "id": "D4-x-025",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Uma startup planeja um ambiente híbrido com parte das cargas na AWS e quer estimar os custos ANTES de implantar qualquer recurso. Qual ferramenta deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": false,
+        "porque": "Analisa custos de uso que já aconteceu na conta."
+      },
+      {
+        "texto": "AWS Cost and Usage Report",
+        "correta": false,
+        "porque": "Detalha custos já incorridos, não estimativas."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Monitora gastos reais contra um orçamento."
+      },
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": true,
+        "porque": "Estima o custo de uma arquitetura planejada antes de criar os recursos."
+      }
+    ],
+    "explicacao": "AWS Pricing Calculator: estimar antes de implantar. Cost Explorer, Budgets e CUR trabalham com o uso real.",
+    "servicos": [
+      "Pricing Calculator"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B31"
+  },
+  {
+    "id": "D4-x-026",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Qual ferramenta analisa o uso passado de EC2 da conta e recomenda compras de Reserved Instances, mostrando a economia estimada em relação a continuar no On-Demand?",
+    "alternativas": [
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": true,
+        "porque": "Gera recomendações de RIs e Savings Plans com base no histórico de uso."
+      },
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": false,
+        "porque": "Estima custos de cenários informados manualmente, sem analisar o histórico."
+      },
+      {
+        "texto": "AWS Cost and Usage Report",
+        "correta": false,
+        "porque": "Entrega dados brutos detalhados, sem recomendações de compra."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Alerta sobre gastos, mas não recomenda compras de reservas."
+      }
+    ],
+    "explicacao": "Cost Explorer visualiza o histórico, prevê gastos e recomenda RIs e Savings Plans.",
+    "servicos": [
+      "Cost Explorer"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B39"
+  },
+  {
+    "id": "D4-x-027",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS, sem custo adicional, permite reunir várias contas AWS em uma organização gerenciada centralmente?",
+    "alternativas": [
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Registra e avalia configurações de recursos, não consolida contas."
+      },
+      {
+        "texto": "AWS Organizations",
+        "correta": true,
+        "porque": "Gerencia várias contas de forma central, com consolidated billing e SCPs, sem custo extra."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Monitora métricas e logs, não agrupa contas."
+      },
+      {
+        "texto": "AWS Service Catalog",
+        "correta": false,
+        "porque": "Publica produtos aprovados para uso, não consolida contas."
+      }
+    ],
+    "explicacao": "AWS Organizations é gratuito e oferece gestão centralizada de contas, consolidated billing e políticas como SCPs.",
+    "servicos": [
+      "Organizations"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B43"
+  },
+  {
+    "id": "D4-x-028",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Qual ferramenta da AWS ajuda a visualizar, entender e gerenciar gastos e uso ao longo do tempo por meio de gráficos e filtros?",
+    "alternativas": [
+      {
+        "texto": "AWS Organizations",
+        "correta": false,
+        "porque": "Gerencia contas e consolida cobrança, sem gráficos de análise de gastos."
+      },
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": false,
+        "porque": "Estima custos futuros, não analisa o histórico."
+      },
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": true,
+        "porque": "Exibe gráficos de custo e uso por serviço, conta e tag ao longo do tempo."
+      },
+      {
+        "texto": "AWS Service Catalog",
+        "correta": false,
+        "porque": "Gerencia catálogos de produtos aprovados, não análise de custos."
+      }
+    ],
+    "explicacao": "AWS Cost Explorer é a ferramenta de visualização e análise de custos e uso históricos.",
+    "servicos": [
+      "Cost Explorer"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B58"
+  },
+  {
+    "id": "D4-x-029",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer prever quanto vai gastar na AWS nos próximos meses com base no seu uso histórico. Qual ferramenta deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": false,
+        "porque": "Estima cenários informados manualmente, não projeta o histórico da conta."
+      },
+      {
+        "texto": "AWS Organizations",
+        "correta": false,
+        "porque": "Gerencia contas e consolida a fatura, sem previsão de gastos."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Aponta economias e boas práticas, mas não projeta gastos futuros."
+      },
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": true,
+        "porque": "Gera previsões de custo para os próximos meses com base no uso histórico da conta."
+      }
+    ],
+    "explicacao": "A previsão (forecast) do Cost Explorer projeta gastos futuros com base no histórico da conta.",
+    "servicos": [
+      "Cost Explorer"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B86"
+  },
+  {
+    "id": "D4-x-030",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Qual ferramenta entrega os dados MAIS detalhados de custo e uso da conta, com itens de linha por hora e por recurso, em um bucket do Amazon S3?",
+    "alternativas": [
+      {
+        "texto": "AWS Cost and Usage Report",
+        "correta": true,
+        "porque": "É o conjunto de dados de cobrança mais granular, entregue no S3 para análise (ex.: com Athena)."
+      },
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": false,
+        "porque": "Mostra gráficos e resumos, mas com granularidade menor que o CUR."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Acompanha gastos contra limites e alerta, sem dados linha a linha."
+      },
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": false,
+        "porque": "Gera estimativas de custo, não dados reais de uso."
+      }
+    ],
+    "explicacao": "O Cost and Usage Report (CUR) é a fonte mais detalhada de dados de cobrança, incluindo tags ativadas, por hora e por recurso.",
+    "servicos": [
+      "Cost and Usage Reports",
+      "S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k8#44 (reescrita)"
+  },
+  {
+    "id": "D4-x-031",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer que, ao ultrapassar o limite de gasto definido, a AWS aplique automaticamente uma política IAM ou SCP que bloqueie novos recursos, ou pare instâncias EC2 específicas. Qual recurso atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": false,
+        "porque": "Visualiza e prevê custos, mas não executa ações automáticas."
+      },
+      {
+        "texto": "Ações do AWS Budgets (budget actions)",
+        "correta": true,
+        "porque": "Executam ações como aplicar políticas IAM/SCP ou parar instâncias EC2 e RDS quando o limite é atingido."
+      },
+      {
+        "texto": "AWS Cost Anomaly Detection",
+        "correta": false,
+        "porque": "Alerta sobre gastos incomuns, sem aplicar políticas automaticamente."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Recomenda otimizações, mas não reage a limites de orçamento."
+      }
+    ],
+    "explicacao": "AWS Budgets vai além de alertas: as budget actions aplicam políticas IAM/SCP ou param recursos EC2/RDS ao atingir o limite.",
+    "servicos": [
+      "Budgets"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-032",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer ser alertada sobre picos de gasto incomuns sem precisar definir limites fixos, usando machine learning para identificar a causa raiz. Qual serviço atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Exige que você defina os limites que disparam os alertas."
+      },
+      {
+        "texto": "AWS Cost and Usage Report",
+        "correta": false,
+        "porque": "Entrega dados detalhados, sem detectar nem alertar sobre anomalias."
+      },
+      {
+        "texto": "AWS Cost Anomaly Detection",
+        "correta": true,
+        "porque": "Usa ML para detectar gastos fora do padrão e apontar a causa raiz, com alertas."
+      },
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": false,
+        "porque": "Estima custos futuros, não monitora o gasto real."
+      }
+    ],
+    "explicacao": "Cost Anomaly Detection monitora gastos com ML e alerta sobre anomalias; Budgets alerta sobre limites definidos por você.",
+    "servicos": [
+      "Cost Anomaly Detection"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-033",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais afirmações sobre o consolidated billing do AWS Organizations estão corretas? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A management account é responsável por pagar as cobranças de todas as contas-membro",
+        "correta": true,
+        "porque": "A fatura consolidada é paga pela management account."
+      },
+      {
+        "texto": "O recurso tem uma taxa mensal adicional por conta-membro",
+        "correta": false,
+        "porque": "Consolidated billing não tem custo adicional."
+      },
+      {
+        "texto": "Cada conta-membro precisa pagar separadamente sua própria fatura",
+        "correta": false,
+        "porque": "O pagamento é centralizado na management account."
+      },
+      {
+        "texto": "O compartilhamento de descontos de RIs e Savings Plans pode ser desativado",
+        "correta": true,
+        "porque": "O compartilhamento vem ligado, mas pode ser desligado na management account."
+      },
+      {
+        "texto": "Cada conta-membro pode ver as faturas de todas as outras contas",
+        "correta": false,
+        "porque": "A visão consolidada é da management account; contas-membro veem só os próprios custos."
+      }
+    ],
+    "explicacao": "Consolidated billing: uma fatura paga pela management account, sem custo extra, com descontos por volume e compartilhamento (desativável) de RIs e Savings Plans.",
+    "servicos": [
+      "Organizations"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-034",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer que os custos de produção e de desenvolvimento fiquem totalmente isolados, sem depender da marcação correta de cada recurso. Qual abordagem é a MAIS indicada?",
+    "alternativas": [
+      {
+        "texto": "Aplicar cost allocation tags por ambiente",
+        "correta": false,
+        "porque": "Ajuda, mas depende de todos os recursos estarem marcados corretamente."
+      },
+      {
+        "texto": "Criar VPCs separadas na mesma conta",
+        "correta": false,
+        "porque": "VPCs isolam rede, não separam a cobrança."
+      },
+      {
+        "texto": "Usar filtros por serviço no AWS Cost Explorer",
+        "correta": false,
+        "porque": "Os dois ambientes usam os mesmos serviços, então o filtro não separa os custos."
+      },
+      {
+        "texto": "Usar contas AWS separadas em uma organização",
+        "correta": true,
+        "porque": "Cada conta tem custos próprios, visíveis por conta na fatura consolidada."
+      }
+    ],
+    "explicacao": "Contas separadas (no AWS Organizations) são a forma mais forte de isolar custos; tags complementam para granularidade dentro da conta.",
+    "servicos": [
+      "Organizations"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k18#17 (reescrita)"
+  },
+  {
+    "id": "D4-x-035",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma startup com orçamento apertado quer ser notificada quando a fatura mensal da AWS ultrapassar US$ 2.000. Quais opções atendem? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Criar um alarme de cobrança no Amazon CloudWatch que notifique via Amazon SNS",
+        "correta": true,
+        "porque": "Alarmes sobre a métrica de cobrança estimada disparam notificações SNS."
+      },
+      {
+        "texto": "Configurar o Amazon SES para enviar a fatura diariamente por e-mail",
+        "correta": false,
+        "porque": "O SES envia e-mails, mas não monitora limites de gasto."
+      },
+      {
+        "texto": "Criar um orçamento no AWS Budgets com alerta no limite",
+        "correta": true,
+        "porque": "Budgets alerta quando o custo real ou previsto ultrapassa o limite."
+      },
+      {
+        "texto": "Configurar o AWS CloudTrail para excluir recursos ao atingir o limite",
+        "correta": false,
+        "porque": "CloudTrail registra chamadas de API; não monitora gastos nem age sobre eles."
+      },
+      {
+        "texto": "Gerar uma previsão mensal no AWS Cost Explorer",
+        "correta": false,
+        "porque": "A previsão ajuda a planejar, mas não envia alerta ao ultrapassar o valor."
+      }
+    ],
+    "explicacao": "Para alertar sobre gastos: AWS Budgets ou alarme de cobrança do CloudWatch (métricas em us-east-1) com SNS.",
+    "servicos": [
+      "Budgets",
+      "CloudWatch",
+      "SNS"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k1#20"
+  },
+  {
+    "id": "D4-x-036",
+    "dominio": 4,
+    "task": "4.2",
+    "tipo": "unica",
+    "enunciado": "Qual é um exemplo de cost allocation tag GERADA PELA AWS, e não definida pelo usuário?",
+    "alternativas": [
+      {
+        "texto": "aws:createdBy, que identifica quem criou o recurso",
+        "correta": true,
+        "porque": "Tags com prefixo aws: são criadas pela AWS; createdBy registra o criador do recurso."
+      },
+      {
+        "texto": "CostCenter, definida pela equipe financeira",
+        "correta": false,
+        "porque": "É uma tag definida pelo usuário."
+      },
+      {
+        "texto": "Project, aplicada por uma política de tags",
+        "correta": false,
+        "porque": "Mesmo imposta por política, a chave é definida pelo usuário."
+      },
+      {
+        "texto": "Name, preenchida ao criar a instância no console",
+        "correta": false,
+        "porque": "A tag Name é definida pelo usuário, ainda que o console a sugira."
+      }
+    ],
+    "explicacao": "Tags geradas pela AWS usam o prefixo aws: (ex.: aws:createdBy); as demais são definidas pelo usuário. Ambos os tipos precisam ser ativados no Billing.",
+    "servicos": [
+      "Cost Explorer"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-037",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Qual recurso da AWS mostra a saúde geral dos serviços da AWS e alerta os clientes sobre eventos que afetam os recursos da própria conta?",
+    "alternativas": [
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Registra e avalia configurações de recursos, não a saúde dos serviços da AWS."
+      },
+      {
+        "texto": "AWS Health Dashboard",
+        "correta": true,
+        "porque": "Mostra o status dos serviços e eventos personalizados que afetam a conta; dados também disponíveis pela AWS Health API."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Monitora métricas dos seus recursos, não incidentes dos serviços da AWS."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Faz verificações de boas práticas, não informa indisponibilidade de serviços."
+      }
+    ],
+    "explicacao": "AWS Health Dashboard (sucessor do Personal e do Service Health Dashboard) informa saúde dos serviços e eventos da conta; a AWS Health API permite automação.",
+    "servicos": [
+      "Health Dashboard"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A12"
+  },
+  {
+    "id": "D4-x-038",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Qual oferta da AWS disponibiliza especialistas da própria AWS, contratados em projetos pagos, para ajudar organizações a alcançar resultados de negócio específicos na adoção da nuvem?",
+    "alternativas": [
+      {
+        "texto": "AWS Managed Services",
+        "correta": false,
+        "porque": "Opera a infraestrutura do cliente de forma contínua; não é o foco de projetos de adoção e está fora do escopo da prova."
+      },
+      {
+        "texto": "AWS Enterprise Support",
+        "correta": false,
+        "porque": "É um plano de suporte com TAM, não um serviço de consultoria por projeto."
+      },
+      {
+        "texto": "AWS Professional Services",
+        "correta": true,
+        "porque": "É a equipe global de especialistas da AWS que atua em projetos pagos de adoção e migração."
+      },
+      {
+        "texto": "AWS Partner Network",
+        "correta": false,
+        "porque": "Reúne empresas parceiras terceiras, não especialistas da própria AWS."
+      }
+    ],
+    "explicacao": "AWS Professional Services: consultores da AWS em projetos pagos. APN: parceiros terceiros. Solutions architects da AWS também orientam clientes no desenho de soluções.",
+    "servicos": [
+      "Professional Services"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A15"
+  },
+  {
+    "id": "D4-x-039",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Um cliente quer iniciar 100 instâncias EC2, número que excede a cota padrão da conta. O que ele deve fazer?",
+    "alternativas": [
+      {
+        "texto": "Habilitar enhanced networking nas instâncias",
+        "correta": false,
+        "porque": "Melhora o desempenho de rede, mas não altera cotas."
+      },
+      {
+        "texto": "Usar o AWS Trusted Advisor para aumentar a cota",
+        "correta": false,
+        "porque": "Trusted Advisor só monitora o uso das cotas; não as aumenta."
+      },
+      {
+        "texto": "Aguardar, pois a AWS eleva a cota automaticamente",
+        "correta": false,
+        "porque": "O aumento precisa ser solicitado pelo cliente."
+      },
+      {
+        "texto": "Pedir aumento pelo Service Quotas ou no AWS Support Center",
+        "correta": true,
+        "porque": "Aumentos de cota são solicitados pelo Service Quotas ou por um caso no Support Center, inclusive no plano Basic."
+      }
+    ],
+    "explicacao": "Cotas (limites de serviço) são aumentadas sob solicitação via Service Quotas ou caso no AWS Support Center.",
+    "servicos": [
+      "Service Quotas",
+      "AWS Support"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A43"
+  },
+  {
+    "id": "D4-x-040",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Qual é o plano do AWS Support de MENOR custo que inclui acesso programático à AWS Support API?",
+    "alternativas": [
+      {
+        "texto": "AWS Business Support+",
+        "correta": true,
+        "porque": "É o plano mais barato com Support API, casos ilimitados, Trusted Advisor completo e resposta em menos de 30 min para sistema crítico fora do ar."
+      },
+      {
+        "texto": "Basic",
+        "correta": false,
+        "porque": "É gratuito, mas não inclui a AWS Support API nem casos técnicos."
+      },
+      {
+        "texto": "AWS Enterprise Support",
+        "correta": false,
+        "porque": "Inclui a Support API, mas custa mais (mínimo de US$ 5.000/mês)."
+      },
+      {
+        "texto": "AWS Unified Operations",
+        "correta": false,
+        "porque": "É a camada mais alta e cara; inclui a API, mas não é a de menor custo."
+      }
+    ],
+    "explicacao": "Na nomenclatura atual (Basic, Business Support+, Enterprise, Unified Operations), Business Support+ é o primeiro com Support API.",
+    "servicos": [
+      "AWS Support"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A52 (reescrita)"
+  },
+  {
+    "id": "D4-x-041",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer um Technical Account Manager (TAM) designado e o AWS Security Incident Response incluído no plano de suporte, pelo MENOR custo. Qual plano deve escolher?",
+    "alternativas": [
+      {
+        "texto": "AWS Business Support+",
+        "correta": false,
+        "porque": "Não inclui TAM designado nem o AWS Security Incident Response."
+      },
+      {
+        "texto": "AWS Enterprise Support",
+        "correta": true,
+        "porque": "É o plano de menor custo com TAM designado, resposta em 15 min para produção crítica e Security Incident Response."
+      },
+      {
+        "texto": "Basic",
+        "correta": false,
+        "porque": "Não oferece casos técnicos, TAM nem resposta a incidentes."
+      },
+      {
+        "texto": "AWS Unified Operations",
+        "correta": false,
+        "porque": "Também inclui TAM, mas é a camada mais cara, acima do Enterprise."
+      }
+    ],
+    "explicacao": "Enterprise Support: TAM designado, 15 min para caso crítico de produção, Security Incident Response e revisões estratégicas. Unified Operations acrescenta mais especialistas designados.",
+    "servicos": [
+      "AWS Support"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A53 (reescrita)"
+  },
+  {
+    "id": "D4-x-042",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "No AWS Partner Network (APN), qual tipo de parceiro oferece produtos de software (de ISVs, SaaS e ferramentas de segurança e de gestão) que rodam na AWS ou se integram a ela?",
+    "alternativas": [
+      {
+        "texto": "AWS Professional Services",
+        "correta": false,
+        "porque": "É a consultoria da própria AWS, não parceiros que vendem software."
+      },
+      {
+        "texto": "Parceiros de serviços (consultorias e system integrators)",
+        "correta": false,
+        "porque": "São consultorias e system integrators que prestam serviços, não fornecedores de software."
+      },
+      {
+        "texto": "Parceiros de software (ISVs e fornecedores de SaaS)",
+        "correta": true,
+        "porque": "São ISVs e fornecedores de software, SaaS e ferramentas que rodam na AWS ou se integram a ela."
+      },
+      {
+        "texto": "Technical Account Manager",
+        "correta": false,
+        "porque": "É o contato técnico designado no Enterprise Support, não um tipo de parceiro."
+      }
+    ],
+    "explicacao": "APN: parceiros de software (ISVs, SaaS; antes chamados Technology Partners) x parceiros de serviços (consultorias, system integrators, MSPs; antes Consulting Partners).",
+    "servicos": [
+      "APN"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B14"
+  },
+  {
+    "id": "D4-x-043",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Uma instância EC2 roda sem parar há mais de 30 dias e o custo mensal subiu muito. O responsável quer identificar recursos subutilizados e confirmar se o ambiente segue as boas práticas da AWS. Qual serviço atende aos dois objetivos?",
+    "alternativas": [
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Mostra métricas de uso, mas não compara o ambiente com boas práticas."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Avalia configurações contra regras, mas não recomenda economia de custos."
+      },
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": false,
+        "porque": "Mostra a evolução do custo, mas não verifica boas práticas."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": true,
+        "porque": "Aponta instâncias subutilizadas e verifica boas práticas de custo, segurança, performance e mais."
+      }
+    ],
+    "explicacao": "Trusted Advisor faz verificações automáticas de boas práticas, incluindo otimização de custos (ex.: instâncias EC2 ociosas).",
+    "servicos": [
+      "Trusted Advisor"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B40"
+  },
+  {
+    "id": "D4-x-044",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "O AWS Trusted Advisor apresenta verificações de boas práticas em quais destas categorias? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Documentação",
+        "correta": false,
+        "porque": "Não é uma categoria do Trusted Advisor."
+      },
+      {
+        "texto": "Limites de serviço (Service Limits)",
+        "correta": true,
+        "porque": "Alerta quando o uso se aproxima das cotas de serviço."
+      },
+      {
+        "texto": "Elasticidade",
+        "correta": false,
+        "porque": "Não é uma categoria do Trusted Advisor."
+      },
+      {
+        "texto": "Gerenciamento de mudanças",
+        "correta": false,
+        "porque": "Não é uma categoria do Trusted Advisor."
+      },
+      {
+        "texto": "Otimização de custos",
+        "correta": true,
+        "porque": "Identifica recursos ociosos ou subutilizados e oportunidades de economia."
+      }
+    ],
+    "explicacao": "Categorias do Trusted Advisor: Cost Optimization, Performance, Security, Fault Tolerance, Service Limits e Operational Excellence.",
+    "servicos": [
+      "Trusted Advisor"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B42"
+  },
+  {
+    "id": "D4-x-045",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "multipla",
+    "selecionar": 3,
+    "enunciado": "Quais recursos estão incluídos no plano Basic do AWS Support, disponível para todos os clientes? (Selecione TRÊS.)",
+    "alternativas": [
+      {
+        "texto": "Atendimento 24/7 para dúvidas de conta e cobrança",
+        "correta": true,
+        "porque": "O Basic inclui atendimento ao cliente para conta e cobrança, além de pedidos de aumento de cota."
+      },
+      {
+        "texto": "Casos técnicos com Cloud Support Engineers",
+        "correta": false,
+        "porque": "Casos técnicos começam no Business Support+."
+      },
+      {
+        "texto": "Documentação, whitepapers e AWS re:Post",
+        "correta": true,
+        "porque": "Esses recursos de autoatendimento são gratuitos para todos."
+      },
+      {
+        "texto": "Technical Account Manager (TAM) designado",
+        "correta": false,
+        "porque": "TAM é exclusivo do Enterprise Support e do Unified Operations."
+      },
+      {
+        "texto": "Verificações principais do AWS Trusted Advisor",
+        "correta": true,
+        "porque": "O Basic inclui as verificações principais; o conjunto completo vem no Business Support+."
+      },
+      {
+        "texto": "Acesso à AWS Support API",
+        "correta": false,
+        "porque": "A Support API exige Business Support+ ou superior."
+      }
+    ],
+    "explicacao": "Basic: conta e cobrança 24/7, aumento de cotas, documentação, whitepapers, re:Post, AWS Health Dashboard e verificações principais do Trusted Advisor; sem casos técnicos.",
+    "servicos": [
+      "AWS Support",
+      "Trusted Advisor"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-046",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Um desenvolvedor no plano Basic quer tirar dúvidas técnicas com a comunidade e com especialistas, em um serviço de perguntas e respostas mantido pela AWS. O que ele deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS re:Post",
+        "correta": true,
+        "porque": "É a comunidade gerenciada de perguntas e respostas da AWS, aberta a todos e sem custo."
+      },
+      {
+        "texto": "Technical Account Manager",
+        "correta": false,
+        "porque": "Só está disponível nos planos Enterprise e Unified Operations."
+      },
+      {
+        "texto": "AWS Prescriptive Guidance",
+        "correta": false,
+        "porque": "Publica estratégias e padrões prontos, não é um fórum de perguntas."
+      },
+      {
+        "texto": "AWS Professional Services",
+        "correta": false,
+        "porque": "É consultoria paga por projeto, não um canal de dúvidas da comunidade."
+      }
+    ],
+    "explicacao": "AWS re:Post é o fórum de perguntas e respostas da AWS (substituiu os antigos AWS Forums) e inclui o Knowledge Center.",
+    "servicos": [
+      "re:Post"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k11#42 (reescrita)"
+  },
+  {
+    "id": "D4-x-047",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Uma equipe procura estratégias, guias e padrões testados pela AWS e por parceiros para acelerar projetos de migração e modernização. Qual recurso atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Knowledge Center",
+        "correta": false,
+        "porque": "Reúne respostas às dúvidas mais frequentes de clientes ao suporte, não guias de migração."
+      },
+      {
+        "texto": "AWS Prescriptive Guidance",
+        "correta": true,
+        "porque": "Oferece estratégias, guias e padrões validados para migração, modernização e otimização."
+      },
+      {
+        "texto": "AWS Health Dashboard",
+        "correta": false,
+        "porque": "Informa a saúde dos serviços e eventos da conta."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Fornece relatórios de conformidade e acordos, não guias técnicos."
+      }
+    ],
+    "explicacao": "Prescriptive Guidance: estratégias e padrões prontos. Knowledge Center: respostas a perguntas frequentes. Whitepapers, documentação e blogs completam as fontes técnicas.",
+    "servicos": [
+      "Prescriptive Guidance"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-048",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa está recebendo spam e tentativas de ataque vindas de endereços IP que pertencem à AWS. O que ela deve fazer?",
+    "alternativas": [
+      {
+        "texto": "Habilitar o AWS Shield Advanced na própria conta",
+        "correta": false,
+        "porque": "Protege contra DDoS, mas não comunica à AWS o abuso cometido por outro cliente."
+      },
+      {
+        "texto": "Registrar o problema no AWS Health Dashboard",
+        "correta": false,
+        "porque": "O Health Dashboard só informa eventos; não recebe denúncias."
+      },
+      {
+        "texto": "Denunciar o abuso à equipe AWS Trust & Safety",
+        "correta": true,
+        "porque": "É a equipe que recebe denúncias de uso abusivo de recursos da AWS, como spam e ataques."
+      },
+      {
+        "texto": "Pedir a um solutions architect da AWS que bloqueie a origem",
+        "correta": false,
+        "porque": "Solutions architects orientam o desenho de soluções, não tratam denúncias de abuso."
+      }
+    ],
+    "explicacao": "Abuso vindo de recursos da AWS (spam, varredura, DDoS, conteúdo ilegal) deve ser denunciado ao AWS Trust & Safety.",
+    "servicos": [
+      "Trust & Safety"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-049",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer comprar software de terceiros que roda na AWS, pagar por ele na própria fatura da AWS e controlar centralmente quais produtos e licenças (entitlements) as equipes podem usar. Qual recurso atende?",
+    "alternativas": [
+      {
+        "texto": "AWS Service Catalog",
+        "correta": false,
+        "porque": "Publica produtos internos aprovados, mas não vende software de terceiros."
+      },
+      {
+        "texto": "AWS License Manager",
+        "correta": false,
+        "porque": "Acompanha o uso de licenças, mas não é um canal de compra de software."
+      },
+      {
+        "texto": "AWS Professional Services",
+        "correta": false,
+        "porque": "É consultoria da AWS, não loja de software."
+      },
+      {
+        "texto": "AWS Marketplace",
+        "correta": true,
+        "porque": "Catálogo de software de terceiros com cobrança na fatura AWS, gestão de entitlements e Private Marketplace para governança."
+      }
+    ],
+    "explicacao": "AWS Marketplace: comprar software de terceiros com cobrança consolidada, controle de licenças (entitlement) e governança via Private Marketplace.",
+    "servicos": [
+      "Marketplace"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D4-x-050",
+    "dominio": 4,
+    "task": "4.3",
+    "tipo": "unica",
+    "enunciado": "Uma consultoria (system integrator) que ajuda clientes a migrar para a AWS quer acesso a treinamentos, eventos e programas de incentivo da AWS e ser encontrada por novos clientes. O que ela deve fazer?",
+    "alternativas": [
+      {
+        "texto": "Ingressar no AWS Partner Network (APN)",
+        "correta": true,
+        "porque": "O APN oferece treinamento, benefícios de marketing, eventos, financiamento e visibilidade para parceiros."
+      },
+      {
+        "texto": "Contratar o AWS Professional Services",
+        "correta": false,
+        "porque": "É a consultoria da própria AWS; não dá benefícios de parceiro."
+      },
+      {
+        "texto": "Assinar o AWS Enterprise Support",
+        "correta": false,
+        "porque": "É um plano de suporte técnico, não um programa de parceiros."
+      },
+      {
+        "texto": "Publicar respostas no AWS re:Post",
+        "correta": false,
+        "porque": "Contribui com a comunidade, mas não dá benefícios de parceiro."
+      }
+    ],
+    "explicacao": "APN reúne parceiros de serviços (system integrators, MSPs) e parceiros de software (ISVs), com benefícios como treinamento, eventos, descontos e marketing.",
+    "servicos": [
+      "APN"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  }
+]
