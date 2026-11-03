@@ -1,8 +1,9 @@
 # Simulados AWS Certified Cloud Practitioner (CLF-C02)
 
-Banco de questões em português, revisado e alinhado ao **[Exam Guide CLF-C02 v1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html)** (29/10/2026), com 6 simulados completos sem repetição.
+**▶ Abrir o simulador:** https://orugian.github.io/simulados-aws-cloud-practitioner/
 
-> **Status:** o banco de questões está pronto. A interface HTML (`index.html`) é a próxima etapa.
+Ou offline: baixe o repositório (Code → Download ZIP), extraia e dê dois cliques em `index.html`. Não precisa instalar nada.
+Banco de questões em português, revisado e alinhado ao **[Exam Guide CLF-C02 v1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html)** (29/10/2026), com 6 simulados completos sem repetição.
 
 ## Banco de questões
 
