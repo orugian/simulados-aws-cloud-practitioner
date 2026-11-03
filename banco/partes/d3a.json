@@ -1,0 +1,1884 @@
+[
+  {
+    "id": "D3-a-001",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Em qual modelo de serviço de computação em nuvem se enquadram as instâncias Amazon EC2?",
+    "alternativas": [
+      {
+        "texto": "Infrastructure as a Service (IaaS)",
+        "correta": true,
+        "porque": "O EC2 entrega servidores virtuais, rede e armazenamento; o cliente gerencia SO, software e dados."
+      },
+      {
+        "texto": "Platform as a Service (PaaS)",
+        "correta": false,
+        "porque": "No PaaS o provedor gerencia SO e runtime (ex.: Elastic Beanstalk); no EC2 o SO é do cliente."
+      },
+      {
+        "texto": "Software as a Service (SaaS)",
+        "correta": false,
+        "porque": "SaaS é um software pronto consumido pelo usuário final, não capacidade de computação bruta."
+      },
+      {
+        "texto": "Function as a Service (FaaS)",
+        "correta": false,
+        "porque": "FaaS executa funções acionadas por eventos (ex.: Lambda), sem servidores visíveis ao cliente."
+      }
+    ],
+    "explicacao": "IaaS fornece blocos básicos de infraestrutura (computação, rede, armazenamento) com o maior controle para o cliente; EC2 é o exemplo clássico.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A18"
+  },
+  {
+    "id": "D3-a-002",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "No modelo Platform as a Service (PaaS), qual item normalmente continua sob gestão do cliente?",
+    "alternativas": [
+      {
+        "texto": "Patches do sistema operacional e do runtime",
+        "correta": false,
+        "porque": "No PaaS o provedor mantém o SO e o runtime da plataforma."
+      },
+      {
+        "texto": "Código da aplicação e seus dados",
+        "correta": true,
+        "porque": "No PaaS o cliente se concentra na aplicação que implanta e nos dados que ela usa."
+      },
+      {
+        "texto": "Hardware físico dos servidores",
+        "correta": false,
+        "porque": "O hardware é responsabilidade do provedor em todos os modelos de nuvem (IaaS, PaaS e SaaS)."
+      },
+      {
+        "texto": "Camada de virtualização (hypervisor)",
+        "correta": false,
+        "porque": "A virtualização é gerenciada pelo provedor, inclusive no IaaS."
+      }
+    ],
+    "explicacao": "Quanto mais alto o modelo (IaaS → PaaS → SaaS), menos o cliente gerencia: no PaaS ele cuida basicamente da aplicação e dos dados.",
+    "servicos": [
+      "AWS Elastic Beanstalk"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-003",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Qual modelo de serviço de computação em nuvem um produto de e-mail web como o Gmail representa?",
+    "alternativas": [
+      {
+        "texto": "Platform as a Service (PaaS)",
+        "correta": false,
+        "porque": "PaaS oferece uma plataforma para o cliente implantar o próprio código, não um aplicativo pronto."
+      },
+      {
+        "texto": "Function as a Service (FaaS)",
+        "correta": false,
+        "porque": "FaaS executa funções do cliente acionadas por eventos; o usuário de e-mail não implanta código."
+      },
+      {
+        "texto": "Software as a Service (SaaS)",
+        "correta": true,
+        "porque": "O usuário consome um aplicativo completo, gerenciado pelo provedor, sem cuidar de infraestrutura ou plataforma."
+      },
+      {
+        "texto": "Infrastructure as a Service (IaaS)",
+        "correta": false,
+        "porque": "IaaS entrega servidores, rede e armazenamento para o cliente montar a própria solução."
+      }
+    ],
+    "explicacao": "SaaS é o software pronto entregue pela internet: o provedor gerencia tudo e o cliente apenas usa a aplicação.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "usuario-B34"
+  },
+  {
+    "id": "D3-a-004",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Os servidores web de uma empresa rodam no Amazon EC2 e chamam uma API RESTful que continua em execução no data center on-premises da empresa. Qual modelo de implantação descreve essa configuração?",
+    "alternativas": [
+      {
+        "texto": "Arquitetura serverless",
+        "correta": false,
+        "porque": "Serverless dispensa gerenciar servidores; aqui há instâncias EC2 e servidores próprios on-premises."
+      },
+      {
+        "texto": "Software as a Service (SaaS)",
+        "correta": false,
+        "porque": "SaaS é um modelo de serviço de software pronto, não a combinação de nuvem com data center próprio."
+      },
+      {
+        "texto": "Platform as a Service (PaaS)",
+        "correta": false,
+        "porque": "PaaS é um modelo de serviço; não descreve a integração entre nuvem e on-premises."
+      },
+      {
+        "texto": "Nuvem híbrida",
+        "correta": true,
+        "porque": "Parte da carga roda na AWS e parte no data center on-premises, conectadas entre si."
+      }
+    ],
+    "explicacao": "Implantação híbrida conecta recursos na nuvem a infraestrutura on-premises, algo comum em migrações graduais ou por requisitos de latência e regulação.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A51"
+  },
+  {
+    "id": "D3-a-005",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Qual framework de desenvolvimento permite definir recursos de nuvem como código em linguagens como TypeScript ou Python e provisioná-los por meio do AWS CloudFormation?",
+    "alternativas": [
+      {
+        "texto": "AWS Cloud Development Kit (AWS CDK)",
+        "correta": true,
+        "porque": "O CDK usa linguagens de programação para definir a infraestrutura e a sintetiza em templates do CloudFormation."
+      },
+      {
+        "texto": "AWS CLI",
+        "correta": false,
+        "porque": "A CLI executa comandos pontuais ou scripts, mas não é um framework de IaC que gera templates do CloudFormation."
+      },
+      {
+        "texto": "AWS CodeBuild",
+        "correta": false,
+        "porque": "O CodeBuild compila e testa código em pipelines; não define recursos de infraestrutura."
+      },
+      {
+        "texto": "AWS Systems Manager",
+        "correta": false,
+        "porque": "O Systems Manager gerencia e automatiza operações em instâncias, não define infraestrutura como código."
+      }
+    ],
+    "explicacao": "AWS CDK = IaC em linguagens de programação familiares; o resultado é implantado como stacks do CloudFormation.",
+    "servicos": [
+      "AWS CDK",
+      "AWS CloudFormation"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B82"
+  },
+  {
+    "id": "D3-a-006",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Qual mecanismo permite que desenvolvedores acessem serviços da AWS diretamente a partir do código de suas aplicações?",
+    "alternativas": [
+      {
+        "texto": "AWS Management Console",
+        "correta": false,
+        "porque": "O Console é uma interface web para uso interativo por pessoas, não por código de aplicação."
+      },
+      {
+        "texto": "AWS SDKs",
+        "correta": true,
+        "porque": "Os SDKs oferecem bibliotecas em várias linguagens (Python, Java, JavaScript etc.) que chamam as APIs da AWS a partir do código."
+      },
+      {
+        "texto": "AWS CodePipeline",
+        "correta": false,
+        "porque": "O CodePipeline orquestra pipelines de CI/CD, não é uma biblioteca para chamar serviços."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "O Config registra e avalia configurações de recursos; não é um meio de acesso programático."
+      }
+    ],
+    "explicacao": "SDKs são bibliotecas por linguagem de programação que encapsulam as chamadas às APIs da AWS dentro das aplicações.",
+    "servicos": [
+      "AWS SDK"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k9#17"
+  },
+  {
+    "id": "D3-a-007",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Qual serviço permite descrever a infraestrutura em templates JSON ou YAML e provisioná-la de forma automatizada como uma stack?",
+    "alternativas": [
+      {
+        "texto": "AWS CodePipeline",
+        "correta": false,
+        "porque": "O CodePipeline automatiza etapas de entrega de software; pode acionar o CloudFormation, mas não define os recursos."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "O Config audita configurações existentes; não cria recursos a partir de templates."
+      },
+      {
+        "texto": "AWS CloudFormation",
+        "correta": true,
+        "porque": "O CloudFormation provisiona e atualiza recursos a partir de templates declarativos, agrupados em stacks."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "O CloudWatch monitora métricas e logs; não provisiona infraestrutura."
+      }
+    ],
+    "explicacao": "AWS CloudFormation é o serviço de infraestrutura como código (IaC) da AWS: templates declarativos viram stacks de recursos.",
+    "servicos": [
+      "AWS CloudFormation"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k18#12 (reescrita)"
+  },
+  {
+    "id": "D3-a-008",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa recriar com frequência ambientes idênticos de desenvolvimento, teste e produção em várias Regiões, sem erros manuais. Qual abordagem é a MELHOR?",
+    "alternativas": [
+      {
+        "texto": "Criar cada ambiente pelo Management Console seguindo um checklist",
+        "correta": false,
+        "porque": "Processos manuais no Console são lentos, sujeitos a erro e difíceis de reproduzir com fidelidade."
+      },
+      {
+        "texto": "Digitar comandos da AWS CLI manualmente em cada ambiente",
+        "correta": false,
+        "porque": "Comandos digitados um a um ainda são uma operação pontual e propensa a divergências entre ambientes."
+      },
+      {
+        "texto": "Abrir um caso no AWS Support para replicar os ambientes",
+        "correta": false,
+        "porque": "O AWS Support não provisiona ambientes do cliente; isso é responsabilidade do cliente."
+      },
+      {
+        "texto": "Definir a infraestrutura em templates do AWS CloudFormation",
+        "correta": true,
+        "porque": "O mesmo template pode ser implantado repetidamente em várias Regiões e contas, sempre com o mesmo resultado."
+      }
+    ],
+    "explicacao": "Para processos repetíveis use IaC (CloudFormation/CDK); o Console serve melhor para operações pontuais e exploração.",
+    "servicos": [
+      "AWS CloudFormation"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-009",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Um gerente sem experiência em programação precisa, uma única vez, conferir visualmente as configurações de um bucket do Amazon S3. Qual é a forma MAIS simples?",
+    "alternativas": [
+      {
+        "texto": "AWS Management Console",
+        "correta": true,
+        "porque": "A interface web gráfica é ideal para tarefas pontuais e exploração sem escrever comandos ou código."
+      },
+      {
+        "texto": "AWS CLI",
+        "correta": false,
+        "porque": "Exige instalar a ferramenta, configurar credenciais e conhecer comandos, o que é excessivo para quem não programa."
+      },
+      {
+        "texto": "AWS SDK para Python",
+        "correta": false,
+        "porque": "Exige escrever código, o que não faz sentido para uma consulta visual única."
+      },
+      {
+        "texto": "Template do AWS CloudFormation",
+        "correta": false,
+        "porque": "IaC serve para provisionar recursos de forma repetível, não para inspecionar uma configuração uma vez."
+      }
+    ],
+    "explicacao": "O Management Console é a interface web para operações pontuais e interativas; CLI, SDK e IaC brilham em automação.",
+    "servicos": [
+      "AWS Management Console"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-010",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Um administrador quer automatizar tarefas rotineiras na AWS usando scripts de shell no terminal, sem desenvolver uma aplicação. Qual ferramenta é a MAIS adequada?",
+    "alternativas": [
+      {
+        "texto": "AWS SDK",
+        "correta": false,
+        "porque": "O SDK é para integrar chamadas à AWS dentro do código de aplicações em uma linguagem de programação."
+      },
+      {
+        "texto": "AWS CLI",
+        "correta": true,
+        "porque": "A CLI permite controlar serviços por comandos no terminal e encadeá-los em scripts de shell."
+      },
+      {
+        "texto": "AWS Management Console",
+        "correta": false,
+        "porque": "O Console é interativo e gráfico; não se presta a scripts de automação."
+      },
+      {
+        "texto": "AWS CDK",
+        "correta": false,
+        "porque": "O CDK define infraestrutura como código para provisionamento, não para tarefas operacionais rotineiras via shell."
+      }
+    ],
+    "explicacao": "AWS CLI: ferramenta de linha de comando unificada para gerenciar serviços e automatizar tarefas por scripts.",
+    "servicos": [
+      "AWS CLI"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-011",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Qual afirmação sobre o AWS Management Console, a AWS CLI e os AWS SDKs está correta?",
+    "alternativas": [
+      {
+        "texto": "Somente o Console cria recursos; a CLI e os SDKs apenas consultam",
+        "correta": false,
+        "porque": "CLI e SDKs criam, alteram e excluem recursos tanto quanto o Console."
+      },
+      {
+        "texto": "A CLI dispensa autenticação quando usada a partir de um notebook corporativo",
+        "correta": false,
+        "porque": "Toda chamada precisa ser autenticada e autorizada, seja por access keys ou credenciais temporárias."
+      },
+      {
+        "texto": "Todos enviam requisições às mesmas APIs da AWS",
+        "correta": true,
+        "porque": "Console, CLI e SDKs são formas diferentes de chamar as mesmas APIs, sujeitas às mesmas permissões IAM."
+      },
+      {
+        "texto": "Cada ferramenta usa permissões próprias, separadas do IAM",
+        "correta": false,
+        "porque": "As permissões vêm sempre do IAM, independentemente da ferramenta usada."
+      }
+    ],
+    "explicacao": "Tudo na AWS é API: Console, CLI, SDK e IaC são camadas de acesso sobre as mesmas APIs e respeitam as mesmas políticas IAM.",
+    "servicos": [
+      "AWS Management Console",
+      "AWS CLI",
+      "AWS SDK"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-012",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais são benefícios de gerenciar a infraestrutura como código (IaC) com AWS CloudFormation ou AWS CDK? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Implantações consistentes e repetíveis em vários ambientes",
+        "correta": true,
+        "porque": "O mesmo código gera sempre a mesma infraestrutura, eliminando divergências entre ambientes."
+      },
+      {
+        "texto": "Dispensa de permissões IAM para criar recursos",
+        "correta": false,
+        "porque": "Quem implanta (ou a role usada pela stack) continua precisando de permissões IAM."
+      },
+      {
+        "texto": "Versionamento e revisão das mudanças como código-fonte",
+        "correta": true,
+        "porque": "Templates ficam em controle de versão, permitindo revisão, histórico e rollback de mudanças."
+      },
+      {
+        "texto": "Desconto automático no preço dos recursos provisionados",
+        "correta": false,
+        "porque": "IaC não altera preços; os recursos são cobrados normalmente."
+      },
+      {
+        "texto": "Fim da necessidade de monitorar os recursos criados",
+        "correta": false,
+        "porque": "Recursos provisionados por IaC continuam precisando de monitoramento (ex.: CloudWatch)."
+      }
+    ],
+    "explicacao": "IaC traz repetibilidade, consistência, versionamento e automação; não muda preços nem dispensa segurança ou monitoramento.",
+    "servicos": [
+      "AWS CloudFormation",
+      "AWS CDK"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-013",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa desativou seu data center e passou a executar todas as cargas de trabalho na AWS. Qual modelo de implantação ela adota?",
+    "alternativas": [
+      {
+        "texto": "Híbrido",
+        "correta": false,
+        "porque": "Híbrido combina nuvem com infraestrutura on-premises, que a empresa não tem mais."
+      },
+      {
+        "texto": "On-premises (nuvem privada)",
+        "correta": false,
+        "porque": "On-premises usa data center próprio, justamente o que foi desativado."
+      },
+      {
+        "texto": "Infrastructure as a Service (IaaS)",
+        "correta": false,
+        "porque": "IaaS é um modelo de serviço, não um modelo de implantação."
+      },
+      {
+        "texto": "Nuvem (cloud)",
+        "correta": true,
+        "porque": "Toda a aplicação roda na nuvem, o que permite trocar despesas de capital por despesas operacionais."
+      }
+    ],
+    "explicacao": "Modelos de implantação: nuvem (tudo na nuvem), híbrido (nuvem + on-premises) e on-premises (data center próprio, também chamado nuvem privada).",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k16#5 (reescrita)"
+  },
+  {
+    "id": "D3-a-014",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Um desenvolvedor vai usar a AWS CLI em seu notebook com um IAM user. Que tipo de credencial ele precisa configurar?",
+    "alternativas": [
+      {
+        "texto": "Access key ID e secret access key",
+        "correta": true,
+        "porque": "O acesso programático de um IAM user pela CLI e pelos SDKs é autenticado com access keys."
+      },
+      {
+        "texto": "Nome de usuário e senha do Console",
+        "correta": false,
+        "porque": "Usuário e senha servem para o login no Management Console, não para chamadas programáticas."
+      },
+      {
+        "texto": "Par de chaves do Amazon EC2",
+        "correta": false,
+        "porque": "O par de chaves EC2 dá acesso SSH a instâncias, não às APIs da AWS."
+      },
+      {
+        "texto": "API key do Amazon API Gateway",
+        "correta": false,
+        "porque": "API keys do API Gateway controlam o uso de APIs do cliente publicadas no serviço, não o acesso à AWS."
+      }
+    ],
+    "explicacao": "CLI e SDKs usam access keys (ou credenciais temporárias, como as do IAM Identity Center) para assinar as chamadas às APIs da AWS.",
+    "servicos": [
+      "AWS CLI",
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k18#27"
+  },
+  {
+    "id": "D3-a-015",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Qual é a relação correta entre Regiões, Zonas de Disponibilidade (AZs) e edge locations da AWS?",
+    "alternativas": [
+      {
+        "texto": "Cada AZ contém várias Regiões; as edge locations ficam dentro das AZs",
+        "correta": false,
+        "porque": "A hierarquia é inversa: Regiões contêm AZs, e edge locations não ficam dentro de AZs."
+      },
+      {
+        "texto": "Cada edge location é uma AZ reduzida que hospeda o Amazon EC2",
+        "correta": false,
+        "porque": "Edge locations são pontos de presença para CloudFront, Route 53 e afins; não são AZs nem hospedam EC2 comum."
+      },
+      {
+        "texto": "Cada Região contém várias AZs; as edge locations ficam fora dessa estrutura",
+        "correta": true,
+        "porque": "Regiões agrupam AZs; as edge locations são bem mais numerosas e ficam perto dos usuários finais."
+      },
+      {
+        "texto": "Região e AZ são sinônimos; as edge locations são data centers da AZ",
+        "correta": false,
+        "porque": "Região é uma área geográfica; AZ é um ou mais data centers dentro dela; edge location é outra coisa."
+      }
+    ],
+    "explicacao": "Região ⊃ AZs (data centers isolados); edge locations são pontos de presença separados, mais numerosos que Regiões, usados para entrega de conteúdo e DNS.",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k6#1 (reescrita)"
+  },
+  {
+    "id": "D3-a-016",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Qual é a ordem dos componentes da infraestrutura global da AWS por área geográfica de cobertura, do MAIOR para o MENOR?",
+    "alternativas": [
+      {
+        "texto": "Edge locations, Zonas de Disponibilidade, Regiões",
+        "correta": false,
+        "porque": "Edge locations são pontos de presença pequenos e não abrangem AZs ou Regiões."
+      },
+      {
+        "texto": "Regiões, Zonas de Disponibilidade, edge locations",
+        "correta": true,
+        "porque": "A Região é a área geográfica que contém as AZs; a edge location é um ponto de presença menor."
+      },
+      {
+        "texto": "Zonas de Disponibilidade, edge locations, Regiões",
+        "correta": false,
+        "porque": "A AZ fica dentro de uma Região, portanto não pode ser maior que ela."
+      },
+      {
+        "texto": "Regiões, edge locations, Zonas de Disponibilidade",
+        "correta": false,
+        "porque": "Uma edge location não contém AZs; a AZ é um ou mais data centers completos."
+      }
+    ],
+    "explicacao": "Região (área geográfica) > Zona de Disponibilidade (um ou mais data centers) > edge location (ponto de presença perto dos usuários).",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A13"
+  },
+  {
+    "id": "D3-a-017",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Qual componente da infraestrutura global da AWS consiste em um ou mais data centers distintos, com energia, rede e conectividade redundantes, dentro de uma Região?",
+    "alternativas": [
+      {
+        "texto": "Edge location",
+        "correta": false,
+        "porque": "Edge locations são pontos de presença para cache e DNS, não conjuntos de data centers de uma Região."
+      },
+      {
+        "texto": "Local Zone",
+        "correta": false,
+        "porque": "Local Zone estende uma Região para perto de uma área metropolitana; não é o bloco básico de cada Região."
+      },
+      {
+        "texto": "Região da AWS",
+        "correta": false,
+        "porque": "A Região é a área geográfica que agrupa várias AZs."
+      },
+      {
+        "texto": "Zona de Disponibilidade",
+        "correta": true,
+        "porque": "Cada AZ é formada por um ou mais data centers com infraestrutura redundante e isolada das demais AZs."
+      }
+    ],
+    "explicacao": "Uma Zona de Disponibilidade é um ou mais data centers discretos, com energia, rede e conectividade redundantes, dentro de uma Região.",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k8#45"
+  },
+  {
+    "id": "D3-a-018",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Qual componente da infraestrutura da AWS se correlaciona diretamente com uma subnet de VPC?",
+    "alternativas": [
+      {
+        "texto": "Uma Zona de Disponibilidade",
+        "correta": true,
+        "porque": "Cada subnet fica inteiramente em uma única AZ; a VPC é que abrange a Região."
+      },
+      {
+        "texto": "Uma Região da AWS",
+        "correta": false,
+        "porque": "A Região corresponde à VPC inteira, não a uma subnet."
+      },
+      {
+        "texto": "Uma edge location do CloudFront",
+        "correta": false,
+        "porque": "Edge locations não hospedam subnets de VPC."
+      },
+      {
+        "texto": "Um único servidor físico",
+        "correta": false,
+        "porque": "Uma subnet é uma faixa de IPs lógica numa AZ, não um servidor."
+      }
+    ],
+    "explicacao": "VPC = Região; subnet = AZ. Para alta disponibilidade, distribua recursos em subnets de AZs diferentes.",
+    "servicos": [
+      "Amazon VPC"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A58"
+  },
+  {
+    "id": "D3-a-019",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "As Zonas de Disponibilidade de uma Região ficam separadas por uma distância significativa, mas dentro de cerca de 100 km umas das outras. Qual é o principal objetivo desse espaçamento?",
+    "alternativas": [
+      {
+        "texto": "Maximizar a área geográfica coberta pela Região",
+        "correta": false,
+        "porque": "A cobertura para usuários vem de Regiões e edge locations, não do espaçamento entre AZs."
+      },
+      {
+        "texto": "Evitar que um único desastre localizado afete várias AZs ao mesmo tempo",
+        "correta": true,
+        "porque": "A distância isola falhas (incêndio, enchente, queda de energia), enquanto a proximidade mantém baixa latência entre AZs."
+      },
+      {
+        "texto": "Reduzir o custo dos terrenos onde ficam os data centers",
+        "correta": false,
+        "porque": "O critério de projeto é isolamento de falhas, não preço de terreno."
+      },
+      {
+        "texto": "Diminuir a latência para usuários finais próximos",
+        "correta": false,
+        "porque": "Baixa latência para usuários finais é papel de Regiões próximas e edge locations."
+      }
+    ],
+    "explicacao": "AZs são fisicamente separadas para não compartilharem um ponto único de falha, mas próximas o bastante para replicação síncrona com baixa latência.",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B15"
+  },
+  {
+    "id": "D3-a-020",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais afirmações sobre as Zonas de Disponibilidade da AWS são verdadeiras? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Cada AZ tem energia, refrigeração e rede independentes das demais",
+        "correta": true,
+        "porque": "A infraestrutura independente evita que uma falha em uma AZ derrube as outras."
+      },
+      {
+        "texto": "As AZs de uma Região são interligadas por rede de baixa latência e alta largura de banda",
+        "correta": true,
+        "porque": "Isso permite replicar dados de forma síncrona e distribuir aplicações entre AZs."
+      },
+      {
+        "texto": "Cada AZ é sempre um único data center",
+        "correta": false,
+        "porque": "Uma AZ pode ser composta por um ou mais data centers."
+      },
+      {
+        "texto": "AZs de Regiões diferentes compartilham a mesma infraestrutura elétrica",
+        "correta": false,
+        "porque": "Regiões são totalmente isoladas umas das outras; não compartilham infraestrutura."
+      },
+      {
+        "texto": "Cada AZ funciona também como edge location do Amazon CloudFront",
+        "correta": false,
+        "porque": "Edge locations são pontos de presença próprios, distintos das AZs."
+      }
+    ],
+    "explicacao": "AZs não compartilham ponto único de falha e são conectadas por links redundantes de baixa latência, o que viabiliza arquiteturas multi-AZ.",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-021",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa está criando uma arquitetura para uma carga de trabalho crítica que precisa de alta disponibilidade. Qual é a prática recomendada?",
+    "alternativas": [
+      {
+        "texto": "Escalar verticalmente, usando um tipo de instância EC2 maior",
+        "correta": false,
+        "porque": "Uma instância maior continua sendo um ponto único de falha."
+      },
+      {
+        "texto": "Colocar os componentes em um placement group para reduzir a latência entre eles",
+        "correta": false,
+        "porque": "Placement group em cluster concentra instâncias, o que melhora latência mas não disponibilidade."
+      },
+      {
+        "texto": "Distribuir os componentes da aplicação em várias Zonas de Disponibilidade da Região",
+        "correta": true,
+        "porque": "Se uma AZ falhar, as instâncias nas outras AZs continuam atendendo."
+      },
+      {
+        "texto": "Usar um Auto Scaling group limitado a uma única Zona de Disponibilidade",
+        "correta": false,
+        "porque": "O Auto Scaling substitui instâncias, mas não protege contra a falha da AZ inteira."
+      }
+    ],
+    "explicacao": "Multi-AZ é a forma padrão de alta disponibilidade na AWS: elimina a AZ como ponto único de falha.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B20"
+  },
+  {
+    "id": "D3-a-022",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Um portal web acessado por usuários do mundo todo precisa da MAIOR redundância e tolerância a falhas possível. Como as instâncias Amazon EC2 devem ser distribuídas?",
+    "alternativas": [
+      {
+        "texto": "Em várias Zonas de Disponibilidade de uma única Região",
+        "correta": false,
+        "porque": "Protege contra a falha de uma AZ, mas não contra a indisponibilidade de uma Região inteira."
+      },
+      {
+        "texto": "Em três Regiões, com uma única Zona de Disponibilidade em cada",
+        "correta": false,
+        "porque": "A falha de uma AZ derruba toda a capacidade daquela Região."
+      },
+      {
+        "texto": "Em uma única Zona de Disponibilidade, com instâncias maiores",
+        "correta": false,
+        "porque": "Concentra tudo em um ponto único de falha."
+      },
+      {
+        "texto": "Em várias Zonas de Disponibilidade em mais de uma Região",
+        "correta": true,
+        "porque": "Combina proteção contra falha de AZ e de Região, o nível mais alto de redundância."
+      }
+    ],
+    "explicacao": "Multi-AZ protege contra falha de data center; multi-Região adiciona proteção contra falha regional. As duas juntas dão a maior tolerância a falhas.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A38"
+  },
+  {
+    "id": "D3-a-023",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer garantir a continuidade dos negócios mesmo diante de uma catástrofe natural que afete toda uma área geográfica. Qual parte da infraestrutura global ela deve usar para replicar seus recursos?",
+    "alternativas": [
+      {
+        "texto": "Várias Regiões da AWS",
+        "correta": true,
+        "porque": "Regiões são geograficamente distantes e isoladas, então um desastre em uma não afeta a outra."
+      },
+      {
+        "texto": "Edge locations",
+        "correta": false,
+        "porque": "Edge locations armazenam conteúdo em cache; não hospedam a infraestrutura de recuperação."
+      },
+      {
+        "texto": "Várias Zonas de Disponibilidade",
+        "correta": false,
+        "porque": "AZs ficam na mesma Região (até ~100 km); um desastre de grande escala pode atingir todas."
+      },
+      {
+        "texto": "Amazon Route 53",
+        "correta": false,
+        "porque": "O Route 53 pode direcionar tráfego no failover, mas não é onde os recursos são replicados."
+      }
+    ],
+    "explicacao": "Recuperação de desastres contra eventos regionais exige replicar dados e recursos em outra Região.",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B78"
+  },
+  {
+    "id": "D3-a-024",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa está escolhendo a Região da AWS para lançar uma nova aplicação. Quais fatores ela deve considerar? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Faixas de desconto por volume exclusivas de cada Região",
+        "correta": false,
+        "porque": "Não existem faixas de desconto por volume específicas por Região; o que varia é o preço dos serviços."
+      },
+      {
+        "texto": "Baixa latência entre os usuários finais e a Região",
+        "correta": true,
+        "porque": "Regiões mais próximas dos usuários reduzem a latência da aplicação."
+      },
+      {
+        "texto": "Proximidade para visitar fisicamente o data center da AWS",
+        "correta": false,
+        "porque": "Clientes não visitam os data centers da AWS."
+      },
+      {
+        "texto": "Requisitos regulatórios e de soberania de dados do país",
+        "correta": true,
+        "porque": "Leis podem exigir que os dados fiquem armazenados em determinado país ou jurisdição."
+      },
+      {
+        "texto": "Diferenças de nível de segurança entre as Zonas de Disponibilidade",
+        "correta": false,
+        "porque": "Todas as AZs seguem os mesmos controles de segurança da AWS."
+      }
+    ],
+    "explicacao": "Critérios de escolha de Região: conformidade e soberania de dados, latência para os usuários, disponibilidade de serviços e preço.",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A09"
+  },
+  {
+    "id": "D3-a-025",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços da AWS são globais, e não regionais? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon RDS",
+        "correta": false,
+        "porque": "Instâncias RDS são criadas em uma Região específica."
+      },
+      {
+        "texto": "AWS Identity and Access Management (IAM)",
+        "correta": true,
+        "porque": "Usuários, grupos, roles e políticas IAM valem para todas as Regiões da conta."
+      },
+      {
+        "texto": "Amazon DynamoDB",
+        "correta": false,
+        "porque": "Tabelas DynamoDB são regionais; Global Tables apenas as replicam entre Regiões."
+      },
+      {
+        "texto": "AWS Batch",
+        "correta": false,
+        "porque": "Ambientes de computação do Batch são criados por Região."
+      },
+      {
+        "texto": "Amazon CloudFront",
+        "correta": true,
+        "porque": "Uma distribuição CloudFront é global e usa a rede de edge locations no mundo todo."
+      }
+    ],
+    "explicacao": "Exemplos de serviços globais: IAM, CloudFront, Route 53 e Organizations. A maioria dos serviços (EC2, RDS, Lambda, DynamoDB) é regional.",
+    "servicos": [
+      "IAM",
+      "Amazon CloudFront"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A14"
+  },
+  {
+    "id": "D3-a-026",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Qual dos serviços a seguir tem escopo regional, ou seja, seus recursos são criados em uma Região específica?",
+    "alternativas": [
+      {
+        "texto": "Amazon Route 53",
+        "correta": false,
+        "porque": "O Route 53 é um serviço global de DNS servido a partir de edge locations."
+      },
+      {
+        "texto": "AWS Identity and Access Management (IAM)",
+        "correta": false,
+        "porque": "O IAM é global: suas identidades valem em todas as Regiões."
+      },
+      {
+        "texto": "Amazon CloudFront",
+        "correta": false,
+        "porque": "O CloudFront é global e usa edge locations no mundo todo."
+      },
+      {
+        "texto": "AWS Lambda",
+        "correta": true,
+        "porque": "Funções Lambda são implantadas e executadas em uma Região escolhida pelo cliente."
+      }
+    ],
+    "explicacao": "Saber o escopo do serviço evita surpresas: Lambda, EC2, RDS e DynamoDB são regionais; IAM, Route 53 e CloudFront são globais.",
+    "servicos": [
+      "AWS Lambda"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A27 (reescrita)"
+  },
+  {
+    "id": "D3-a-027",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais recursos da AWS são zonais, isto é, ficam atrelados a uma única Zona de Disponibilidade? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Instância Amazon EC2",
+        "correta": true,
+        "porque": "Cada instância é lançada em uma subnet, que pertence a uma única AZ."
+      },
+      {
+        "texto": "Hosted zone do Amazon Route 53",
+        "correta": false,
+        "porque": "O Route 53 é um serviço global."
+      },
+      {
+        "texto": "Bucket do Amazon S3",
+        "correta": false,
+        "porque": "Buckets S3 são regionais e, nas classes padrão, guardam dados em várias AZs."
+      },
+      {
+        "texto": "IAM role",
+        "correta": false,
+        "porque": "Recursos IAM são globais."
+      },
+      {
+        "texto": "Volume Amazon EBS",
+        "correta": true,
+        "porque": "Um volume EBS existe em uma AZ e só pode ser anexado a instâncias da mesma AZ."
+      }
+    ],
+    "explicacao": "EC2 e EBS são zonais: por isso alta disponibilidade exige instâncias e dados distribuídos em várias AZs (ou snapshots, que são regionais).",
+    "servicos": [
+      "Amazon EC2",
+      "Amazon EBS"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-B16"
+  },
+  {
+    "id": "D3-a-028",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Qual é a principal função das edge locations da AWS?",
+    "alternativas": [
+      {
+        "texto": "Hospedar instâncias Amazon EC2 mais perto dos usuários",
+        "correta": false,
+        "porque": "Edge locations não executam instâncias EC2 comuns; para isso existem Regiões e Local Zones."
+      },
+      {
+        "texto": "Armazenar em cache e entregar conteúdo mais perto dos usuários, reduzindo a latência",
+        "correta": true,
+        "porque": "O CloudFront guarda cópias do conteúdo nas edge locations e atende os usuários a partir do ponto mais próximo."
+      },
+      {
+        "texto": "Guardar cópias de backup de bancos de dados RDS",
+        "correta": false,
+        "porque": "Backups do RDS ficam no S3 da Região, não em edge locations."
+      },
+      {
+        "texto": "Substituir as AZs em Regiões com pouca capacidade",
+        "correta": false,
+        "porque": "Edge locations não substituem AZs nem executam cargas de trabalho regionais."
+      }
+    ],
+    "explicacao": "Edge locations são pontos de presença usados por CloudFront, Route 53, Global Accelerator e Shield para servir usuários com baixa latência.",
+    "servicos": [
+      "Amazon CloudFront"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k12#4 (reescrita)"
+  },
+  {
+    "id": "D3-a-029",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços da AWS usam a rede de edge locations para atender os usuários? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon CloudFront",
+        "correta": true,
+        "porque": "A CDN da AWS armazena conteúdo em cache nas edge locations."
+      },
+      {
+        "texto": "Amazon RDS",
+        "correta": false,
+        "porque": "O RDS roda em AZs de uma Região, não em edge locations."
+      },
+      {
+        "texto": "AWS Global Accelerator",
+        "correta": true,
+        "porque": "Recebe o tráfego na edge location mais próxima e o leva pela rede global da AWS até a aplicação."
+      },
+      {
+        "texto": "Amazon EBS",
+        "correta": false,
+        "porque": "Volumes EBS ficam em uma AZ, anexados a instâncias EC2."
+      },
+      {
+        "texto": "Amazon ElastiCache",
+        "correta": false,
+        "porque": "O ElastiCache é um cache em memória dentro da VPC em uma Região, não em edge locations."
+      }
+    ],
+    "explicacao": "CloudFront, Global Accelerator, Route 53 e Shield operam a partir das edge locations; bancos, volumes e caches de aplicação ficam nas Regiões.",
+    "servicos": [
+      "Amazon CloudFront",
+      "AWS Global Accelerator"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k17#27 (reescrita)"
+  },
+  {
+    "id": "D3-a-030",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa de edição de vídeo precisa executar estações de renderização com latência de um dígito de milissegundo para usuários em uma grande cidade que fica longe da Região AWS mais próxima. Qual opção atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "AWS Local Zones",
+        "correta": true,
+        "porque": "Local Zones estendem uma Região para áreas metropolitanas, levando computação e armazenamento para perto dos usuários."
+      },
+      {
+        "texto": "Edge locations do Amazon CloudFront",
+        "correta": false,
+        "porque": "Edge locations armazenam conteúdo em cache, mas não executam estações de renderização."
+      },
+      {
+        "texto": "Uma nova Zona de Disponibilidade na Região atual",
+        "correta": false,
+        "porque": "Clientes não criam AZs, e uma AZ continua na área geográfica da Região."
+      },
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "Direct Connect cria um link dedicado até a AWS, mas a computação continuaria distante na Região."
+      }
+    ],
+    "explicacao": "Local Zones são extensões de uma Região perto de grandes centros urbanos para cargas que exigem latência muito baixa para usuários locais.",
+    "servicos": [
+      "AWS Local Zones"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-031",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa japonesa hospeda sua aplicação na Região de Tóquio e abriu filiais nos Estados Unidos, cujos usuários reclamam de lentidão em uma aplicação dinâmica e interativa. Qual é a MELHOR forma de reduzir a latência para eles?",
+    "alternativas": [
+      {
+        "texto": "Usar instâncias EC2 maiores na Região de Tóquio",
+        "correta": false,
+        "porque": "Mais capacidade não reduz a distância física entre usuários e servidores."
+      },
+      {
+        "texto": "Distribuir a aplicação em mais Zonas de Disponibilidade em Tóquio",
+        "correta": false,
+        "porque": "Multi-AZ aumenta a disponibilidade, mas as AZs continuam no Japão."
+      },
+      {
+        "texto": "Ativar o AWS Shield Advanced",
+        "correta": false,
+        "porque": "O Shield Advanced protege contra DDoS, não reduz latência."
+      },
+      {
+        "texto": "Implantar a aplicação também em uma Região nos Estados Unidos",
+        "correta": true,
+        "porque": "Executar a aplicação perto dos usuários reduz a latência de forma estrutural."
+      }
+    ],
+    "explicacao": "Atender usuários em outro continente com baixa latência é um dos motivos para usar várias Regiões.",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k1#10 (reescrita)"
+  },
+  {
+    "id": "D3-a-032",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Uma lei exige que os dados pessoais de clientes de um banco europeu permaneçam armazenados na União Europeia. O que a empresa deve fazer na AWS?",
+    "alternativas": [
+      {
+        "texto": "Usar edge locations na Europa para todos os dados",
+        "correta": false,
+        "porque": "Edge locations armazenam cópias temporárias em cache; não são o local de armazenamento primário dos dados."
+      },
+      {
+        "texto": "Armazenar os dados em Regiões da AWS localizadas na UE",
+        "correta": true,
+        "porque": "A AWS não move dados do cliente para fora da Região escolhida sem ação do próprio cliente."
+      },
+      {
+        "texto": "Ativar a replicação entre Regiões para os Estados Unidos",
+        "correta": false,
+        "porque": "Isso copiaria os dados para fora da UE, violando a exigência."
+      },
+      {
+        "texto": "Distribuir os dados em várias AZs de qualquer Região",
+        "correta": false,
+        "porque": "AZs ficam dentro da Região; escolher uma Região fora da UE descumpre a lei."
+      }
+    ],
+    "explicacao": "Soberania e residência de dados são atendidas escolhendo a Região: o cliente controla onde os dados ficam e se são replicados.",
+    "servicos": [
+      "AWS Global Infrastructure"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-033",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Dentro de uma instância EC2, onde uma aplicação consulta informações da própria instância, como ID da instância, tipo, IP e credenciais da role IAM associada?",
+    "alternativas": [
+      {
+        "texto": "No user data da instância",
+        "correta": false,
+        "porque": "User data é o script ou dado fornecido pelo cliente para rodar na inicialização, não as informações geradas sobre a instância."
+      },
+      {
+        "texto": "Em uma resource tag",
+        "correta": false,
+        "porque": "Tags são rótulos chave-valor definidos pelo cliente para organizar recursos."
+      },
+      {
+        "texto": "Na Amazon Machine Image (AMI)",
+        "correta": false,
+        "porque": "A AMI é o modelo usado para lançar a instância; não contém dados da instância em execução."
+      },
+      {
+        "texto": "No instance metadata",
+        "correta": true,
+        "porque": "O serviço de metadados expõe à própria instância dados como ID, tipo, rede e credenciais temporárias da role."
+      }
+    ],
+    "explicacao": "Instance metadata = dados sobre a instância em execução, acessíveis de dentro dela; user data = instruções fornecidas pelo cliente para a inicialização.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-A05"
+  },
+  {
+    "id": "D3-a-034",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer que cada nova instância EC2 instale automaticamente um servidor web e baixe a aplicação no primeiro boot. Qual recurso do EC2 deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "Instance metadata",
+        "correta": false,
+        "porque": "Metadados descrevem a instância; não executam instruções de configuração."
+      },
+      {
+        "texto": "User data",
+        "correta": true,
+        "porque": "O script de user data é executado na inicialização e automatiza a configuração da instância."
+      },
+      {
+        "texto": "Tags de instância",
+        "correta": false,
+        "porque": "Tags apenas rotulam recursos; não executam comandos."
+      },
+      {
+        "texto": "Security Group",
+        "correta": false,
+        "porque": "Security Groups filtram tráfego de rede; não configuram software."
+      }
+    ],
+    "explicacao": "User data permite passar um script que roda no boot da instância (bootstrapping), automatizando instalação e configuração.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-035",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Um cliente passou muito tempo configurando uma instância EC2 e agora quer lançar outras instâncias com configuração idêntica. Qual é a forma MAIS simples?",
+    "alternativas": [
+      {
+        "texto": "Criar uma regra do AWS Config a partir da instância original",
+        "correta": false,
+        "porque": "O Config avalia conformidade de configurações; não lança instâncias."
+      },
+      {
+        "texto": "Criar um snapshot do volume EBS e anexá-lo a uma instância vazia",
+        "correta": false,
+        "porque": "Um snapshot copia um volume, mas não é o modelo completo de lançamento da instância."
+      },
+      {
+        "texto": "Criar uma AMI a partir da instância e lançar as novas instâncias com ela",
+        "correta": true,
+        "porque": "A AMI contém SO, software e configurações, servindo de modelo para quantas instâncias forem necessárias."
+      },
+      {
+        "texto": "Adicionar as mesmas tags às novas instâncias",
+        "correta": false,
+        "porque": "Tags organizam recursos, mas não copiam software ou configuração."
+      }
+    ],
+    "explicacao": "A Amazon Machine Image (AMI) é o modelo de software usado para lançar instâncias EC2 pré-configuradas e idênticas.",
+    "servicos": [
+      "Amazon EC2",
+      "AMI"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k3#32"
+  },
+  {
+    "id": "D3-a-036",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Qual recurso do EC2 permite rotular instâncias por ambiente (desenvolvimento, homologação, produção) para organizá-las e filtrá-las?",
+    "alternativas": [
+      {
+        "texto": "User data",
+        "correta": false,
+        "porque": "User data executa instruções na inicialização; não serve para classificar recursos."
+      },
+      {
+        "texto": "Instance metadata",
+        "correta": false,
+        "porque": "Metadados são gerados pela AWS sobre a instância; não são rótulos de organização."
+      },
+      {
+        "texto": "Tipo de instância",
+        "correta": false,
+        "porque": "O tipo define CPU, memória e rede, não o ambiente a que a instância pertence."
+      },
+      {
+        "texto": "Tags",
+        "correta": true,
+        "porque": "Tags são pares chave-valor, como Ambiente=Produção, usados para organizar, filtrar e controlar recursos."
+      }
+    ],
+    "explicacao": "Tags rotulam recursos AWS com pares chave-valor para organização, automação, controle de acesso e alocação de custos.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A07"
+  },
+  {
+    "id": "D3-a-037",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai executar um banco de dados em memória de alto desempenho no Amazon EC2, que precisa de muita RAM para processar grandes conjuntos de dados. Qual família de instância é a MAIS adequada?",
+    "alternativas": [
+      {
+        "texto": "Otimizada para computação",
+        "correta": false,
+        "porque": "Prioriza CPU de alto desempenho, não grande quantidade de memória por vCPU."
+      },
+      {
+        "texto": "Otimizada para memória",
+        "correta": true,
+        "porque": "Oferece alta proporção de memória por vCPU, ideal para bancos e caches em memória e análise em tempo real."
+      },
+      {
+        "texto": "Otimizada para armazenamento",
+        "correta": false,
+        "porque": "Foca em I/O de disco local alto e sequencial, não em RAM."
+      },
+      {
+        "texto": "Computação acelerada",
+        "correta": false,
+        "porque": "Usa GPUs e outros aceleradores para ML e gráficos, não grande capacidade de memória."
+      }
+    ],
+    "explicacao": "Memory optimized (ex.: R, X) atende cargas que processam grandes volumes de dados em memória.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-038",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa executa modelagem científica, transcodificação de mídia em lote e servidores de jogos que dependem de processadores de alto desempenho. Qual família de instância EC2 deve ser usada?",
+    "alternativas": [
+      {
+        "texto": "Uso geral",
+        "correta": false,
+        "porque": "Equilibra CPU, memória e rede, sem priorizar desempenho de CPU."
+      },
+      {
+        "texto": "Otimizada para memória",
+        "correta": false,
+        "porque": "Prioriza grande quantidade de RAM, não processamento intenso."
+      },
+      {
+        "texto": "Otimizada para computação",
+        "correta": true,
+        "porque": "Oferece alta proporção de CPU, ideal para HPC, processamento em lote, transcodificação e jogos."
+      },
+      {
+        "texto": "Otimizada para armazenamento",
+        "correta": false,
+        "porque": "Prioriza I/O de disco local, não poder de processamento."
+      }
+    ],
+    "explicacao": "Compute optimized (ex.: C) atende cargas limitadas por CPU: HPC, modelagem científica, servidores de jogos e transcodificação.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-039",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma carga de data warehouse distribuído exige acesso de leitura e gravação sequencial muito alto a grandes conjuntos de dados em armazenamento local da instância. Qual família de instância EC2 é a MAIS adequada?",
+    "alternativas": [
+      {
+        "texto": "Otimizada para armazenamento",
+        "correta": true,
+        "porque": "Foi projetada para alto IOPS e throughput em armazenamento local, como data warehouses e sistemas de arquivos distribuídos."
+      },
+      {
+        "texto": "Computação acelerada",
+        "correta": false,
+        "porque": "Usa GPUs e aceleradores para ML e gráficos, não I/O de disco local."
+      },
+      {
+        "texto": "Uso geral",
+        "correta": false,
+        "porque": "Atende cargas equilibradas, sem otimização específica para I/O de disco."
+      },
+      {
+        "texto": "Otimizada para computação",
+        "correta": false,
+        "porque": "Prioriza CPU, não throughput de armazenamento local."
+      }
+    ],
+    "explicacao": "Storage optimized (ex.: I, D) atende cargas com muitas leituras e gravações sequenciais em grandes volumes de dados locais.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-040",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma equipe de pesquisa precisa treinar modelos de deep learning e fazer renderização gráfica usando GPUs no Amazon EC2. Qual família de instância atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Otimizada para memória",
+        "correta": false,
+        "porque": "Oferece muita RAM, mas não aceleradores de hardware como GPUs."
+      },
+      {
+        "texto": "Uso geral",
+        "correta": false,
+        "porque": "Atende servidores web e repositórios de código, sem GPUs."
+      },
+      {
+        "texto": "Otimizada para armazenamento",
+        "correta": false,
+        "porque": "Foca em I/O de disco local, não em processamento por GPU."
+      },
+      {
+        "texto": "Computação acelerada",
+        "correta": true,
+        "porque": "Usa GPUs ou outros aceleradores de hardware para ML, gráficos e cálculos de ponto flutuante."
+      }
+    ],
+    "explicacao": "Accelerated computing (ex.: P, G, Inf, Trn) usa coprocessadores de hardware para ML, renderização e computação científica.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-041",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai hospedar servidores web e repositórios de código com uso equilibrado de CPU, memória e rede, sem nenhum recurso dominante. Qual família de instância EC2 é a escolha MAIS adequada?",
+    "alternativas": [
+      {
+        "texto": "Otimizada para computação",
+        "correta": false,
+        "porque": "Seria indicada se a carga fosse limitada por CPU, o que não é o caso."
+      },
+      {
+        "texto": "Uso geral",
+        "correta": true,
+        "porque": "Equilibra computação, memória e rede, sendo indicada para servidores web e repositórios de código."
+      },
+      {
+        "texto": "Otimizada para memória",
+        "correta": false,
+        "porque": "Seria indicada para conjuntos de dados grandes em memória, não para uso equilibrado."
+      },
+      {
+        "texto": "Computação acelerada",
+        "correta": false,
+        "porque": "GPUs e aceleradores encarecem e não trazem benefício a cargas web comuns."
+      }
+    ],
+    "explicacao": "General purpose (ex.: M, T) equilibra recursos e é o ponto de partida para cargas sem gargalo dominante.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-042",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer executar contêineres Docker em um serviço de orquestração gerenciado da AWS, sem adotar Kubernetes. Qual serviço deve ser usado?",
+    "alternativas": [
+      {
+        "texto": "Amazon Elastic Container Registry (Amazon ECR)",
+        "correta": false,
+        "porque": "O ECR armazena imagens de contêiner; não orquestra a execução."
+      },
+      {
+        "texto": "Amazon Elastic Kubernetes Service (Amazon EKS)",
+        "correta": false,
+        "porque": "O EKS orquestra contêineres com Kubernetes, que a empresa não quer usar."
+      },
+      {
+        "texto": "Amazon Elastic Container Service (Amazon ECS)",
+        "correta": true,
+        "porque": "O ECS é o orquestrador de contêineres próprio da AWS, totalmente gerenciado."
+      },
+      {
+        "texto": "AWS Elastic Beanstalk",
+        "correta": false,
+        "porque": "O Beanstalk implanta aplicações; não é o serviço de orquestração de contêineres em si."
+      }
+    ],
+    "explicacao": "ECS = orquestração de contêineres nativa da AWS; EKS = Kubernetes gerenciado; ECR = registro de imagens.",
+    "servicos": [
+      "Amazon ECS"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k21#42 (reescrita)"
+  },
+  {
+    "id": "D3-a-043",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa já usa Kubernetes on-premises e quer migrar suas aplicações em contêiner para a AWS, mantendo as mesmas ferramentas e guardando as imagens em um registro privado gerenciado. Quais serviços atendem a esses requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon EKS",
+        "correta": true,
+        "porque": "Executa Kubernetes gerenciado e compatível com as ferramentas que a empresa já usa."
+      },
+      {
+        "texto": "Amazon ECR",
+        "correta": true,
+        "porque": "É o registro gerenciado e privado de imagens de contêiner da AWS."
+      },
+      {
+        "texto": "Amazon ECS",
+        "correta": false,
+        "porque": "Usa orquestração própria da AWS, não Kubernetes."
+      },
+      {
+        "texto": "AWS Batch",
+        "correta": false,
+        "porque": "Gerencia jobs em lote; não é uma plataforma Kubernetes nem um registro de imagens."
+      },
+      {
+        "texto": "Amazon Lightsail",
+        "correta": false,
+        "porque": "Oferece servidores virtuais simples a preço fixo, sem foco em Kubernetes."
+      }
+    ],
+    "explicacao": "EKS roda Kubernetes gerenciado; ECR guarda as imagens que ECS, EKS e Fargate executam.",
+    "servicos": [
+      "Amazon EKS",
+      "Amazon ECR"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-044",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer executar contêineres no Amazon ECS ou no Amazon EKS sem provisionar, aplicar patches ou escalar instâncias EC2. Qual opção atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "AWS Lambda",
+        "correta": false,
+        "porque": "O Lambda executa funções orientadas a eventos; não é o motor de computação de tarefas do ECS ou EKS."
+      },
+      {
+        "texto": "Amazon EC2 Auto Scaling",
+        "correta": false,
+        "porque": "Escala instâncias, mas o cliente continua gerenciando os servidores."
+      },
+      {
+        "texto": "Amazon ECR",
+        "correta": false,
+        "porque": "O ECR apenas armazena imagens de contêiner."
+      },
+      {
+        "texto": "AWS Fargate",
+        "correta": true,
+        "porque": "É o motor serverless para contêineres do ECS e do EKS: a AWS gerencia a infraestrutura."
+      }
+    ],
+    "explicacao": "Fargate executa contêineres sem servidores para gerenciar; o cliente define CPU e memória por tarefa ou pod.",
+    "servicos": [
+      "AWS Fargate"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D3-a-045",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma equipe precisa executar código de curta duração sempre que um arquivo é enviado a um bucket do Amazon S3, pagando apenas pelo tempo de execução e sem gerenciar servidores ou contêineres. Qual serviço é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "AWS Lambda",
+        "correta": true,
+        "porque": "Executa funções acionadas por eventos (como uploads no S3) e cobra por requisição e duração."
+      },
+      {
+        "texto": "AWS Fargate",
+        "correta": false,
+        "porque": "É serverless, mas para executar contêineres; aqui o caso é uma função curta acionada por evento."
+      },
+      {
+        "texto": "Amazon EC2",
+        "correta": false,
+        "porque": "Exige provisionar e gerenciar servidores e cobra enquanto a instância estiver ativa."
+      },
+      {
+        "texto": "AWS Elastic Beanstalk",
+        "correta": false,
+        "porque": "Provisiona e mantém recursos como instâncias EC2, que continuam ativos e são cobrados mesmo sem eventos."
+      }
+    ],
+    "explicacao": "Lambda = funções orientadas a eventos e de curta duração (até 15 min); Fargate = contêineres sem gerenciar servidores.",
+    "servicos": [
+      "AWS Lambda"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-A11 (reescrita)"
+  },
+  {
+    "id": "D3-a-046",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços fazem parte da plataforma serverless da AWS, em que o cliente não provisiona nem administra servidores? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon OpenSearch Service (domínio provisionado)",
+        "correta": false,
+        "porque": "Em domínios provisionados o cliente escolhe e dimensiona as instâncias do cluster."
+      },
+      {
+        "texto": "Amazon API Gateway",
+        "correta": true,
+        "porque": "Publica e escala APIs sem que o cliente gerencie servidores."
+      },
+      {
+        "texto": "Amazon EMR em clusters EC2",
+        "correta": false,
+        "porque": "O cliente escolhe tipos e quantidades de instâncias do cluster."
+      },
+      {
+        "texto": "Amazon ElastiCache (cluster provisionado)",
+        "correta": false,
+        "porque": "Em clusters provisionados o cliente escolhe os tipos e a quantidade de nós."
+      },
+      {
+        "texto": "AWS Lambda",
+        "correta": true,
+        "porque": "Executa código sem servidores, com escalabilidade automática e cobrança por uso."
+      }
+    ],
+    "explicacao": "Serverless: sem servidores para gerenciar, escala automática e cobrança por uso. Exemplos: Lambda, Fargate, API Gateway, DynamoDB, S3, SQS.",
+    "servicos": [
+      "Amazon API Gateway",
+      "AWS Lambda"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B28 (reescrita)"
+  },
+  {
+    "id": "D3-a-047",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Para criar uma aplicação web na AWS que seja ao mesmo tempo altamente disponível e elasticamente escalável, quais serviços contribuem MAIS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon EC2 Auto Scaling",
+        "correta": true,
+        "porque": "Ajusta automaticamente o número de instâncias à demanda e substitui instâncias com falha."
+      },
+      {
+        "texto": "AWS AppConfig",
+        "correta": false,
+        "porque": "Gerencia configurações de aplicação; não escala nem distribui tráfego (e está fora do escopo da prova)."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "Desacopla componentes com filas, mas não distribui tráfego web nem ajusta a capacidade."
+      },
+      {
+        "texto": "Elastic Load Balancing (ELB)",
+        "correta": true,
+        "porque": "Distribui o tráfego entre instâncias saudáveis em várias AZs."
+      },
+      {
+        "texto": "AWS CloudFormation",
+        "correta": false,
+        "porque": "Automatiza o provisionamento, mas sozinho não escala nem distribui tráfego em tempo de execução."
+      }
+    ],
+    "explicacao": "Auto Scaling (elasticidade) + Elastic Load Balancing (distribuição de tráfego e health checks) em várias AZs é o padrão de aplicação web resiliente.",
+    "servicos": [
+      "Amazon EC2 Auto Scaling",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A06"
+  },
+  {
+    "id": "D3-a-048",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação web precisa distribuir requisições HTTP/HTTPS entre instâncias, roteando por caminho da URL (por exemplo, /api e /imagens) para grupos diferentes de destinos. Qual load balancer é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "Network Load Balancer",
+        "correta": false,
+        "porque": "Opera na camada 4 (TCP/UDP) com altíssimo desempenho, sem roteamento por conteúdo HTTP."
+      },
+      {
+        "texto": "Application Load Balancer",
+        "correta": true,
+        "porque": "Opera na camada 7 e roteia por caminho, host e cabeçalhos HTTP."
+      },
+      {
+        "texto": "Gateway Load Balancer",
+        "correta": false,
+        "porque": "Serve para inserir appliances virtuais de terceiros (como firewalls) no fluxo de tráfego."
+      },
+      {
+        "texto": "Amazon Route 53",
+        "correta": false,
+        "porque": "Faz roteamento DNS, sem inspecionar o caminho da URL de cada requisição."
+      }
+    ],
+    "explicacao": "ALB = camada 7 (HTTP/HTTPS, regras por caminho e host); NLB = camada 4 (TCP/UDP, milhões de requisições por segundo e baixíssima latência).",
+    "servicos": [
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 3,
+    "fonte": "kananinirav-k3#25 (reescrita)"
+  },
+  {
+    "id": "D3-a-049",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma agência pequena precisa lançar rapidamente uma aplicação web em PHP sem provisionar manualmente instâncias, load balancer e Auto Scaling, mas mantendo acesso aos recursos subjacentes. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Amazon ECS",
+        "correta": false,
+        "porque": "Exige empacotar a aplicação em contêineres e configurar o serviço de orquestração."
+      },
+      {
+        "texto": "AWS Elastic Beanstalk",
+        "correta": true,
+        "porque": "Recebe o código e provisiona automaticamente capacidade, balanceamento, Auto Scaling e monitoramento de saúde."
+      },
+      {
+        "texto": "Amazon EKS",
+        "correta": false,
+        "porque": "Exige conhecimento de Kubernetes e configuração dos clusters."
+      },
+      {
+        "texto": "AWS CloudFormation",
+        "correta": false,
+        "porque": "Automatiza recursos, mas a equipe teria de escrever e manter os templates de toda a infraestrutura."
+      }
+    ],
+    "explicacao": "Elastic Beanstalk é PaaS: você envia o código e ele cuida do provisionamento, balanceamento, Auto Scaling e health monitoring.",
+    "servicos": [
+      "AWS Elastic Beanstalk"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B04"
+  },
+  {
+    "id": "D3-a-050",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma nova equipe, sem experiência com a AWS, quer colocar no ar um site WordPress simples com o MENOR esforço e um preço mensal previsível. Qual serviço é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "Amazon EC2 configurado manualmente",
+        "correta": false,
+        "porque": "Exige escolher AMI, rede, armazenamento e segurança, o que é esforço demais para iniciantes."
+      },
+      {
+        "texto": "AWS Elastic Beanstalk",
+        "correta": false,
+        "porque": "Atende aplicações em várias linguagens, mas é mais complexo que o necessário para um WordPress simples."
+      },
+      {
+        "texto": "AWS Batch",
+        "correta": false,
+        "porque": "Executa jobs em lote, não hospeda sites."
+      },
+      {
+        "texto": "Amazon Lightsail",
+        "correta": true,
+        "porque": "Oferece servidores virtuais com blueprints prontos (como WordPress) e planos mensais de preço fixo."
+      }
+    ],
+    "explicacao": "Lightsail é a forma mais simples de começar na AWS: VPS com aplicativos pré-configurados e preço mensal previsível.",
+    "servicos": [
+      "Amazon Lightsail"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A16"
+  },
+  {
+    "id": "D3-a-051",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Engenheiros gastam muito tempo gerenciando software de agendamento para executar milhares de jobs de computação em lote. Qual serviço da AWS provisiona automaticamente a capacidade ideal e executa esses jobs?",
+    "alternativas": [
+      {
+        "texto": "AWS Step Functions",
+        "correta": false,
+        "porque": "Orquestra fluxos de trabalho entre serviços, mas não dimensiona a capacidade para os jobs."
+      },
+      {
+        "texto": "AWS Batch",
+        "correta": true,
+        "porque": "Gerencia filas e agendamento de jobs e provisiona automaticamente a computação adequada a cada lote."
+      },
+      {
+        "texto": "Amazon Lightsail",
+        "correta": false,
+        "porque": "Fornece servidores virtuais simples, sem gerenciamento de jobs em lote."
+      },
+      {
+        "texto": "Amazon EC2 Auto Scaling",
+        "correta": false,
+        "porque": "Escala instâncias, mas não gerencia filas, agendamento ou dependências de jobs."
+      }
+    ],
+    "explicacao": "AWS Batch executa cargas de computação em lote de qualquer escala, cuidando de filas, agendamento e provisionamento.",
+    "servicos": [
+      "AWS Batch"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k8#21 (reescrita)"
+  },
+  {
+    "id": "D3-a-052",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa coletar, processar e armazenar dados em seu próprio data center, por requisitos de latência e residência, usando os mesmos serviços, APIs e ferramentas da AWS. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "AWS Storage Gateway",
+        "correta": false,
+        "porque": "Conecta o armazenamento on-premises à nuvem, mas não executa serviços de computação da AWS localmente."
+      },
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "Fornece conexão de rede dedicada, sem levar infraestrutura da AWS para o local."
+      },
+      {
+        "texto": "AWS Outposts",
+        "correta": true,
+        "porque": "Instala racks e servidores gerenciados pela AWS no data center do cliente, executando serviços como EC2, EBS e ECS."
+      },
+      {
+        "texto": "AWS Local Zones",
+        "correta": false,
+        "porque": "Ficam em instalações da AWS perto de grandes cidades, não no data center do cliente."
+      }
+    ],
+    "explicacao": "Outposts leva infraestrutura e serviços da AWS para o on-premises, com a mesma experiência e APIs, ideal para arquiteturas híbridas.",
+    "servicos": [
+      "AWS Outposts"
+    ],
+    "dificuldade": 3,
+    "fonte": "usuario-B45 (reescrita)"
+  }
+]

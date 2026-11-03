@@ -1,0 +1,2188 @@
+[
+  {
+    "id": "D2-a-001",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada da AWS, quais itens são de responsabilidade do cliente? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Segurança física do backbone de rede global da AWS",
+        "correta": false,
+        "porque": "É segurança DA nuvem: a AWS protege a rede física global."
+      },
+      {
+        "texto": "Criar IAM users e roles dentro da conta",
+        "correta": true,
+        "porque": "Gestão de identidades e acessos na própria conta é segurança NA nuvem, do cliente."
+      },
+      {
+        "texto": "Validar a conformidade da infraestrutura da AWS com auditorias externas",
+        "correta": false,
+        "porque": "A AWS contrata auditores independentes e publica os relatórios no AWS Artifact."
+      },
+      {
+        "texto": "Impedir que funcionários da AWS acessem os data centers sem autorização",
+        "correta": false,
+        "porque": "Controle de acesso físico aos data centers é responsabilidade exclusiva da AWS."
+      },
+      {
+        "texto": "Aplicar patches no sistema operacional de uma instância Amazon EC2",
+        "correta": true,
+        "porque": "O SO convidado do EC2 (IaaS) é gerenciado pelo cliente."
+      }
+    ],
+    "explicacao": "O cliente cuida do que coloca na nuvem (identidades, SO convidado, dados, configurações); a AWS cuida da infraestrutura física e global.",
+    "servicos": [
+      "IAM",
+      "EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A03"
+  },
+  {
+    "id": "D2-a-002",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "A aplicação web de um cliente, executada em instâncias Amazon EC2, sofreu um ataque de SQL injection. O cliente abriu uma reclamação com a AWS. Qual resposta ele deve esperar?",
+    "alternativas": [
+      {
+        "texto": "A AWS reforçará a infraestrutura física para evitar novos incidentes",
+        "correta": false,
+        "porque": "SQL injection explora o código da aplicação, não a infraestrutura física da AWS."
+      },
+      {
+        "texto": "A segurança da aplicação é do cliente, conforme o modelo de responsabilidade compartilhada",
+        "correta": true,
+        "porque": "Código, validação de entrada e proteção da aplicação são segurança NA nuvem, do cliente."
+      },
+      {
+        "texto": "A AWS e o cliente devem contratar juntos um auditor independente",
+        "correta": false,
+        "porque": "Não existe essa obrigação; a análise do incidente na aplicação cabe ao cliente."
+      },
+      {
+        "texto": "A AWS responderá que o cliente deveria ter aplicado patches no SO da instância",
+        "correta": false,
+        "porque": "Patch de SO não corrige falha de validação de entrada; a causa está no código da aplicação."
+      }
+    ],
+    "explicacao": "A segurança das aplicações que o cliente implanta (incluindo proteção contra SQL injection, por exemplo com AWS WAF) é responsabilidade do cliente.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A35"
+  },
+  {
+    "id": "D2-a-003",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada da AWS, qual item é um controle COMPARTILHADO entre a AWS e o cliente?",
+    "alternativas": [
+      {
+        "texto": "Aplicação de patches no sistema operacional do host físico",
+        "correta": false,
+        "porque": "O SO do host e a virtualização são responsabilidade exclusiva da AWS."
+      },
+      {
+        "texto": "Criptografia de dados do lado do cliente (client-side)",
+        "correta": false,
+        "porque": "Criptografar dados antes de enviá-los é responsabilidade exclusiva do cliente."
+      },
+      {
+        "texto": "Proteção física e ambiental dos data centers",
+        "correta": false,
+        "porque": "É um controle herdado: o cliente o recebe integralmente da AWS."
+      },
+      {
+        "texto": "Conscientização e treinamento (awareness & training)",
+        "correta": true,
+        "porque": "A AWS treina seus funcionários e o cliente treina os seus: o controle é compartilhado."
+      }
+    ],
+    "explicacao": "Controles compartilhados (patch management, configuration management, awareness & training) existem nas duas camadas, cada parte cuidando da sua.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "usuario-B25"
+  },
+  {
+    "id": "D2-a-004",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada, quais controles o cliente HERDA integralmente da AWS ao usar a nuvem?",
+    "alternativas": [
+      {
+        "texto": "Controles físicos e ambientais dos data centers",
+        "correta": true,
+        "porque": "Energia, refrigeração, acesso físico e proteção contra incêndio são da AWS; o cliente herda esses controles."
+      },
+      {
+        "texto": "Gestão de patches do sistema operacional convidado",
+        "correta": false,
+        "porque": "Patch management é controle compartilhado: o SO convidado é do cliente."
+      },
+      {
+        "texto": "Gestão de configuração dos recursos implantados",
+        "correta": false,
+        "porque": "Configuration management é compartilhado: o cliente configura seus SOs, bancos e aplicações."
+      },
+      {
+        "texto": "Gestão de usuários e permissões no IAM",
+        "correta": false,
+        "porque": "Identidades e permissões na conta são responsabilidade do cliente."
+      }
+    ],
+    "explicacao": "Controles herdados são aqueles que o cliente recebe totalmente da AWS, como os controles físicos e ambientais da infraestrutura.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "usuario-B30 (reescrita)"
+  },
+  {
+    "id": "D2-a-005",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa Amazon WorkSpaces para fornecer desktops virtuais. Segundo o modelo de responsabilidade compartilhada, qual tarefa continua sendo do cliente?",
+    "alternativas": [
+      {
+        "texto": "Manter os servidores físicos que hospedam os WorkSpaces",
+        "correta": false,
+        "porque": "O hardware subjacente é mantido pela AWS."
+      },
+      {
+        "texto": "Atualizar o hipervisor que executa os desktops",
+        "correta": false,
+        "porque": "A camada de virtualização é responsabilidade da AWS."
+      },
+      {
+        "texto": "Atualizar as aplicações instaladas pelo cliente dentro do desktop",
+        "correta": true,
+        "porque": "Software que o cliente instala e gerencia no WorkSpace é responsabilidade dele."
+      },
+      {
+        "texto": "Garantir a redundância da rede entre as Availability Zones",
+        "correta": false,
+        "porque": "A rede e as AZs da infraestrutura global são operadas pela AWS."
+      }
+    ],
+    "explicacao": "Mesmo em serviços gerenciados de end-user computing, as aplicações e os dados que o cliente coloca no ambiente são responsabilidade dele.",
+    "servicos": [
+      "WorkSpaces"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B46 (reescrita)"
+  },
+  {
+    "id": "D2-a-006",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa de e-commerce começou a usar a AWS. Quais responsabilidades de segurança estão no escopo da empresa segundo o modelo de responsabilidade compartilhada? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Restringir o acesso físico aos hosts que executam suas instâncias Amazon EC2",
+        "correta": false,
+        "porque": "Acesso físico ao hardware é controlado exclusivamente pela AWS."
+      },
+      {
+        "texto": "Apagar os volumes Amazon EBS de forma segura antes do descarte do hardware",
+        "correta": false,
+        "porque": "O descarte seguro de mídias de armazenamento é feito pela AWS."
+      },
+      {
+        "texto": "Escolher e gerenciar as configurações de criptografia dos dados no Amazon S3",
+        "correta": true,
+        "porque": "Decidir se e como criptografar os dados (SSE-S3, SSE-KMS, client-side) é do cliente."
+      },
+      {
+        "texto": "Instalar patches de segurança em instâncias Linux do Amazon EC2",
+        "correta": true,
+        "porque": "O SO convidado de instâncias EC2 é mantido pelo cliente."
+      },
+      {
+        "texto": "Aplicar patches no mecanismo de banco de dados de instâncias Amazon RDS",
+        "correta": false,
+        "porque": "No RDS, a AWS aplica os patches do SO e do engine, na janela de manutenção definida pelo cliente."
+      }
+    ],
+    "explicacao": "Criptografia de dados e patch do SO convidado no EC2 são segurança NA nuvem; hardware, descarte de mídia e patches gerenciados do RDS são da AWS.",
+    "servicos": [
+      "S3",
+      "EC2",
+      "RDS"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B56"
+  },
+  {
+    "id": "D2-a-007",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais são responsabilidades do cliente ao usar o AWS Lambda? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Garantir a segurança dentro do código da função",
+        "correta": true,
+        "porque": "Validação de entrada, tratamento de segredos e dependências do código são do cliente."
+      },
+      {
+        "texto": "Provisionar e escalar os servidores que executam as funções",
+        "correta": false,
+        "porque": "No Lambda, a AWS gerencia servidores e escalabilidade automaticamente."
+      },
+      {
+        "texto": "Aplicar patches no sistema operacional do ambiente de execução",
+        "correta": false,
+        "porque": "O SO e o runtime gerenciado são atualizados pela AWS."
+      },
+      {
+        "texto": "Escrever e atualizar o código da função",
+        "correta": true,
+        "porque": "O código é do cliente; a AWS apenas o executa."
+      },
+      {
+        "texto": "Proteger a infraestrutura física subjacente",
+        "correta": false,
+        "porque": "A infraestrutura física é sempre responsabilidade da AWS."
+      }
+    ],
+    "explicacao": "Em serviços serverless como o Lambda, a responsabilidade do cliente se concentra em código, dados e permissões (IAM).",
+    "servicos": [
+      "Lambda"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B59"
+  },
+  {
+    "id": "D2-a-008",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais controles de segurança são gerenciados pelo cliente, e não pela AWS, segundo o modelo de responsabilidade compartilhada? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Aplicar patches no sistema operacional do Amazon RDS",
+        "correta": false,
+        "porque": "No RDS, os patches do SO são aplicados pela AWS."
+      },
+      {
+        "texto": "Atualizar o firmware da infraestrutura de rede da AWS",
+        "correta": false,
+        "porque": "Firmware de equipamentos de rede é responsabilidade da AWS."
+      },
+      {
+        "texto": "Gerenciar a criptografia dos dados",
+        "correta": true,
+        "porque": "O cliente decide quais dados criptografar e como gerenciar as chaves."
+      },
+      {
+        "texto": "Manter o controle de acesso físico às instalações de uma Região",
+        "correta": false,
+        "porque": "Acesso físico é controle exclusivo da AWS."
+      },
+      {
+        "texto": "Conceder acesso de menor privilégio aos usuários do IAM",
+        "correta": true,
+        "porque": "Definir permissões no IAM é responsabilidade do cliente."
+      }
+    ],
+    "explicacao": "Dados (incluindo criptografia) e identidades/permissões são sempre responsabilidade do cliente, em qualquer serviço.",
+    "servicos": [
+      "IAM",
+      "KMS"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B60"
+  },
+  {
+    "id": "D2-a-009",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Qual atividade é de inteira responsabilidade do cliente ao executar uma carga de trabalho IaaS no Amazon EC2?",
+    "alternativas": [
+      {
+        "texto": "Aplicar patches nos componentes do hipervisor",
+        "correta": false,
+        "porque": "O hipervisor é gerenciado pela AWS."
+      },
+      {
+        "texto": "Configurar security groups e tabelas de rotas para o tráfego da aplicação",
+        "correta": true,
+        "porque": "A configuração de rede virtual e firewall da VPC é feita pelo cliente."
+      },
+      {
+        "texto": "Manter controles físicos e ambientais no data center",
+        "correta": false,
+        "porque": "São controles herdados da AWS."
+      },
+      {
+        "texto": "Manter os componentes da infraestrutura de rede subjacente",
+        "correta": false,
+        "porque": "A rede física é responsabilidade da AWS."
+      }
+    ],
+    "explicacao": "No IaaS o cliente controla rede virtual (security groups, NACLs, rotas), SO convidado e aplicações.",
+    "servicos": [
+      "EC2",
+      "VPC"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B63"
+  },
+  {
+    "id": "D2-a-010",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada da AWS, qual tarefa é de responsabilidade do cliente?",
+    "alternativas": [
+      {
+        "texto": "Manter a configuração dos dispositivos de infraestrutura",
+        "correta": false,
+        "porque": "Dispositivos de infraestrutura são configurados pela AWS."
+      },
+      {
+        "texto": "Gerenciar o SO do host e a camada de virtualização",
+        "correta": false,
+        "porque": "Host e virtualização são responsabilidade da AWS."
+      },
+      {
+        "texto": "Manter o software que opera as Availability Zones",
+        "correta": false,
+        "porque": "O software da infraestrutura global é da AWS."
+      },
+      {
+        "texto": "Gerenciar os sistemas operacionais convidados (guest OS)",
+        "correta": true,
+        "porque": "O SO das instâncias é do cliente, incluindo patches e configuração."
+      }
+    ],
+    "explicacao": "Guest OS = cliente; host OS, virtualização e infraestrutura = AWS.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B72"
+  },
+  {
+    "id": "D2-a-011",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Qual tarefa é de responsabilidade da AWS quando uma carga de trabalho usa o Amazon RDS?",
+    "alternativas": [
+      {
+        "texto": "Instalar e aplicar patches no software do mecanismo de banco de dados",
+        "correta": true,
+        "porque": "No RDS a AWS gerencia instalação e patches do engine e do SO."
+      },
+      {
+        "texto": "Criar as tabelas do banco de dados",
+        "correta": false,
+        "porque": "A modelagem e a criação de tabelas são do cliente."
+      },
+      {
+        "texto": "Atualizar o esquema do banco de dados",
+        "correta": false,
+        "porque": "Alterações de esquema são decisões do cliente."
+      },
+      {
+        "texto": "Excluir registros obsoletos do banco de dados",
+        "correta": false,
+        "porque": "O conteúdo e o ciclo de vida dos dados são do cliente."
+      }
+    ],
+    "explicacao": "Em um banco gerenciado, a AWS cuida de SO, engine e infraestrutura; o cliente cuida de esquema, dados e acessos.",
+    "servicos": [
+      "RDS"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B83"
+  },
+  {
+    "id": "D2-a-012",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Em qual serviço o cliente é responsável pela configuração do sistema operacional, pelos patches de segurança e pela configuração de rede da instância?",
+    "alternativas": [
+      {
+        "texto": "Amazon RDS",
+        "correta": false,
+        "porque": "No RDS a AWS gerencia o SO e os patches do banco."
+      },
+      {
+        "texto": "Amazon ElastiCache",
+        "correta": false,
+        "porque": "É gerenciado: a AWS mantém os nós e o software."
+      },
+      {
+        "texto": "Amazon EC2",
+        "correta": true,
+        "porque": "No EC2 (IaaS) o cliente gerencia o SO convidado, seus patches e a rede da instância."
+      },
+      {
+        "texto": "AWS Fargate",
+        "correta": false,
+        "porque": "No Fargate não há SO de host para o cliente gerenciar."
+      }
+    ],
+    "explicacao": "Quanto mais próximo do IaaS (EC2), mais responsabilidade operacional e de segurança fica com o cliente.",
+    "servicos": [
+      "EC2",
+      "RDS",
+      "ElastiCache",
+      "Fargate"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k12#12"
+  },
+  {
+    "id": "D2-a-013",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais são exemplos de controles compartilhados no modelo de responsabilidade compartilhada da AWS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Gestão de patches (patch management)",
+        "correta": true,
+        "porque": "A AWS corrige a infraestrutura; o cliente corrige SO convidado e aplicações."
+      },
+      {
+        "texto": "Gestão de usuários do IAM",
+        "correta": false,
+        "porque": "Usuários e permissões na conta são exclusivamente do cliente."
+      },
+      {
+        "texto": "Operação dos data centers",
+        "correta": false,
+        "porque": "É responsabilidade exclusiva da AWS (controle herdado)."
+      },
+      {
+        "texto": "Gestão de configuração (configuration management)",
+        "correta": true,
+        "porque": "A AWS configura a infraestrutura; o cliente configura SOs, bancos e aplicações."
+      },
+      {
+        "texto": "Controles ambientais (energia e refrigeração)",
+        "correta": false,
+        "porque": "São controles herdados da AWS."
+      }
+    ],
+    "explicacao": "Patch management, configuration management e awareness & training são os três controles compartilhados citados pela AWS.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k1#38"
+  },
+  {
+    "id": "D2-a-014",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Qual afirmação sobre o modelo de responsabilidade compartilhada da AWS é verdadeira?",
+    "alternativas": [
+      {
+        "texto": "A segurança dos serviços IaaS é inteiramente da AWS",
+        "correta": false,
+        "porque": "No IaaS o cliente tem a maior parcela de responsabilidade (SO, rede, aplicações)."
+      },
+      {
+        "texto": "As responsabilidades variam conforme os serviços utilizados",
+        "correta": true,
+        "porque": "A divisão muda entre EC2, RDS, Lambda etc.: quanto mais gerenciado, menos o cliente gerencia."
+      },
+      {
+        "texto": "O patch do SO convidado é sempre responsabilidade da AWS",
+        "correta": false,
+        "porque": "No EC2 o patch do SO convidado é do cliente."
+      },
+      {
+        "texto": "A segurança dos serviços gerenciados é inteiramente do cliente",
+        "correta": false,
+        "porque": "Em serviços gerenciados a AWS assume SO, plataforma e infraestrutura."
+      }
+    ],
+    "explicacao": "A linha de responsabilidade se desloca conforme o tipo de serviço: IaaS, serviços gerenciados ou serverless.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k1#5"
+  },
+  {
+    "id": "D2-a-015",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada, quem é responsável por operar e escalar a infraestrutura que executa as tabelas do Amazon DynamoDB?",
+    "alternativas": [
+      {
+        "texto": "A equipe de segurança do cliente",
+        "correta": false,
+        "porque": "O cliente não gerencia servidores no DynamoDB."
+      },
+      {
+        "texto": "A equipe de desenvolvimento do cliente",
+        "correta": false,
+        "porque": "Os desenvolvedores definem tabelas e acesso, não a infraestrutura."
+      },
+      {
+        "texto": "A equipe de DevOps do cliente",
+        "correta": false,
+        "porque": "Não há servidores ou SO para a equipe de operações do cliente administrar."
+      },
+      {
+        "texto": "A AWS",
+        "correta": true,
+        "porque": "O DynamoDB é serverless: a AWS opera, corrige e escala a infraestrutura."
+      }
+    ],
+    "explicacao": "No DynamoDB o cliente cuida de dados, permissões IAM e configurações (como modo de capacidade); a AWS cuida da infraestrutura.",
+    "servicos": [
+      "DynamoDB"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k7#38 (reescrita)"
+  },
+  {
+    "id": "D2-a-016",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada, qual das opções é responsabilidade do cliente?",
+    "alternativas": [
+      {
+        "texto": "Instalar patches do SO de instâncias Amazon EC2 que executam um banco de dados",
+        "correta": true,
+        "porque": "Banco autogerenciado no EC2: SO e software do banco são do cliente."
+      },
+      {
+        "texto": "Instalar patches de segurança nos hipervisores da AWS",
+        "correta": false,
+        "porque": "O hipervisor é mantido pela AWS."
+      },
+      {
+        "texto": "Instalar patches do SO dos servidores do Amazon DynamoDB",
+        "correta": false,
+        "porque": "O DynamoDB é totalmente gerenciado pela AWS."
+      },
+      {
+        "texto": "Instalar patches do SO de instâncias de banco do Amazon RDS",
+        "correta": false,
+        "porque": "No RDS os patches do SO são aplicados pela AWS."
+      }
+    ],
+    "explicacao": "Um banco instalado no EC2 deixa SO, engine e patches com o cliente; no RDS ou DynamoDB isso passa para a AWS.",
+    "servicos": [
+      "EC2",
+      "RDS",
+      "DynamoDB"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k20#40"
+  },
+  {
+    "id": "D2-a-017",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "No modelo de responsabilidade compartilhada, o que significa a responsabilidade da AWS pela \"segurança DA nuvem\"?",
+    "alternativas": [
+      {
+        "texto": "Proteger os dados que o cliente armazena nos serviços",
+        "correta": false,
+        "porque": "Proteger os dados é segurança NA nuvem, do cliente."
+      },
+      {
+        "texto": "Configurar as permissões IAM de cada conta",
+        "correta": false,
+        "porque": "Permissões IAM são configuradas pelo cliente."
+      },
+      {
+        "texto": "Proteger hardware, software, rede e instalações que executam os serviços",
+        "correta": true,
+        "porque": "É a infraestrutura global que a AWS opera e protege."
+      },
+      {
+        "texto": "Corrigir as vulnerabilidades das aplicações do cliente",
+        "correta": false,
+        "porque": "As aplicações do cliente são responsabilidade dele."
+      }
+    ],
+    "explicacao": "Segurança DA nuvem (AWS) = infraestrutura; segurança NA nuvem (cliente) = o que ele coloca e configura na nuvem.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-018",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Qual tarefa é de responsabilidade da AWS?",
+    "alternativas": [
+      {
+        "texto": "Criar IAM users e grupos",
+        "correta": false,
+        "porque": "Identidades na conta são criadas pelo cliente."
+      },
+      {
+        "texto": "Destruir fisicamente as mídias de armazenamento no fim da vida útil",
+        "correta": true,
+        "porque": "O descarte seguro de mídias segue padrões do setor e é feito pela AWS."
+      },
+      {
+        "texto": "Aplicar patches no SO convidado das instâncias",
+        "correta": false,
+        "porque": "O SO convidado é do cliente."
+      },
+      {
+        "texto": "Configurar as opções de segurança das instâncias Amazon EC2",
+        "correta": false,
+        "porque": "Security groups e hardening da instância são do cliente."
+      }
+    ],
+    "explicacao": "A AWS é responsável pelo ciclo de vida do hardware, incluindo o descarte seguro de dispositivos de armazenamento.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k17#8"
+  },
+  {
+    "id": "D2-a-019",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada, qual tarefa é da AWS?",
+    "alternativas": [
+      {
+        "texto": "Habilitar criptografia server-side nos objetos do Amazon S3",
+        "correta": false,
+        "porque": "Escolher e habilitar a criptografia é decisão do cliente."
+      },
+      {
+        "texto": "Aplicar políticas de segurança do IAM",
+        "correta": false,
+        "porque": "Políticas IAM são definidas e aplicadas pelo cliente."
+      },
+      {
+        "texto": "Aplicar patches no SO de uma instância Amazon EC2",
+        "correta": false,
+        "porque": "O SO convidado do EC2 é do cliente."
+      },
+      {
+        "texto": "Aplicar atualizações no hipervisor",
+        "correta": true,
+        "porque": "A camada de virtualização é mantida pela AWS."
+      }
+    ],
+    "explicacao": "Hipervisor e host pertencem à infraestrutura da AWS; criptografia, IAM e SO convidado ficam com o cliente.",
+    "servicos": [
+      "EC2",
+      "S3",
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k22#33"
+  },
+  {
+    "id": "D2-a-020",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa executa contêineres no Amazon ECS com AWS Fargate. Segundo o modelo de responsabilidade compartilhada, qual tarefa é do cliente?",
+    "alternativas": [
+      {
+        "texto": "Manter as imagens de contêiner e o código da aplicação seguros",
+        "correta": true,
+        "porque": "Imagens, dependências, código e permissões das tarefas são do cliente."
+      },
+      {
+        "texto": "Aplicar patches no SO dos hosts que executam as tarefas",
+        "correta": false,
+        "porque": "No Fargate a AWS gerencia e corrige os hosts."
+      },
+      {
+        "texto": "Escalar a frota de instâncias EC2 do cluster",
+        "correta": false,
+        "porque": "Com Fargate não existe frota de instâncias para o cliente gerenciar."
+      },
+      {
+        "texto": "Manter o runtime de contêiner instalado nos servidores",
+        "correta": false,
+        "porque": "O runtime e o host são mantidos pela AWS."
+      }
+    ],
+    "explicacao": "No Fargate (serverless para contêineres) a AWS gerencia hosts e SO; o cliente cuida das imagens, do código, dos dados e do IAM.",
+    "servicos": [
+      "Fargate",
+      "ECS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-021",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa armazena documentos no Amazon S3. Segundo o modelo de responsabilidade compartilhada, qual tarefa é do cliente?",
+    "alternativas": [
+      {
+        "texto": "Replicar os objetos entre dispositivos para garantir a durabilidade",
+        "correta": false,
+        "porque": "A durabilidade da infraestrutura do S3 é responsabilidade da AWS."
+      },
+      {
+        "texto": "Manter os servidores de armazenamento do serviço",
+        "correta": false,
+        "porque": "Servidores e discos do S3 são da AWS."
+      },
+      {
+        "texto": "Configurar bucket policies e o Block Public Access",
+        "correta": true,
+        "porque": "Quem pode acessar os dados é uma configuração do cliente."
+      },
+      {
+        "texto": "Aplicar patches no software que executa o S3",
+        "correta": false,
+        "porque": "O software do serviço é mantido pela AWS."
+      }
+    ],
+    "explicacao": "No S3 a AWS opera o serviço; o cliente controla acesso (bucket policies, IAM, Block Public Access), criptografia e classificação dos dados.",
+    "servicos": [
+      "S3"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-022",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa migra uma API de instâncias Amazon EC2 para o AWS Lambda. Qual responsabilidade deixa de ser do cliente e passa para a AWS?",
+    "alternativas": [
+      {
+        "texto": "Definir as permissões IAM da função",
+        "correta": false,
+        "porque": "Permissões continuam sendo configuradas pelo cliente."
+      },
+      {
+        "texto": "Aplicar patches no sistema operacional e no runtime",
+        "correta": true,
+        "porque": "No Lambda, a AWS mantém o SO e o runtime gerenciado."
+      },
+      {
+        "texto": "Proteger os dados processados pela API",
+        "correta": false,
+        "porque": "Os dados continuam sendo do cliente."
+      },
+      {
+        "texto": "Corrigir vulnerabilidades no código da API",
+        "correta": false,
+        "porque": "O código continua sendo do cliente."
+      }
+    ],
+    "explicacao": "Ao sair do IaaS para o serverless, SO, runtime e escalabilidade passam para a AWS; código, dados e IAM continuam com o cliente.",
+    "servicos": [
+      "Lambda",
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-023",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa migra um banco MySQL instalado no Amazon EC2 para o Amazon RDS for MySQL. Qual responsabilidade CONTINUA com o cliente?",
+    "alternativas": [
+      {
+        "texto": "Aplicar patches no SO do servidor de banco",
+        "correta": false,
+        "porque": "No RDS a AWS aplica os patches do SO."
+      },
+      {
+        "texto": "Instalar o software do mecanismo MySQL",
+        "correta": false,
+        "porque": "O RDS provisiona e mantém o engine."
+      },
+      {
+        "texto": "Substituir o hardware do servidor quando ele falhar",
+        "correta": false,
+        "porque": "Hardware é sempre responsabilidade da AWS."
+      },
+      {
+        "texto": "Gerenciar usuários do banco e o acesso de rede via security groups",
+        "correta": true,
+        "porque": "Contas do banco, permissões e regras de rede são configuradas pelo cliente."
+      }
+    ],
+    "explicacao": "Com o RDS a AWS assume SO, engine e hardware; o cliente mantém dados, usuários, acesso de rede e configurações do banco.",
+    "servicos": [
+      "RDS",
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-024",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Qual responsabilidade é do cliente em TODOS os serviços da AWS, seja Amazon EC2, Amazon RDS, AWS Lambda ou Amazon DynamoDB?",
+    "alternativas": [
+      {
+        "texto": "Proteger os dados e gerenciar quem pode acessá-los",
+        "correta": true,
+        "porque": "Dados e gestão de acesso (IAM) nunca deixam de ser do cliente."
+      },
+      {
+        "texto": "Aplicar patches no sistema operacional",
+        "correta": false,
+        "porque": "Em RDS, Lambda e DynamoDB o SO é gerenciado pela AWS."
+      },
+      {
+        "texto": "Manter o software do serviço atualizado",
+        "correta": false,
+        "porque": "O software dos serviços gerenciados é mantido pela AWS."
+      },
+      {
+        "texto": "Planejar a capacidade dos servidores",
+        "correta": false,
+        "porque": "Em serviços serverless não há servidores para dimensionar."
+      }
+    ],
+    "explicacao": "Independentemente do serviço, o cliente sempre é responsável pelos seus dados, pela classificação deles e pelo controle de acesso.",
+    "servicos": [
+      "EC2",
+      "RDS",
+      "Lambda",
+      "DynamoDB"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-025",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Patch management é um controle compartilhado. Como essa responsabilidade é dividida em uma carga de trabalho no Amazon EC2?",
+    "alternativas": [
+      {
+        "texto": "A AWS corrige o SO convidado e o cliente corrige as aplicações",
+        "correta": false,
+        "porque": "O SO convidado das instâncias é do cliente, não da AWS."
+      },
+      {
+        "texto": "O cliente corrige o hipervisor e a AWS corrige o SO convidado",
+        "correta": false,
+        "porque": "É o inverso: o hipervisor é da AWS e o SO convidado é do cliente."
+      },
+      {
+        "texto": "A AWS corrige a infraestrutura e o cliente corrige o SO convidado e as aplicações",
+        "correta": true,
+        "porque": "Cada parte corrige a camada que controla."
+      },
+      {
+        "texto": "A AWS corrige tudo automaticamente, desde que o cliente habilite o recurso",
+        "correta": false,
+        "porque": "A AWS não aplica patches no SO convidado do EC2 por conta própria; o cliente pode automatizar com Systems Manager."
+      }
+    ],
+    "explicacao": "Em controles compartilhados cada parte cuida da sua camada: AWS = infraestrutura; cliente = SO convidado, aplicações e dados.",
+    "servicos": [
+      "EC2",
+      "Systems Manager"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-026",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada, quais atividades são do cliente? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Aplicar patches nos componentes de SO do Amazon RDS",
+        "correta": false,
+        "porque": "No RDS a AWS aplica os patches do SO."
+      },
+      {
+        "texto": "Criptografar os dados no lado do cliente (client-side)",
+        "correta": true,
+        "porque": "Criptografar antes de enviar à AWS é decisão e tarefa do cliente."
+      },
+      {
+        "texto": "Treinar a equipe dos data centers da AWS",
+        "correta": false,
+        "porque": "A AWS treina seus próprios funcionários."
+      },
+      {
+        "texto": "Configurar Network ACLs na VPC",
+        "correta": true,
+        "porque": "As regras de rede da VPC são configuradas pelo cliente."
+      },
+      {
+        "texto": "Manter os controles ambientais do data center",
+        "correta": false,
+        "porque": "São controles herdados da AWS."
+      }
+    ],
+    "explicacao": "Criptografia client-side e regras de rede da VPC (NACLs, security groups) são segurança NA nuvem.",
+    "servicos": [
+      "VPC",
+      "RDS"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k9#22"
+  },
+  {
+    "id": "D2-a-027",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Segundo o modelo de responsabilidade compartilhada, qual item é responsabilidade EXCLUSIVA da AWS?",
+    "alternativas": [
+      {
+        "texto": "Segurança das aplicações",
+        "correta": false,
+        "porque": "Aplicações são do cliente."
+      },
+      {
+        "texto": "Gerenciamento das edge locations",
+        "correta": true,
+        "porque": "Edge locations fazem parte da infraestrutura global operada pela AWS."
+      },
+      {
+        "texto": "Gestão de patches",
+        "correta": false,
+        "porque": "Patch management é um controle compartilhado."
+      },
+      {
+        "texto": "Dados do lado do cliente",
+        "correta": false,
+        "porque": "Dados são sempre do cliente."
+      }
+    ],
+    "explicacao": "Regiões, AZs e edge locations são infraestrutura global: segurança DA nuvem, exclusiva da AWS.",
+    "servicos": [
+      "CloudFront"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k9#11"
+  },
+  {
+    "id": "D2-a-028",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa executa contêineres no Amazon ECS sobre instâncias EC2 e quer deixar de ser responsável por aplicar patches no SO dos hosts. Qual opção atende com o MENOR esforço operacional?",
+    "alternativas": [
+      {
+        "texto": "Usar instâncias EC2 Dedicated Hosts",
+        "correta": false,
+        "porque": "Dedicated Hosts dão hardware dedicado, mas o SO continua sendo do cliente."
+      },
+      {
+        "texto": "Armazenar as imagens no Amazon ECR",
+        "correta": false,
+        "porque": "O ECR guarda imagens, mas não muda quem gerencia o SO dos hosts."
+      },
+      {
+        "texto": "Usar o Amazon EKS com nós EC2 autogerenciados",
+        "correta": false,
+        "porque": "Nós EC2 autogerenciados continuam exigindo patches do cliente."
+      },
+      {
+        "texto": "Migrar os contêineres para o AWS Fargate",
+        "correta": true,
+        "porque": "Com Fargate a AWS gerencia os hosts e seus patches."
+      }
+    ],
+    "explicacao": "Fargate remove do cliente a gestão de servidores e SO dos hosts de contêineres.",
+    "servicos": [
+      "Fargate",
+      "ECS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-029",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "No Amazon RDS, quem decide se a instância terá implantação Multi-AZ e por quantos dias os backups automáticos serão retidos?",
+    "alternativas": [
+      {
+        "texto": "O cliente, que configura essas opções e a AWS as executa",
+        "correta": true,
+        "porque": "Multi-AZ e período de retenção são configurações escolhidas pelo cliente."
+      },
+      {
+        "texto": "A AWS, porque o RDS é um serviço gerenciado",
+        "correta": false,
+        "porque": "A AWS executa failover e backups, mas a escolha dessas opções é do cliente."
+      },
+      {
+        "texto": "A AWS, apenas para bancos em produção",
+        "correta": false,
+        "porque": "A AWS não classifica as cargas do cliente nem decide por ele."
+      },
+      {
+        "texto": "O AWS Support, mediante abertura de caso",
+        "correta": false,
+        "porque": "São configurações de autoatendimento no console, API ou CLI."
+      }
+    ],
+    "explicacao": "Mesmo em serviços gerenciados, configuration management é compartilhado: o cliente escolhe as opções e a AWS opera a infraestrutura.",
+    "servicos": [
+      "RDS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-030",
+    "dominio": 2,
+    "task": "2.1",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação executada em uma única instância Amazon EC2 ficou fora do ar durante uma falha em uma Availability Zone. Segundo o modelo de responsabilidade compartilhada, a quem cabe tornar essa carga de trabalho resiliente?",
+    "alternativas": [
+      {
+        "texto": "À AWS, que deve mover a instância para outra AZ automaticamente",
+        "correta": false,
+        "porque": "O EC2 não migra instâncias entre AZs automaticamente."
+      },
+      {
+        "texto": "À AWS, porque disponibilidade é sempre responsabilidade do provedor",
+        "correta": false,
+        "porque": "A AWS garante a infraestrutura das AZs, não a arquitetura da carga do cliente."
+      },
+      {
+        "texto": "Ao cliente, que deve distribuir a aplicação em várias AZs",
+        "correta": true,
+        "porque": "Projetar redundância (multi-AZ, Auto Scaling, backups) é do cliente."
+      },
+      {
+        "texto": "Ao AWS Support, que deve restaurar a instância",
+        "correta": false,
+        "porque": "O Support orienta, mas não é responsável pela arquitetura do cliente."
+      }
+    ],
+    "explicacao": "A AWS oferece AZs isoladas e confiáveis; usar essa infraestrutura para criar resiliência é responsabilidade do cliente.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-031",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa de capital aberto sujeita à lei Sarbanes-Oxley (SOX) precisa apresentar aos auditores os relatórios SOC 1 e SOC 2 da AWS. Onde ela obtém esses documentos?",
+    "alternativas": [
+      {
+        "texto": "AWS Certificate Manager (ACM)",
+        "correta": false,
+        "porque": "O ACM gerencia certificados SSL/TLS, não relatórios de auditoria."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": true,
+        "porque": "O Artifact dá acesso sob demanda aos relatórios de conformidade da AWS, como SOC, ISO e PCI."
+      },
+      {
+        "texto": "AWS Security Hub",
+        "correta": false,
+        "porque": "O Security Hub avalia a postura de segurança da conta do cliente, não fornece relatórios de auditoria da AWS."
+      },
+      {
+        "texto": "AWS GovCloud (US)",
+        "correta": false,
+        "porque": "GovCloud é uma Região isolada para cargas reguladas dos EUA, não um repositório de relatórios."
+      }
+    ],
+    "explicacao": "O AWS Artifact é o portal self-service para baixar relatórios de conformidade da AWS (SOC, PCI, ISO) e aceitar acordos.",
+    "servicos": [
+      "Artifact"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A29"
+  },
+  {
+    "id": "D2-a-032",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer exigir uma autenticação adicional antes que versões de objetos de um bucket do Amazon S3 possam ser excluídas permanentemente. Qual recurso atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "S3 server access logging",
+        "correta": false,
+        "porque": "Registra as requisições ao bucket, mas não impede exclusões (é um controle de detecção)."
+      },
+      {
+        "texto": "Criptografia padrão SSE-S3",
+        "correta": false,
+        "porque": "Protege a confidencialidade dos dados em repouso, não impede exclusões."
+      },
+      {
+        "texto": "S3 Lifecycle policy",
+        "correta": false,
+        "porque": "Automatiza transições e expirações; pode até excluir objetos, não protegê-los."
+      },
+      {
+        "texto": "S3 Versioning com MFA Delete",
+        "correta": true,
+        "porque": "MFA Delete exige um código MFA para excluir versões permanentemente ou mudar o estado do versionamento."
+      }
+    ],
+    "explicacao": "MFA Delete, habilitado pelo root user em um bucket com versionamento, é um controle preventivo contra exclusões acidentais ou maliciosas.",
+    "servicos": [
+      "S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-A34 (reescrita)"
+  },
+  {
+    "id": "D2-a-033",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS avalia continuamente se as configurações dos recursos de uma conta estão de acordo com um conjunto definido de regras?",
+    "alternativas": [
+      {
+        "texto": "AWS Config",
+        "correta": true,
+        "porque": "O Config registra as configurações e as avalia continuamente com Config rules."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Monitora métricas, logs e alarmes de desempenho, não conformidade de configuração."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Fornece relatórios de conformidade da própria AWS."
+      },
+      {
+        "texto": "AWS IAM",
+        "correta": false,
+        "porque": "Gerencia identidades e permissões, não avalia a configuração dos recursos."
+      }
+    ],
+    "explicacao": "AWS Config = inventário, histórico de configuração e avaliação contínua de conformidade com regras.",
+    "servicos": [
+      "Config"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A47"
+  },
+  {
+    "id": "D2-a-034",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Qual serviço gerenciado da AWS permite criar e controlar chaves criptográficas usadas para criptografar dados e assinar mensagens, sem que o cliente precise operar um módulo de hardware próprio?",
+    "alternativas": [
+      {
+        "texto": "AWS Systems Manager",
+        "correta": false,
+        "porque": "Gerencia operações em instâncias e guarda parâmetros, não chaves criptográficas."
+      },
+      {
+        "texto": "AWS CloudHSM",
+        "correta": false,
+        "porque": "Fornece HSMs dedicados que o cliente opera e gerencia (cluster, usuários, chaves)."
+      },
+      {
+        "texto": "AWS Key Management Service (AWS KMS)",
+        "correta": true,
+        "porque": "O KMS é gerenciado: a AWS opera os HSMs e o cliente controla as chaves e suas políticas."
+      },
+      {
+        "texto": "AWS IAM",
+        "correta": false,
+        "porque": "Controla permissões, inclusive de uso de chaves, mas não cria chaves criptográficas."
+      }
+    ],
+    "explicacao": "KMS é o serviço gerenciado de chaves integrado à maioria dos serviços; CloudHSM é a opção de HSM dedicado operado pelo cliente.",
+    "servicos": [
+      "KMS",
+      "CloudHSM"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A61"
+  },
+  {
+    "id": "D2-a-035",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa identificar qual IAM user encerrou uma instância Amazon EC2 de produção. Qual serviço ela deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Mostra métricas e alarmes da instância, não quem fez a chamada de API."
+      },
+      {
+        "texto": "AWS CloudTrail",
+        "correta": true,
+        "porque": "Registra cada chamada de API com identidade, horário, IP de origem e ação, como TerminateInstances."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Registra a mudança de configuração do recurso, mas o autor da ação vem do CloudTrail."
+      },
+      {
+        "texto": "AWS Systems Manager",
+        "correta": false,
+        "porque": "Gerencia e automatiza operações em instâncias, não audita chamadas de API."
+      }
+    ],
+    "explicacao": "CloudTrail responde \"quem fez o quê, quando e de onde\" na conta AWS.",
+    "servicos": [
+      "CloudTrail"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B06"
+  },
+  {
+    "id": "D2-a-036",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS ajuda a proteger uma conta monitorando continuamente atividades maliciosas e gerando alertas sobre ameaças detectadas?",
+    "alternativas": [
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Faz verificações de boas práticas, não detecção de ameaças em tempo real."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Monitora métricas e logs, mas não analisa ameaças por conta própria."
+      },
+      {
+        "texto": "AWS CloudTrail",
+        "correta": false,
+        "porque": "Registra atividades, mas não as analisa para detectar ameaças."
+      },
+      {
+        "texto": "Amazon GuardDuty",
+        "correta": true,
+        "porque": "Analisa CloudTrail, VPC Flow Logs e DNS com inteligência de ameaças e ML para gerar achados."
+      }
+    ],
+    "explicacao": "GuardDuty é o serviço gerenciado de detecção de ameaças: basta habilitar, sem agentes nem infraestrutura.",
+    "servicos": [
+      "GuardDuty"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B09"
+  },
+  {
+    "id": "D2-a-037",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Qual é o principal caso de uso do AWS Control Tower?",
+    "alternativas": [
+      {
+        "texto": "Configurar e governar uma landing zone multi-conta segura seguindo boas práticas",
+        "correta": true,
+        "porque": "O Control Tower automatiza a landing zone com Organizations, guardrails (controls) e contas compartilhadas."
+      },
+      {
+        "texto": "Implantar automaticamente aplicações populares, como WordPress, em uma conta",
+        "correta": false,
+        "porque": "Isso descreve AMIs do Marketplace ou Lightsail, não governança multi-conta."
+      },
+      {
+        "texto": "Centralizar todos os tipos de arquivos de log em um único repositório",
+        "correta": false,
+        "porque": "O Control Tower cria uma conta de log archive, mas esse não é o seu propósito principal."
+      },
+      {
+        "texto": "Detectar ameaças e comportamentos anômalos nas contas",
+        "correta": false,
+        "porque": "Detecção de ameaças é função do GuardDuty."
+      }
+    ],
+    "explicacao": "Control Tower = maneira mais fácil de montar e governar um ambiente multi-conta (landing zone) com controles preventivos e de detecção.",
+    "servicos": [
+      "Control Tower",
+      "Organizations"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B21"
+  },
+  {
+    "id": "D2-a-038",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Quando o Amazon EBS criptografa volumes e snapshots, qual serviço da AWS ele usa para gerenciar as chaves?",
+    "alternativas": [
+      {
+        "texto": "AWS Shield",
+        "correta": false,
+        "porque": "Protege contra DDoS, não gerencia chaves."
+      },
+      {
+        "texto": "AWS Secrets Manager",
+        "correta": false,
+        "porque": "Armazena e rotaciona segredos como senhas, não as chaves de criptografia do EBS."
+      },
+      {
+        "texto": "AWS KMS",
+        "correta": true,
+        "porque": "A criptografia do EBS usa chaves do KMS (gerenciada pela AWS ou pelo cliente)."
+      },
+      {
+        "texto": "AWS Certificate Manager (ACM)",
+        "correta": false,
+        "porque": "Fornece certificados TLS para criptografia em trânsito, não em repouso."
+      }
+    ],
+    "explicacao": "EBS, S3 (SSE-KMS), RDS e muitos outros serviços integram-se ao KMS para criptografia em repouso.",
+    "servicos": [
+      "EBS",
+      "KMS"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B35 (reescrita)"
+  },
+  {
+    "id": "D2-a-039",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS consolida achados de segurança e verificações de conformidade de várias contas e serviços em uma visão unificada?",
+    "alternativas": [
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Avalia configurações, mas não agrega achados de GuardDuty, Inspector e Macie."
+      },
+      {
+        "texto": "AWS Security Hub",
+        "correta": true,
+        "porque": "Agrega achados de vários serviços e contas e verifica padrões como CIS e AWS Foundational Security Best Practices."
+      },
+      {
+        "texto": "AWS CloudTrail",
+        "correta": false,
+        "porque": "Registra chamadas de API, não consolida achados de segurança."
+      },
+      {
+        "texto": "AWS Systems Manager",
+        "correta": false,
+        "porque": "Gerencia operações de instâncias e recursos, não postura de segurança."
+      }
+    ],
+    "explicacao": "Security Hub = painel central de postura de segurança e conformidade com padrões.",
+    "servicos": [
+      "Security Hub"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B41"
+  },
+  {
+    "id": "D2-a-040",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer governar centralmente várias contas AWS, automatizar a criação de contas, aplicar service control policies (SCPs) e consolidar o faturamento. Qual serviço atende a esses requisitos?",
+    "alternativas": [
+      {
+        "texto": "AWS Cost Explorer",
+        "correta": false,
+        "porque": "Analisa custos, mas não cria contas nem aplica SCPs."
+      },
+      {
+        "texto": "AWS Budgets",
+        "correta": false,
+        "porque": "Define orçamentos e alertas de custo, não governança de contas."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Recomenda boas práticas, não gerencia contas."
+      },
+      {
+        "texto": "AWS Organizations",
+        "correta": true,
+        "porque": "Agrupa contas em OUs, aplica SCPs, cria contas via API e oferece consolidated billing."
+      }
+    ],
+    "explicacao": "Organizations é a base da governança multi-conta: OUs, SCPs e consolidated billing.",
+    "servicos": [
+      "Organizations"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B47"
+  },
+  {
+    "id": "D2-a-041",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS ajuda a descobrir e proteger dados sensíveis, como PII, armazenados no Amazon S3?",
+    "alternativas": [
+      {
+        "texto": "Amazon Macie",
+        "correta": true,
+        "porque": "Usa ML e correspondência de padrões para encontrar dados sensíveis e avaliar a segurança dos buckets."
+      },
+      {
+        "texto": "Amazon GuardDuty",
+        "correta": false,
+        "porque": "Detecta ameaças e atividade maliciosa, não classifica o conteúdo dos dados."
+      },
+      {
+        "texto": "IAM Access Analyzer",
+        "correta": false,
+        "porque": "Identifica recursos compartilhados externamente, sem inspecionar o conteúdo."
+      },
+      {
+        "texto": "Amazon Detective",
+        "correta": false,
+        "porque": "Investiga a causa raiz de achados, não descobre dados sensíveis."
+      }
+    ],
+    "explicacao": "Macie = descoberta e classificação de dados sensíveis (PII, dados financeiros, credenciais) no S3.",
+    "servicos": [
+      "Macie"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-B54"
+  },
+  {
+    "id": "D2-a-042",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa de um serviço automatizado de gerenciamento de vulnerabilidades que faça varreduras contínuas de software vulnerável e exposição de rede nas cargas de trabalho. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon GuardDuty",
+        "correta": false,
+        "porque": "Detecta ameaças em logs, não varre vulnerabilidades de software."
+      },
+      {
+        "texto": "AWS Security Hub",
+        "correta": false,
+        "porque": "Agrega achados do Inspector, mas não faz as varreduras."
+      },
+      {
+        "texto": "Amazon Inspector",
+        "correta": true,
+        "porque": "Varre continuamente EC2, imagens no ECR e funções Lambda em busca de CVEs e exposição de rede."
+      },
+      {
+        "texto": "AWS Shield",
+        "correta": false,
+        "porque": "Protege contra DDoS."
+      }
+    ],
+    "explicacao": "Inspector = gerenciamento contínuo de vulnerabilidades (CVEs) em EC2, ECR e Lambda.",
+    "servicos": [
+      "Inspector"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B76"
+  },
+  {
+    "id": "D2-a-043",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai lançar um e-commerce que processa dados de cartão de crédito e precisa consultar os relatórios de conformidade da AWS e revisar e aceitar acordos com a AWS. Qual serviço oferece acesso sob demanda a esses itens?",
+    "alternativas": [
+      {
+        "texto": "AWS Certificate Manager",
+        "correta": false,
+        "porque": "Gerencia certificados TLS, não relatórios nem acordos."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": true,
+        "porque": "Artifact Reports traz relatórios como o PCI DSS AOC; Artifact Agreements permite aceitar acordos como o BAA."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Avalia a configuração dos recursos do cliente."
+      },
+      {
+        "texto": "AWS CloudTrail",
+        "correta": false,
+        "porque": "Registra chamadas de API."
+      }
+    ],
+    "explicacao": "O Artifact tem duas partes: Reports (relatórios de auditoria) e Agreements (acordos como BAA e NDA).",
+    "servicos": [
+      "Artifact"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k22#4"
+  },
+  {
+    "id": "D2-a-044",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Um auditor externo pediu a lista de todos os IAM users da conta com o status das senhas, das access keys e do MFA. Qual é a forma MAIS simples de fornecer essa informação?",
+    "alternativas": [
+      {
+        "texto": "Criar um IAM user para o auditor com permissões de administrador",
+        "correta": false,
+        "porque": "Viola o menor privilégio e não gera o relatório pedido."
+      },
+      {
+        "texto": "Tirar capturas de tela da página de cada usuário no console",
+        "correta": false,
+        "porque": "É manual, trabalhoso e sujeito a erros."
+      },
+      {
+        "texto": "Baixar o relatório do AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Traz verificações de boas práticas, não o status de credenciais de cada usuário."
+      },
+      {
+        "texto": "Baixar o IAM credential report e entregá-lo ao auditor",
+        "correta": true,
+        "porque": "O credential report lista todos os usuários e o status de senhas, access keys e MFA em CSV."
+      }
+    ],
+    "explicacao": "IAM credential report = relatório da conta com o status de todas as credenciais dos usuários IAM.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k23#41"
+  },
+  {
+    "id": "D2-a-045",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Para aplicar o menor privilégio, um administrador quer saber quais serviços um IAM role usou de fato e quando foi o último acesso, para remover permissões não utilizadas. Qual recurso fornece essa informação?",
+    "alternativas": [
+      {
+        "texto": "Informações de último acesso (Access Advisor) do IAM",
+        "correta": true,
+        "porque": "Mostra os serviços permitidos e a data do último acesso de cada um."
+      },
+      {
+        "texto": "IAM credential report",
+        "correta": false,
+        "porque": "Mostra o status das credenciais dos usuários, não os serviços acessados por uma role."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Fornece relatórios de conformidade da AWS."
+      },
+      {
+        "texto": "Amazon CloudWatch",
+        "correta": false,
+        "porque": "Monitora métricas e logs, não as permissões usadas."
+      }
+    ],
+    "explicacao": "O Access Advisor (último acesso) ajuda a refinar políticas removendo permissões que nunca são usadas.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-046",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma lei local exige que os dados de clientes de uma empresa fiquem armazenados dentro do país. Como a empresa atende a esse requisito na AWS?",
+    "alternativas": [
+      {
+        "texto": "Habilitando o AWS Shield Advanced na conta",
+        "correta": false,
+        "porque": "Shield protege contra DDoS, não define onde os dados ficam."
+      },
+      {
+        "texto": "Usando edge locations do Amazon CloudFront no país",
+        "correta": false,
+        "porque": "Edge locations armazenam cópias em cache; a origem dos dados continua onde o cliente definiu."
+      },
+      {
+        "texto": "Implantando os recursos em uma Região da AWS localizada no país",
+        "correta": true,
+        "porque": "Os dados ficam na Região escolhida; a AWS não os move sem ação do cliente."
+      },
+      {
+        "texto": "Pedindo ao AWS Support que mantenha os dados no país",
+        "correta": false,
+        "porque": "O controle da localização é do cliente, pela escolha da Região."
+      }
+    ],
+    "explicacao": "O cliente controla em qual Região seus dados ficam, o que permite atender requisitos de soberania e residência de dados.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-047",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma agência governamental dos EUA precisa executar cargas de trabalho sensíveis sujeitas a requisitos como FedRAMP High e ITAR, operadas apenas por pessoal dos EUA. Qual opção da AWS atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Uma Região comum dos EUA com Dedicated Instances",
+        "correta": false,
+        "porque": "Dedicated Instances isolam hardware, mas não atendem a requisitos como ITAR."
+      },
+      {
+        "texto": "AWS GovCloud (US)",
+        "correta": true,
+        "porque": "São Regiões isoladas para cargas reguladas do governo dos EUA, operadas por cidadãos americanos."
+      },
+      {
+        "texto": "AWS Outposts em um data center público",
+        "correta": false,
+        "porque": "Outposts leva a AWS para o local do cliente, mas não é a oferta para conformidade governamental."
+      },
+      {
+        "texto": "AWS Control Tower com guardrails obrigatórios",
+        "correta": false,
+        "porque": "Ajuda na governança, mas não muda onde nem por quem a infraestrutura é operada."
+      }
+    ],
+    "explicacao": "GovCloud (US) atende requisitos regulatórios e de conformidade específicos do governo americano (FedRAMP High, ITAR, CJIS).",
+    "servicos": [
+      "GovCloud"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-048",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer proteger os dados trafegados entre os navegadores dos usuários e seu Application Load Balancer, usando certificados públicos renovados automaticamente sem custo adicional. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS KMS",
+        "correta": false,
+        "porque": "Gerencia chaves de criptografia em repouso e de aplicações, não certificados TLS públicos."
+      },
+      {
+        "texto": "AWS CloudHSM",
+        "correta": false,
+        "porque": "Fornece HSM dedicado; não emite certificados públicos para o ALB."
+      },
+      {
+        "texto": "AWS Secrets Manager",
+        "correta": false,
+        "porque": "Armazena e rotaciona segredos, não implanta certificados no ALB."
+      },
+      {
+        "texto": "AWS Certificate Manager (ACM)",
+        "correta": true,
+        "porque": "Emite e renova automaticamente certificados TLS públicos, gratuitos para uso com ALB e CloudFront."
+      }
+    ],
+    "explicacao": "Criptografia em trânsito usa TLS; o ACM provisiona e renova os certificados para serviços integrados.",
+    "servicos": [
+      "ACM",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-049",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais opções protegem dados EM REPOUSO armazenados em um bucket do Amazon S3? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Exigir HTTPS (TLS) em todas as requisições ao bucket",
+        "correta": false,
+        "porque": "TLS protege os dados em trânsito, não em repouso."
+      },
+      {
+        "texto": "Usar criptografia server-side com chaves do AWS KMS (SSE-KMS)",
+        "correta": true,
+        "porque": "O S3 criptografa os objetos ao gravá-los com chaves gerenciadas no KMS."
+      },
+      {
+        "texto": "Criptografar os dados no cliente antes do upload",
+        "correta": true,
+        "porque": "Com client-side encryption os dados já chegam cifrados ao S3."
+      },
+      {
+        "texto": "Habilitar o Amazon Macie no bucket",
+        "correta": false,
+        "porque": "O Macie descobre dados sensíveis, mas não os criptografa."
+      },
+      {
+        "texto": "Habilitar o S3 Transfer Acceleration",
+        "correta": false,
+        "porque": "Acelera transferências pela rede de borda; não criptografa os dados armazenados."
+      }
+    ],
+    "explicacao": "Em repouso: SSE-S3, SSE-KMS ou client-side. Em trânsito: TLS/HTTPS.",
+    "servicos": [
+      "S3",
+      "KMS"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k7#1 (reescrita)"
+  },
+  {
+    "id": "D2-a-050",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa envia novos objetos para o Amazon S3 sem configurar nenhuma opção de criptografia. O que acontece com esses objetos em repouso?",
+    "alternativas": [
+      {
+        "texto": "São criptografados automaticamente com SSE-S3",
+        "correta": true,
+        "porque": "O S3 usa criptografia server-side com chaves gerenciadas pelo S3 por padrão, sem custo."
+      },
+      {
+        "texto": "Ficam sem criptografia até o cliente habilitar SSE-KMS",
+        "correta": false,
+        "porque": "Desde 2023 o S3 aplica criptografia padrão a todos os novos objetos."
+      },
+      {
+        "texto": "São criptografados com chaves do cliente armazenadas no CloudHSM",
+        "correta": false,
+        "porque": "O CloudHSM só é usado se o cliente o configurar explicitamente."
+      },
+      {
+        "texto": "São criptografados apenas se o bucket for público",
+        "correta": false,
+        "porque": "A criptografia padrão vale para todos os buckets, independentemente do acesso."
+      }
+    ],
+    "explicacao": "O S3 criptografa todos os novos objetos com SSE-S3 por padrão; o cliente pode escolher SSE-KMS para ter controle e auditoria das chaves.",
+    "servicos": [
+      "S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-051",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa atender requisitos contratuais e regulatórios que exigem chaves de criptografia em HSMs single-tenant dedicados, sob controle exclusivo do cliente. Qual serviço atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "AWS Secrets Manager",
+        "correta": false,
+        "porque": "Armazena segredos, não fornece HSM dedicado."
+      },
+      {
+        "texto": "AWS KMS com chaves gerenciadas pela AWS",
+        "correta": false,
+        "porque": "O KMS usa HSMs multi-tenant operados pela AWS, sem dedicação de hardware."
+      },
+      {
+        "texto": "AWS CloudHSM",
+        "correta": true,
+        "porque": "Fornece HSMs dedicados (validados FIPS 140) em que só o cliente gerencia as chaves."
+      },
+      {
+        "texto": "AWS Directory Service",
+        "correta": false,
+        "porque": "Fornece Active Directory gerenciado, não armazenamento de chaves."
+      }
+    ],
+    "explicacao": "CloudHSM = hardware dedicado e controle exclusivo das chaves; KMS = serviço gerenciado e integrado, multi-tenant.",
+    "servicos": [
+      "CloudHSM",
+      "KMS"
+    ],
+    "dificuldade": 3,
+    "fonte": "kananinirav-k19#42"
+  },
+  {
+    "id": "D2-a-052",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa precisa garantir a criptografia dos dados EM TRÂNSITO entre os usuários e sua aplicação e entre a aplicação e o banco de dados. Quais opções atendem a esse requisito? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Habilitar a criptografia de volumes Amazon EBS",
+        "correta": false,
+        "porque": "Protege dados em repouso nos volumes."
+      },
+      {
+        "texto": "Configurar HTTPS no load balancer com um certificado do ACM",
+        "correta": true,
+        "porque": "HTTPS (TLS) cifra o tráfego entre os usuários e a aplicação."
+      },
+      {
+        "texto": "Habilitar a criptografia do Amazon RDS com AWS KMS",
+        "correta": false,
+        "porque": "Cifra o armazenamento do banco, ou seja, dados em repouso."
+      },
+      {
+        "texto": "Exigir conexões SSL/TLS ao banco de dados Amazon RDS",
+        "correta": true,
+        "porque": "TLS na conexão com o banco protege os dados em trânsito."
+      },
+      {
+        "texto": "Habilitar o versionamento do Amazon S3",
+        "correta": false,
+        "porque": "Protege contra sobrescrita e exclusão, não é criptografia."
+      }
+    ],
+    "explicacao": "Em trânsito = TLS (HTTPS, conexões SSL ao banco, VPN). Em repouso = criptografia de armazenamento com KMS.",
+    "servicos": [
+      "ACM",
+      "RDS",
+      "KMS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-053",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa criou uma trilha do AWS CloudTrail para guardar o histórico de chamadas de API por vários anos. Onde a trilha entrega os arquivos de log?",
+    "alternativas": [
+      {
+        "texto": "Em volumes Amazon EBS anexados a uma instância",
+        "correta": false,
+        "porque": "O CloudTrail não grava logs em volumes EBS."
+      },
+      {
+        "texto": "Em um bucket do Amazon S3",
+        "correta": true,
+        "porque": "As trilhas entregam logs em um bucket S3 (opcionalmente também no CloudWatch Logs)."
+      },
+      {
+        "texto": "No AWS Artifact",
+        "correta": false,
+        "porque": "O Artifact guarda relatórios de conformidade da AWS, não logs do cliente."
+      },
+      {
+        "texto": "No AWS Config",
+        "correta": false,
+        "porque": "O Config registra configurações, não os arquivos de log do CloudTrail."
+      }
+    ],
+    "explicacao": "O histórico de eventos guarda 90 dias; para retenção longa, a trilha entrega logs no S3, onde podem ser criptografados com KMS e consultados com Athena.",
+    "servicos": [
+      "CloudTrail",
+      "S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-054",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Durante uma investigação de segurança, uma equipe precisa saber quais chamadas de API foram feitas na conta e quais conexões de rede chegaram às instâncias EC2. Quais fontes de log devem ser consultadas? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "AWS CloudTrail",
+        "correta": true,
+        "porque": "Registra as chamadas de API (quem, o quê, quando e de onde) feitas na conta."
+      },
+      {
+        "texto": "VPC Flow Logs",
+        "correta": true,
+        "porque": "Registram metadados do tráfego IP aceito e rejeitado nas interfaces de rede da VPC."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Disponibiliza relatórios de conformidade da AWS, não logs da conta do cliente."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Dá recomendações de boas práticas, não registros de atividade ou de tráfego."
+      },
+      {
+        "texto": "AWS Pricing Calculator",
+        "correta": false,
+        "porque": "Estima custos; não tem relação com logs de segurança."
+      }
+    ],
+    "explicacao": "Para investigar: CloudTrail responde 'quem fez qual chamada de API'; VPC Flow Logs responde 'qual tráfego de rede ocorreu'.",
+    "servicos": [
+      "AWS CloudTrail",
+      "VPC"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-055",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa precisa de registros detalhados de cada requisição feita a um bucket do Amazon S3, incluindo o solicitante, o objeto e o código de resposta, para auditorias de acesso. Qual recurso fornece esses registros?",
+    "alternativas": [
+      {
+        "texto": "S3 server access logging",
+        "correta": true,
+        "porque": "Grava em outro bucket um registro de cada requisição ao bucket de origem."
+      },
+      {
+        "texto": "Amazon Macie",
+        "correta": false,
+        "porque": "Identifica dados sensíveis no bucket, não registra cada requisição."
+      },
+      {
+        "texto": "VPC Flow Logs",
+        "correta": false,
+        "porque": "Registram tráfego IP da VPC, não requisições a objetos do S3."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Verifica permissões de buckets, mas não registra requisições."
+      }
+    ],
+    "explicacao": "Logs de acesso do S3 ficam em um bucket de destino; eventos de dados do CloudTrail são outra opção para auditar operações em objetos.",
+    "servicos": [
+      "S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-056",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer ser notificada quando a utilização de CPU de suas instâncias Amazon EC2 ficar acima de 80% por 10 minutos. Qual solução atende com o MENOR esforço?",
+    "alternativas": [
+      {
+        "texto": "Uma trilha do AWS CloudTrail com filtro por instância",
+        "correta": false,
+        "porque": "O CloudTrail registra chamadas de API, não métricas de desempenho."
+      },
+      {
+        "texto": "Uma regra do AWS Config para instâncias EC2",
+        "correta": false,
+        "porque": "O Config avalia configurações, não utilização de CPU."
+      },
+      {
+        "texto": "Um alarme do Amazon CloudWatch que publica em um tópico do Amazon SNS",
+        "correta": true,
+        "porque": "O CloudWatch coleta a métrica CPUUtilization e o alarme dispara a notificação via SNS."
+      },
+      {
+        "texto": "Uma verificação do AWS Trusted Advisor",
+        "correta": false,
+        "porque": "O Trusted Advisor aponta instâncias subutilizadas, mas não alerta em tempo real sobre limites de CPU."
+      }
+    ],
+    "explicacao": "CloudWatch = monitoramento: métricas, logs, dashboards e alarmes que podem notificar via SNS ou acionar ações.",
+    "servicos": [
+      "CloudWatch",
+      "SNS"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-057",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "O Amazon GuardDuty gerou um achado sobre o uso suspeito de credenciais. A equipe de segurança quer analisar e visualizar os dados relacionados para encontrar a causa raiz. Qual serviço deve usar?",
+    "alternativas": [
+      {
+        "texto": "Amazon Inspector",
+        "correta": false,
+        "porque": "Varre vulnerabilidades de software; não investiga achados."
+      },
+      {
+        "texto": "Amazon Detective",
+        "correta": true,
+        "porque": "Organiza logs em gráficos de comportamento para investigar a causa raiz de achados de segurança."
+      },
+      {
+        "texto": "Amazon Macie",
+        "correta": false,
+        "porque": "Descobre dados sensíveis no S3."
+      },
+      {
+        "texto": "AWS Security Hub",
+        "correta": false,
+        "porque": "Agrega e prioriza achados, mas não faz a análise investigativa da causa raiz."
+      }
+    ],
+    "explicacao": "GuardDuty detecta, Security Hub agrega, Detective investiga, Inspector varre vulnerabilidades e Macie encontra dados sensíveis.",
+    "servicos": [
+      "Detective",
+      "GuardDuty"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-058",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer implantar de uma só vez, em várias contas, um conjunto de regras do AWS Config com ações de remediação, alinhado a um padrão como PCI DSS. Qual recurso deve usar?",
+    "alternativas": [
+      {
+        "texto": "AWS Artifact Agreements",
+        "correta": false,
+        "porque": "Gerencia acordos com a AWS, não regras de configuração."
+      },
+      {
+        "texto": "Trilhas organizacionais do AWS CloudTrail",
+        "correta": false,
+        "porque": "Centralizam logs de API, mas não avaliam conformidade de configurações."
+      },
+      {
+        "texto": "Insights do Amazon CloudWatch Logs",
+        "correta": false,
+        "porque": "Consultam logs, não avaliam regras de configuração."
+      },
+      {
+        "texto": "Conformance packs do AWS Config",
+        "correta": true,
+        "porque": "Empacotam regras do Config e remediações para implantação em contas e Regiões."
+      }
+    ],
+    "explicacao": "Conformance packs = coleções de Config rules e remediações implantadas como uma unidade, inclusive em Organizations.",
+    "servicos": [
+      "Config"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D2-a-059",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais serviços ajudam uma empresa a auditar e monitorar alterações nos recursos do seu ambiente AWS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "AWS CloudTrail",
+        "correta": true,
+        "porque": "Registra as chamadas de API que fizeram as alterações e quem as fez."
+      },
+      {
+        "texto": "Amazon Comprehend",
+        "correta": false,
+        "porque": "É um serviço de processamento de linguagem natural."
+      },
+      {
+        "texto": "AWS X-Ray",
+        "correta": false,
+        "porque": "Faz tracing de requisições em aplicações distribuídas."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": true,
+        "porque": "Registra o histórico de configuração de cada recurso e avalia a conformidade."
+      },
+      {
+        "texto": "AWS Transit Gateway",
+        "correta": false,
+        "porque": "Conecta VPCs e redes on-premises."
+      }
+    ],
+    "explicacao": "CloudTrail mostra quem mudou o quê (API); Config mostra como estava e como ficou a configuração.",
+    "servicos": [
+      "CloudTrail",
+      "Config"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k2#37"
+  },
+  {
+    "id": "D2-a-060",
+    "dominio": 2,
+    "task": "2.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa de saúde dos EUA vai processar informações de saúde protegidas (PHI) na AWS e precisa cumprir a HIPAA. Quais ações são necessárias? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Aceitar o Business Associate Addendum (BAA) no AWS Artifact",
+        "correta": true,
+        "porque": "O BAA é exigido para processar PHI na AWS e é aceito em Artifact Agreements."
+      },
+      {
+        "texto": "Solicitar à AWS a certificação HIPAA da aplicação",
+        "correta": false,
+        "porque": "A AWS não certifica as aplicações dos clientes."
+      },
+      {
+        "texto": "Implantar a carga obrigatoriamente na AWS GovCloud (US)",
+        "correta": false,
+        "porque": "Não é obrigatório; várias Regiões comerciais oferecem serviços elegíveis para HIPAA."
+      },
+      {
+        "texto": "Usar serviços elegíveis para HIPAA e configurá-los com os controles adequados",
+        "correta": true,
+        "porque": "A AWS fornece serviços elegíveis; configurá-los corretamente é responsabilidade do cliente."
+      },
+      {
+        "texto": "Contratar o AWS Shield Advanced",
+        "correta": false,
+        "porque": "Proteção contra DDoS não é requisito da HIPAA."
+      }
+    ],
+    "explicacao": "Conformidade é compartilhada: a AWS fornece serviços elegíveis e acordos; o cliente aceita o BAA e configura sua carga de forma conforme.",
+    "servicos": [
+      "Artifact"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  }
+]

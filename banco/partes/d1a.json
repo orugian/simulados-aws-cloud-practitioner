@@ -1,0 +1,1763 @@
+[
+  {
+    "id": "D1-a-001",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual benefício da computação em nuvem permite implantar uma aplicação em várias Regiões da AWS com poucos cliques?",
+    "alternativas": [
+      {
+        "texto": "Tornar-se global em minutos",
+        "correta": true,
+        "porque": "A infraestrutura global da AWS permite implantar em várias Regiões do mundo rapidamente, com poucos cliques."
+      },
+      {
+        "texto": "Beneficiar-se de enormes economias de escala",
+        "correta": false,
+        "porque": "Refere-se a custos variáveis menores graças ao volume agregado de clientes, não ao alcance geográfico."
+      },
+      {
+        "texto": "Parar de gastar dinheiro com a operação de data centers",
+        "correta": false,
+        "porque": "Trata de deixar de cuidar da infraestrutura física, não de implantar em várias Regiões."
+      },
+      {
+        "texto": "Parar de adivinhar necessidades de capacidade",
+        "correta": false,
+        "porque": "Refere-se a ajustar a capacidade à demanda real, não à expansão geográfica."
+      }
+    ],
+    "explicacao": "\"Go global in minutes\" é uma das seis vantagens da nuvem: implantar em várias Regiões e atender usuários do mundo todo com menor latência, com poucos cliques e baixo custo.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "usuario-A31"
+  },
+  {
+    "id": "D1-a-002",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual afirmação MELHOR descreve a agilidade na AWS Cloud?",
+    "alternativas": [
+      {
+        "texto": "Permite hospedar aplicações em várias Regiões da AWS ao redor do mundo",
+        "correta": false,
+        "porque": "Descreve o alcance global (go global in minutes), não a agilidade."
+      },
+      {
+        "texto": "Permite pagar adiantado para reduzir custos",
+        "correta": false,
+        "porque": "Descreve modelos de compromisso, como Reserved Instances, e não agilidade."
+      },
+      {
+        "texto": "Permite provisionar recursos em minutos, apoiando uma inovação mais rápida",
+        "correta": true,
+        "porque": "Reduzir de semanas para minutos o tempo de obtenção de recursos é a essência da agilidade."
+      },
+      {
+        "texto": "Oferece hardware físico personalizável ao menor custo possível",
+        "correta": false,
+        "porque": "A AWS não oferece hardware físico personalizável; o cliente consome recursos virtualizados padronizados."
+      }
+    ],
+    "explicacao": "Agilidade significa ter recursos de TI disponíveis em minutos, o que reduz o tempo e o custo de experimentar e acelera a inovação.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "usuario-B71"
+  },
+  {
+    "id": "D1-a-003",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais características da AWS dão às organizações maior velocidade de execução e agilidade? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Recursos prontamente disponíveis, com baixo tempo de provisionamento",
+        "correta": true,
+        "porque": "Obter recursos em minutos, em vez de semanas, acelera a execução de projetos."
+      },
+      {
+        "texto": "Capacidade de computação escalável conforme a necessidade",
+        "correta": true,
+        "porque": "Escalar sem comprar hardware permite responder rapidamente a novas demandas."
+      },
+      {
+        "texto": "Uso de serviços do AWS Free Tier",
+        "correta": false,
+        "porque": "O Free Tier reduz o custo de experimentação inicial, mas tem limites e não é a fonte da velocidade de execução."
+      },
+      {
+        "texto": "Acesso físico aos data centers da AWS",
+        "correta": false,
+        "porque": "Clientes não têm acesso físico aos data centers da AWS."
+      },
+      {
+        "texto": "Taxas menores de transferência de dados",
+        "correta": false,
+        "porque": "Preço de transferência é questão de custo, não de velocidade ou agilidade."
+      }
+    ],
+    "explicacao": "Velocidade e agilidade vêm do provisionamento quase instantâneo e da capacidade de escalar sem adquirir infraestrutura física.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "usuario-B73"
+  },
+  {
+    "id": "D1-a-004",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Na AWS, a elasticidade refere-se a quais conceitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A rapidez com que uma instância do Amazon EC2 pode ser reiniciada",
+        "correta": false,
+        "porque": "Tempo de reinicialização não tem relação com ajustar a capacidade à demanda."
+      },
+      {
+        "texto": "A capacidade de ajustar os recursos conforme a demanda varia",
+        "correta": true,
+        "porque": "Aumentar e reduzir recursos acompanhando a demanda é a definição de elasticidade."
+      },
+      {
+        "texto": "A quantidade máxima de RAM que uma instância do Amazon EC2 suporta",
+        "correta": false,
+        "porque": "É uma especificação do tipo de instância, não elasticidade."
+      },
+      {
+        "texto": "O modelo de pagamento conforme o uso (pay-as-you-go)",
+        "correta": false,
+        "porque": "É um modelo de preço; combina com a elasticidade, mas não é o mesmo conceito."
+      },
+      {
+        "texto": "A facilidade de obter recursos quando necessários",
+        "correta": true,
+        "porque": "Obter recursos sob demanda, sem compras antecipadas, faz parte da elasticidade."
+      }
+    ],
+    "explicacao": "Elasticidade é obter recursos com facilidade quando necessários e liberá-los quando não forem mais, acompanhando a demanda.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B79"
+  },
+  {
+    "id": "D1-a-005",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa tem clientes em muitos países. Quais recursos da AWS Cloud ajudam a reduzir a latência para esses clientes? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Implantar a aplicação em várias Regiões da AWS, próximas aos clientes",
+        "correta": true,
+        "porque": "Executar a aplicação perto dos usuários reduz a distância percorrida pela rede."
+      },
+      {
+        "texto": "Usar as edge locations do Amazon CloudFront espalhadas pelo mundo",
+        "correta": true,
+        "porque": "O CloudFront entrega conteúdo em cache a partir de edge locations próximas aos usuários."
+      },
+      {
+        "texto": "Usar o Amazon Translate para traduzir a interface do site",
+        "correta": false,
+        "porque": "O Translate traduz textos; não interfere na latência."
+      },
+      {
+        "texto": "Usar o Amazon Comprehend para responder a usuários em vários idiomas",
+        "correta": false,
+        "porque": "O Comprehend faz análise de linguagem natural; não reduz latência."
+      },
+      {
+        "texto": "Usar um único Elastic Load Balancer para distribuir o tráfego entre Regiões",
+        "correta": false,
+        "porque": "O Elastic Load Balancing é regional: distribui tráfego entre destinos de uma Região, não entre Regiões."
+      }
+    ],
+    "explicacao": "O alcance global da AWS (várias Regiões e uma ampla rede de edge locations) permite servir usuários de qualquer lugar com baixa latência.",
+    "servicos": [
+      "CloudFront",
+      "Translate",
+      "Comprehend",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k9#37"
+  },
+  {
+    "id": "D1-a-006",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa de comércio online precisa entregar novas funcionalidades de forma iterativa e com o MENOR tempo de lançamento no mercado. Qual benefício da AWS Cloud atende a esse objetivo?",
+    "alternativas": [
+      {
+        "texto": "Elasticidade",
+        "correta": false,
+        "porque": "Ajusta a capacidade à demanda; não trata do tempo para lançar funcionalidades."
+      },
+      {
+        "texto": "Agilidade",
+        "correta": true,
+        "porque": "Recursos em minutos e serviços prontos permitem experimentar e lançar novidades rapidamente."
+      },
+      {
+        "texto": "Alta disponibilidade",
+        "correta": false,
+        "porque": "Mantém a aplicação acessível durante falhas; não acelera a entrega."
+      },
+      {
+        "texto": "Confiabilidade",
+        "correta": false,
+        "porque": "Trata de funcionar corretamente e se recuperar de falhas, não de reduzir o time to market."
+      }
+    ],
+    "explicacao": "Agilidade reduz o tempo para experimentar, desenvolver e lançar novas funcionalidades.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k19#48"
+  },
+  {
+    "id": "D1-a-007",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Como a AWS Cloud pode aumentar a produtividade das equipes após a migração de um data center on-premises?",
+    "alternativas": [
+      {
+        "texto": "As equipes deixam de ter responsabilidades de segurança e conformidade",
+        "correta": false,
+        "porque": "Pelo modelo de responsabilidade compartilhada, o cliente continua responsável pela segurança na nuvem."
+      },
+      {
+        "texto": "O hardware da AWS é sempre mais rápido que o de qualquer data center local",
+        "correta": false,
+        "porque": "Não há garantia de hardware sempre mais rápido; o ganho vem da disponibilidade imediata de recursos."
+      },
+      {
+        "texto": "A AWS assume o gerenciamento de configuração das aplicações do cliente",
+        "correta": false,
+        "porque": "A configuração das aplicações continua sendo responsabilidade do cliente."
+      },
+      {
+        "texto": "As equipes não precisam esperar semanas pelo provisionamento de infraestrutura",
+        "correta": true,
+        "porque": "Recursos ficam disponíveis em minutos, eliminando a espera por compra e instalação de hardware."
+      }
+    ],
+    "explicacao": "Na nuvem, as equipes obtêm infraestrutura sob demanda e dedicam o tempo a entregar valor, em vez de esperar por provisionamento.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k12#37"
+  },
+  {
+    "id": "D1-a-008",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual cenário exemplifica AGILIDADE, e não elasticidade?",
+    "alternativas": [
+      {
+        "texto": "Uma equipe cria um ambiente de testes em minutos para validar uma ideia e o exclui no mesmo dia",
+        "correta": true,
+        "porque": "Obter recursos rapidamente e descartá-los a baixo custo, para experimentar, é agilidade."
+      },
+      {
+        "texto": "O número de instâncias aumenta durante um pico de vendas e diminui depois dele",
+        "correta": false,
+        "porque": "Ajustar automaticamente a capacidade à demanda é elasticidade."
+      },
+      {
+        "texto": "A aplicação continua acessível quando um de seus servidores falha",
+        "correta": false,
+        "porque": "Continuar operando apesar de falhas é alta disponibilidade."
+      },
+      {
+        "texto": "O preço por unidade de armazenamento cai à medida que a AWS cresce",
+        "correta": false,
+        "porque": "Preços menores pelo volume agregado refletem economias de escala."
+      }
+    ],
+    "explicacao": "Agilidade é a velocidade e o baixo custo para obter recursos e experimentar; elasticidade é acompanhar a variação da demanda.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-009",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa mantém um data center secundário quase ocioso apenas para recuperação de desastres. Qual vantagem a AWS Cloud oferece nesse cenário?",
+    "alternativas": [
+      {
+        "texto": "Garantir que a aplicação nunca fique indisponível, sem nenhuma configuração",
+        "correta": false,
+        "porque": "Nenhum provedor garante disponibilidade total sem que o cliente arquitete para isso."
+      },
+      {
+        "texto": "Eliminar completamente a necessidade de planejar a recuperação de desastres",
+        "correta": false,
+        "porque": "O cliente continua responsável por planejar e testar sua estratégia de recuperação."
+      },
+      {
+        "texto": "Manter recursos mínimos de recuperação e escalar só quando necessário, pagando pelo uso",
+        "correta": true,
+        "porque": "Na nuvem, o ambiente de recuperação pode ficar reduzido e crescer apenas em um desastre, sem hardware ocioso."
+      },
+      {
+        "texto": "Comprar servidores físicos com desconto para o site secundário",
+        "correta": false,
+        "porque": "Na AWS o cliente não compra servidores físicos; consome recursos sob demanda."
+      }
+    ],
+    "explicacao": "A nuvem substitui a capacidade ociosa de um site secundário por recursos sob demanda, pagos apenas quando usados.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-010",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual benefício da AWS Cloud elimina a necessidade de estimar o uso futuro de infraestrutura antes de comprá-la?",
+    "alternativas": [
+      {
+        "texto": "A implantação rápida de aplicações em várias Regiões do mundo",
+        "correta": false,
+        "porque": "Trata do alcance global, não do dimensionamento de capacidade."
+      },
+      {
+        "texto": "A elasticidade da AWS Cloud",
+        "correta": true,
+        "porque": "Como recursos são adicionados e removidos conforme a demanda real, não é preciso comprar capacidade com base em previsões."
+      },
+      {
+        "texto": "Custos variáveis menores graças às economias de escala",
+        "correta": false,
+        "porque": "Reduz o preço unitário, mas não elimina a necessidade de prever capacidade."
+      },
+      {
+        "texto": "A segurança da AWS Cloud",
+        "correta": false,
+        "porque": "Segurança não tem relação com prever o uso futuro de capacidade."
+      }
+    ],
+    "explicacao": "Com elasticidade, a capacidade acompanha a demanda real; o cliente deixa de comprar infraestrutura com base em estimativas.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k12#24"
+  },
+  {
+    "id": "D1-a-011",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual afirmação diferencia corretamente elasticidade de escalabilidade?",
+    "alternativas": [
+      {
+        "texto": "Elasticidade é manter a aplicação no ar durante falhas, e escalabilidade é recuperar dados após desastres",
+        "correta": false,
+        "porque": "Essas definições descrevem alta disponibilidade e recuperação de desastres."
+      },
+      {
+        "texto": "Escalabilidade vale apenas para armazenamento, enquanto elasticidade vale apenas para recursos de computação",
+        "correta": false,
+        "porque": "Os dois conceitos se aplicam a computação, armazenamento, bancos de dados e outros recursos."
+      },
+      {
+        "texto": "Elasticidade exige compromisso de 1 ou 3 anos, enquanto escalabilidade está disponível sob demanda",
+        "correta": false,
+        "porque": "Nenhum dos conceitos depende de prazo de compromisso; isso é característica de modelos de preço."
+      },
+      {
+        "texto": "Escalabilidade é crescer para atender a mais demanda; elasticidade é aumentar e reduzir recursos acompanhando a demanda",
+        "correta": true,
+        "porque": "A escalabilidade foca em suportar crescimento; a elasticidade acrescenta o ajuste nos dois sentidos, normalmente automático."
+      }
+    ],
+    "explicacao": "Escalabilidade: capacidade de crescer. Elasticidade: crescer e encolher dinamicamente conforme a demanda, pagando só pelo necessário.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-012",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual prática recomendada na AWS Cloud aproveita a elasticidade e a agilidade da computação em nuvem?",
+    "alternativas": [
+      {
+        "texto": "Escalar de forma dinâmica e preditiva para atender à demanda",
+        "correta": true,
+        "porque": "Ajustar a capacidade dinamicamente, ou antecipando padrões previsíveis, usa a elasticidade e a agilidade da nuvem."
+      },
+      {
+        "texto": "Provisionar capacidade com base no uso passado e em picos teóricos",
+        "correta": false,
+        "porque": "É a prática típica do on-premises, que gera capacidade ociosa ou insuficiente."
+      },
+      {
+        "texto": "Construir a aplicação em um data center com acesso físico liberado",
+        "correta": false,
+        "porque": "Acesso físico não tem relação com elasticidade e não é oferecido pela AWS."
+      },
+      {
+        "texto": "Manter servidores fixos dimensionados para o maior pico do ano",
+        "correta": false,
+        "porque": "Dimensionar para o pico desperdiça recursos na maior parte do tempo."
+      }
+    ],
+    "explicacao": "Na nuvem, a capacidade deve acompanhar a demanda (escala dinâmica e preditiva), em vez de ser fixada por estimativas de pico.",
+    "servicos": [
+      "Auto Scaling"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k20#38"
+  },
+  {
+    "id": "D1-a-013",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Um sistema na AWS Cloud foi projetado para continuar operando mesmo quando um ou mais de seus componentes falham. Isso é um exemplo de quê?",
+    "alternativas": [
+      {
+        "texto": "Elasticidade",
+        "correta": false,
+        "porque": "Elasticidade é ajustar a capacidade à demanda, não resistir a falhas."
+      },
+      {
+        "texto": "Escalabilidade",
+        "correta": false,
+        "porque": "Escalabilidade é a capacidade de crescer para atender a mais demanda."
+      },
+      {
+        "texto": "Alta disponibilidade",
+        "correta": true,
+        "porque": "Manter o sistema acessível apesar da falha de componentes é alta disponibilidade."
+      },
+      {
+        "texto": "Agilidade",
+        "correta": false,
+        "porque": "Agilidade é a velocidade para obter recursos e inovar."
+      }
+    ],
+    "explicacao": "Alta disponibilidade é a capacidade de um sistema continuar acessível, com mínimo tempo de inatividade, mesmo quando componentes falham.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k18#24"
+  },
+  {
+    "id": "D1-a-014",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Por que é mais simples alcançar alta disponibilidade na AWS Cloud do que em um data center on-premises?",
+    "alternativas": [
+      {
+        "texto": "A AWS garante 100% de disponibilidade para qualquer aplicação, sem esforço do cliente",
+        "correta": false,
+        "porque": "Não existe garantia de 100%; o cliente precisa arquitetar a aplicação para alta disponibilidade."
+      },
+      {
+        "texto": "A AWS oferece vários data centers isolados em cada Região, sem que o cliente construa instalações",
+        "correta": true,
+        "porque": "O cliente distribui recursos em várias Availability Zones sem investir em um segundo data center."
+      },
+      {
+        "texto": "As instâncias do Amazon EC2 nunca falham, pois usam hardware redundante da AWS",
+        "correta": false,
+        "porque": "Qualquer componente pode falhar; por isso se projeta para falhas."
+      },
+      {
+        "texto": "A alta disponibilidade é ativada automaticamente em todas as contas e em todos os serviços",
+        "correta": false,
+        "porque": "Em muitos serviços o cliente precisa escolher a configuração, como distribuir instâncias em várias AZs."
+      }
+    ],
+    "explicacao": "A infraestrutura global da AWS torna barato e rápido distribuir cargas por locais isolados, algo caro e demorado de construir on-premises.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-015",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual benefício da computação em nuvem a AWS demonstra ao oferecer custos variáveis menores graças ao seu enorme volume de compras?",
+    "alternativas": [
+      {
+        "texto": "Preço conforme o uso (pay-as-you-go)",
+        "correta": false,
+        "porque": "Descreve pagar apenas pelo que se usa, não o efeito do volume de compras sobre o preço."
+      },
+      {
+        "texto": "Alta disponibilidade",
+        "correta": false,
+        "porque": "Não tem relação com preço ou volume de compras."
+      },
+      {
+        "texto": "Alcance global",
+        "correta": false,
+        "porque": "Refere-se à presença geográfica da infraestrutura."
+      },
+      {
+        "texto": "Economias de escala",
+        "correta": true,
+        "porque": "Agregando o uso de milhões de clientes, a AWS obtém custos menores e os repassa em preços menores."
+      }
+    ],
+    "explicacao": "Economias de escala: o volume agregado de clientes permite à AWS operar com custo menor e cobrar preços variáveis menores.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k23#47"
+  },
+  {
+    "id": "D1-a-016",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Como os clientes se beneficiam, na prática, das enormes economias de escala da AWS?",
+    "alternativas": [
+      {
+        "texto": "Com reduções periódicas de preço, resultado da eficiência operacional da AWS",
+        "correta": true,
+        "porque": "A AWS repassa os ganhos de escala em reduções de preço ao longo do tempo."
+      },
+      {
+        "texto": "Com novos tipos de instância do Amazon EC2 com o hardware mais recente",
+        "correta": false,
+        "porque": "Lançar hardware novo é inovação, não efeito de economia de escala."
+      },
+      {
+        "texto": "Com a capacidade de aumentar e reduzir recursos quando necessário",
+        "correta": false,
+        "porque": "Isso é elasticidade."
+      },
+      {
+        "texto": "Com hardware subjacente das instâncias que nunca apresenta falhas",
+        "correta": false,
+        "porque": "Escala não elimina falhas de hardware, e nenhum hardware é infalível."
+      }
+    ],
+    "explicacao": "O benefício concreto da economia de escala é pagar menos: a AWS já reduziu preços muitas vezes à medida que cresceu.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k9#25"
+  },
+  {
+    "id": "D1-a-017",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual é um benefício de usar a AWS Cloud?",
+    "alternativas": [
+      {
+        "texto": "Segurança permissiva que elimina o trabalho administrativo",
+        "correta": false,
+        "porque": "Segurança permissiva é um risco, e o cliente mantém responsabilidades de segurança."
+      },
+      {
+        "texto": "Controle sobre o hardware de rede da nuvem",
+        "correta": false,
+        "porque": "O hardware físico é gerenciado exclusivamente pela AWS."
+      },
+      {
+        "texto": "Capacidade de concentrar-se em atividades que geram receita",
+        "correta": true,
+        "porque": "Ao deixar a infraestrutura com a AWS, a empresa investe tempo no que diferencia o negócio."
+      },
+      {
+        "texto": "Escolha dos fornecedores específicos do hardware da nuvem",
+        "correta": false,
+        "porque": "O cliente não escolhe fabricantes de hardware na AWS."
+      }
+    ],
+    "explicacao": "Um benefício central da nuvem é parar de gastar esforço com trabalho pesado indiferenciado e focar nos clientes e no negócio.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k9#19"
+  },
+  {
+    "id": "D1-a-018",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais são benefícios de desenvolver e executar uma nova aplicação na AWS Cloud em vez de on-premises? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A AWS replica automaticamente os dados entre Regiões para maior durabilidade",
+        "correta": false,
+        "porque": "Os dados ficam na Região escolhida; a replicação entre Regiões precisa ser configurada pelo cliente."
+      },
+      {
+        "texto": "A AWS passa a operar a aplicação em nome do cliente",
+        "correta": false,
+        "porque": "A operação da aplicação continua sendo responsabilidade do cliente."
+      },
+      {
+        "texto": "A AWS facilita arquitetar para alta disponibilidade",
+        "correta": true,
+        "porque": "Várias AZs e serviços gerenciados tornam a alta disponibilidade acessível sem construir data centers."
+      },
+      {
+        "texto": "A AWS acomoda facilmente mudanças na demanda da aplicação",
+        "correta": true,
+        "porque": "A elasticidade permite acompanhar a demanda sem comprar hardware."
+      },
+      {
+        "texto": "A AWS aplica os patches de segurança do código da aplicação",
+        "correta": false,
+        "porque": "O código e as dependências da aplicação são responsabilidade do cliente."
+      }
+    ],
+    "explicacao": "Alta disponibilidade e elasticidade estão ao alcance de qualquer cliente na AWS, sem investimento em infraestrutura física.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k12#11"
+  },
+  {
+    "id": "D1-a-019",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais são benefícios de usar um serviço gerenciado da AWS, como o Amazon RDS? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Controle completo sobre a infraestrutura subjacente",
+        "correta": false,
+        "porque": "Em serviços gerenciados, a AWS controla a infraestrutura e o sistema operacional."
+      },
+      {
+        "texto": "Permite entregar novas soluções mais rapidamente",
+        "correta": true,
+        "porque": "Sem precisar instalar e manter o software base, a equipe entrega mais rápido."
+      },
+      {
+        "texto": "Reduz a complexidade operacional",
+        "correta": true,
+        "porque": "A AWS cuida de tarefas como provisionamento, patches e backups."
+      },
+      {
+        "texto": "Elimina a necessidade de criptografar os dados",
+        "correta": false,
+        "porque": "Proteger os dados continua sendo responsabilidade do cliente."
+      },
+      {
+        "texto": "Permite que os desenvolvedores controlem todos os patches do sistema operacional",
+        "correta": false,
+        "porque": "Em serviços gerenciados, a AWS aplica os patches do sistema operacional."
+      }
+    ],
+    "explicacao": "Serviços gerenciados transferem à AWS tarefas operacionais repetitivas, reduzindo complexidade e acelerando a entrega.",
+    "servicos": [
+      "RDS"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k4#11"
+  },
+  {
+    "id": "D1-a-020",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa quer aproveitar a elasticidade da AWS Cloud para não pagar por servidores ociosos fora dos horários de pico. Qual recurso permite isso?",
+    "alternativas": [
+      {
+        "texto": "Implantar os recursos em outra Região",
+        "correta": false,
+        "porque": "Mudar de Região não ajusta a capacidade à demanda."
+      },
+      {
+        "texto": "Amazon EC2 Auto Scaling",
+        "correta": true,
+        "porque": "Adiciona e remove instâncias automaticamente conforme a demanda, cobrando apenas pelo que roda."
+      },
+      {
+        "texto": "Elastic Load Balancing",
+        "correta": false,
+        "porque": "Distribui o tráfego entre instâncias, mas não adiciona nem remove capacidade."
+      },
+      {
+        "texto": "Reserved Instances de 3 anos",
+        "correta": false,
+        "porque": "São compromisso de capacidade fixa, o oposto de pagar só pelo necessário em cada momento."
+      }
+    ],
+    "explicacao": "O Auto Scaling é a forma clássica de colocar a elasticidade em prática: capacidade que cresce e encolhe com a demanda.",
+    "servicos": [
+      "Auto Scaling",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k8#35 (reescrita)"
+  },
+  {
+    "id": "D1-a-021",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa não quer mais lidar com racks, energia, refrigeração e manutenção de servidores físicos. Qual vantagem da computação em nuvem atende a esse objetivo?",
+    "alternativas": [
+      {
+        "texto": "Tornar-se global em minutos",
+        "correta": false,
+        "porque": "Trata de implantar em várias Regiões, não de deixar de cuidar da infraestrutura física."
+      },
+      {
+        "texto": "Parar de adivinhar necessidades de capacidade",
+        "correta": false,
+        "porque": "Trata de ajustar a capacidade à demanda real."
+      },
+      {
+        "texto": "Beneficiar-se de enormes economias de escala",
+        "correta": false,
+        "porque": "Refere-se a preços menores pelo volume agregado de clientes, não ao fim da gestão de data centers."
+      },
+      {
+        "texto": "Parar de gastar dinheiro com a operação e a manutenção de data centers",
+        "correta": true,
+        "porque": "A AWS assume racks, energia, refrigeração e hardware, e a empresa foca no negócio."
+      }
+    ],
+    "explicacao": "Uma das seis vantagens da nuvem é deixar o trabalho pesado indiferenciado dos data centers com a AWS.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-022",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Qual característica da AWS Cloud permite que uma empresa obtenha recursos de TI quando precisar, sem compromisso inicial, pagando apenas pelo que consumir?",
+    "alternativas": [
+      {
+        "texto": "Autoatendimento sob demanda com pagamento conforme o uso",
+        "correta": true,
+        "porque": "Recursos são provisionados quando necessários e cobrados apenas pelo consumo."
+      },
+      {
+        "texto": "Compra antecipada de hardware dimensionado para o pico",
+        "correta": false,
+        "porque": "É o modelo tradicional, com investimento inicial e capacidade ociosa."
+      },
+      {
+        "texto": "Reserved Instances com pagamento All Upfront",
+        "correta": false,
+        "porque": "Exigem compromisso de 1 ou 3 anos e pagamento antecipado."
+      },
+      {
+        "texto": "Contratos de colocation de longo prazo",
+        "correta": false,
+        "porque": "Colocation exige contrato e a compra do próprio hardware."
+      }
+    ],
+    "explicacao": "A proposta de valor da nuvem inclui autoatendimento sob demanda e pagamento conforme o uso, sem compromisso inicial.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-023",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma equipe distribuiu as instâncias de uma aplicação em duas Availability Zones atrás de um load balancer e configurou o Amazon EC2 Auto Scaling para adicionar instâncias nos picos. Qual afirmação associa corretamente cada medida ao benefício?",
+    "alternativas": [
+      {
+        "texto": "Várias AZs oferecem elasticidade; o Auto Scaling aumenta a disponibilidade",
+        "correta": false,
+        "porque": "Inverte os conceitos: AZs isoladas evitam ponto único de falha; ajustar a capacidade é elasticidade."
+      },
+      {
+        "texto": "As duas medidas servem principalmente para reduzir a latência global",
+        "correta": false,
+        "porque": "Ambas ficam na mesma Região; reduzir latência global exige outras Regiões ou edge locations."
+      },
+      {
+        "texto": "Várias AZs aumentam a disponibilidade; o Auto Scaling oferece elasticidade",
+        "correta": true,
+        "porque": "Distribuir em AZs mantém a aplicação no ar se uma falhar; o Auto Scaling acompanha a demanda."
+      },
+      {
+        "texto": "Várias AZs geram economias de escala; o Auto Scaling aumenta a agilidade",
+        "correta": false,
+        "porque": "Economias de escala dizem respeito a preço, e o Auto Scaling se relaciona à elasticidade."
+      }
+    ],
+    "explicacao": "Alta disponibilidade vem da redundância em locais isolados (AZs); elasticidade vem do ajuste automático da capacidade (Auto Scaling).",
+    "servicos": [
+      "Auto Scaling",
+      "Elastic Load Balancing",
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-024",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação teve forte crescimento internacional, e usuários de outros continentes reclamam de alta latência. Qual característica da AWS pode melhorar a experiência desses usuários?",
+    "alternativas": [
+      {
+        "texto": "Elasticidade",
+        "correta": false,
+        "porque": "Ajusta a capacidade à demanda, mas não aproxima a aplicação dos usuários."
+      },
+      {
+        "texto": "Alcance global",
+        "correta": true,
+        "porque": "Regiões e edge locations no mundo todo permitem servir usuários de perto, com menor latência."
+      },
+      {
+        "texto": "Durabilidade dos dados",
+        "correta": false,
+        "porque": "Trata de não perder dados, não de latência."
+      },
+      {
+        "texto": "Alta disponibilidade",
+        "correta": false,
+        "porque": "Mantém a aplicação no ar durante falhas, mas não reduz a distância até os usuários."
+      }
+    ],
+    "explicacao": "O alcance global da AWS permite colocar aplicações e conteúdo perto dos usuários finais, reduzindo a latência.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k3#19"
+  },
+  {
+    "id": "D1-a-025",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma varejista quer lançar sua loja online em três novos países no mesmo trimestre, sem construir nem alugar data centers. Qual característica da infraestrutura global da AWS MAIS contribui para isso?",
+    "alternativas": [
+      {
+        "texto": "Acesso físico do cliente aos data centers da AWS para instalar seus servidores",
+        "correta": false,
+        "porque": "Clientes não têm acesso físico nem instalam servidores próprios nos data centers da AWS."
+      },
+      {
+        "texto": "Um data center central que atende todos os países com a mesma latência",
+        "correta": false,
+        "porque": "A latência depende da distância; a AWS distribui a infraestrutura em várias Regiões justamente por isso."
+      },
+      {
+        "texto": "AWS Outposts instalados em cada país, sob responsabilidade do cliente",
+        "correta": false,
+        "porque": "Outposts levam infraestrutura AWS a locais do cliente e exigem instalação física; não é o caminho mais rápido."
+      },
+      {
+        "texto": "Regiões já disponíveis em várias partes do mundo, prontas para uso sob demanda",
+        "correta": true,
+        "porque": "Basta implantar nas Regiões existentes, em minutos e sem investimento inicial."
+      }
+    ],
+    "explicacao": "A velocidade de implantação da infraestrutura global vem de Regiões já construídas e prontas, que o cliente usa sob demanda.",
+    "servicos": [
+      "Outposts"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-026",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual recurso da AWS reúne os princípios centrais, os princípios de design e as melhores práticas de arquitetura para construir e operar cargas de trabalho na nuvem?",
+    "alternativas": [
+      {
+        "texto": "AWS Well-Architected Framework",
+        "correta": true,
+        "porque": "Reúne princípios de design e boas práticas organizados em seis pilares."
+      },
+      {
+        "texto": "AWS Reference Architecture Diagrams",
+        "correta": false,
+        "porque": "São diagramas de exemplo para casos de uso específicos, não um framework de boas práticas."
+      },
+      {
+        "texto": "Modelo de responsabilidade compartilhada da AWS",
+        "correta": false,
+        "porque": "Define o que é responsabilidade da AWS e do cliente, não boas práticas de arquitetura."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Faz verificações automatizadas na conta; não é um conjunto de princípios de arquitetura."
+      }
+    ],
+    "explicacao": "O AWS Well-Architected Framework descreve conceitos, princípios de design e boas práticas para cargas de trabalho seguras, confiáveis, eficientes, econômicas e sustentáveis.",
+    "servicos": [
+      "Trusted Advisor"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A64"
+  },
+  {
+    "id": "D1-a-027",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual pilar do AWS Well-Architected Framework recomenda executar operações como código, usando infraestrutura como código (IaC)?",
+    "alternativas": [
+      {
+        "texto": "Segurança",
+        "correta": false,
+        "porque": "Foca em proteger dados, sistemas e ativos."
+      },
+      {
+        "texto": "Eficiência de Performance",
+        "correta": false,
+        "porque": "Foca em usar recursos de computação de forma eficiente para atender aos requisitos."
+      },
+      {
+        "texto": "Excelência Operacional",
+        "correta": true,
+        "porque": "\"Perform operations as code\" é princípio de design da Excelência Operacional."
+      },
+      {
+        "texto": "Otimização de Custos",
+        "correta": false,
+        "porque": "Foca em evitar gastos desnecessários."
+      }
+    ],
+    "explicacao": "Excelência Operacional: executar e monitorar sistemas e melhorar continuamente processos; IaC é a forma de executar operações como código.",
+    "servicos": [
+      "CloudFormation"
+    ],
+    "dificuldade": 1,
+    "fonte": "usuario-A36"
+  },
+  {
+    "id": "D1-a-028",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais atividades se alinham ao pilar de Excelência Operacional do AWS Well-Architected Framework? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Automatizar respostas operacionais rotineiras com runbooks, executadas sempre da mesma forma",
+        "correta": true,
+        "porque": "Padronizar e automatizar procedimentos operacionais é prática de Excelência Operacional."
+      },
+      {
+        "texto": "Fazer mudanças pequenas, frequentes e reversíveis nas cargas de trabalho",
+        "correta": true,
+        "porque": "\"Make frequent, small, reversible changes\" é princípio de design da Excelência Operacional."
+      },
+      {
+        "texto": "Replicar o banco de dados em várias Availability Zones para sobreviver à falha de uma zona",
+        "correta": false,
+        "porque": "Resistir a falhas de infraestrutura é prática do pilar de Confiabilidade."
+      },
+      {
+        "texto": "Criptografar os dados com o AWS KMS e aplicar permissões IAM de menor privilégio",
+        "correta": false,
+        "porque": "Proteção de dados e menor privilégio pertencem ao pilar de Segurança."
+      },
+      {
+        "texto": "Escolher o tipo de instância com melhor relação entre desempenho e requisitos",
+        "correta": false,
+        "porque": "Selecionar os recursos certos para a carga é prática de Eficiência de Performance."
+      }
+    ],
+    "explicacao": "Excelência Operacional reúne práticas como operações como código, runbooks e mudanças pequenas, frequentes e reversíveis.",
+    "servicos": [
+      "KMS",
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B27 (reescrita)"
+  },
+  {
+    "id": "D1-a-029",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual pilar do AWS Well-Architected Framework enfatiza selecionar e usar recursos de computação de forma eficiente para atender aos requisitos de DESEMPENHO da carga de trabalho, mantendo essa eficiência quando a demanda muda?",
+    "alternativas": [
+      {
+        "texto": "Confiabilidade",
+        "correta": false,
+        "porque": "Foca em funcionar de forma consistente e se recuperar de falhas."
+      },
+      {
+        "texto": "Eficiência de Performance",
+        "correta": true,
+        "porque": "Trata de usar os recursos certos (tipo e quantidade) para os requisitos e manter essa eficiência com a mudança da demanda."
+      },
+      {
+        "texto": "Otimização de Custos",
+        "correta": false,
+        "porque": "Foca em entregar valor ao menor preço e evitar gastos desnecessários, não em atender requisitos de desempenho."
+      },
+      {
+        "texto": "Excelência Operacional",
+        "correta": false,
+        "porque": "Foca em executar, monitorar e melhorar processos operacionais."
+      }
+    ],
+    "explicacao": "Eficiência de Performance: selecionar e usar recursos de TI de forma eficiente para atender aos requisitos, ajustando-os conforme a demanda e a tecnologia evoluem.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "usuario-B38"
+  },
+  {
+    "id": "D1-a-030",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Ao criar uma instância do Amazon RDS com implantação Multi-AZ, qual princípio de arquitetura em nuvem está sendo seguido?",
+    "alternativas": [
+      {
+        "texto": "Implementar acoplamento fraco (loose coupling)",
+        "correta": false,
+        "porque": "Trata de reduzir dependências entre componentes, não de redundância do banco."
+      },
+      {
+        "texto": "Automatizar tudo o que for possível",
+        "correta": false,
+        "porque": "O Multi-AZ automatiza o failover, mas o objetivo do princípio aplicado é sobreviver a falhas."
+      },
+      {
+        "texto": "Usar serviços, não servidores",
+        "correta": false,
+        "porque": "O RDS é gerenciado, mas a escolha do Multi-AZ visa especificamente resistir a falhas."
+      },
+      {
+        "texto": "Projetar para falhas (design for failure)",
+        "correta": true,
+        "porque": "Uma réplica em espera em outra AZ assume se a instância principal falhar."
+      }
+    ],
+    "explicacao": "Design for failure: assumir que componentes vão falhar e eliminar pontos únicos de falha, como faz o RDS Multi-AZ.",
+    "servicos": [
+      "RDS"
+    ],
+    "dificuldade": 2,
+    "fonte": "usuario-B81"
+  },
+  {
+    "id": "D1-a-031",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Usar o AWS Config para registrar, auditar e avaliar mudanças nos recursos da AWS, garantindo rastreabilidade, é um exemplo de qual pilar do AWS Well-Architected Framework?",
+    "alternativas": [
+      {
+        "texto": "Segurança",
+        "correta": true,
+        "porque": "\"Enable traceability\" (monitorar, alertar e auditar ações e mudanças) é princípio de design da Segurança."
+      },
+      {
+        "texto": "Excelência Operacional",
+        "correta": false,
+        "porque": "Embora use observabilidade, \"habilitar a rastreabilidade\" é princípio de design do pilar de Segurança."
+      },
+      {
+        "texto": "Eficiência de Performance",
+        "correta": false,
+        "porque": "Não trata de selecionar recursos para desempenho."
+      },
+      {
+        "texto": "Otimização de Custos",
+        "correta": false,
+        "porque": "Não trata de reduzir gastos."
+      }
+    ],
+    "explicacao": "Rastreabilidade (registrar e auditar mudanças e ações em tempo real) é um dos princípios de design do pilar de Segurança.",
+    "servicos": [
+      "Config"
+    ],
+    "dificuldade": 3,
+    "fonte": "kananinirav-k20#50"
+  },
+  {
+    "id": "D1-a-032",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais princípios de design da AWS Cloud ajudam a aumentar a confiabilidade? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Usar arquitetura monolítica",
+        "correta": false,
+        "porque": "Monólitos concentram dependências e aumentam o impacto de falhas."
+      },
+      {
+        "texto": "Medir a eficiência geral",
+        "correta": false,
+        "porque": "É princípio de design do pilar de Otimização de Custos."
+      },
+      {
+        "texto": "Testar os procedimentos de recuperação",
+        "correta": true,
+        "porque": "É princípio de design do pilar de Confiabilidade: validar como a carga se recupera."
+      },
+      {
+        "texto": "Adotar um modelo de consumo",
+        "correta": false,
+        "porque": "É princípio de design do pilar de Otimização de Custos."
+      },
+      {
+        "texto": "Recuperar-se automaticamente de falhas",
+        "correta": true,
+        "porque": "É princípio de design do pilar de Confiabilidade: monitorar KPIs e reagir automaticamente."
+      }
+    ],
+    "explicacao": "Princípios de Confiabilidade: recuperar-se automaticamente de falhas, testar a recuperação, escalar horizontalmente, parar de adivinhar capacidade e gerenciar mudanças por automação.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k23#34"
+  },
+  {
+    "id": "D1-a-033",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais princípios de design estão relacionados ao pilar de Eficiência de Performance? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Tornar-se global em minutos com arquiteturas em várias Regiões",
+        "correta": true,
+        "porque": "Implantar em várias Regiões para reduzir latência é princípio da Eficiência de Performance."
+      },
+      {
+        "texto": "Aplicar segurança em todas as camadas",
+        "correta": false,
+        "porque": "É princípio de design do pilar de Segurança."
+      },
+      {
+        "texto": "Implementar uma base sólida de identidade",
+        "correta": false,
+        "porque": "É princípio de design do pilar de Segurança."
+      },
+      {
+        "texto": "Usar arquiteturas serverless",
+        "correta": true,
+        "porque": "Serverless elimina a gestão de servidores e é princípio da Eficiência de Performance."
+      },
+      {
+        "texto": "Habilitar a rastreabilidade",
+        "correta": false,
+        "porque": "É princípio de design do pilar de Segurança."
+      }
+    ],
+    "explicacao": "Princípios de Eficiência de Performance: democratizar tecnologias avançadas, tornar-se global em minutos, usar serverless, experimentar com mais frequência e considerar a afinidade mecânica.",
+    "servicos": [
+      "Lambda"
+    ],
+    "dificuldade": 3,
+    "fonte": "kananinirav-k4#28"
+  },
+  {
+    "id": "D1-a-034",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual é um benefício do acoplamento fraco (loose coupling) como princípio de design de arquitetura em nuvem?",
+    "alternativas": [
+      {
+        "texto": "Garante o tratamento de requisições com baixa latência",
+        "correta": false,
+        "porque": "Desacoplar não garante baixa latência; o objetivo é isolar falhas e mudanças."
+      },
+      {
+        "texto": "Permite que as aplicações tenham fluxos de trabalho dependentes",
+        "correta": false,
+        "porque": "É o contrário: o acoplamento fraco reduz dependências."
+      },
+      {
+        "texto": "Evita falhas em cascata entre componentes diferentes",
+        "correta": true,
+        "porque": "Com menos dependências, a falha de um componente não derruba os demais."
+      },
+      {
+        "texto": "Permite concentrar-se na operação do data center físico",
+        "correta": false,
+        "porque": "Não tem relação com data centers físicos."
+      }
+    ],
+    "explicacao": "Loose coupling reduz interdependências: componentes podem falhar, escalar e mudar de forma independente, evitando falhas em cascata.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k16#18"
+  },
+  {
+    "id": "D1-a-035",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação legada monolítica precisa ter seus componentes desacoplados para que se comuniquem de forma assíncrona. Qual serviço da AWS pode ser usado?",
+    "alternativas": [
+      {
+        "texto": "AWS Direct Connect",
+        "correta": false,
+        "porque": "Fornece conexão de rede dedicada com a AWS; não desacopla componentes."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": true,
+        "porque": "Filas de mensagens permitem que componentes troquem mensagens sem depender um do outro estar disponível."
+      },
+      {
+        "texto": "Amazon CloudFront",
+        "correta": false,
+        "porque": "É uma CDN para entregar conteúdo com baixa latência."
+      },
+      {
+        "texto": "AWS Artifact",
+        "correta": false,
+        "porque": "Fornece relatórios de conformidade."
+      }
+    ],
+    "explicacao": "Filas como o Amazon SQS são a forma clássica de aplicar o princípio de acoplamento fraco.",
+    "servicos": [
+      "SQS",
+      "Direct Connect",
+      "Artifact",
+      "CloudFront"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k5#41"
+  },
+  {
+    "id": "D1-a-036",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Uma equipe substituiu tarefas manuais, como criar servidores e reagir a alarmes, por scripts e serviços que respondem a eventos automaticamente. Qual princípio de design está sendo aplicado?",
+    "alternativas": [
+      {
+        "texto": "Tratar servidores como recursos fixos",
+        "correta": false,
+        "porque": "É o oposto da prática recomendada de recursos descartáveis."
+      },
+      {
+        "texto": "Provisionar capacidade para o pico máximo",
+        "correta": false,
+        "porque": "Gera ociosidade e não tem relação com automação."
+      },
+      {
+        "texto": "Projetar componentes fortemente acoplados",
+        "correta": false,
+        "porque": "Acoplamento forte é contrário às boas práticas."
+      },
+      {
+        "texto": "Automatizar sempre que possível",
+        "correta": true,
+        "porque": "Substituir ações manuais por automação reduz erros e acelera respostas."
+      }
+    ],
+    "explicacao": "Automação é princípio recorrente do Well-Architected: reduz erros humanos, permite respostas consistentes e libera a equipe.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k2#24 (reescrita)"
+  },
+  {
+    "id": "D1-a-037",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual princípio de design está alinhado às boas práticas da AWS Cloud?",
+    "alternativas": [
+      {
+        "texto": "Distribuir a carga de computação entre vários recursos",
+        "correta": true,
+        "porque": "Escalar horizontalmente aumenta a disponibilidade agregada e reduz o impacto de falhas."
+      },
+      {
+        "texto": "Concentrar vários serviços em uma única instância",
+        "correta": false,
+        "porque": "Cria um ponto único de falha."
+      },
+      {
+        "texto": "Criar dependências fixas entre os componentes",
+        "correta": false,
+        "porque": "Dependências fixas aumentam o impacto de falhas."
+      },
+      {
+        "texto": "Implantar as aplicações em uma única Availability Zone",
+        "correta": false,
+        "porque": "Uma única AZ é ponto único de falha."
+      }
+    ],
+    "explicacao": "Escalar horizontalmente (distribuir a carga entre vários recursos menores) é princípio de design recomendado.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "kananinirav-k19#11"
+  },
+  {
+    "id": "D1-a-038",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Em vez de corrigir manualmente servidores de longa duração, uma equipe passou a substituí-los por novas instâncias criadas a partir de uma imagem padronizada. Qual princípio de design é esse?",
+    "alternativas": [
+      {
+        "texto": "Preferir capacidade reservada em vez de sob demanda",
+        "correta": false,
+        "porque": "É decisão de modelo de preço, não de design."
+      },
+      {
+        "texto": "Usar servidores em vez de serviços gerenciados",
+        "correta": false,
+        "porque": "As boas práticas recomendam o contrário: preferir serviços gerenciados."
+      },
+      {
+        "texto": "Usar recursos descartáveis em vez de servidores fixos",
+        "correta": true,
+        "porque": "Recursos são recriados de forma padronizada em vez de mantidos e corrigidos indefinidamente."
+      },
+      {
+        "texto": "Preferir acoplamento forte entre componentes",
+        "correta": false,
+        "porque": "Acoplamento forte é contrário às boas práticas."
+      }
+    ],
+    "explicacao": "Na nuvem, servidores são descartáveis: substituí-los por versões novas e padronizadas é mais confiável que manter servidores fixos.",
+    "servicos": [
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "kananinirav-k7#25 (reescrita)"
+  },
+  {
+    "id": "D1-a-039",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual princípio geral de design do AWS Well-Architected Framework uma equipe aplica ao deixar de dimensionar a infraestrutura pelo pico estimado e passar a usar capacidade que aumenta e diminui automaticamente?",
+    "alternativas": [
+      {
+        "texto": "Testar sistemas em escala de produção",
+        "correta": false,
+        "porque": "Trata de criar ambientes de teste com escala real sob demanda."
+      },
+      {
+        "texto": "Parar de adivinhar suas necessidades de capacidade",
+        "correta": true,
+        "porque": "Usar a capacidade necessária e escalar automaticamente elimina decisões baseadas em estimativas."
+      },
+      {
+        "texto": "Permitir arquiteturas evolutivas",
+        "correta": false,
+        "porque": "Trata de evoluir a arquitetura com o tempo, aproveitando a automação."
+      },
+      {
+        "texto": "Melhorar por meio de game days",
+        "correta": false,
+        "porque": "Trata de simular eventos para testar processos e equipes."
+      }
+    ],
+    "explicacao": "\"Stop guessing your capacity needs\" é um princípio geral de design: na nuvem se usa a capacidade necessária e se escala conforme a demanda.",
+    "servicos": [
+      "Auto Scaling"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-040",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Uma empresa cria sob demanda um ambiente idêntico ao de produção apenas para um teste de carga e o exclui ao final, pagando só pelas horas de uso. Qual princípio geral de design do AWS Well-Architected Framework está sendo aplicado?",
+    "alternativas": [
+      {
+        "texto": "Parar de adivinhar necessidades de capacidade",
+        "correta": false,
+        "porque": "Refere-se a ajustar a capacidade da carga à demanda, não a criar ambientes de teste temporários."
+      },
+      {
+        "texto": "Aplicar segurança em todas as camadas",
+        "correta": false,
+        "porque": "É princípio de design do pilar de Segurança."
+      },
+      {
+        "texto": "Conduzir arquiteturas com base em dados",
+        "correta": false,
+        "porque": "Trata de usar dados coletados para orientar decisões de arquitetura."
+      },
+      {
+        "texto": "Testar sistemas em escala de produção",
+        "correta": true,
+        "porque": "A nuvem permite testar em escala real a baixo custo, pagando só enquanto o ambiente existe."
+      }
+    ],
+    "explicacao": "\"Test systems at production scale\": criar um ambiente de produção sob demanda para testes e descartá-lo ao final.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-041",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual pilar do AWS Well-Architected Framework concentra-se em minimizar os impactos ambientais da execução de cargas de trabalho na nuvem?",
+    "alternativas": [
+      {
+        "texto": "Sustentabilidade",
+        "correta": true,
+        "porque": "É o sexto pilar, dedicado a reduzir o consumo de energia e o impacto ambiental das cargas."
+      },
+      {
+        "texto": "Otimização de Custos",
+        "correta": false,
+        "porque": "Foca em evitar gastos desnecessários, não em impacto ambiental."
+      },
+      {
+        "texto": "Eficiência de Performance",
+        "correta": false,
+        "porque": "Foca em usar recursos de forma eficiente para atender a requisitos de desempenho."
+      },
+      {
+        "texto": "Excelência Operacional",
+        "correta": false,
+        "porque": "Foca em executar, monitorar e melhorar processos operacionais."
+      }
+    ],
+    "explicacao": "O pilar de Sustentabilidade trata de minimizar os impactos ambientais, maximizando a utilização e reduzindo os recursos necessários.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-042",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Quais práticas estão alinhadas ao pilar de Sustentabilidade do AWS Well-Architected Framework? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Maximizar a utilização dos recursos, evitando capacidade ociosa",
+        "correta": true,
+        "porque": "Recursos ociosos consomem energia sem entregar valor; maximizar a utilização é princípio do pilar."
+      },
+      {
+        "texto": "Usar serviços gerenciados, que compartilham a infraestrutura de forma eficiente",
+        "correta": true,
+        "porque": "Serviços gerenciados distribuem a infraestrutura entre muitos clientes, reduzindo o impacto por carga."
+      },
+      {
+        "texto": "Provisionar servidores extras para o pico máximo previsto",
+        "correta": false,
+        "porque": "Gera capacidade ociosa e aumenta o consumo de energia."
+      },
+      {
+        "texto": "Manter hardware antigo em uso sem avaliar opções mais eficientes",
+        "correta": false,
+        "porque": "Contraria o princípio de adotar hardware e software novos e mais eficientes."
+      },
+      {
+        "texto": "Replicar todos os dados em todas as Regiões por precaução",
+        "correta": false,
+        "porque": "Aumenta armazenamento e transferência sem necessidade, ampliando o impacto ambiental."
+      }
+    ],
+    "explicacao": "Sustentabilidade: entender o impacto, definir metas, maximizar a utilização, adotar tecnologias mais eficientes, usar serviços gerenciados e reduzir o impacto downstream.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-043",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Segundo o AWS Well-Architected Framework, como a responsabilidade pela sustentabilidade é dividida entre a AWS e o cliente?",
+    "alternativas": [
+      {
+        "texto": "A AWS é responsável por toda a sustentabilidade das cargas de trabalho dos clientes",
+        "correta": false,
+        "porque": "O cliente também é responsável: suas escolhas de arquitetura e uso definem o impacto das cargas."
+      },
+      {
+        "texto": "O cliente é responsável pela eficiência energética dos data centers da AWS",
+        "correta": false,
+        "porque": "Os data centers e a energia que os alimenta são responsabilidade da AWS."
+      },
+      {
+        "texto": "A AWS cuida da sustentabilidade DA nuvem; o cliente, da sustentabilidade NA nuvem",
+        "correta": true,
+        "porque": "A AWS otimiza a infraestrutura; o cliente otimiza o uso de recursos, dados e arquitetura."
+      },
+      {
+        "texto": "A sustentabilidade é responsabilidade exclusiva do cliente, sem participação da AWS",
+        "correta": false,
+        "porque": "A AWS responde pela eficiência da infraestrutura global."
+      }
+    ],
+    "explicacao": "Sustentabilidade também é compartilhada: a AWS é responsável pela infraestrutura eficiente; o cliente, por usar recursos e projetar cargas de forma eficiente.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-044",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Ao escolher a Região de uma nova carga de trabalho, uma empresa considera, além dos requisitos de negócio, suas metas de redução de emissões de carbono. Qual pilar do AWS Well-Architected Framework orienta essa decisão?",
+    "alternativas": [
+      {
+        "texto": "Confiabilidade",
+        "correta": false,
+        "porque": "Trata de resistir a falhas e se recuperar delas, não de emissões."
+      },
+      {
+        "texto": "Sustentabilidade",
+        "correta": true,
+        "porque": "Escolher a Região considerando requisitos de negócio e metas de sustentabilidade é prática desse pilar."
+      },
+      {
+        "texto": "Segurança",
+        "correta": false,
+        "porque": "Trata da proteção de dados e sistemas."
+      },
+      {
+        "texto": "Otimização de Custos",
+        "correta": false,
+        "porque": "Considera o preço da Região; metas de emissões são tema do pilar de Sustentabilidade."
+      }
+    ],
+    "explicacao": "A seleção de Região é uma das áreas de boas práticas do pilar de Sustentabilidade.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-045",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual objetivo pertence ao pilar de Sustentabilidade, e NÃO ao de Otimização de Custos?",
+    "alternativas": [
+      {
+        "texto": "Entregar valor de negócio ao menor preço possível",
+        "correta": false,
+        "porque": "É o objetivo central do pilar de Otimização de Custos."
+      },
+      {
+        "texto": "Adotar um modelo de consumo, pagando só pelo que usa",
+        "correta": false,
+        "porque": "É princípio de design do pilar de Otimização de Custos."
+      },
+      {
+        "texto": "Analisar e atribuir despesas a cada equipe",
+        "correta": false,
+        "porque": "É princípio de design do pilar de Otimização de Custos."
+      },
+      {
+        "texto": "Reduzir a energia consumida por unidade de trabalho entregue",
+        "correta": true,
+        "porque": "Medir e reduzir o impacto ambiental por unidade de trabalho é foco da Sustentabilidade."
+      }
+    ],
+    "explicacao": "Os dois pilares muitas vezes caminham juntos, mas a Sustentabilidade mede o impacto ambiental, enquanto a Otimização de Custos mede gastos.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-046",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual serviço da AWS permite revisar uma carga de trabalho em relação às boas práticas dos pilares do AWS Well-Architected Framework e gerar um plano de melhorias?",
+    "alternativas": [
+      {
+        "texto": "AWS Well-Architected Tool",
+        "correta": true,
+        "porque": "Conduz revisões da carga pelos pilares, identifica riscos e gera um plano de melhorias."
+      },
+      {
+        "texto": "AWS Config",
+        "correta": false,
+        "porque": "Registra e avalia a configuração de recursos contra regras."
+      },
+      {
+        "texto": "AWS Trusted Advisor",
+        "correta": false,
+        "porque": "Faz verificações automáticas na conta, mas não conduz uma revisão da carga pelos pilares."
+      },
+      {
+        "texto": "AWS Security Hub",
+        "correta": false,
+        "porque": "Agrega achados de segurança e verifica padrões de conformidade."
+      }
+    ],
+    "explicacao": "O AWS Well-Architected Tool, gratuito no console, revisa cargas de trabalho contra as boas práticas do framework e acompanha as melhorias.",
+    "servicos": [
+      "Well-Architected Tool",
+      "Trusted Advisor",
+      "Config",
+      "Security Hub"
+    ],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-047",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual afirmação diferencia corretamente o AWS Well-Architected Tool do AWS Trusted Advisor?",
+    "alternativas": [
+      {
+        "texto": "O Well-Architected Tool aplica correções automaticamente nos recursos; o Trusted Advisor apenas gera relatórios",
+        "correta": false,
+        "porque": "Nenhum dos dois aplica correções automaticamente por padrão; o Well-Architected Tool gera um plano de melhorias."
+      },
+      {
+        "texto": "O Trusted Advisor avalia os seis pilares por questionário; o Well-Architected Tool avalia somente custos",
+        "correta": false,
+        "porque": "É o contrário: o questionário pelos pilares é do Well-Architected Tool."
+      },
+      {
+        "texto": "O Well-Architected Tool revisa a carga por perguntas; o Trusted Advisor verifica automaticamente a conta",
+        "correta": true,
+        "porque": "Um é uma revisão guiada da arquitetura; o outro faz checagens automáticas nos recursos."
+      },
+      {
+        "texto": "Os dois são o mesmo serviço, apresentado com nomes diferentes em consoles distintos",
+        "correta": false,
+        "porque": "São serviços distintos, com propósitos complementares."
+      }
+    ],
+    "explicacao": "Well-Architected Tool: revisão guiada da carga pelos pilares. Trusted Advisor: verificações automáticas dos recursos da conta (custo, segurança, limites etc.).",
+    "servicos": [
+      "Well-Architected Tool",
+      "Trusted Advisor"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-048",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual pilar do AWS Well-Architected Framework inclui princípios como implementar a gestão financeira na nuvem, adotar um modelo de consumo e analisar e atribuir despesas?",
+    "alternativas": [
+      {
+        "texto": "Sustentabilidade",
+        "correta": false,
+        "porque": "Foca em impacto ambiental, não em gestão financeira."
+      },
+      {
+        "texto": "Otimização de Custos",
+        "correta": true,
+        "porque": "Esses são princípios de design do pilar de Otimização de Custos."
+      },
+      {
+        "texto": "Excelência Operacional",
+        "correta": false,
+        "porque": "Foca em operações, monitoramento e melhoria de processos."
+      },
+      {
+        "texto": "Eficiência de Performance",
+        "correta": false,
+        "porque": "Foca em usar recursos de forma eficiente para atender a requisitos."
+      }
+    ],
+    "explicacao": "Otimização de Custos: gestão financeira na nuvem, modelo de consumo, medir eficiência, parar de gastar com trabalho indiferenciado e atribuir despesas.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-049",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual associação entre prática e pilar do AWS Well-Architected Framework está CORRETA?",
+    "alternativas": [
+      {
+        "texto": "Aplicar permissões IAM de menor privilégio → Excelência Operacional",
+        "correta": false,
+        "porque": "Menor privilégio e base sólida de identidade pertencem ao pilar de Segurança."
+      },
+      {
+        "texto": "Criptografar dados em repouso e em trânsito → Otimização de Custos",
+        "correta": false,
+        "porque": "Proteção de dados pertence ao pilar de Segurança."
+      },
+      {
+        "texto": "Escolher instâncias mais eficientes para reduzir a pegada de carbono → Segurança",
+        "correta": false,
+        "porque": "Reduzir o impacto ambiental é tema do pilar de Sustentabilidade."
+      },
+      {
+        "texto": "Monitorar e gerenciar as Service Quotas para evitar falhas por limite → Confiabilidade",
+        "correta": true,
+        "porque": "Gerenciar cotas e restrições de serviço é área de boas práticas da Confiabilidade."
+      }
+    ],
+    "explicacao": "Diferenciar os pilares: identidade e criptografia são Segurança; cotas e recuperação são Confiabilidade; impacto ambiental é Sustentabilidade.",
+    "servicos": [
+      "Service Quotas",
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral"
+  },
+  {
+    "id": "D1-a-050",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Qual pilar do AWS Well-Architected Framework trata da capacidade de uma carga de trabalho executar sua função de forma correta e consistente e se recuperar rapidamente de falhas?",
+    "alternativas": [
+      {
+        "texto": "Confiabilidade",
+        "correta": true,
+        "porque": "Trata de executar a função esperada de forma consistente e se recuperar de falhas."
+      },
+      {
+        "texto": "Excelência Operacional",
+        "correta": false,
+        "porque": "Foca em executar, monitorar e melhorar processos operacionais."
+      },
+      {
+        "texto": "Segurança",
+        "correta": false,
+        "porque": "Foca em proteger dados, sistemas e ativos."
+      },
+      {
+        "texto": "Eficiência de Performance",
+        "correta": false,
+        "porque": "Foca em selecionar e usar recursos de forma eficiente."
+      }
+    ],
+    "explicacao": "Confiabilidade: a carga funciona corretamente e de forma consistente ao longo do ciclo de vida e se recupera de falhas.",
+    "servicos": [],
+    "dificuldade": 1,
+    "fonte": "autoral"
+  }
+]
