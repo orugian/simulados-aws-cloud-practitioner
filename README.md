@@ -30,6 +30,15 @@ Banco de questões em português, revisado e alinhado ao **[Exam Guide CLF-C02 v
   - Snowball Edge indisponível para novos clientes;
   - serviços fora do escopo usados só como distratores.
 
+## Riscar alternativas
+
+Nos modos prova e estudo, use **Riscar** ao lado de qualquer alternativa para marcá-la visualmente como descartada. Clique em **Restaurar** para desfazer. Atalho: **Shift + A–F**, conforme a letra exibida.
+
+- Funciona também em alternativas corretas, selecionadas e após a correção no estudo: é uma anotação sua, não uma indicação do gabarito.
+- Não seleciona/desmarca respostas, não bloqueia a alternativa e não altera a correção nem o score.
+- Você pode riscar todas as alternativas. Os riscos ficam separados das respostas e acompanham a navegação, o salvamento, a exportação/importação e o gabarito da tentativa.
+- Tentativas novas começam sem riscos; sessões antigas continuam funcionando sem perder progresso.
+
 ## Score ao concluir o simulado
 
 As provas completas mostram **score estimado de 100 a 1.000**, com **700 como corte de referência**, além dos acertos e do percentual bruto. O score aparece no resultado e no histórico, inclusive nas tentativas antigas, sem apagar progresso. O modo estudo continua mostrando o percentual.

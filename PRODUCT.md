@@ -39,6 +39,7 @@ On top of it:
 - Exam mode: no feedback, can flag questions for review, review screen before submitting, auto-submit when time runs out.
 - Study mode: immediate correction.
 - Progress lives in the browser's localStorage, with JSON export/import.
+- Personal strike-through annotations: in exam and study modes any answer option can be crossed out/restored (including correct, selected, and already graded options) via a separate button or Shift + its displayed letter. This never changes selection, answerability, grading or score. Store original option indices separately under each question ID in the session's `riscadas`; preserve across navigation, reload, export/import and in the completed attempt's answer key. New attempts start clear; legacy sessions lazily initialize annotations.
 
 ## Capabilities and Constraints
 
