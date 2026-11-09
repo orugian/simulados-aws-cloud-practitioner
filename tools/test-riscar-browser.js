@@ -21,7 +21,7 @@ fs.mkdirSync(OUT, { recursive: true });
     const current = s => s.ids[s.idx];
     const risk = orig => page.locator(`[data-riscar="${orig}"]`);
     const option = orig => page.locator(`[data-alt="${orig}"]`);
-    const isStruck = async orig => (await option(orig).getAttribute('class')).includes('riscada');
+    const isStruck = async orig => (await risk(orig).getAttribute('class')).includes('riscada');
 
     await page.goto(BASE + '#/');
     await page.click('[data-acao="iniciar"][data-sid="S1"]');
@@ -41,10 +41,22 @@ fs.mkdirSync(OUT, { recursive: true });
     const right = q.alternativas.findIndex(a => a.correta);
     const wrong = q.alternativas.findIndex(a => !a.correta);
     const before = JSON.stringify(s.resp);
-    await risk(right).click();
+    await risk(right).click({ button: 'right' });
     assert.equal(await isStruck(right), true);
-    assert.equal(await risk(right).getAttribute('aria-pressed'), 'true');
-    assert.equal(await risk(right).getAttribute('aria-label'), `Restaurar alternativa ${'ABCDEF'[s.ordem[id].indexOf(right)]}`);
+    assert.ok((await risk(right).getAttribute('aria-describedby')).includes(`risco-${id}-${right}`));
+    assert.ok((await risk(right).getAttribute('title')).includes(`restaurar alternativa ${'ABCDEF'[s.ordem[id].indexOf(right)]}`));
+    assert.equal(await page.locator('.riscar-alt').count(), 0);
+    assert.ok(await page.evaluate(() => {
+      const ev = new MouseEvent('contextmenu', { bubbles: true, cancelable: true });
+      return document.querySelector('#enun').dispatchEvent(ev);
+    }), 'menu do navegador continua permitido fora das alternativas');
+    assert.equal(await risk(right).evaluate(el => {
+      const ev = new MouseEvent('contextmenu', { bubbles: true, cancelable: true });
+      el.querySelector('.txt').dispatchEvent(ev);
+      return ev.defaultPrevented;
+    }), true, 'menu nativo bloqueado somente sobre a alternativa');
+    assert.equal(await isStruck(right), false, 'botão direito sobre o texto também restaura');
+    await risk(right).locator('.letra').click({ button: 'right' });
     assert.equal(JSON.stringify((await session('S1')).resp), before);
     assert.equal(await page.locator('.feedback, .c-ok, .c-falta, .c-err').count(), 0);
     console.log('OK: sessão antiga aceita riscos; correta pode ser riscada sem revelar gabarito ou responder');
@@ -52,7 +64,7 @@ fs.mkdirSync(OUT, { recursive: true });
     await option(right).click();
     assert.deepEqual((await session('S1')).resp[id], [right]);
     assert.equal(await isStruck(right), true);
-    await risk(wrong).click();
+    await risk(wrong).click({ button: 'right' });
     assert.deepEqual((await session('S1')).resp[id], [right]);
     await page.locator('.cel').nth((idx + 1) % 65).click();
     await page.locator('.cel').nth(idx).click();
@@ -64,22 +76,27 @@ fs.mkdirSync(OUT, { recursive: true });
     console.log('OK: selecionar alternativa riscada funciona; trocar questão/recarregar preserva riscos e resposta');
 
     // Alternar não pode desmarcar uma resposta escolhida.
-    await risk(right).click();
+    await risk(right).click({ button: 'right' });
     assert.equal(await isStruck(right), false);
     assert.deepEqual((await session('S1')).resp[id], [right]);
     const letter = 'ABCDEF'[s.ordem[id].indexOf(right)];
     await page.keyboard.press('Shift+' + letter);
     assert.equal(await isStruck(right), true);
     assert.deepEqual((await session('S1')).resp[id], [right]);
-    await risk(right).focus(); await page.keyboard.press('Space');
+    await risk(right).focus(); await page.keyboard.press('Shift+F10');
     assert.equal(await isStruck(right), false);
-    await risk(right).focus(); await page.keyboard.press('Enter');
+    await risk(right).focus(); await page.keyboard.press('ContextMenu');
     assert.equal(await isStruck(right), true);
     assert.ok(await risk(right).evaluate(el => el === document.activeElement));
-    console.log('OK: restaurar, Shift+letra, Space e Enter independem da seleção; foco preservado');
+    await page.keyboard.press('Space');
+    assert.equal(await isStruck(right), true, 'Space seleciona, não risca');
+    await page.keyboard.press('Enter');
+    assert.equal(await isStruck(right), true, 'Enter na alternativa não alterna o risco');
+    assert.deepEqual((await session('S1')).resp[id], [right]);
+    console.log('OK: botão direito, Shift+letra, Shift+F10 e ContextMenu alternam; esquerdo/Space/Enter só selecionam');
 
     // Todas as alternativas podem ser riscadas, incluindo a selecionada.
-    for (let i = 0; i < q.alternativas.length; i++) if (!(await isStruck(i))) await risk(i).click();
+    for (let i = 0; i < q.alternativas.length; i++) if (!(await isStruck(i))) await risk(i).click({ button: 'right' });
     assert.equal(await page.locator('.alt.riscada').count(), q.alternativas.length);
     assert.deepEqual((await session('S1')).resp[id], [right]);
     await page.screenshot({ path: path.join(OUT, 'riscar-desktop.png') });
@@ -87,11 +104,15 @@ fs.mkdirSync(OUT, { recursive: true });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     const rect = await risk(right).boundingBox();
     assert.ok(rect.width >= 44 && rect.height >= 44);
+    const estiloRisco = await risk(right).locator('.txt').evaluate(el => ({ line: getComputedStyle(el).textDecorationLine, color: getComputedStyle(el).textDecorationColor, thickness: getComputedStyle(el).textDecorationThickness }));
+    assert.equal(estiloRisco.line, 'line-through');
+    assert.equal(estiloRisco.color, 'rgb(0, 0, 242)');
+    assert.equal(estiloRisco.thickness, '1px');
     await page.screenshot({ path: path.join(OUT, 'riscar-mobile.png') });
-    await risk(right).click(); assert.equal(await isStruck(right), false);
-    await risk(right).click(); assert.equal(await isStruck(right), true);
+    await risk(right).click({ button: 'right' }); assert.equal(await isStruck(right), false);
+    await risk(right).click({ button: 'right' }); assert.equal(await isStruck(right), true);
     await page.setViewportSize({ width: 1440, height: 900 });
-    console.log('OK: todas riscadas; layout mobile sem overflow e controle com alvo de toque >=44px');
+    console.log('OK: linhas completas sem botões extras; sem overflow e risco azul de 1px no padrão NOUS');
 
     // Prova 100% correta apesar dos riscos, persistidos também no resultado.
     await page.evaluate(() => {
@@ -140,7 +161,7 @@ fs.mkdirSync(OUT, { recursive: true });
     const study = await session('ES'), studyId = current(study);
     const qStudy = await page.evaluate(id => window.BANCO.find(q => q.id === id), studyId);
     const correct = qStudy.alternativas.map((a, i) => a.correta ? i : -1).filter(i => i >= 0);
-    if (!(await isStruck(correct[0]))) await risk(correct[0]).click();
+    if (!(await isStruck(correct[0]))) await risk(correct[0]).click({ button: 'right' });
     await page.click('[data-acao="sair"]');
     const downloadEvent = page.waitForEvent('download');
     await page.click('[data-acao="exportar"]');
@@ -160,8 +181,9 @@ fs.mkdirSync(OUT, { recursive: true });
       const state = JSON.parse(localStorage.getItem('clfc02.v1'));
       return JSON.stringify({ resp: state.sessoes.ES.resp, trav: state.sessoes.ES.trav, caderno: state.caderno });
     });
-    await risk(correct[0]).click();
-    assert.equal(await risk(correct[0]).getAttribute('aria-pressed'), 'false');
+    // aria-disabled bloqueia seleção depois da correção, não eventos de contexto reais.
+    await risk(correct[0]).click({ button: 'right', force: true });
+    assert.equal(await isStruck(correct[0]), false);
     assert.equal(await page.evaluate(() => {
       const state = JSON.parse(localStorage.getItem('clfc02.v1'));
       return JSON.stringify({ resp: state.sessoes.ES.resp, trav: state.sessoes.ES.trav, caderno: state.caderno });

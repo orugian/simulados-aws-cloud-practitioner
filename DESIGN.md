@@ -198,7 +198,7 @@ Flat. Depth comes from 1px inset rings: `inset 0 0 0 1px rgba(0,0,242,.2)` at re
   - incorrect chosen: vermilion ring, ✗ "Sua resposta";
   - the rest: on paper.
 - Each row shows its own justification.
-- **Personal strike-through:** a separate neutral `Riscar` / `Restaurar` toggle sits beside the selection button, never inside it. Crossed-out answer text uses a 1.5px line-through; ungraded text uses muted ink without fading the entire row. Keep selection and grading rings/labels unchanged, and preserve correct-state white text on blue. The toggle uses an SVG icon, `aria-pressed`, explicit option label and at least a 44px touch target. On mobile the action column is 64px wide. This annotation never asserts that an alternative is wrong.
+- **Personal strike-through:** right-click the alternative itself to toggle the annotation; no separate action buttons or side column. The row retains its full width and standard ring/radius. Cross out answer text and the letter with a 1px line, using electric blue for the text stroke and muted ink for ungraded text, without fading the row. On a solid-blue corrected option, the stroke turns paper-colored to preserve contrast. Selection and grading rings/labels stay unchanged. A short hint, tooltip, screen-reader description/live announcement, and Shift+letter / Shift+F10 keyboard alternatives make the gesture discoverable. This annotation never asserts that an alternative is wrong.
 
 ### Answer sheet (signature)
 - A 5×13 grid on the rail (10 columns on mobile).
