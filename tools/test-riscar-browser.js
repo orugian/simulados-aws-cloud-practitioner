@@ -95,24 +95,33 @@ fs.mkdirSync(OUT, { recursive: true });
     assert.deepEqual((await session('S1')).resp[id], [right]);
     console.log('OK: botão direito, Shift+letra, Shift+F10 e ContextMenu alternam; esquerdo/Space/Enter só selecionam');
 
-    // Todas as alternativas podem ser riscadas, incluindo a selecionada.
-    for (let i = 0; i < q.alternativas.length; i++) if (!(await isStruck(i))) await risk(i).click({ button: 'right' });
-    assert.equal(await page.locator('.alt.riscada').count(), q.alternativas.length);
-    assert.deepEqual((await session('S1')).resp[id], [right]);
+    // Evidência com opções descartadas e mantidas, sem reanimar em cada render.
+    await page.waitForFunction(() => document.getAnimations().every(a => a.playState !== 'running'));
+    assert.equal(await page.locator('.riscada-entrando').count(), 0);
     await page.screenshot({ path: path.join(OUT, 'riscar-desktop.png') });
     await page.setViewportSize({ width: 390, height: 844 });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     const rect = await risk(right).boundingBox();
     assert.ok(rect.width >= 44 && rect.height >= 44);
-    const estiloRisco = await risk(right).locator('.txt').evaluate(el => ({ line: getComputedStyle(el).textDecorationLine, color: getComputedStyle(el).textDecorationColor, thickness: getComputedStyle(el).textDecorationThickness }));
-    assert.equal(estiloRisco.line, 'line-through');
-    assert.equal(estiloRisco.color, 'rgb(0, 0, 242)');
-    assert.equal(estiloRisco.thickness, '1px');
+    assert.equal(await risk(right).locator('.risco-traco path').count(), 2);
+    assert.equal(await risk(right).locator('.risco-cancela path').count(), 2);
+    assert.equal(await risk(right).locator('.risco-carimbo').textContent(), 'Descartada por você');
+    assert.equal(await risk(right).locator('.risco-carimbo').getAttribute('aria-hidden'), 'true');
+    assert.equal(await risk(right).locator('.risco-traco path').first().evaluate(el => getComputedStyle(el).stroke), 'rgb(0, 0, 242)');
     await page.screenshot({ path: path.join(OUT, 'riscar-mobile.png') });
     await risk(right).click({ button: 'right' }); assert.equal(await isStruck(right), false);
+    assert.equal(await risk(right).locator('.risco-carimbo, .risco-traco, .risco-cancela').count(), 0);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await risk(right).click({ button: 'right' }); assert.equal(await isStruck(right), true);
+    assert.equal(await risk(right).locator('.risco-traco path').first().evaluate(el => getComputedStyle(el).animationName), 'none');
+    assert.equal(await risk(right).locator('.risco-carimbo').evaluate(el => getComputedStyle(el).opacity), '1');
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.setViewportSize({ width: 1440, height: 900 });
-    console.log('OK: linhas completas sem botões extras; sem overflow e risco azul de 1px no padrão NOUS');
+    // Todas as alternativas ainda podem ser riscadas, inclusive a selecionada.
+    for (let i = 0; i < q.alternativas.length; i++) if (!(await isStruck(i))) await risk(i).click({ button: 'right' });
+    assert.equal(await page.locator('.alt.riscada').count(), q.alternativas.length);
+    assert.deepEqual((await session('S1')).resp[id], [right]);
+    console.log('OK: rasura diagonal dupla, letra cancelada e carimbo; legível no mobile, sem botões extras e com movimento reduzido');
 
     // Prova 100% correta apesar dos riscos, persistidos também no resultado.
     await page.evaluate(() => {
@@ -134,6 +143,8 @@ fs.mkdirSync(OUT, { recursive: true });
     assert.ok(hist.riscadas[id].includes(right));
     await page.locator(`details[data-gab="${id}"] summary`).click();
     await page.waitForSelector(`details[data-gab="${id}"] .c-ok.riscada`);
+    assert.equal(await page.locator(`details[data-gab="${id}"] .c-ok.riscada .risco-traco path`).first().evaluate(el => getComputedStyle(el).stroke), 'rgb(242, 242, 242)');
+    assert.equal(await page.locator('.gab .riscada-entrando').count(), 0);
     assert.equal(await page.locator('.gab [data-riscar]').count(), 0);
     console.log('OK: riscos não alteram correção ou score (65/65 ->1000); anotação preservada no gabarito');
 

@@ -352,7 +352,8 @@
     const multi = q.tipo === 'multipla';
     return `<ul class="alts" role="${multi ? 'group' : 'radiogroup'}" aria-label="Alternativas">${ordem.map((orig, pos) => {
       const a = q.alternativas[orig], sel = resp.includes(orig), riscada = riscadas.includes(orig);
-      let cls = 'alt' + (riscada ? ' riscada' : ''), selo = '', porque = '';
+      const desenharRisco = riscada && podeRiscar && ui.riscoAnimado && ui.riscoAnimado.id === q.id && ui.riscoAnimado.orig === orig;
+      let cls = 'alt' + (riscada ? ' riscada' : '') + (desenharRisco ? ' riscada-entrando' : ''), selo = '', porque = '';
       if (corrigir) {
         if (a.correta && sel) { cls += ' c-ok'; selo = `<span class="selo">${ic('check')}Correta · sua</span>`; }
         else if (a.correta) { cls += ' c-falta'; selo = `<span class="selo">${ic('check')}Correta</span>`; }
@@ -365,7 +366,10 @@
       const anotacao = riscada ? `<span class="sr" id="${anotacaoId}">Riscada por você. Apenas uma anotação visual.</span>` : '';
       const gesto = podeRiscar ? ` data-riscar="${orig}" title="Botão direito: ${riscada ? 'restaurar' : 'riscar'} alternativa ${L[pos]} (Shift+${L[pos]})"` : '';
       const descricao = [podeRiscar ? 'dica-riscar' : '', riscada ? anotacaoId : ''].filter(Boolean).join(' ');
-      return `<li role="none"><button class="${cls}" ${attrs}${gesto}${descricao ? ` aria-describedby="${descricao}"` : ''} data-k="alt-${pos}"><span class="letra">${L[pos]}</span><span><span class="txt">${esc(a.texto)}</span>${anotacao}${porque}</span>${selo}</button></li>`;
+      const traco = riscada ? `<svg class="risco-traco" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 28L594 12"/><path pathLength="1" d="M18 32L575 18"/></svg>` : '';
+      const cancela = riscada ? `<svg class="risco-cancela" viewBox="0 0 44 40" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 34L40 5"/><path pathLength="1" d="M7 6L38 33"/></svg>` : '';
+      const carimbo = riscada ? '<span class="risco-carimbo" aria-hidden="true">Descartada por você</span>' : '';
+      return `<li role="none"><button class="${cls}" ${attrs}${gesto}${descricao ? ` aria-describedby="${descricao}"` : ''} data-k="alt-${pos}"><span class="letra">${L[pos]}${cancela}</span><span class="alt-corpo"><span class="risco-texto"><span class="txt">${esc(a.texto)}</span>${traco}</span>${carimbo}${anotacao}${porque}</span>${selo}</button></li>`;
     }).join('')}</ul>`;
   }
 
@@ -538,7 +542,10 @@
     const estavaRiscada = riscos.includes(orig);
     const novos = estavaRiscada ? riscos.filter(i => i !== orig) : [...riscos, orig];
     if (novos.length) porQuestao[id] = novos; else delete porQuestao[id];
+    // Desenha só ao riscar: a animação não se repete ao selecionar, navegar ou recarregar.
+    ui.riscoAnimado = estavaRiscada ? null : { id, orig };
     salvar(); render();
+    ui.riscoAnimado = null;
     anunciar(`Alternativa ${L[s.ordem[id].indexOf(orig)]} ${estavaRiscada ? 'restaurada' : 'riscada por você'}. Sua resposta não foi alterada.`);
   }
 

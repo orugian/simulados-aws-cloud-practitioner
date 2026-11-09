@@ -210,10 +210,27 @@ select:hover { box-shadow: var(--anel-forte); }
 .dica-riscar { max-width: 880px; margin: 16px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .dica-riscar + .alts { margin-top: 14px; }
 .dica-riscar strong { font-weight: 500; color: var(--azul); }
-.alt.riscada .txt { text-decoration-line: line-through; text-decoration-color: var(--azul); text-decoration-thickness: 1px; }
-.alt.riscada .letra { text-decoration: line-through; text-decoration-thickness: 1px; }
+/* Rasura pessoal: dois cortes diagonais, letra cancelada e carimbo NOUS. */
+.alt-corpo { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.risco-texto { display: block; position: relative; align-self: stretch; }
+.alt.riscada { --risco-tinta: var(--azul); }
 .alt.riscada:not(.c-ok):not(.c-falta):not(.c-err) .txt { color: var(--muted); }
-.alt.c-ok.riscada .txt { text-decoration-color: var(--papel); }
+.alt.c-ok.riscada { --risco-tinta: var(--papel); }
+.risco-traco { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; color: var(--risco-tinta); pointer-events: none; }
+.risco-traco path, .risco-cancela path { fill: none; stroke: currentColor; stroke-linecap: square; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.risco-traco path { stroke-width: 2; }
+.risco-traco path + path { stroke-width: 1; opacity: .65; }
+.risco-cancela { position: absolute; inset: -6px; width: calc(100% + 12px); height: calc(100% + 12px); overflow: visible; color: currentColor; pointer-events: none; }
+.risco-cancela path { stroke-width: 2.2; }
+.risco-cancela path + path { stroke-width: 1.4; }
+.risco-carimbo { align-self: flex-end; display: inline-flex; align-items: center; min-height: 20px; padding: 3px 7px; margin: 10px 3px 2px 0; border-radius: 0 var(--r1) var(--r1) 0; box-shadow: inset 0 0 0 1px currentColor; color: var(--risco-tinta); font: 600 12px/1.1 var(--label); letter-spacing: .08em; text-transform: uppercase; transform: rotate(-4deg); pointer-events: none; }
+.riscada-entrando .risco-traco path { animation: risco-desenhar 280ms var(--ease) both; }
+.riscada-entrando .risco-traco path + path { animation-delay: 45ms; }
+.riscada-entrando .risco-cancela path { animation: risco-desenhar 190ms var(--ease) both; }
+.riscada-entrando .risco-cancela path + path { animation-delay: 35ms; }
+.riscada-entrando .risco-carimbo { animation: risco-carimbar 240ms var(--ease) 70ms both; }
+@keyframes risco-desenhar { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes risco-carimbar { from { transform: translateY(-4px) rotate(-9deg) scale(1.08); opacity: 0; } to { transform: translateY(0) rotate(-4deg) scale(1); opacity: 1; } }
 .alt {
   width: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 14px; align-items: start; text-align: left;
   padding: 14px 16px 14px 14px; border: 0; border-radius: var(--r4); background: var(--branco); box-shadow: var(--anel), var(--sombra-int);
@@ -222,7 +239,7 @@ select:hover { box-shadow: var(--anel-forte); }
 }
 .alt:hover { box-shadow: var(--anel-forte); }
 .alt .letra {
-  display: grid; place-items: center; width: 34px; height: 28px; border-radius: 0 var(--r1) var(--r1) 0;
+  display: grid; place-items: center; position: relative; width: 34px; height: 28px; border-radius: 0 var(--r1) var(--r1) 0;
   box-shadow: var(--anel-forte); color: var(--azul); font: 600 15px/1 var(--label);
 }
 .alt .marca-sel { align-self: center; color: var(--azul); }
