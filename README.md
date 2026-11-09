@@ -32,7 +32,7 @@ Banco de questões em português, revisado e alinhado ao **[Exam Guide CLF-C02 v
 
 ## Riscar alternativas
 
-Nos modos prova e estudo, clique com o **botão direito do mouse sobre qualquer parte da alternativa** para riscar; repita para restaurar. O clique esquerdo continua selecionando a resposta. Não há botões extras ao lado: o risco é um traço fino em azul elétrico, seguindo o visual NOUS da aplicação.
+Nos modos prova e estudo, clique com o **botão direito do mouse sobre qualquer parte da alternativa** para riscar; repita para restaurar. O clique esquerdo continua selecionando a resposta. Não há botões extras ao lado: a marcação usa **rasura diagonal dupla em azul elétrico**, um **X sobre a letra** e um carimbo inclinado **“DESCARTADA POR VOCÊ”**, seguindo o visual NOUS da aplicação. A breve animação acontece só ao riscar, não a cada navegação, e respeita a preferência de movimento reduzido.
 
 Atalhos preservados: **Shift + A–F**, conforme a letra exibida; **Shift + F10** ou a tecla de menu de contexto com a alternativa em foco. O menu do navegador só é substituído sobre as alternativas da questão em andamento.
 
