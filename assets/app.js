@@ -19,6 +19,9 @@
     '4.1': 'Modelos de preço', '4.2': 'Billing, orçamento e custos', '4.3': 'Suporte e recursos técnicos',
   };
   const META_TREINO = 80;
+  const SCORE = window.CLF_SCORE;
+  // Calculado também para tentativas antigas: nenhuma migração ou perda de progresso.
+  const scoreHistorico = h => h.modo === 'prova' ? SCORE.calcular(h.acertos, h.total) : null;
   const DURACAO = 90 * 60 * 1000;
   const DATA_PROVA = new Date(2026, 10, 26);
   const KEY = 'clfc02.v1';
@@ -119,6 +122,7 @@
       id: s.sid + '-' + fim, sid: s.sid, nome: s.nome, modo: s.modo, tipo: s.tipo, fim,
       dur: s.modo === 'prova' ? Math.min(DURACAO, fim - s.inicio) : s.gasto,
       total: ids.length, acertos: ac, porDom, porTask, ids, resp: s.resp, marc: s.marc, ordem: s.ordem, porTempo: !!porTempo,
+      score: s.modo === 'prova' ? SCORE.calcular(ac, ids.length) : null,
     };
     S.historico.unshift(h);
     delete S.sessoes[s.sid];
@@ -193,7 +197,7 @@
       if (ativo) {
         const resp = ativo.ids.filter(id => completa(QB[id], ativo.resp[id])).length;
         estado = `<span class="estado andamento">Em andamento · ${resp}/${ativo.ids.length} · ${relogio(ativo.deadline - Date.now()).replace(/:\d\d$/, '')} min restantes</span>`;
-      } else if (ult) estado = `<span class="estado">Última: <b class="num">${pct(ult.acertos, ult.total)}%</b> · ${dataCurta(ult.fim)}${hs.length > 1 ? ` · ${hs.length} tentativas` : ''}</span>`;
+      } else if (ult) estado = `<span class="estado">Última: <b class="num">${scoreHistorico(ult).valor}/1.000</b> estimado · ${pct(ult.acertos, ult.total)}% · ${dataCurta(ult.fim)}${hs.length > 1 ? ` · ${hs.length} tentativas` : ''}</span>`;
       else estado = `<span class="estado">Não iniciado</span>`;
       const acoes = ativo
         ? `<button class="btn" data-acao="continuar" data-sid="${sid}" data-k="c-${sid}">${ic('play')}Continuar</button>
@@ -231,7 +235,9 @@
 
     const hist = S.historico.length ? `<table class="tabela"><thead><tr><th>Data</th><th>Tentativa</th><th>Nota</th><th></th></tr></thead><tbody>${S.historico.map(h =>
       `<tr><td><span class="estado">${dataHora(h.fim)}</span></td><td><span class="nome" style="font-size:18px">${esc(h.nome)}</span><span class="sub">Modo ${h.modo} · ${h.acertos}/${h.total} corretas · ${minutos(h.dur)}${h.porTempo ? ' · encerrado por tempo' : ''}</span></td>
-       <td><span class="num" style="color:${pct(h.acertos, h.total) >= META_TREINO ? 'var(--azul)' : 'var(--erro)'}">${pct(h.acertos, h.total)}%</span></td>
+       <td>${h.modo === 'prova'
+         ? `<span class="num" style="color:${scoreHistorico(h).atingiuCorte ? 'var(--azul)' : 'var(--erro)'}">${scoreHistorico(h).valor}/1.000</span><span class="sub">Score estimado · ${pct(h.acertos, h.total)}% de acertos</span>`
+         : `<span class="num" style="color:${pct(h.acertos, h.total) >= META_TREINO ? 'var(--azul)' : 'var(--erro)'}">${pct(h.acertos, h.total)}%</span>`}</td>
        <td class="acoes-td"><div class="acoes"><a class="btn ghost" href="#/resultado/${encodeURIComponent(h.id)}" data-k="h-${esc(h.id)}">Ver</a></div></td></tr>`).join('')}</tbody></table>`
       : `<p class="vazio-txt">Nenhuma tentativa concluída ainda. Os resultados aparecem aqui ao enviar uma prova ou encerrar um estudo.</p>`;
 
@@ -426,6 +432,7 @@
   // ---------- Resultado ----------
   function telaResultado(h) {
     const p = pct(h.acertos, h.total), ok = p >= META_TREINO, prova = h.modo === 'prova';
+    const score = scoreHistorico(h);
     const brancos = h.ids.filter(id => !h.resp[id] || !h.resp[id].length).length;
     const erros = h.ids.filter(id => !acertou(QB[id], h.resp[id]));
     const domRows = [1, 2, 3, 4].filter(d => h.porDom[d][1]).map(d => {
@@ -464,13 +471,28 @@
       <h1>${esc(h.nome)}</h1>
       <p class="lead">Modo ${h.modo} · concluído em ${dataHora(h.fim)} · ${minutos(h.dur)}${h.porTempo ? ' · enviado automaticamente quando o tempo acabou' : ''}</p>
       <div class="res-topo">
-        <div class="pct-grande"><span aria-hidden="true">${p}<small>%</small></span><span class="sr">${p} por cento de acertos</span></div>
+        ${prova ? `<div class="score-bloco">
+          <div class="pct-grande score-grande"><span aria-hidden="true">${score.valor}<small>/1.000</small></span><span class="sr">Score estimado: ${score.valor} pontos na escala de 100 a 1.000</span></div>
+          <span class="score-legenda">Score estimado · escala 100–1.000</span>
+        </div>` : `<div class="pct-grande"><span aria-hidden="true">${p}<small>%</small></span><span class="sr">${p} por cento de acertos</span></div>`}
         <div class="veredito">
-          <span class="linha ${ok ? 'ok' : 'baixo'}">${ok ? 'Acima da meta de treino' : 'Abaixo da meta de treino'}</span>
-          <div class="dados"><span><b>${h.acertos}</b> de ${h.total} corretas</span>${prova ? `<span><b>${brancos}</b> em branco</span>` : ''}<span>Meta <b>${META_TREINO}%</b></span></div>
+          <span class="linha ${(prova ? score.atingiuCorte : ok) ? 'ok' : 'baixo'}">${prova
+            ? (score.atingiuCorte ? 'Atingiu 700 pontos na estimativa' : 'Não atingiu 700 pontos na estimativa')
+            : (ok ? 'Acima da meta de treino' : 'Abaixo da meta de treino')}</span>
+          <div class="dados"><span><b>${h.acertos}</b> de ${h.total} corretas</span>${prova ? `<span><b>${p}%</b> de acertos</span><span><b>${brancos}</b> em branco</span><span>Corte de referência <b>700</b></span>` : `<span>Meta <b>${META_TREINO}%</b></span>`}</div>
         </div>
       </div>
-      ${prova ? `<p class="nota">A prova real dá uma nota escalada de 100 a 1.000 e aprova com 700. A AWS não publica como os acertos viram essa nota, e 15 das 65 questões não contam, sem identificação. Por isso o simulado mostra o percentual bruto e usa ${META_TREINO}% como meta de treino, com margem de segurança.</p>` : ''}
+      ${prova ? `<div class="score-resumo">
+        <div class="score-trilho" role="img" aria-label="Score estimado ${score.valor}; mínimo 100, máximo 1.000, corte de referência 700">
+          <span class="score-preenchimento${score.atingiuCorte ? '' : ' baixo'}" style="width:${100 * (score.valor - score.minimo) / (score.maximo - score.minimo)}%"></span>
+          <span class="score-corte" style="left:${100 * (score.corte - score.minimo) / (score.maximo - score.minimo)}%"></span>
+        </div>
+        <div class="score-marcas" aria-hidden="true"><span>100</span><span>Corte de referência: 700</span><span>1.000</span></div>
+        <p class="nota">Esta é uma estimativa didática, não uma nota oficial nem uma previsão de aprovação. A AWS usa a escala 100–1.000 e exige 700, mas não divulga a fórmula que converte acertos em pontos. A meta de treino de ${META_TREINO}% de acertos continua separada: ${ok ? 'atingida' : 'ainda não atingida'}.</p>
+        <details class="score-metodo"><summary>Como o score estimado é calculado?</summary>
+          <p class="nota"><code>score = arredondar(100 + 900 × acertos ÷ total)</code>. É uma conversão linear própria do simulado. Todas as ${h.total} questões entram no cálculo; questões em branco contam como erro e respostas múltiplas só pontuam com o conjunto exato, sem crédito parcial. Na prova oficial, 50 questões pontuam e 15 não pontuam, sem identificação; a pontuação também é ajustada entre versões da prova. Por isso o mesmo percentual pode não produzir esta nota na AWS.</p>
+        </details>
+      </div>` : ''}
       <section class="sec" id="r-dom" aria-labelledby="t-rd"><h2 id="t-rd">Desempenho por domínio</h2>
         <table class="tabela tab-dom"><thead><tr><th>Domínio</th><th>Acertos</th><th>%</th><th style="width:34%"></th><th>Situação</th></tr></thead><tbody>${domRows}</tbody></table>
       </section>

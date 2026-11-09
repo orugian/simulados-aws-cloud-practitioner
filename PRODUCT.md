@@ -46,7 +46,7 @@ On top of it:
 - Must work offline: self-hosted fonts, no CDN.
 - Questions in PT-BR with service names in English.
 - No ordering or matching question types (they don't exist in CLF-C02).
-- The real exam's scaled score (100–1000, pass at 700) is not linear and AWS does not publish the conversion. The product shows raw percentage and must not fake a scaled score.
+- At the user's request, full exam results show an explicitly labeled estimated score on the 100–1000 scale with 700 as a reference threshold, alongside raw percentage. The simulator uses its own disclosed linear conversion: round(100 + 900 × correct / total). AWS does not publish its raw-to-scaled conversion; this is not the official psychometric score or a prediction of passing. All simulator questions count (no arbitrary removal of 15 questions). Study mode retains raw percentage. Historical attempts derive the same estimate without resetting progress.
 
 ## Brand Commitments
 
@@ -66,7 +66,7 @@ Real bank of 405 questions with justifications (`banco/`), official guide (`docs
 
 1. Faithful to the real exam first: what the exam does not do, the exam mode does not do either.
 2. Every mistake has to teach something: per-alternative justification and a mistakes notebook.
-3. Honest about the score: raw percentage with a training target, no invented scaled score.
+3. Honest about the score: label the simulator's 100–1000 conversion as an estimate, disclose its formula and limitations, retain raw percentage and distinguish the 80% training target from the 700-point reference threshold.
 4. Zero friction: opens with a double-click, resumes where it left off.
 
 ## Accessibility & Inclusion

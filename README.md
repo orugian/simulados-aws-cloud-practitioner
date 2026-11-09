@@ -30,6 +30,19 @@ Banco de questões em português, revisado e alinhado ao **[Exam Guide CLF-C02 v
   - Snowball Edge indisponível para novos clientes;
   - serviços fora do escopo usados só como distratores.
 
+## Score ao concluir o simulado
+
+As provas completas mostram **score estimado de 100 a 1.000**, com **700 como corte de referência**, além dos acertos e do percentual bruto. O score aparece no resultado e no histórico, inclusive nas tentativas antigas, sem apagar progresso. O modo estudo continua mostrando o percentual.
+
+**Método didático do simulado:** `score = arredondar(100 + 900 × acertos ÷ total)`.
+
+- 0/65 → 100 · 43/65 → 695 · 44/65 → 709 · 52/65 → 820 · 65/65 → 1.000.
+- Todas as 65 questões entram na estimativa. Em branco conta como erro; múltipla resposta exige o conjunto exato, sem crédito parcial.
+- **Não é a nota oficial nem uma previsão de aprovação:** a AWS não publica a conversão dos acertos em nota escalada, ajusta resultados entre versões e tem 15 questões não pontuadas não identificadas.
+- Não confunda a conversão com uma equivalência oficial entre 700 pontos e um percentual. A meta de treino de 80% permanece separada.
+
+Testes da fórmula: `node --test tools/test-score.js`.
+
 ## Estrutura
 
 ```

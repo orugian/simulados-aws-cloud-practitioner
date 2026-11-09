@@ -30,6 +30,12 @@ typography:
     fontSize: "30px"
     fontWeight: 500
     lineHeight: 1.1
+  score:
+    fontFamily: "Antonio, Arial Narrow, sans-serif"
+    fontSize: "clamp(80px, 11vw, 138px)"
+    fontWeight: 300
+    lineHeight: 0.82
+    letterSpacing: "-0.03em"
   question:
     fontFamily: "Barlow, system-ui, sans-serif"
     fontSize: "20px"
@@ -213,7 +219,7 @@ Flat. Depth comes from 1px inset rings: `inset 0 0 0 1px rgba(0,0,242,.2)` at re
 - **Do** use condensed UPPERCASE for every label, button and heading.
 - **Do** pair every state with a glyph and a text label.
 - **Do** keep elevation to 1px inset rings.
-- **Do** show the exam's raw percentage and the 80% target; never fake the scaled score.
+- **Do** show the exam's estimated score on a 100–1000 scale, explicitly labeled "Score estimado", with the 700-point reference marker, raw percentage and the separate 80% training target. Never present the simulator's disclosed linear conversion as AWS's official score. Study mode keeps percentage results.
 
 ### Don't:
 - **Don't** use drop shadows, gradients as decoration, or radii above 5px.
