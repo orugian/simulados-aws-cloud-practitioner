@@ -43,6 +43,7 @@
     exit: '<path d="M9.5 3H3v10h6.5M7 8h7M11.5 5.5L14 8l-2.5 2.5"/>',
     send: '<path d="M2.5 8h9M8 4.5L11.5 8 8 11.5M13.5 3v10"/>',
     redo: '<path d="M12.5 6A5 5 0 1 0 13 9.5M13 2.5V6H9.5"/>',
+    strike: '<path d="M12 4.5C11 2 5 2 4.5 5c-.2 1 1 2 3.5 2.5M4 11.5c1 2 6.5 2.5 7.5-.5M2 8h12"/>',
   };
   const ic = n => `<svg class="ic" viewBox="0 0 16 16" aria-hidden="true">${I[n]}</svg>`;
 
@@ -88,7 +89,7 @@
     const ordem = {};
     ids.forEach(id => { ordem[id] = shuffle(QB[id].alternativas.map((_, i) => i)); });
     const agora = Date.now();
-    const s = { sid, nome, modo, tipo, ids: tipo === 'caderno' ? ids.slice() : shuffle(ids.slice()), ordem, resp: {}, trav: {}, marc: {}, idx: 0, inicio: agora, deadline: modo === 'prova' ? agora + DURACAO : 0, gasto: 0, tick: agora };
+    const s = { sid, nome, modo, tipo, ids: tipo === 'caderno' ? ids.slice() : shuffle(ids.slice()), ordem, resp: {}, trav: {}, marc: {}, riscadas: {}, idx: 0, inicio: agora, deadline: modo === 'prova' ? agora + DURACAO : 0, gasto: 0, tick: agora };
     S.sessoes[sid] = s; salvar(); return s;
   }
   function sortearProva() {
@@ -123,6 +124,7 @@
       dur: s.modo === 'prova' ? Math.min(DURACAO, fim - s.inicio) : s.gasto,
       total: ids.length, acertos: ac, porDom, porTask, ids, resp: s.resp, marc: s.marc, ordem: s.ordem, porTempo: !!porTempo,
       score: s.modo === 'prova' ? SCORE.calcular(ac, ids.length) : null,
+      riscadas: s.riscadas || {},
     };
     S.historico.unshift(h);
     delete S.sessoes[s.sid];
@@ -346,12 +348,12 @@
       </div>`;
   }
 
-  function altsHTML(q, ordem, resp, corrigir, prova) {
+  function altsHTML(q, ordem, resp, corrigir, prova, riscadas = [], podeRiscar = false) {
     resp = resp || [];
     const multi = q.tipo === 'multipla';
     return `<ul class="alts" role="${multi ? 'group' : 'radiogroup'}" aria-label="Alternativas">${ordem.map((orig, pos) => {
-      const a = q.alternativas[orig], sel = resp.includes(orig);
-      let cls = 'alt', selo = '', porque = '';
+      const a = q.alternativas[orig], sel = resp.includes(orig), riscada = riscadas.includes(orig);
+      let cls = 'alt' + (riscada ? ' riscada' : ''), selo = '', porque = '';
       if (corrigir) {
         if (a.correta && sel) { cls += ' c-ok'; selo = `<span class="selo">${ic('check')}Correta · sua</span>`; }
         else if (a.correta) { cls += ' c-falta'; selo = `<span class="selo">${ic('check')}Correta</span>`; }
@@ -360,7 +362,10 @@
         porque = `<span class="porque">${esc(a.porque)}</span>`;
       } else if (sel) { cls += ' sel'; selo = `<span class="marca-sel">${ic('check')}</span>`; }
       const attrs = corrigir ? 'aria-disabled="true"' : `data-alt="${orig}" role="${multi ? 'checkbox' : 'radio'}" aria-checked="${sel}"`;
-      return `<li role="none"><button class="${cls}" ${attrs} data-k="alt-${pos}"><span class="letra">${L[pos]}</span><span><span class="txt">${esc(a.texto)}</span>${porque}</span>${selo}</button></li>`;
+      const anotacaoId = `risco-${q.id}-${orig}`;
+      const anotacao = riscada ? `<span class="sr" id="${anotacaoId}">Riscada por você. Apenas uma anotação visual.</span>` : '';
+      const controle = podeRiscar ? `<button type="button" class="riscar-alt" data-riscar="${orig}" data-k="riscar-${pos}" aria-pressed="${riscada}" aria-label="${riscada ? 'Restaurar' : 'Riscar'} alternativa ${L[pos]}" title="${riscada ? 'Restaurar' : 'Riscar'} alternativa ${L[pos]} (Shift+${L[pos]})">${ic(riscada ? 'redo' : 'strike')}<span aria-hidden="true">${riscada ? 'Restaurar' : 'Riscar'}</span></button>` : '';
+      return `<li role="none" class="${podeRiscar ? 'alternativa-linha' : ''}"><button class="${cls}" ${attrs}${riscada ? ` aria-describedby="${anotacaoId}"` : ''} data-k="alt-${pos}"><span class="letra">${L[pos]}</span><span><span class="txt">${esc(a.texto)}</span>${anotacao}${porque}</span>${selo}</button>${controle}</li>`;
     }).join('')}</ul>`;
   }
 
@@ -388,7 +393,8 @@
       </div>
       <p class="enunciado" id="enun" tabindex="-1">${esc(q.enunciado)}</p>
       ${instr}
-      ${altsHTML(q, s.ordem[id], r, trav, prova)}
+      <p class="dica-riscar">Riscar é só uma anotação sua: não altera a resposta nem a correção. <span>Atalho: Shift + letra da alternativa.</span></p>
+      ${altsHTML(q, s.ordem[id], r, trav, prova, (s.riscadas || {})[id] || [], true)}
       ${trav ? feedbackHTML(q, r) : ''}
     </div>`;
     let principal;
@@ -516,12 +522,25 @@
     const corpo = det.querySelector('.corpo'); if (corpo.childElementCount) return;
     const h = S.historico.find(x => x.id === rota().arg); if (!h) return;
     const id = det.dataset.gab, q = QB[id];
-    corpo.innerHTML = `<p class="enunciado">${esc(q.enunciado)}</p>${altsHTML(q, h.ordem[id] || q.alternativas.map((_, i) => i), h.resp[id], true)}${feedbackHTML(q, h.resp[id])}`;
+    corpo.innerHTML = `<p class="enunciado">${esc(q.enunciado)}</p>${altsHTML(q, h.ordem[id] || q.alternativas.map((_, i) => i), h.resp[id], true, false, (h.riscadas || {})[id] || [])}${feedbackHTML(q, h.resp[id])}`;
   }
 
   // ---------------- Ações ----------------
   const sessaoAtual = () => { const r = rota(); return (r.tela === 'q' || r.tela === 'revisao') ? S.sessoes[r.arg] : null; };
   function irQuestao(s, i) { s.idx = i; ui.avisoMulti = null; salvar(); if (rota().tela !== 'q') ir('#/q/' + s.sid); else render({ focar: '#enun', topo: true }); }
+
+  function riscarAlternativa(s, orig) {
+    const id = s.ids[s.idx], q = QB[id];
+    if (!Number.isInteger(orig) || orig < 0 || orig >= q.alternativas.length) return;
+    // Anotação pessoal: independente do gabarito, das respostas e do bloqueio no estudo.
+    const porQuestao = s.riscadas || (s.riscadas = {});
+    const riscos = porQuestao[id] || [];
+    const estavaRiscada = riscos.includes(orig);
+    const novos = estavaRiscada ? riscos.filter(i => i !== orig) : [...riscos, orig];
+    if (novos.length) porQuestao[id] = novos; else delete porQuestao[id];
+    salvar(); render();
+    anunciar(`Alternativa ${L[s.ordem[id].indexOf(orig)]} ${estavaRiscada ? 'restaurada' : 'riscada por você'}. Sua resposta não foi alterada.`);
+  }
 
   function escolher(s, orig) {
     const id = s.ids[s.idx], q = QB[id];
@@ -575,6 +594,8 @@
   document.addEventListener('click', async e => {
     const cel = e.target.closest('[data-ir]');
     if (cel) { const s = sessaoAtual(); if (s) { ui.folhaAberta = false; irQuestao(s, +cel.dataset.ir); } return; }
+    const risco = e.target.closest('[data-riscar]');
+    if (risco) { const s = sessaoAtual(); if (s) riscarAlternativa(s, +risco.dataset.riscar); return; }
     const alt = e.target.closest('[data-alt]');
     if (alt) { const s = sessaoAtual(); if (s) escolher(s, +alt.dataset.alt); return; }
     const fil = e.target.closest('[data-filtro]');
@@ -660,7 +681,11 @@
     const s = S.sessoes[r.arg]; if (!s) return;
     const id = s.ids[s.idx], q = QB[id], k = e.key.toLowerCase();
     const pos = L.toLowerCase().indexOf(k);
-    if (pos >= 0 && pos < q.alternativas.length && k.length === 1) { e.preventDefault(); escolher(s, s.ordem[id][pos]); return; }
+    if (pos >= 0 && pos < q.alternativas.length && k.length === 1) {
+      e.preventDefault();
+      if (e.shiftKey) riscarAlternativa(s, s.ordem[id][pos]); else escolher(s, s.ordem[id][pos]);
+      return;
+    }
     if (e.key === 'ArrowRight' && s.idx < s.ids.length - 1) { e.preventDefault(); irQuestao(s, s.idx + 1); }
     else if (e.key === 'ArrowLeft' && s.idx > 0) { e.preventDefault(); irQuestao(s, s.idx - 1); }
     else if (k === 'm') { e.preventDefault(); s.marc[id] = !s.marc[id]; if (!s.marc[id]) delete s.marc[id]; salvar(); render(); }
