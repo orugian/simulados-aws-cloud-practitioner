@@ -32,7 +32,9 @@ Banco de questões em português, revisado e alinhado ao **[Exam Guide CLF-C02 v
 
 ## Riscar alternativas
 
-Nos modos prova e estudo, use **Riscar** ao lado de qualquer alternativa para marcá-la visualmente como descartada. Clique em **Restaurar** para desfazer. Atalho: **Shift + A–F**, conforme a letra exibida.
+Nos modos prova e estudo, clique com o **botão direito do mouse sobre qualquer parte da alternativa** para riscar; repita para restaurar. O clique esquerdo continua selecionando a resposta. Não há botões extras ao lado: o risco é um traço fino em azul elétrico, seguindo o visual NOUS da aplicação.
+
+Atalhos preservados: **Shift + A–F**, conforme a letra exibida; **Shift + F10** ou a tecla de menu de contexto com a alternativa em foco. O menu do navegador só é substituído sobre as alternativas da questão em andamento.
 
 - Funciona também em alternativas corretas, selecionadas e após a correção no estudo: é uma anotação sua, não uma indicação do gabarito.
 - Não seleciona/desmarca respostas, não bloqueia a alternativa e não altera a correção nem o score.

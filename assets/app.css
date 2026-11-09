@@ -209,13 +209,11 @@ select:hover { box-shadow: var(--anel-forte); }
 .alts { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; max-width: 880px; }
 .dica-riscar { max-width: 880px; margin: 16px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .dica-riscar + .alts { margin-top: 14px; }
-.alternativa-linha { display: grid; grid-template-columns: minmax(0, 1fr) 94px; gap: 8px; align-items: start; }
-.alternativa-linha > .alt { min-width: 0; }
-.riscar-alt { display: inline-flex; justify-content: center; align-items: center; gap: 6px; width: 100%; min-height: 44px; padding: 8px 6px; border: 0; border-radius: var(--r2); background: transparent; color: var(--muted); box-shadow: var(--anel); font: 600 13px/1.2 var(--label); letter-spacing: .04em; text-transform: uppercase; }
-.riscar-alt:hover { color: var(--azul); box-shadow: var(--anel-forte); }
-.riscar-alt[aria-pressed="true"] { color: var(--navy); background: var(--papel); box-shadow: inset 0 0 0 1px var(--hair); }
-.alt.riscada .txt { text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.dica-riscar strong { font-weight: 500; color: var(--azul); }
+.alt.riscada .txt { text-decoration-line: line-through; text-decoration-color: var(--azul); text-decoration-thickness: 1px; }
+.alt.riscada .letra { text-decoration: line-through; text-decoration-thickness: 1px; }
 .alt.riscada:not(.c-ok):not(.c-falta):not(.c-err) .txt { color: var(--muted); }
+.alt.c-ok.riscada .txt { text-decoration-color: var(--papel); }
 .alt {
   width: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 14px; align-items: start; text-align: left;
   padding: 14px 16px 14px 14px; border: 0; border-radius: var(--r4); background: var(--branco); box-shadow: var(--anel), var(--sombra-int);
@@ -390,8 +388,6 @@ dialog .acoes-linha { margin-top: 22px; justify-content: flex-end; }
   .tab-dom td.barra-td { grid-column: 1 / -1; }
   .enunciado { font-size: 18px; }
   .alt { font-size: 16px; grid-template-columns: 30px minmax(0, 1fr); }
-  .alternativa-linha { grid-template-columns: minmax(0, 1fr) 64px; }
-  .riscar-alt { flex-direction: column; gap: 4px; }
   .dica-riscar span { display: none; }
   .alt .marca-sel { display: none; }
   .alt .selo { grid-column: 2; justify-self: start; }

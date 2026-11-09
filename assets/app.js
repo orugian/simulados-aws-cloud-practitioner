@@ -43,7 +43,6 @@
     exit: '<path d="M9.5 3H3v10h6.5M7 8h7M11.5 5.5L14 8l-2.5 2.5"/>',
     send: '<path d="M2.5 8h9M8 4.5L11.5 8 8 11.5M13.5 3v10"/>',
     redo: '<path d="M12.5 6A5 5 0 1 0 13 9.5M13 2.5V6H9.5"/>',
-    strike: '<path d="M12 4.5C11 2 5 2 4.5 5c-.2 1 1 2 3.5 2.5M4 11.5c1 2 6.5 2.5 7.5-.5M2 8h12"/>',
   };
   const ic = n => `<svg class="ic" viewBox="0 0 16 16" aria-hidden="true">${I[n]}</svg>`;
 
@@ -364,8 +363,9 @@
       const attrs = corrigir ? 'aria-disabled="true"' : `data-alt="${orig}" role="${multi ? 'checkbox' : 'radio'}" aria-checked="${sel}"`;
       const anotacaoId = `risco-${q.id}-${orig}`;
       const anotacao = riscada ? `<span class="sr" id="${anotacaoId}">Riscada por você. Apenas uma anotação visual.</span>` : '';
-      const controle = podeRiscar ? `<button type="button" class="riscar-alt" data-riscar="${orig}" data-k="riscar-${pos}" aria-pressed="${riscada}" aria-label="${riscada ? 'Restaurar' : 'Riscar'} alternativa ${L[pos]}" title="${riscada ? 'Restaurar' : 'Riscar'} alternativa ${L[pos]} (Shift+${L[pos]})">${ic(riscada ? 'redo' : 'strike')}<span aria-hidden="true">${riscada ? 'Restaurar' : 'Riscar'}</span></button>` : '';
-      return `<li role="none" class="${podeRiscar ? 'alternativa-linha' : ''}"><button class="${cls}" ${attrs}${riscada ? ` aria-describedby="${anotacaoId}"` : ''} data-k="alt-${pos}"><span class="letra">${L[pos]}</span><span><span class="txt">${esc(a.texto)}</span>${anotacao}${porque}</span>${selo}</button>${controle}</li>`;
+      const gesto = podeRiscar ? ` data-riscar="${orig}" title="Botão direito: ${riscada ? 'restaurar' : 'riscar'} alternativa ${L[pos]} (Shift+${L[pos]})"` : '';
+      const descricao = [podeRiscar ? 'dica-riscar' : '', riscada ? anotacaoId : ''].filter(Boolean).join(' ');
+      return `<li role="none"><button class="${cls}" ${attrs}${gesto}${descricao ? ` aria-describedby="${descricao}"` : ''} data-k="alt-${pos}"><span class="letra">${L[pos]}</span><span><span class="txt">${esc(a.texto)}</span>${anotacao}${porque}</span>${selo}</button></li>`;
     }).join('')}</ul>`;
   }
 
@@ -393,7 +393,7 @@
       </div>
       <p class="enunciado" id="enun" tabindex="-1">${esc(q.enunciado)}</p>
       ${instr}
-      <p class="dica-riscar">Riscar é só uma anotação sua: não altera a resposta nem a correção. <span>Atalho: Shift + letra da alternativa.</span></p>
+      <p class="dica-riscar" id="dica-riscar"><strong>Botão direito</strong> na alternativa: riscar ou restaurar. Apenas visual, sem alterar sua resposta. <span>Atalho: Shift + letra.</span></p>
       ${altsHTML(q, s.ordem[id], r, trav, prova, (s.riscadas || {})[id] || [], true)}
       ${trav ? feedbackHTML(q, r) : ''}
     </div>`;
@@ -591,11 +591,19 @@
     t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 3200);
   }
 
+  // Só substitui o menu de contexto sobre uma alternativa da questão em andamento.
+  // Clique esquerdo continua selecionando; botão direito nunca responde ou desmarca.
+  main.addEventListener('contextmenu', e => {
+    const alternativa = e.target.closest('[data-riscar]');
+    const s = sessaoAtual();
+    if (!alternativa || !s || rota().tela !== 'q') return;
+    e.preventDefault();
+    riscarAlternativa(s, +alternativa.dataset.riscar);
+  });
+
   document.addEventListener('click', async e => {
     const cel = e.target.closest('[data-ir]');
     if (cel) { const s = sessaoAtual(); if (s) { ui.folhaAberta = false; irQuestao(s, +cel.dataset.ir); } return; }
-    const risco = e.target.closest('[data-riscar]');
-    if (risco) { const s = sessaoAtual(); if (s) riscarAlternativa(s, +risco.dataset.riscar); return; }
     const alt = e.target.closest('[data-alt]');
     if (alt) { const s = sessaoAtual(); if (s) escolher(s, +alt.dataset.alt); return; }
     const fil = e.target.closest('[data-filtro]');
@@ -680,6 +688,11 @@
     const r = rota(); if (r.tela !== 'q') return;
     const s = S.sessoes[r.arg]; if (!s) return;
     const id = s.ids[s.idx], q = QB[id], k = e.key.toLowerCase();
+    if (e.shiftKey && e.key === 'F10') {
+      const alternativa = e.target.closest('[data-riscar]');
+      if (alternativa) { e.preventDefault(); riscarAlternativa(s, +alternativa.dataset.riscar); }
+      return;
+    }
     const pos = L.toLowerCase().indexOf(k);
     if (pos >= 0 && pos < q.alternativas.length && k.length === 1) {
       e.preventDefault();
