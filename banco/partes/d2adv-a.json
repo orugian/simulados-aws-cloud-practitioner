@@ -1,0 +1,1072 @@
+[
+  {
+    "id": "D2-adva-001",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 7,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma equipe vai trocar um cluster Kubernetes que administra integralmente no Amazon EC2 por um cluster Amazon EKS padrão, com nós EC2 autogerenciados. Quais atribuições devem constar na nova matriz de responsabilidade? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A equipe mantém o sistema operacional dos nós que criou.",
+        "correta": true,
+        "porque": "Em nós autogerenciados, a equipe é responsável pelo software do nó, inclusive pelas atualizações do SO."
+      },
+      {
+        "texto": "A equipe opera os servidores que executam a API do cluster.",
+        "correta": false,
+        "porque": "No EKS, os servidores da API do Kubernetes integram o plano de controle operado pela AWS."
+      },
+      {
+        "texto": "A AWS corrige as bibliotecas incorporadas às imagens da aplicação.",
+        "correta": false,
+        "porque": "O serviço não mantém o conteúdo das imagens que a equipe publica para suas cargas."
+      },
+      {
+        "texto": "A AWS opera o armazenamento de estado do plano de controle.",
+        "correta": true,
+        "porque": "O EKS opera componentes do plano de controle, inclusive o armazenamento de estado do Kubernetes."
+      },
+      {
+        "texto": "A AWS define as permissões dos usuários da equipe no cluster.",
+        "correta": false,
+        "porque": "A equipe continua responsável por definir quem acessa o cluster e com quais permissões."
+      }
+    ],
+    "explicacao": "O EKS padrão assume a operação do plano de controle do Kubernetes. Isso não transforma os nós EC2 autogerenciados, as imagens ou as permissões da carga em componentes administrados pela AWS.",
+    "servicos": [
+      "EKS",
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html"
+  },
+  {
+    "id": "D2-adva-002",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma função AWS Lambda usa uma imagem de contêiner construída a partir de uma imagem base publicada pela AWS. A AWS publica uma nova versão da base para corrigir uma biblioteca presente na imagem já implantada. Como se divide o trabalho nesse caso?",
+    "alternativas": [
+      {
+        "texto": "A AWS substitui a base na imagem implantada, e a equipe valida a função.",
+        "correta": false,
+        "porque": "Publicar uma nova base não altera as camadas da imagem já implantada."
+      },
+      {
+        "texto": "A equipe altera a versão de runtime da função, e a AWS atualiza a biblioteca na imagem.",
+        "correta": false,
+        "porque": "Uma função implantada como imagem traz seu ambiente de execução no próprio artefato."
+      },
+      {
+        "texto": "A AWS publica a base corrigida, e a equipe reconstrói e atualiza a imagem da função.",
+        "correta": true,
+        "porque": "A equipe precisa incorporar a base corrigida e implantar a nova imagem para beneficiar a função."
+      },
+      {
+        "texto": "A equipe republica a imagem atual, e a AWS incorpora a nova base ao provisionar a função.",
+        "correta": false,
+        "porque": "Provisionar outro ambiente de execução não reconstrói o artefato fornecido pela equipe."
+      }
+    ],
+    "explicacao": "A AWS mantém a infraestrutura do Lambda e publica atualizações de suas imagens base. Para funções implantadas como imagem de contêiner, cabe ao cliente incorporar a nova base à sua própria imagem e atualizar a função.",
+    "servicos": [
+      "Lambda"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/lambda/latest/dg/images-create.html"
+  },
+  {
+    "id": "D2-adva-003",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma indústria vai executar parte da carga em um rack de primeira geração do AWS Outposts instalado em seu próprio data center e manter outra parte em uma região da AWS. Ao revisar os controles do local do rack, a equipe precisa separar a segurança física da sala da manutenção dos equipamentos entregues pela AWS. Qual divisão se aplica ao Outpost?",
+    "alternativas": [
+      {
+        "texto": "A AWS controla o acesso à sala e mantém o hardware; o cliente fornece a infraestrutura local de energia.",
+        "correta": false,
+        "porque": "No local do cliente, a AWS mantém o hardware, mas não opera o controle de acesso físico à sala."
+      },
+      {
+        "texto": "O cliente protege e mantém as instalações; a AWS mantém o hardware que fornece para o Outpost.",
+        "correta": true,
+        "porque": "O cliente fornece e protege o local, enquanto a AWS mantém o equipamento que entregou."
+      },
+      {
+        "texto": "O cliente controla a entrada e mantém o hardware do rack; a AWS fornece a infraestrutura elétrica da sala.",
+        "correta": false,
+        "porque": "O cliente cuida das instalações, inclusive da alimentação local, mas não assume a manutenção do hardware do Outpost."
+      },
+      {
+        "texto": "A AWS protege e mantém as instalações; o cliente faz a manutenção física dos servidores fornecidos.",
+        "correta": false,
+        "porque": "Instalações do cliente e hardware do Outpost ficam sob responsabilidades diferentes, na divisão inversa à proposta."
+      }
+    ],
+    "explicacao": "O Outposts estende hardware e serviços da AWS a um local escolhido pelo cliente. Ao contrário de uma região da AWS, o cliente responde pela proteção e pelas condições das próprias instalações; a AWS responde pela manutenção do equipamento que fornece.",
+    "servicos": [
+      "Outposts"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/outposts/rack/faqs/#Security_.26_compliance"
+  },
+  {
+    "id": "D2-adva-004",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma equipe executa rotinas Spark em servidores Amazon EC2. Ela quer manter os jobs e escolher uma versão do framework oferecida pelo serviço, mas não quer operar o cluster de processamento. Que divisão de trabalho atende ao objetivo?",
+    "alternativas": [
+      {
+        "texto": "Usar Amazon EMR Serverless; a equipe define a versão e os jobs, e a AWS opera os recursos de execução.",
+        "correta": true,
+        "porque": "O cliente escolhe a versão oferecida e fornece os jobs, sem precisar operar um cluster de processamento."
+      },
+      {
+        "texto": "Usar Amazon EMR no EC2; a equipe define os jobs, e a AWS assume a configuração do cluster.",
+        "correta": false,
+        "porque": "O EMR automatiza parte da administração, mas no modo EC2 o cliente ainda define e administra aspectos do cluster."
+      },
+      {
+        "texto": "Usar Amazon EC2 com Auto Scaling; a equipe define os jobs, e a AWS administra a instalação do Spark.",
+        "correta": false,
+        "porque": "O Auto Scaling ajusta a quantidade de instâncias, mas não gerencia o Spark instalado nelas."
+      },
+      {
+        "texto": "Usar Amazon EMR Serverless; a equipe administra o cluster, e a AWS decide a versão do framework.",
+        "correta": false,
+        "porque": "Nessa modalidade não há cluster para a equipe operar, e ela seleciona a versão oferecida para a aplicação."
+      }
+    ],
+    "explicacao": "O EMR Serverless assume a operação dos recursos de execução, não as escolhas sobre o software e a lógica que o cliente entrega ao serviço.",
+    "servicos": [
+      "EMR",
+      "EC2",
+      "EC2 Auto Scaling"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/emr-serverless.html"
+  },
+  {
+    "id": "D2-adva-005",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma organização quer auditar eventos de gerenciamento das contas atuais e das que ingressarem no futuro, em uma mesma trilha. Administradores locais podem precisar consultar a trilha, mas não devem conseguir interromper a coleta na própria conta. Qual opção atende a esses requisitos?",
+    "alternativas": [
+      {
+        "texto": "Trilhas locais do AWS CloudTrail, com entrega em um bucket central do Amazon S3.",
+        "correta": false,
+        "porque": "O destino central não impede que administradores autorizados alterem a trilha local, nem cria trilhas para novos membros."
+      },
+      {
+        "texto": "Uma trilha multirregional do AWS CloudTrail, com escopo limitado à conta de gerenciamento.",
+        "correta": false,
+        "porque": "O alcance entre regiões não estende uma trilha de conta às contas-membro."
+      },
+      {
+        "texto": "Um agregador organizacional do AWS Config, com consulta na conta de auditoria.",
+        "correta": false,
+        "porque": "O agregador reúne dados de configuração e conformidade; ele não cria uma trilha de eventos de gerenciamento."
+      },
+      {
+        "texto": "Uma trilha do AWS CloudTrail aplicada à organização no AWS Organizations.",
+        "correta": true,
+        "porque": "A trilha organiza a coleta para os membros atuais e novos, sem que administradores locais possam desativá-la."
+      }
+    ],
+    "explicacao": "O escopo organizacional da trilha determina a cobertura das contas. Um administrador comum de conta-membro com permissão de consulta vê a trilha, mas não a altera por meio da conta local.",
+    "servicos": [
+      "CloudTrail",
+      "Organizations",
+      "Config",
+      "S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html"
+  },
+  {
+    "id": "D2-adva-006",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "O painel central do AWS Config está vazio para uma nova conta e região já incluídas no agregador. O AWS CloudTrail mostra atividade dessa região, mas o AWS Config não tem um gravador ativo para os tipos de recurso que a equipe quer inventariar. O que falta para que esses recursos comecem a aparecer?",
+    "alternativas": [
+      {
+        "texto": "Ativar a gravação no AWS Config da conta e região de origem para esses tipos de recurso.",
+        "correta": true,
+        "porque": "O agregador depende dos dados gravados na origem; ele não ativa a gravação."
+      },
+      {
+        "texto": "Ativar a gravação desses tipos de recurso na conta e região que hospedam o agregador.",
+        "correta": false,
+        "porque": "O gravador dessa conta e região não produz itens de configuração para os recursos da outra conta e região."
+      },
+      {
+        "texto": "Adicionar regras de conformidade no AWS Config da origem, mantendo o gravador inativo.",
+        "correta": false,
+        "porque": "As regras não substituem a gravação dos dados de configuração necessários ao inventário."
+      },
+      {
+        "texto": "Habilitar a entrega centralizada da trilha de gerenciamento do AWS CloudTrail.",
+        "correta": false,
+        "porque": "O agregador não reconstrói inventários do AWS Config a partir dos logs do CloudTrail."
+      }
+    ],
+    "explicacao": "Agregar e gravar são operações distintas. A visão central replica dados disponíveis no AWS Config das origens abrangidas; não interpreta eventos de API como itens de configuração.",
+    "servicos": [
+      "Config",
+      "CloudTrail"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/config/latest/developerguide/aggregate-data.html"
+  },
+  {
+    "id": "D2-adva-007",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Um arquivo regulatório no Amazon S3 já usa versionamento e precisa proteger cada versão final por um prazo definido. A política não permite que um administrador da conta remova a versão protegida nem reduza esse prazo. Qual opção atende?",
+    "alternativas": [
+      {
+        "texto": "S3 Object Lock com retenção em modo governance.",
+        "correta": false,
+        "porque": "O modo governance admite exceções para identidades com permissão de contornar a retenção."
+      },
+      {
+        "texto": "S3 Object Lock com retenção em modo compliance.",
+        "correta": true,
+        "porque": "O período de retenção não pode ser reduzido e a versão não pode ser excluída durante a retenção, nem pelo usuário root."
+      },
+      {
+        "texto": "S3 Object Lock com legal hold no lugar de uma retenção por prazo.",
+        "correta": false,
+        "porque": "O legal hold não vence em uma data definida e pode ser removido por quem tiver permissão para isso."
+      },
+      {
+        "texto": "S3 Lifecycle com um prazo de expiração para versões não atuais.",
+        "correta": false,
+        "porque": "A regra programa a expiração, mas não aplica uma retenção que impeça exclusão antecipada por um administrador."
+      }
+    ],
+    "explicacao": "O modo compliance vincula a proteção de cada versão a uma data de retenção que não pode ser antecipada. Versionamento, expiração e legal hold têm finalidades distintas.",
+    "servicos": [
+      "S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html"
+  },
+  {
+    "id": "D2-adva-008",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 7,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Um portal interno registra recusas de acesso da aplicação em um grupo de logs de classe Standard. A operação quer alertas por volume dessas recusas e, separadamente, evidência da identidade que alterou a política IAM de uma role usada pelo portal. Quais recursos atendem aos dois requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Métricas de utilização do serviço de computação no Amazon CloudWatch.",
+        "correta": false,
+        "porque": "A utilização de recursos não conta recusas de acesso emitidas pela lógica da aplicação."
+      },
+      {
+        "texto": "Histórico de configuração da role no AWS Config.",
+        "correta": false,
+        "porque": "O histórico ajuda a ver estados do recurso, mas não é a evidência primária da identidade que fez a chamada de mudança."
+      },
+      {
+        "texto": "Filtro de métrica do Amazon CloudWatch Logs associado a um alarme.",
+        "correta": true,
+        "porque": "O filtro transforma as recusas registradas em uma métrica que pode disparar o alarme."
+      },
+      {
+        "texto": "Eventos de dados do AWS CloudTrail para os objetos que o portal acessa.",
+        "correta": false,
+        "porque": "São operações no plano de dados dos objetos, não a mudança administrativa da política IAM."
+      },
+      {
+        "texto": "Eventos de gerenciamento do AWS CloudTrail para mudanças de política.",
+        "correta": true,
+        "porque": "O evento de gerenciamento da chamada IAM registra informações sobre a identidade que a fez."
+      }
+    ],
+    "explicacao": "Os logs da aplicação medem o que ocorreu dentro do portal; os eventos de gerenciamento registram as operações administrativas nas APIs da AWS. Cada fonte responde a uma pergunta diferente.",
+    "servicos": [
+      "CloudWatch",
+      "CloudTrail",
+      "Config",
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringLogData.html"
+  },
+  {
+    "id": "D2-adva-009",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma empresa sujeita a PCI DSS propõe adicionar um serviço da AWS ao ambiente de dados de cartão. O serviço está disponível na Região usada, mas a equipe ainda não confirmou se a avaliação PCI DSS da AWS cobre esse serviço. Qual verificação resolve essa dúvida?",
+    "alternativas": [
+      {
+        "texto": "Consultar no AWS Health os eventos abertos para o serviço naquela Região.",
+        "correta": false,
+        "porque": "O status operacional não informa se um serviço foi abrangido pela avaliação PCI DSS."
+      },
+      {
+        "texto": "Consultar no AWS Config se os recursos atuais atendem às regras de criptografia.",
+        "correta": false,
+        "porque": "Isso avalia configurações da conta, não a cobertura da avaliação do provedor."
+      },
+      {
+        "texto": "Consultar a relação de serviços por programa de conformidade e as notas aplicáveis.",
+        "correta": true,
+        "porque": "A relação de serviços avaliados em cada programa, com suas notas, informa se o serviço integra a avaliação PCI DSS da AWS."
+      },
+      {
+        "texto": "Consultar no relatório SOC 2 da AWS a cobertura da implantação do próprio cliente.",
+        "correta": false,
+        "porque": "O relatório SOC 2 não determina a cobertura do programa PCI DSS, nem certifica a implantação do cliente."
+      }
+    ],
+    "explicacao": "Disponibilidade regional e cobertura de uma avaliação de conformidade são informações diferentes. A equipe deve confirmar o escopo do programa pertinente; isso não elimina os controles PCI DSS que cabem ao cliente.",
+    "servicos": [
+      "Artifact",
+      "Config",
+      "Health"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/compliance/services-in-scope/PCI/"
+  },
+  {
+    "id": "D2-adva-010",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma aplicação no AWS Elastic Beanstalk recebe atualizações gerenciadas da plataforma. O próximo runtime suportado exige a troca de ramo da plataforma e a equipe precisa preservar a compatibilidade da aplicação. Como o trabalho deve ser dividido?",
+    "alternativas": [
+      {
+        "texto": "A equipe amplia as atualizações gerenciadas para versões menores, e o serviço seleciona o novo ramo.",
+        "correta": false,
+        "porque": "Atualizações gerenciadas, mesmo incluindo versões menores, não migram o ambiente entre ramos da plataforma."
+      },
+      {
+        "texto": "O serviço migra o ramo na janela de manutenção, e a equipe testa o runtime após a troca.",
+        "correta": false,
+        "porque": "A janela não dá ao serviço a responsabilidade de iniciar a migração de ramo."
+      },
+      {
+        "texto": "A equipe testa a aplicação e coordena a troca de ramo; o serviço fornece a plataforma de destino.",
+        "correta": true,
+        "porque": "O Elastic Beanstalk disponibiliza versões de plataforma, mas a equipe controla a mudança de ramo e a compatibilidade do código."
+      },
+      {
+        "texto": "A equipe atualiza o runtime nas instâncias existentes, e o serviço passa a registrar o ambiente no novo ramo.",
+        "correta": false,
+        "porque": "Uma mudança no software da instância não reconfigura o ramo de plataforma do ambiente."
+      }
+    ],
+    "explicacao": "O serviço pode automatizar patches e atualizações menores dentro do ramo selecionado. Trocar de ramo, o que pode quebrar compatibilidade, exige uma decisão e uma migração conduzidas pelo cliente.",
+    "servicos": [
+      "Elastic Beanstalk"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-platform-update-managed.html"
+  },
+  {
+    "id": "D2-adva-011",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Em uma frota de instâncias Amazon EC2, o AWS Systems Manager Patch Manager automatiza a aplicação de correções do sistema operacional convidado. A auditoria quer saber quem responde pela janela de correção e pelo impacto de uma reinicialização na aplicação. Qual interpretação é correta?",
+    "alternativas": [
+      {
+        "texto": "A equipe decide a janela e responde pelo impacto; o serviço apenas executa as correções.",
+        "correta": true,
+        "porque": "A automação não transfere a responsabilidade pelo SO convidado nem pela continuidade da aplicação."
+      },
+      {
+        "texto": "A equipe define a janela de correção, e a AWS valida se a aplicação tolera a reinicialização.",
+        "correta": false,
+        "porque": "O serviço pode executar a manutenção, mas não conhece por si só os requisitos de continuidade da aplicação."
+      },
+      {
+        "texto": "A AWS define a janela de correção do sistema convidado, e a equipe valida o impacto na aplicação.",
+        "correta": false,
+        "porque": "A manutenção da infraestrutura física pela AWS não define o calendário de manutenção do sistema convidado."
+      },
+      {
+        "texto": "A AWS assume a janela e o impacto quando a equipe adota a política de patches predefinida.",
+        "correta": false,
+        "porque": "Uma política predefinida fornece critérios para os patches, sem transferir a responsabilidade pela carga."
+      }
+    ],
+    "explicacao": "O Patch Manager permite ao cliente delegar a execução de uma rotina ao serviço, não a responsabilidade pelo SO convidado nem pelas decisões e consequências da manutenção da carga de trabalho.",
+    "servicos": [
+      "EC2",
+      "Systems Manager"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager.html"
+  },
+  {
+    "id": "D2-adva-012",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 8,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma equipe avalia migrar um PostgreSQL autogerenciado no Amazon EC2 para o Amazon RDS for PostgreSQL. A aplicação usa uma extensão empacotada pela própria equipe, e o banco de destino precisa preservar as regras de integridade entre as tabelas. Quais avaliações continuam sendo atribuições da equipe de migração? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Definir como aplicar patches no sistema operacional dos servidores do RDS.",
+        "correta": false,
+        "porque": "O RDS gerencia o sistema operacional subjacente; a equipe não tem de montar o processo de correção desse SO."
+      },
+      {
+        "texto": "Verificar se o RDS suporta a extensão ou se a aplicação precisa de uma alternativa.",
+        "correta": true,
+        "porque": "O cliente precisa avaliar a compatibilidade; o RDS suporta um conjunto de extensões, que varia por versão."
+      },
+      {
+        "texto": "Selecionar a imagem de sistema operacional dos servidores do RDS.",
+        "correta": false,
+        "porque": "O cliente seleciona características suportadas da instância e do mecanismo, não a imagem de SO dos hosts do RDS."
+      },
+      {
+        "texto": "Validar se o esquema de destino preserva as restrições de integridade requeridas.",
+        "correta": true,
+        "porque": "A equipe é responsável pelo esquema da aplicação e por verificar sua integridade lógica após a migração."
+      },
+      {
+        "texto": "Projetar a substituição dos componentes físicos usados para armazenar o banco no RDS.",
+        "correta": false,
+        "porque": "A manutenção física do armazenamento pertence à AWS, não à equipe de migração."
+      }
+    ],
+    "explicacao": "O RDS assume a operação da infraestrutura do banco, mas não converte extensões personalizadas em extensões compatíveis nem valida regras de negócio representadas no esquema. Essas avaliações ficam com a equipe da aplicação.",
+    "servicos": [
+      "RDS",
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html"
+  },
+  {
+    "id": "D2-adva-013",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Um catálogo migra seus servidores de busca autogerenciados no Amazon EC2 para um domínio do Amazon OpenSearch Service. Após a mudança, a busca precisa distinguir códigos exatos de descrições livres. Qual divisão de trabalho se aplica a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "A equipe instala os componentes do cluster; a AWS escolhe o tipo de cada campo do catálogo.",
+        "correta": false,
+        "porque": "O domínio gerenciado retira da equipe a instalação dos componentes do cluster; os requisitos dos campos pertencem ao cliente."
+      },
+      {
+        "texto": "A equipe mantém a infraestrutura do domínio; a AWS define como a aplicação consulta os índices.",
+        "correta": false,
+        "porque": "A AWS opera a infraestrutura do domínio, não o comportamento de busca da aplicação."
+      },
+      {
+        "texto": "A AWS opera o domínio e decide a semântica dos campos a partir do conteúdo recebido.",
+        "correta": false,
+        "porque": "Mapeamento dinâmico pode inferir tipos, mas não assume o requisito de negócio de distinguir campos para busca exata ou textual."
+      },
+      {
+        "texto": "A AWS opera a infraestrutura do domínio; a equipe define como os campos são indexados e consultados.",
+        "correta": true,
+        "porque": "Configuração lógica dos índices e consultas continua sendo trabalho da aplicação, embora o cluster seja gerenciado."
+      }
+    ],
+    "explicacao": "Migrar para o OpenSearch Service reduz o trabalho de provisionar e operar a infraestrutura de busca. A equipe ainda precisa modelar os dados e determinar como a busca interpreta seus campos.",
+    "servicos": [
+      "OpenSearch Service",
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html"
+  },
+  {
+    "id": "D2-adva-014",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma equipe já tem controles de acesso e retenção para os arquivos de uma trilha do AWS CloudTrail. O auditor precisa provar, depois da entrega, se algum arquivo foi modificado ou excluído, sem depender da confiança em quem administra o bucket. Qual recurso atende?",
+    "alternativas": [
+      {
+        "texto": "Arquivos de resumo assinados gerados pela trilha do AWS CloudTrail.",
+        "correta": true,
+        "porque": "Com a validação de arquivos de log habilitada, o CloudTrail entrega resumos com hashes assinados que permitem detectar arquivos alterados ou ausentes."
+      },
+      {
+        "texto": "Criptografia SSE-KMS dos arquivos de log com chave do AWS KMS.",
+        "correta": false,
+        "porque": "A criptografia protege a confidencialidade, mas não fornece prova sobre o conjunto de arquivos entregues."
+      },
+      {
+        "texto": "Versionamento de objetos no bucket de destino do Amazon S3.",
+        "correta": false,
+        "porque": "Versões auxiliam na recuperação, mas não constituem prova verificável: quem administra o bucket pode excluí-las, e não há resumo assinado pelo CloudTrail."
+      },
+      {
+        "texto": "Histórico de eventos de gerenciamento do AWS CloudTrail.",
+        "correta": false,
+        "porque": "O histórico dá acesso a eventos, não valida a integridade dos arquivos entregues pela trilha."
+      }
+    ],
+    "explicacao": "Impedir alterações e demonstrar a integridade de um arquivo são objetivos diferentes. A validação de integridade do CloudTrail utiliza hashes e assinaturas para verificar se os arquivos entregues foram modificados ou removidos.",
+    "servicos": [
+      "CloudTrail",
+      "S3",
+      "KMS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html"
+  },
+  {
+    "id": "D2-adva-015",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma empresa classifica arquivos no Amazon S3 com Amazon Macie. A política agora exige encontrar números de matrícula de beneficiários criados pela empresa, que seguem um padrão de caracteres interno e costumam aparecer próximos do termo \"matrícula\"; os detectores predefinidos não reconhecem esse dado. Que alteração atende ao requisito?",
+    "alternativas": [
+      {
+        "texto": "Criar no Macie uma lista de permissões com exemplos dos números internos.",
+        "correta": false,
+        "porque": "A lista de permissões faz o Macie ignorar correspondências; não cria um novo detector."
+      },
+      {
+        "texto": "Ativar no Macie a descoberta automatizada de dados sensíveis nos buckets.",
+        "correta": false,
+        "porque": "A descoberta automatizada amplia a amostragem dos buckets, mas usa os identificadores configurados e não define o padrão interno."
+      },
+      {
+        "texto": "Criar no Macie um identificador de dados personalizado com regex e palavras-chave.",
+        "correta": true,
+        "porque": "Um identificador personalizado combina uma expressão regular com palavras-chave próximas para classificar o dado."
+      },
+      {
+        "texto": "Selecionar no Macie o conjunto completo de identificadores de dados gerenciados.",
+        "correta": false,
+        "porque": "Ampliar o conjunto cobre mais tipos predefinidos, mas não descreve o padrão proprietário e seu contexto."
+      }
+    ],
+    "explicacao": "O Macie pode combinar detectores gerenciados com detectores definidos pelo cliente. Neste caso, o requisito exige incorporar à classificação as regras que caracterizam um tipo de dado próprio da empresa.",
+    "servicos": [
+      "Macie",
+      "S3",
+      "Config"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/macie/latest/user/custom-data-identifiers.html"
+  },
+  {
+    "id": "D2-adva-016",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 8,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma equipe usa AWS Control Tower e provisiona novos recursos por meio do AWS CloudFormation. Ela precisa rejeitar configurações incompatíveis de tipos de recurso cobertos antes do provisionamento e, separadamente, identificar configurações incompatíveis em recursos que já existem. Quais classes de controles tratam diretamente dessas duas necessidades? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Controles preventivos para negar a ação de atualizar stacks da equipe.",
+        "correta": false,
+        "porque": "Negar a ação inteira não avalia se a configuração proposta no template está de acordo com a política."
+      },
+      {
+        "texto": "Controles proativos para avaliar os recursos propostos nos templates.",
+        "correta": true,
+        "porque": "Esses controles avaliam recursos cobertos antes de o CloudFormation provisioná-los."
+      },
+      {
+        "texto": "Controles preventivos para negar alterações de políticas na conta de auditoria.",
+        "correta": false,
+        "porque": "Proteger as políticas da conta de auditoria não avalia configurações dos recursos cobertos."
+      },
+      {
+        "texto": "Controles detectivos para avaliar a conformidade dos recursos existentes.",
+        "correta": true,
+        "porque": "Esses controles avaliam recursos já implantados e sinalizam configurações fora da política."
+      },
+      {
+        "texto": "Controles proativos para reavaliar periodicamente os recursos já implantados.",
+        "correta": false,
+        "porque": "No Control Tower, esses controles atuam no provisionamento via CloudFormation, não como avaliações periódicas do inventário."
+      }
+    ],
+    "explicacao": "No Control Tower, os controles proativos usam avaliações no provisionamento via CloudFormation; os detectivos sinalizam a não conformidade de recursos existentes. Restringir uma ação por completo tem outra finalidade.",
+    "servicos": [
+      "Control Tower",
+      "CloudFormation",
+      "Config"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/controltower/latest/userguide/how-controls-work.html"
+  },
+  {
+    "id": "D2-adva-017",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma auditoria de continuidade constatou que as cópias geradas pelo AWS Backup aparecem como concluídas, mas não há evidência recente de recuperação. Para tipos de recurso compatíveis, a equipe quer comprovar que os pontos de recuperação dão origem a recursos restaurados sem alterar a produção. Qual abordagem responde melhor à auditoria?",
+    "alternativas": [
+      {
+        "texto": "Conferir periodicamente a conclusão dos jobs de backup e de cópia dos recursos.",
+        "correta": false,
+        "porque": "Essa conferência comprova criação e cópia dos pontos de recuperação, não a restauração deles."
+      },
+      {
+        "texto": "Executar periodicamente testes de restauração com o AWS Backup e revisar seus resultados.",
+        "correta": true,
+        "porque": "O teste cria recursos a partir dos pontos de recuperação e fornece resultados da tentativa de restauração."
+      },
+      {
+        "texto": "Acompanhar a conformidade da frequência de backup e da retenção com o AWS Config.",
+        "correta": false,
+        "porque": "Frequência e retenção avaliam a existência e conservação da proteção, não se uma restauração foi executada."
+      },
+      {
+        "texto": "Registrar no AWS CloudTrail as chamadas que criaram os pontos de recuperação.",
+        "correta": false,
+        "porque": "O evento mostra a atividade da API, sem demonstrar que dela resultou uma restauração bem-sucedida."
+      }
+    ],
+    "explicacao": "Uma cópia concluída é evidência de backup, não de recuperação. O teste cria recursos restaurados para avaliar o resultado sem substituir os recursos de produção; a validação funcional da aplicação é uma verificação adicional.",
+    "servicos": [
+      "Backup",
+      "Config",
+      "CloudTrail"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing.html"
+  },
+  {
+    "id": "D2-adva-018",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Um grupo de logs Standard do Amazon CloudWatch Logs recebe mensagens que podem conter números de cartão. A política permite que o suporte leia o restante das novas mensagens, mas reserva a visualização dos números originais a auditores aprovados. Qual configuração preserva os dois acessos?",
+    "alternativas": [
+      {
+        "texto": "Associar uma chave do AWS KMS ao grupo para ocultar somente os números das mensagens.",
+        "correta": false,
+        "porque": "A criptografia em repouso protege os eventos armazenados; ela não muda o que usuários autorizados veem dentro de cada evento."
+      },
+      {
+        "texto": "Remover os números antes do envio e conceder aos auditores leitura completa do grupo.",
+        "correta": false,
+        "porque": "A remoção na origem preserva a mensagem parcial, mas os auditores não podem recuperar os números pelo grupo."
+      },
+      {
+        "texto": "Separar o acesso ao grupo em perfis IAM distintos e manter as mensagens sem mascaramento.",
+        "correta": false,
+        "porque": "Perfis separados podem controlar o acesso ao grupo, mas, sem mascaramento, o acesso aos eventos não esconde os números."
+      },
+      {
+        "texto": "Aplicar uma política de proteção de dados no grupo e conceder desmascaramento aos auditores.",
+        "correta": true,
+        "porque": "A política mascara padrões sensíveis em novos eventos e permite que identidades autorizadas consultem os valores originais."
+      }
+    ],
+    "explicacao": "Mascaramento aplicado pelo CloudWatch Logs protege a visualização de dados sensíveis em novos eventos, sem apagar os valores originais. A permissão específica de desmascaramento separa os dois níveis de acesso.",
+    "servicos": [
+      "CloudWatch",
+      "KMS",
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html"
+  },
+  {
+    "id": "D2-adva-019",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma equipe troca um servidor NFS no Amazon EC2 por Amazon EFS. Os clientes continuam acessando por NFS, e a equipe precisa preservar permissões de leitura e gravação diferentes por diretório. Qual divisão de trabalho se aplica?",
+    "alternativas": [
+      {
+        "texto": "A equipe mantém os servidores NFS; a AWS administra donos, grupos e permissões dos arquivos.",
+        "correta": false,
+        "porque": "O EFS fornece o serviço gerenciado de arquivos; a AWS não define a política de acesso de cada diretório do cliente."
+      },
+      {
+        "texto": "A AWS opera o sistema de arquivos; a equipe controla a identidade e as permissões POSIX nos diretórios.",
+        "correta": true,
+        "porque": "O serviço aplica permissões do sistema de arquivos, mas o cliente define os donos, grupos e modos que atendem à sua política."
+      },
+      {
+        "texto": "A AWS opera o sistema de arquivos; a equipe diferencia as permissões por diretório usando security groups.",
+        "correta": false,
+        "porque": "Security groups controlam a conectividade de rede, não as permissões de leitura e gravação de diretórios."
+      },
+      {
+        "texto": "A equipe mantém os servidores NFS; a AWS deriva permissões dos arquivos das funções IAM dos clientes.",
+        "correta": false,
+        "porque": "O EFS opera os servidores, e autorização IAM de clientes não converte roles em permissões POSIX por diretório."
+      }
+    ],
+    "explicacao": "O EFS retira do cliente a operação do servidor de arquivos, não a administração do acesso aos dados. As permissões POSIX continuam sendo uma camada distinta das permissões de rede e da autorização IAM do cliente NFS.",
+    "servicos": [
+      "EFS",
+      "EC2",
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/efs/latest/ug/accessing-fs-nfs-permissions.html"
+  },
+  {
+    "id": "D2-adva-020",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma equipe substitui um orquestrador instalado no Amazon EC2 por AWS Step Functions. No novo fluxo, uma etapa de pagamento precisa de novas tentativas para falhas transitórias, enquanto erros de validação devem seguir para análise humana. Como se divide a responsabilidade pelo tratamento das falhas?",
+    "alternativas": [
+      {
+        "texto": "A AWS mantém o orquestrador e classifica os erros segundo o resultado retornado por cada etapa.",
+        "correta": false,
+        "porque": "O serviço executa o tratamento declarado, mas não determina sozinho quais erros admitem novas tentativas."
+      },
+      {
+        "texto": "A equipe mantém o orquestrador e a AWS define os desvios para cada erro da aplicação.",
+        "correta": false,
+        "porque": "A equipe não mantém o motor do Step Functions, e a AWS não decide os desvios de negócio."
+      },
+      {
+        "texto": "A AWS define as regras no fluxo e a equipe mantém o motor que movimenta as execuções entre etapas.",
+        "correta": false,
+        "porque": "O Step Functions opera o motor; as regras da máquina de estados são definidas pelo cliente."
+      },
+      {
+        "texto": "A AWS opera o motor do fluxo e a equipe define novas tentativas e desvios para os erros previstos.",
+        "correta": true,
+        "porque": "O serviço executa as regras de tratamento que a equipe declara para cada tipo de falha."
+      }
+    ],
+    "explicacao": "A orquestração gerenciada elimina a operação do motor, não a definição de como a aplicação reage a falhas de naturezas diferentes.",
+    "servicos": [
+      "Step Functions",
+      "EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html"
+  },
+  {
+    "id": "D2-adva-021",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Um serviço integrado ao AWS KMS usa a chave padrão de propriedade da AWS. A empresa quer alterar a política de uso da chave e poder desativá-la, mas não quer administrar um cluster criptográfico dedicado. Para um serviço que aceita os três tipos de chave do KMS, como a responsabilidade deve ser dividida?",
+    "alternativas": [
+      {
+        "texto": "Usar uma chave gerenciada pelo cliente e deixar a infraestrutura criptográfica do KMS sob operação da AWS.",
+        "correta": true,
+        "porque": "Uma chave gerenciada pelo cliente permite editar sua política e controlar seu estado sem administrar hardware do KMS."
+      },
+      {
+        "texto": "Usar uma chave gerenciada pela AWS na conta e atribuir ao cliente as mudanças na política e no estado da chave.",
+        "correta": false,
+        "porque": "A chave gerenciada pela AWS pode estar visível na conta, mas o cliente não controla sua política nem seu estado."
+      },
+      {
+        "texto": "Manter a chave de propriedade da AWS e atribuir ao cliente o controle sobre a política e o estado da chave.",
+        "correta": false,
+        "porque": "A política e o ciclo de vida de uma chave de propriedade da AWS são administrados pelo serviço que a possui."
+      },
+      {
+        "texto": "Usar uma chave gerenciada pelo cliente em um armazenamento de chaves personalizado com um cluster AWS CloudHSM próprio.",
+        "correta": false,
+        "porque": "Essa modalidade permite controlar a chave, mas acrescenta a administração do cluster dedicado que a empresa quer evitar."
+      }
+    ],
+    "explicacao": "Utilizar uma chave gerenciada pelo cliente amplia o controle sobre permissões e ciclo de vida da chave, sem tornar o cliente responsável pelos equipamentos que sustentam o AWS KMS.",
+    "servicos": [
+      "KMS",
+      "CloudHSM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html"
+  },
+  {
+    "id": "D2-adva-022",
+    "dominio": 2,
+    "task": "2.1",
+    "rodada": 9,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Um portal usa Amazon CloudFront com uma origem HTTPS própria, executada no Amazon EC2. A auditoria separa a infraestrutura de borda das duas conexões TLS: navegador–distribuição e distribuição–origem. Na matriz de responsabilidades, quais decisões operacionais devem ser atribuídas à equipe do portal? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Definir se os navegadores devem usar HTTPS ao se conectar à distribuição.",
+        "correta": true,
+        "porque": "A equipe configura a política de protocolo da distribuição para a conexão do visitante."
+      },
+      {
+        "texto": "Atualizar o software de rede executado nos pontos de presença do CloudFront.",
+        "correta": false,
+        "porque": "A AWS opera o software da infraestrutura de borda; o cliente configura o comportamento da distribuição."
+      },
+      {
+        "texto": "Corrigir o hipervisor que hospeda as instâncias EC2 da origem.",
+        "correta": false,
+        "porque": "O hipervisor faz parte da infraestrutura da AWS, e não do sistema convidado sob controle da equipe."
+      },
+      {
+        "texto": "Operar a renovação dos certificados internos usados na infraestrutura de borda da AWS.",
+        "correta": false,
+        "porque": "Certificados internos da infraestrutura gerenciada do serviço não são os certificados do portal."
+      },
+      {
+        "texto": "Manter um certificado válido e compatível no servidor de origem administrado pela equipe.",
+        "correta": true,
+        "porque": "Para HTTPS com uma origem própria, a equipe administra o certificado apresentado pela origem para o CloudFront."
+      }
+    ],
+    "explicacao": "A AWS opera os pontos de presença do CloudFront. Isso não transfere à AWS a escolha da política de protocolo do visitante nem a configuração TLS de um servidor de origem operado pelo cliente.",
+    "servicos": [
+      "CloudFront",
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https-cloudfront-to-custom-origin.html"
+  },
+  {
+    "id": "D2-adva-023",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "A trilha do AWS CloudTrail de uma empresa já registra alterações de políticas de buckets do Amazon S3. A auditoria agora precisa que a mesma trilha registre quem baixa arquivos de três buckets específicos, sem capturar downloads nos demais buckets da conta. O que deve ser acrescentado?",
+    "alternativas": [
+      {
+        "texto": "Seletores de eventos de gerenciamento do tipo leitura para o Amazon S3.",
+        "correta": false,
+        "porque": "Downloads de objetos não são eventos de gerenciamento, mesmo quando as duas classes são de leitura."
+      },
+      {
+        "texto": "Seletores de eventos de dados do S3 limitados aos ARNs dos três buckets.",
+        "correta": true,
+        "porque": "Downloads de objetos do S3 são eventos de dados, e o seletor pode restringir a captura aos buckets indicados."
+      },
+      {
+        "texto": "Logs de acesso ao servidor nos três buckets, entregues no bucket da trilha.",
+        "correta": false,
+        "porque": "Logs de acesso do S3 são uma fonte separada; um destino em comum não os registra como eventos da trilha."
+      },
+      {
+        "texto": "Uma regra do AWS Config que acompanhe a configuração dos três buckets.",
+        "correta": false,
+        "porque": "O AWS Config avalia configurações de recursos, sem registrar leituras individuais de objetos."
+      }
+    ],
+    "explicacao": "Alterar a política de um bucket é uma atividade do plano de gerenciamento; ler um objeto é uma atividade do plano de dados. Uma trilha precisa de seleção explícita dos eventos de dados desejados para coletá-los.",
+    "servicos": [
+      "CloudTrail",
+      "S3",
+      "Config"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html"
+  },
+  {
+    "id": "D2-adva-024",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Um bucket do Amazon S3 usa SSE-S3 e contém um acervo antigo. A nova política de dados exige SSE-KMS para o acervo existente e para novas gravações. A equipe vai alterar a criptografia padrão do bucket para SSE-KMS e pode regravar os objetos existentes. Qual expectativa está correta?",
+    "alternativas": [
+      {
+        "texto": "A configuração padrão converte o acervo na próxima leitura e protege novas gravações imediatamente.",
+        "correta": false,
+        "porque": "Ler um objeto não o regrava nem altera sua configuração de criptografia em repouso."
+      },
+      {
+        "texto": "A configuração padrão converte o acervo após a primeira rotação da chave e protege novas gravações imediatamente.",
+        "correta": false,
+        "porque": "Rotacionar o material da chave não converte objetos que foram gravados originalmente com SSE-S3."
+      },
+      {
+        "texto": "A configuração padrão cobre novas gravações que a utilizem; os objetos existentes precisam de tratamento separado.",
+        "correta": true,
+        "porque": "A troca do padrão não recriptografa retroativamente os objetos; eles podem ser copiados ou regravados com SSE-KMS."
+      },
+      {
+        "texto": "A configuração padrão protege o acervo existente; os clientes precisam indicar SSE-KMS em cada nova gravação.",
+        "correta": false,
+        "porque": "Configurar SSE-KMS como padrão afeta novos objetos que usem esse padrão, não a criptografia dos objetos existentes."
+      }
+    ],
+    "explicacao": "A criptografia padrão é aplicada a novas gravações quando elas usam a configuração padrão do bucket. Para passar o acervo já gravado de SSE-S3 para SSE-KMS, é necessário atuar nos próprios objetos.",
+    "servicos": [
+      "S3",
+      "KMS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html"
+  },
+  {
+    "id": "D2-adva-025",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Após corrigir algumas configurações de recursos, a equipe percebeu aumento na pontuação de um padrão no AWS Security Hub CSPM. A quantidade de achados de ameaça do Amazon GuardDuty não mudou. Que conclusão é compatível com as duas observações?",
+    "alternativas": [
+      {
+        "texto": "A pontuação mede a redução de ameaças, mas o GuardDuty ainda não refletiu os incidentes resolvidos.",
+        "correta": false,
+        "porque": "A pontuação do padrão não é uma contagem nem uma estimativa de ameaças ou incidentes."
+      },
+      {
+        "texto": "A pontuação mede cobertura de auditoria, mas os eventos do GuardDuty não foram registrados no padrão.",
+        "correta": false,
+        "porque": "A pontuação não mede o volume de registros auditados nem depende da inclusão de eventos do GuardDuty."
+      },
+      {
+        "texto": "A pontuação comprova conformidade regulatória, mas o GuardDuty monitora um requisito fora do padrão.",
+        "correta": false,
+        "porque": "A pontuação resume verificações técnicas dos controles avaliados, não certifica conformidade regulatória."
+      },
+      {
+        "texto": "A proporção de controles aprovados pode subir sem que mude a quantidade de ameaças sinalizadas.",
+        "correta": true,
+        "porque": "A pontuação de um padrão reflete resultados de controles; os achados de ameaça medem uma dimensão diferente."
+      }
+    ],
+    "explicacao": "O Security Hub CSPM calcula a pontuação a partir do estado dos controles aplicáveis que entram no cálculo. A evolução desse indicador de postura não demonstra, por si só, que houve mudança no número de achados de detecção de ameaças.",
+    "servicos": [
+      "Security Hub CSPM",
+      "GuardDuty"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/securityhub/latest/userguide/standards-security-score.html"
+  },
+  {
+    "id": "D2-adva-026",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "A equipe de governança grava diariamente a configuração de security groups com AWS Config. Um desvio de configuração foi corrigido no mesmo dia, e a revisão precisa que futuras mudanças intermediárias fiquem disponíveis no histórico dos recursos, mesmo quando revertidas. Qual opção atende a esse objetivo?",
+    "alternativas": [
+      {
+        "texto": "Mudar a frequência de gravação do AWS Config de diária para contínua nos tipos auditados.",
+        "correta": true,
+        "porque": "A gravação contínua produz itens de configuração para as mudanças detectadas, em vez de reter a configuração mais recente de um período."
+      },
+      {
+        "texto": "Aumentar a frequência de avaliação das regras periódicas do AWS Config.",
+        "correta": false,
+        "porque": "Mudar a agenda de avaliação não aumenta a frequência de geração dos itens de configuração para o histórico."
+      },
+      {
+        "texto": "Entregar snapshots de configuração ao Amazon S3 várias vezes ao dia.",
+        "correta": false,
+        "porque": "A frequência de entrega de snapshots não transforma a gravação diária em histórico de cada mudança detectada."
+      },
+      {
+        "texto": "Ampliar o agregador do AWS Config para incluir todas as Regiões da conta.",
+        "correta": false,
+        "porque": "Incluir mais Regiões no agregador não aumenta a granularidade dos dados gravados em uma Região."
+      }
+    ],
+    "explicacao": "Para preservar mudanças breves no histórico, a equipe precisa da modalidade de gravação que gera itens para as alterações detectadas. Avaliação de regras, entrega de snapshots e agregação não substituem essa escolha.",
+    "servicos": [
+      "Config"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html"
+  },
+  {
+    "id": "D2-adva-027",
+    "dominio": 2,
+    "task": "2.2",
+    "rodada": 9,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Um auditor de uma aplicação regulada pede evidência tanto dos controles físicos da AWS quanto da revisão interna de acessos privilegiados na aplicação. A identidade da aplicação é administrada pela própria empresa. Quais evidências devem compor a resposta? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "O acordo aplicável obtido no AWS Artifact como comprovação da execução das revisões internas.",
+        "correta": false,
+        "porque": "O acordo estabelece compromissos entre as partes, sem comprovar que a empresa revisou seus acessos."
+      },
+      {
+        "texto": "O relatório de auditoria pertinente no AWS Artifact para os controles físicos abrangidos.",
+        "correta": true,
+        "porque": "Relatórios do provedor podem documentar os controles físicos da AWS dentro do escopo auditado."
+      },
+      {
+        "texto": "O inventário de recursos no AWS Config para comprovar a operação dos controles físicos da AWS.",
+        "correta": false,
+        "porque": "O inventário descreve recursos da conta, não os controles físicos de acesso aos locais operados pela AWS."
+      },
+      {
+        "texto": "O registro interno das revisões executadas e das decisões sobre acessos na aplicação.",
+        "correta": true,
+        "porque": "A evidência da revisão dos acessos da aplicação deve ser produzida pelo cliente que executa esse controle."
+      },
+      {
+        "texto": "A relação de serviços em escopo no site da AWS para comprovar a aprovação dos acessos individuais.",
+        "correta": false,
+        "porque": "A relação identifica a abrangência de um programa no provedor, sem registrar decisões internas sobre acessos."
+      }
+    ],
+    "explicacao": "O relatório do provedor e os registros internos sustentam controles diferentes. O cliente deve produzir evidências sobre a operação de seus próprios controles, mesmo quando usa relatórios da AWS para comprovar controles herdados.",
+    "servicos": [
+      "Artifact",
+      "Config"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html"
+  }
+]

@@ -3,25 +3,29 @@
 **▶ Abrir o simulador:** https://orugian.github.io/simulados-aws-cloud-practitioner/
 
 Ou offline: baixe o repositório (Code → Download ZIP), extraia e dê dois cliques em `index.html`. Não precisa instalar nada.
-Banco de questões em português, revisado e alinhado ao **[Exam Guide CLF-C02 v1.3](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html)** (29/10/2026), com 6 simulados completos sem repetição.
+Banco de questões em português alinhado ao **[Exam Guide CLF-C02](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html)**, com **9 simulados fixos sem questões repetidas**.
+
+Os **Simulados 7, 8 e 9**, identificados como **Avançado**, trazem 195 questões autorais inéditas. Cada prova inclui 65 questões, 90 minutos, 15 questões de múltipla resposta e cobertura dos 19 tópicos do guia. O desafio vem de cenários com requisitos que exigem distinguir alternativas próximas, não de assuntos fora do nível Practitioner. A classificação de dificuldade é editorial. O gabarito dos novos itens inclui referências oficiais da AWS.
+
+Os Simulados 1 a 6 mantêm os mesmos itens. O modo estudo e a prova aleatória podem sortear questões de todo o banco, inclusive das rodadas avançadas.
 
 ## Banco de questões
 
 | Domínio | Peso oficial | Questões no banco | Por simulado |
 | --- | --- | --- | --- |
-| 1. Cloud Concepts | 24% | 100 | 16 |
-| 2. Security and Compliance | 30% | 120 | 19 |
-| 3. Cloud Technology and Services | 34% | 135 | 22 |
-| 4. Billing, Pricing, and Support | 12% | 50 | 8 |
-| **Total** | | **405** | **65** |
+| 1. Cloud Concepts | 24% | 148 | 16 |
+| 2. Security and Compliance | 30% | 177 | 19 |
+| 3. Cloud Technology and Services | 34% | 201 | 22 |
+| 4. Billing, Pricing, and Support | 12% | 74 | 8 |
+| **Total** | | **600** | **65** |
 
-- **Tipos:** os mesmos da prova. São 334 de escolha única (4 alternativas) e 71 de resposta múltipla (66 "Selecione DUAS" e 5 "Selecione TRÊS").
-- **Cobertura:** as 19 task statements do guia, com cota por task.
-- **Dificuldade:** 128 de nível 1, 203 de nível 2 e 74 de nível 3.
+- **Tipos:** 484 de escolha única e 116 de resposta múltipla. A proporção de múltiplas é uma escolha editorial do simulador.
+- **Cobertura:** as 19 task statements do guia. Os pesos oficiais aplicam-se às questões que valem nota no exame; as cotas acima são a distribuição adotada no treino de 65 itens.
+- **Dificuldade:** as rodadas avançadas não têm questões introdutórias, e ao menos 49 itens de cada prova estão no nível mais alto da rubrica editorial.
 - **Origem:**
   - 143 vêm de questões coletadas e sanitizadas;
   - 94 do [kananinirav/AWS-Certified-Cloud-Practitioner-Notes](https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes), traduzidas, com gabarito conferido e nomenclatura atualizada;
-  - 168 são autorais, escritas para cobrir lacunas do guia v1.3.
+  - 363 são autorais: 168 do banco original e 195 das três rodadas avançadas.
 - **Justificativas:** toda alternativa explica por que está certa ou errada, e cada questão traz o conceito-chave.
 - **Atualização:** o banco segue a nomenclatura e os fatos vigentes:
   - planos de suporte Basic / Business Support+ / Enterprise / Unified Operations;
@@ -57,11 +61,13 @@ Testes da fórmula: `node --test tools/test-score.js`.
 ## Estrutura
 
 ```
-banco/partes/*.json        fonte editável (8 partes, por task statement)
+banco/partes/*.json        fonte editável por tópico do guia e rodada
 banco/questoes.js          banco consolidado (gerado; window.BANCO)
-banco/simulados.js         6 simulados fixos de 65 questões (gerado; window.SIMULADOS)
+banco/simulados-base.json  atribuição congelada das rodadas S1–S6
+banco/simulados.js         9 simulados fixos de 65 questões (gerado; window.SIMULADOS)
 tools/validar-banco.js     valida esquema, escopo, termos desatualizados, duplicatas e cobertura, e gera questoes.js
-tools/gerar-simulados.js   distribui o banco em simulados balanceados (domínio, task, dificuldade, tipo)
+tools/gerar-simulados.js   valida e compila as rodadas sem sortear novas atribuições
+tools/auditar-avancados.js sinaliza possíveis pistas de redação para revisão editorial
 tools/escopo.js            regras do guia v1.3 (pesos, tasks, fora do escopo, desatualizados)
 docs/                      escopo oficial, auditoria das fontes, guia de redação, plano das partes
 ```
@@ -70,7 +76,9 @@ docs/                      escopo oficial, auditoria das fontes, guia de redaç�
 
 ```bash
 node tools/validar-banco.js       # valida tudo e regenera banco/questoes.js
-node tools/gerar-simulados.js     # regenera os 6 simulados (--n 6 --seed 2611)
+node tools/gerar-simulados.js     # recompila as 9 rodadas com as atribuições fixas
+node tools/gerar-simulados.js --check
+node tools/auditar-avancados.js   # triagem de comprimento, ecos e absolutos
 ```
 
 Para incluir ou corrigir questões, edite `banco/partes/*.json` seguindo o [guia de redação](docs/04-guia-redacao.md) e rode o validador. O build só é gerado com zero erros.

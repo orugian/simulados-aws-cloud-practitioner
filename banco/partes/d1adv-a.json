@@ -1,0 +1,919 @@
+[
+  {
+    "id": "D1-adva-001",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Um estúdio conhece a capacidade exata de que precisa para renderizar uma série durante seis semanas. O estúdio não pode usar capacidade sujeita à retomada pelo fornecedor e não tem outro projeto confirmado para o equipamento. Qual alternativa aproveita uma vantagem da nuvem nesse cenário?",
+    "alternativas": [
+      {
+        "texto": "Contratar capacidade com compromisso anual e reutilizá-la em produções futuras.",
+        "correta": false,
+        "porque": "O prazo contratado excede o uso conhecido, e a reutilização depende de projetos não confirmados."
+      },
+      {
+        "texto": "Executar a renderização com capacidade sob demanda e liberá-la ao fim da produção.",
+        "correta": true,
+        "porque": "O estúdio usa capacidade sem comprar hardware nem assumir um compromisso além do trabalho conhecido."
+      },
+      {
+        "texto": "Executar a renderização com capacidade ociosa do provedor sujeita a retomada.",
+        "correta": false,
+        "porque": "A retomada da capacidade pelo provedor pode interromper o trabalho durante a série."
+      },
+      {
+        "texto": "Comprar servidores dedicados e revendê-los assim que a série estiver pronta.",
+        "correta": false,
+        "porque": "O estúdio ainda teria de adquirir os servidores e assumir o risco da revenda."
+      }
+    ],
+    "explicacao": "O benefício aqui é converter uma necessidade temporária em consumo, não reagir a picos: a capacidade pode até ficar constante enquanto o projeto durar.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+  },
+  {
+    "id": "D1-adva-002",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma editora quer medir, nesta quinzena, a qualidade da extração de dados de formulários digitalizados. Ela já dispõe de amostras autorizadas e de capacidade computacional, mas não tem pessoal para desenvolver ou instalar um extrator nesse prazo. Qual vantagem da AWS encurta o caminho até o resultado do teste?",
+    "alternativas": [
+      {
+        "texto": "Aumentar a potência dos servidores reservados para o desenvolvimento do extrator.",
+        "correta": false,
+        "porque": "O impedimento é disponibilizar a funcionalidade, não a potência das máquinas."
+      },
+      {
+        "texto": "Usar um repositório gerenciado para classificar as imagens por lote e tipo de formulário.",
+        "correta": false,
+        "porque": "A organização do acervo ajuda a selecionar amostras, mas não disponibiliza a funcionalidade de extração."
+      },
+      {
+        "texto": "Provisionar um ambiente descartável para instalar e avaliar um extrator autogerenciado.",
+        "correta": false,
+        "porque": "Isso acelera a criação do ambiente, mas ainda exige o trabalho de instalação indisponível no prazo."
+      },
+      {
+        "texto": "Consumir a extração como serviço gerenciado e avaliar a saída nas amostras da editora.",
+        "correta": true,
+        "porque": "Uma capacidade pronta permite testar a qualidade antes de investir no desenvolvimento ou na instalação de um extrator."
+      }
+    ],
+    "explicacao": "A agilidade pode vir de experimentar uma funcionalidade pronta, além de provisionar infraestrutura rapidamente. A equipe ainda deve medir a qualidade para seus formulários.",
+    "servicos": [
+      "Amazon Textract"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/textract/latest/dg/what-is.html"
+  },
+  {
+    "id": "D1-adva-003",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Um cartório precisa manter suas cópias de dados em uma Região AWS homologada e continuar atendendo se uma das instalações dessa Região ficar indisponível. Quais características da infraestrutura global apoiam essas exigências? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "É possível selecionar a Região em que os recursos regionais armazenam seus dados.",
+        "correta": true,
+        "porque": "A escolha da Região permite posicionar recursos e cópias no local autorizado, conforme a configuração de cada serviço."
+      },
+      {
+        "texto": "Pontos de presença podem distribuir cópias dos dados perto dos usuários do serviço.",
+        "correta": false,
+        "porque": "A distribuição na borda reduz latência, mas não garante que as cópias fiquem no território homologado nem substitui a origem."
+      },
+      {
+        "texto": "Uma Região oferece Availability Zones fisicamente separadas para distribuir a carga.",
+        "correta": true,
+        "porque": "Distribuir a aplicação e suas dependências por zonas distintas pode manter o serviço diante da perda de uma instalação."
+      },
+      {
+        "texto": "É possível implantar uma réplica de recuperação em uma segunda Região AWS.",
+        "correta": false,
+        "porque": "Uma réplica de dados fora da única Região homologada violaria a condição de localização."
+      },
+      {
+        "texto": "Tipos de instância maiores podem absorver mais processamento na instalação principal.",
+        "correta": false,
+        "porque": "A folga de capacidade não preserva a operação quando a instalação que a fornece está fora do ar."
+      }
+    ],
+    "explicacao": "Regiões dão controle sobre o local de implantação; Availability Zones dão opções de isolamento dentro desse local. Isso possibilita alta disponibilidade, mas não dispensa a distribuição dos componentes da carga.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html"
+  },
+  {
+    "id": "D1-adva-004",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma gráfica usa um sistema de arquivos compartilhado que já atende ao desempenho exigido. O volume de arquivos aumenta e diminui a cada lote, sem que a equipe consiga estimar o próximo pico. Qual característica da nuvem reduz a necessidade de redimensionar espaço entre os lotes?",
+    "alternativas": [
+      {
+        "texto": "Um sistema de arquivos que expande e reduz a capacidade conforme os arquivos são gravados e excluídos.",
+        "correta": true,
+        "porque": "A capacidade elástica do sistema de arquivos acompanha os dados mantidos sem que a equipe dimensione espaço antecipadamente."
+      },
+      {
+        "texto": "Um sistema de arquivos fixo dimensionado com folga e revisto ao fim de cada trimestre.",
+        "correta": false,
+        "porque": "A revisão periódica ainda depende de estimativas e pode não acompanhar variações entre lotes."
+      },
+      {
+        "texto": "Um sistema de arquivos replicado entre instalações para manter o acesso durante falhas.",
+        "correta": false,
+        "porque": "A replicação responde à perda de uma instalação, não à variação da capacidade de armazenamento."
+      },
+      {
+        "texto": "Um sistema de arquivos cujo desempenho de transferência se ajusta ao ritmo das gravações.",
+        "correta": false,
+        "porque": "A elasticidade da taxa de transferência não resolve o dimensionamento do espaço ocupado pelos arquivos."
+      }
+    ],
+    "explicacao": "A elasticidade também se aplica a armazenamento. O Amazon EFS, por exemplo, cresce e encolhe conforme os arquivos são adicionados e removidos, sem provisionamento prévio de capacidade de armazenamento.",
+    "servicos": [
+      "Amazon EFS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+  },
+  {
+    "id": "D1-adva-005",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Uma rede de farmácias avalia a recuperação após a perda de uma Região. A venda precisa voltar em minutos; o portal interno de relatórios pode passar um dia fora do ar e não é dependência da venda. Os testes mostram que restaurar do backup leva algumas horas para as duas cargas. Qual decisão equilibra Confiabilidade e Otimização de Custos?",
+    "alternativas": [
+      {
+        "texto": "Manter as duas cargas prontas para operar na Região de recuperação.",
+        "correta": false,
+        "porque": "Pode atender ao prazo, mas mantém capacidade de recuperação rápida sem necessidade para o portal."
+      },
+      {
+        "texto": "Restaurar as duas cargas de backup na outra Região, começando pela venda.",
+        "correta": false,
+        "porque": "Priorizar a venda na fila não faz a restauração cumprir um prazo de minutos."
+      },
+      {
+        "texto": "Manter a venda pronta na Região de recuperação e restaurar o portal por backup.",
+        "correta": true,
+        "porque": "As estratégias refletem metas distintas de recuperação sem duplicar capacidade para as duas cargas."
+      },
+      {
+        "texto": "Aumentar a redundância da venda na Região primária e copiar os backups do portal.",
+        "correta": false,
+        "porque": "A redundância interna da venda não a torna recuperável em minutos diante da perda da Região."
+      }
+    ],
+    "explicacao": "Escolha uma estratégia de recuperação para cada carga segundo o impacto de negócio e o objetivo de tempo de recuperação. Um prazo menos rigoroso admite uma estratégia com menor custo contínuo.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+  },
+  {
+    "id": "D1-adva-006",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Depois de uma falha, uma equipe recém-designada para o plantão descobriu que os alertas chegavam à pessoa errada e que as lições do incidente ficaram restritas ao turno que o atendeu. Quais ações de Excelência Operacional tratam diretamente essas duas lacunas? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Reter mais histórico de telemetria para investigar incidentes em maior detalhe.",
+        "correta": false,
+        "porque": "O histórico ajuda na investigação, mas não corrige o encaminhamento nem faz as conclusões chegarem aos demais turnos."
+      },
+      {
+        "texto": "Associar os alertas acionáveis ao responsável de plantão e ao procedimento aplicável.",
+        "correta": true,
+        "porque": "O plantonista certo recebe a indicação de ação e sabe onde consultar o procedimento."
+      },
+      {
+        "texto": "Ampliar a redundância dos componentes envolvidos na primeira falha registrada.",
+        "correta": false,
+        "porque": "A medida pode prevenir uma falha semelhante, mas não resolve as lacunas de comunicação."
+      },
+      {
+        "texto": "Criar um painel de saúde consolidado para reunir os indicadores de cada serviço.",
+        "correta": false,
+        "porque": "O painel melhora a visibilidade, mas não encaminha os alertas nem institucionaliza o aprendizado pós-incidente."
+      },
+      {
+        "texto": "Conduzir uma revisão pós-incidente e compartilhar as ações de melhoria com os turnos.",
+        "correta": true,
+        "porque": "A revisão transforma a experiência de um turno em aprendizado e ações para as outras equipes."
+      }
+    ],
+    "explicacao": "Operar bem envolve responder com responsáveis claros e evoluir com o que foi aprendido. Ter mais dados, sem fluxos de resposta ou aprendizado, não substitui essas duas práticas.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/operational-excellence.html"
+  },
+  {
+    "id": "D1-adva-007",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Uma aplicação contratual já restringe as conexões de rede ao repositório de documentos. A empresa quer limitar o que cada aplicação autorizada pode fazer depois de conectada e proteger o conteúdo dos documentos enquanto estiverem guardados. Qual plano segue o princípio de aplicar segurança em todas as camadas?",
+    "alternativas": [
+      {
+        "texto": "Isolar cada aplicação em sua própria sub-rede e criptografar os documentos armazenados.",
+        "correta": false,
+        "porque": "A criptografia protege o conteúdo guardado, mas sub-redes separadas continuam sendo controle de rede e não limitam as ações de uma aplicação já conectada."
+      },
+      {
+        "texto": "Atribuir uma função IAM própria a cada aplicação e registrar as leituras em log de auditoria.",
+        "correta": false,
+        "porque": "As funções separam permissões, mas o log apenas registra as leituras e não protege o conteúdo armazenado."
+      },
+      {
+        "texto": "Limitar as ações pela função IAM de cada aplicação e exigir TLS nas conexões ao repositório.",
+        "correta": false,
+        "porque": "As funções limitam ações, mas o TLS protege os dados em trânsito, não os documentos guardados no repositório."
+      },
+      {
+        "texto": "Conceder permissões mínimas por identidade de aplicação e cifrar os documentos com chaves do AWS KMS.",
+        "correta": true,
+        "porque": "Permissões por identidade e criptografia em repouso complementam a restrição já existente na camada de rede."
+      }
+    ],
+    "explicacao": "A defesa em profundidade aplica controles complementares em cada camada. A proteção da rede não substitui a autorização de cada aplicação, e proteger dados em trânsito ou registrar acessos não equivale a proteger os dados armazenados.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design-principles.html"
+  },
+  {
+    "id": "D1-adva-008",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Um aplicativo de inspeção foi reescrito sem alterar a infraestrutura da AWS nem o tempo de resposta no servidor. Na mesma jornada de trabalho, a nova versão consome menos bateria e passou a funcionar bem nos aparelhos antigos dos técnicos. Qual interpretação é pertinente à análise do Well-Architected Framework?",
+    "alternativas": [
+      {
+        "texto": "Otimização de Custos: o novo aplicativo reduz o consumo faturável da carga na AWS.",
+        "correta": false,
+        "porque": "O ganho relatado está nos dispositivos dos técnicos; não houve redução comprovada de consumo faturável na AWS."
+      },
+      {
+        "texto": "Sustentabilidade: o aplicativo reduz o impacto de uso e permite conservar os aparelhos por mais tempo.",
+        "correta": true,
+        "porque": "Menor gasto de energia no cliente e maior vida útil potencial dos equipamentos reduzem impactos indiretos da carga."
+      },
+      {
+        "texto": "Eficiência de Performance: a mudança deve ser julgada pela latência do servidor durante as inspeções.",
+        "correta": false,
+        "porque": "O tempo de resposta do servidor foi mantido, mesmo com a melhora no dispositivo cliente."
+      },
+      {
+        "texto": "Confiabilidade: o suporte a mais aparelhos permite manter o serviço durante falhas de infraestrutura.",
+        "correta": false,
+        "porque": "A compatibilidade com aparelhos antigos não cria um ambiente de recuperação da carga na AWS."
+      }
+    ],
+    "explicacao": "O pilar de Sustentabilidade também orienta a redução do impacto indireto da carga nos usuários, como a energia consumida durante o uso e a necessidade de trocar seus dispositivos.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/sus-design-principles.html"
+  },
+  {
+    "id": "D1-adva-009",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa vai replicar seu produto em dois novos mercados. Cada contrato exige que os registros sejam armazenados e processados dentro do país do cliente, onde há uma Região AWS, e a aplicação usa um serviço regional que a equipe não pode substituir nesta fase. Como aproveitar a infraestrutura global sem prometer um lançamento inviável?",
+    "alternativas": [
+      {
+        "texto": "Validar o serviço na Região atual e reproduzir a mesma arquitetura nos dois países.",
+        "correta": false,
+        "porque": "A disponibilidade na Região atual não comprova a oferta do serviço nas Regiões dos novos mercados."
+      },
+      {
+        "texto": "Colocar uma interface em cada mercado e manter os dados na Região atual.",
+        "correta": false,
+        "porque": "Uma interface local não desloca o processamento e o armazenamento exigidos pelo contrato."
+      },
+      {
+        "texto": "Verificar a disponibilidade do serviço na Região de cada país antes de fixar o lançamento.",
+        "correta": true,
+        "porque": "A AWS fornece presença global, mas a disponibilidade de cada serviço precisa ser verificada por Região."
+      },
+      {
+        "texto": "Distribuir a aplicação entre Availability Zones da Região em que o serviço já existe.",
+        "correta": false,
+        "porque": "A separação entre zonas aumenta a resiliência local, mas não satisfaz o requisito de cada país."
+      }
+    ],
+    "explicacao": "A infraestrutura global permite lançar em diferentes localidades sem construir instalações. O alcance global do provedor não implica que todas as Regiões ofereçam os mesmos serviços.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/"
+  },
+  {
+    "id": "D1-adva-010",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "O volume de um cálculo científico cresce de forma sustentada. A versão atual precisa que o conjunto de dados caiba na memória de uma única instância. A equipe não pode alterar o programa neste semestre, mas pode planejar uma parada curta. Que benefício da nuvem permite acomodar o crescimento agora?",
+    "alternativas": [
+      {
+        "texto": "Mover a execução para um tipo de instância com mais memória e reavaliar com o crescimento.",
+        "correta": true,
+        "porque": "É possível redimensionar verticalmente a capacidade que o processo pode usar sem repartir seu conjunto de dados."
+      },
+      {
+        "texto": "Adicionar instâncias do tamanho atual para que o cálculo use a soma das memórias.",
+        "correta": false,
+        "porque": "A memória adicional fica em outras instâncias; o programa atual não distribui o cálculo."
+      },
+      {
+        "texto": "Duplicar a instância atual em outra zona para manter um executor disponível em caso de falha.",
+        "correta": false,
+        "porque": "Ter um executor de reserva aumenta a disponibilidade, mas não aumenta a memória de cada executor."
+      },
+      {
+        "texto": "Acrescentar capacidade de armazenamento à instância atual para comportar o novo conjunto de dados.",
+        "correta": false,
+        "porque": "Mais espaço em disco não atende ao requisito de manter todo o conjunto na memória da instância."
+      }
+    ],
+    "explicacao": "O crescimento pede escalabilidade vertical. A disponibilidade de diferentes tipos de instância permite trocar o porte sem adquirir outro servidor físico; a aplicação não precisa distribuir o cálculo.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html"
+  },
+  {
+    "id": "D1-adva-011",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Um órgão abre inscrições para um programa após autorização de urgência, sem antecedência para adquirir servidores. A página precisa entrar no ar a tempo mesmo se houver poucos inscritos, mas o processamento dos pedidos varia bastante após a abertura. Quais vantagens atendem diretamente a esses dois desafios? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Distribuir o processamento entre zonas isoladas para absorver a perda de uma instalação.",
+        "correta": false,
+        "porque": "Isso trata falhas da instalação, não o intervalo até a abertura nem o ajuste ao volume efetivo."
+      },
+      {
+        "texto": "Dimensionar a capacidade do programa por uma previsão de pico e mantê-la até o fechamento.",
+        "correta": false,
+        "porque": "Manter o pico como capacidade fixa não acompanha a demanda observada após a abertura."
+      },
+      {
+        "texto": "Provisionar a infraestrutura necessária para a abertura assim que houver autorização.",
+        "correta": true,
+        "porque": "O provisionamento sob demanda reduz o tempo entre a autorização e a disponibilização da página, mesmo com volume baixo."
+      },
+      {
+        "texto": "Ajustar a capacidade de processamento dos pedidos quando o volume observado mudar.",
+        "correta": true,
+        "porque": "A elasticidade permite acrescentar e devolver capacidade durante a fase de processamento."
+      },
+      {
+        "texto": "Manter um ambiente de recuperação pronto para ser ativado com os pedidos já recebidos.",
+        "correta": false,
+        "porque": "A preparação de recuperação trata indisponibilidade, não a adaptação da capacidade ou o atraso da aquisição inicial."
+      }
+    ],
+    "explicacao": "Agilidade encurta a preparação até a abertura; elasticidade ajusta a capacidade à demanda após a abertura. Cada benefício resolve um problema diferente nesse fluxo.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+  },
+  {
+    "id": "D1-adva-012",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Um simulador de navegação recebe mensagens UDP de participantes em vários continentes. O processamento precisa continuar na Região atual, mas a empresa quer reduzir a dependência da internet pública no trajeto de longa distância até essa Região. Como a infraestrutura global da AWS pode ajudar?",
+    "alternativas": [
+      {
+        "texto": "Distribuir versões do simulador em Regiões próximas aos locais de maior participação.",
+        "correta": false,
+        "porque": "A medida levaria o processamento para outras Regiões, contrariando a restrição."
+      },
+      {
+        "texto": "Distribuir conteúdo do simulador em pontos de presença usando cache HTTP.",
+        "correta": false,
+        "porque": "O cache HTTP acelera a distribuição de conteúdo, mas o fluxo em questão é de mensagens UDP para processamento."
+      },
+      {
+        "texto": "Distribuir servidores do simulador por mais zonas atrás de um balanceador regional.",
+        "correta": false,
+        "porque": "A distribuição melhora a disponibilidade local, mas não antecipa a entrada do tráfego na rede da AWS."
+      },
+      {
+        "texto": "Encaminhar as mensagens pela rede global da AWS com o AWS Global Accelerator.",
+        "correta": true,
+        "porque": "O serviço aceita UDP e usa a rede global da AWS para transportar o tráfego até um endpoint regional."
+      }
+    ],
+    "explicacao": "O benefício da rede global não depende de distribuir a aplicação por vários continentes. Com o AWS Global Accelerator, o tráfego pode entrar na rede da AWS perto do participante e seguir até a Região em que a aplicação roda.",
+    "servicos": [
+      "AWS Global Accelerator"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+  },
+  {
+    "id": "D1-adva-013",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Um serviço está dentro da média de latência esperada, mas uma minoria de consultas de alto valor demora mais do que o aceitável. A equipe testa um novo tipo de instância. Qual evidência aplica o princípio Well-Architected de usar dados para tomar decisões informadas?",
+    "alternativas": [
+      {
+        "texto": "Comparar a utilização média de CPU nos dois tipos de instância para o conjunto de consultas.",
+        "correta": false,
+        "porque": "A média de CPU é um indicador indireto e pode ocultar as consultas que ultrapassam a meta de tempo."
+      },
+      {
+        "texto": "Comparar a proporção de consultas críticas que passa do limite de tempo em cada opção.",
+        "correta": true,
+        "porque": "Medir diretamente qual parcela ultrapassa o limite revela se a mudança resolve a deficiência observada."
+      },
+      {
+        "texto": "Comparar a latência média de todas as consultas antes e depois da troca da instância.",
+        "correta": false,
+        "porque": "Melhorar a média do conjunto não demonstra melhora no grupo de consultas que descumpre a meta."
+      },
+      {
+        "texto": "Comparar a vazão total dos dois tipos de instância sob a carga atual do serviço.",
+        "correta": false,
+        "porque": "A vazão mede volume processado, não o tempo de resposta das consultas afetadas."
+      }
+    ],
+    "explicacao": "Telemetria ajuda a orientar mudanças quando mede o resultado que motivou a decisão. Boa média e boa vazão geral não demonstram que a latência das consultas críticas esteja dentro da meta.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/design-principles.html"
+  },
+  {
+    "id": "D1-adva-014",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma universidade tem recursos dedicados a cada departamento e um processador de relatórios usado por vários departamentos. A direção quer atribuir todos os custos a quem os gera, e o consumo do processador varia bastante entre usuários. Quais ações de Otimização de Custos compõem um modelo de atribuição adequado? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Classificar os recursos dedicados pelo departamento que os utiliza para atribuir seus gastos diretos.",
+        "correta": true,
+        "porque": "A classificação identifica a área que utiliza cada recurso dedicado e permite atribuir seu custo diretamente."
+      },
+      {
+        "texto": "Classificar os recursos por ambiente, como produção e testes, para atribuir os gastos aos departamentos.",
+        "correta": false,
+        "porque": "Conhecer o ambiente não identifica o departamento consumidor; vários departamentos podem ter recursos no mesmo ambiente."
+      },
+      {
+        "texto": "Atribuir o custo do processador à equipe que opera a plataforma e manter as despesas dedicadas separadas.",
+        "correta": false,
+        "porque": "Esse modelo identifica o operador, mas não mostra quais departamentos geram a despesa compartilhada."
+      },
+      {
+        "texto": "Ratear o processador pelo número de departamentos com acesso e revisar essa lista mensalmente.",
+        "correta": false,
+        "porque": "Ter acesso não indica quanto processamento o departamento consumiu; o rateio igual ignora a diferença de uso."
+      },
+      {
+        "texto": "Medir o processamento consumido por departamento para ratear as despesas do recurso compartilhado.",
+        "correta": true,
+        "porque": "O rateio por uma medida de consumo permite atribuir um custo compartilhado a quem gera a carga."
+      }
+    ],
+    "explicacao": "Recursos dedicados permitem atribuição direta por consumidor. Para um recurso compartilhado, medir o consumo de cada departamento evita confundir acesso ou propriedade operacional com o uso que gera custo.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost02.html"
+  },
+  {
+    "id": "D1-adva-015",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Na rotina de fechamento, um operador baixa registros trabalhistas para conferir os totais de funcionários por filial e depois os apaga do seu computador. A conferência é obrigatória, mas o operador não precisa ver nenhum registro individual. Qual mudança segue o princípio de Segurança de manter as pessoas afastadas dos dados?",
+    "alternativas": [
+      {
+        "texto": "Liberar a leitura dos registros por tempo limitado a cada fechamento e revogá-la em seguida.",
+        "correta": false,
+        "porque": "Diminuir a duração da permissão ajuda, mas o operador ainda acessa registros individuais."
+      },
+      {
+        "texto": "Registrar as leituras feitas no fechamento e enviar os eventos para revisão posterior.",
+        "correta": false,
+        "porque": "O registro melhora a rastreabilidade, mas não elimina o manuseio dos dados pelo operador."
+      },
+      {
+        "texto": "Executar a conferência em um processo automatizado e entregar ao operador o resultado agregado.",
+        "correta": true,
+        "porque": "O operador recebe a informação necessária sem manipular os registros individuais."
+      },
+      {
+        "texto": "Criptografar os arquivos baixados e fazer a conferência em um computador gerenciado.",
+        "correta": false,
+        "porque": "A transferência e o dispositivo ficam mais protegidos, mas o operador ainda abre os registros."
+      }
+    ],
+    "explicacao": "Reduzir a interação humana com dados sensíveis evita exposição desnecessária. O processo executa o acesso necessário; a pessoa trabalha com o resultado agregado.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design-principles.html"
+  },
+  {
+    "id": "D1-adva-016",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Um serviço produz arquivos intermediários que, após a validação do resultado final, não têm uso nem obrigação de retenção. A equipe quer diminuir o volume físico de armazenamento exigido por essa carga sem abrir mão das cópias de recuperação dos resultados finais. Qual medida se alinha ao pilar de Sustentabilidade?",
+    "alternativas": [
+      {
+        "texto": "Mover os arquivos intermediários para uma classe de arquivamento após a validação.",
+        "correta": false,
+        "porque": "A classe pode reduzir o custo de armazenamento, mas ainda preserva dados que já não são necessários."
+      },
+      {
+        "texto": "Excluir uma cópia de recuperação do resultado final quando a validação terminar.",
+        "correta": false,
+        "porque": "A ação descarta dados que a regra do cenário exige manter."
+      },
+      {
+        "texto": "Transferir os intermediários para uma Região de menor latência para a equipe de análise.",
+        "correta": false,
+        "porque": "Melhorar a latência de acesso a arquivos sem uso não reduz o volume armazenado."
+      },
+      {
+        "texto": "Expirar os intermediários depois da validação e manter a política dos arquivos finais.",
+        "correta": true,
+        "porque": "A expiração elimina armazenamento desnecessário sem comprometer a retenção que tem valor para o negócio."
+      }
+    ],
+    "explicacao": "O ciclo de vida dos dados deve refletir sua utilidade e suas obrigações de retenção. Arquivar preserva os dados; expirar os intermediários já dispensáveis reduz o armazenamento exigido.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sus_sus_data_a4.html"
+  },
+  {
+    "id": "D1-adva-017",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma emissora precisa de um tipo específico de instância Amazon EC2 em uma Availability Zone definida para um evento com horário inflexível. A cota da conta já é suficiente. O que a emissora deve considerar ao contar com o provisionamento rápido da nuvem?",
+    "alternativas": [
+      {
+        "texto": "Verificar a disponibilidade com antecedência e criar uma reserva de capacidade para o tipo e a zona.",
+        "correta": true,
+        "porque": "Para atributos e zona específicos, uma reserva de capacidade é o mecanismo para manter recursos disponíveis após a reserva ser criada."
+      },
+      {
+        "texto": "Ampliar a margem da cota da conta para assegurar a capacidade antes de provisionar as instâncias.",
+        "correta": false,
+        "porque": "Uma cota mais alta permite solicitar mais recursos, mas não reserva capacidade física para a carga."
+      },
+      {
+        "texto": "Configurar escalabilidade automática para garantir a criação das instâncias na zona no horário previsto.",
+        "correta": false,
+        "porque": "A automação executa a solicitação, mas não garante que a capacidade do tipo pedido esteja disponível na zona."
+      },
+      {
+        "texto": "Assumir um compromisso de gasto com computação para assegurar a disponibilidade física dos servidores.",
+        "correta": false,
+        "porque": "Um compromisso de gasto como Savings Plans beneficia a cobrança, mas não reserva capacidade física."
+      }
+    ],
+    "explicacao": "A rapidez para solicitar recursos é diferente da garantia de que um tipo específico estará disponível no local e horário necessários. Cotas e descontos, por si sós, não dão essa garantia.",
+    "servicos": [
+      "Amazon EC2",
+      "Savings Plans"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html"
+  },
+  {
+    "id": "D1-adva-018",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma fábrica executará um banco de dados autogerenciado no Amazon EC2 para conservar extensões próprias. A equipe quer estimar quais horas de trabalho serão liberadas sem trocar o modelo de administração do banco. Que mudança decorre do uso da infraestrutura da AWS?",
+    "alternativas": [
+      {
+        "texto": "Deixar de agendar as atualizações do banco e continuar gerenciando o acesso aos dados.",
+        "correta": false,
+        "porque": "Usar EC2 não transfere o agendamento dos patches do banco autogerenciado à AWS."
+      },
+      {
+        "texto": "Deixar de configurar a retenção dos backups e continuar administrando os esquemas do banco.",
+        "correta": false,
+        "porque": "A equipe ainda deve projetar os backups e definir e operar a retenção necessária para sua carga."
+      },
+      {
+        "texto": "Deixar a manutenção dos servidores físicos com a AWS e continuar administrando o banco.",
+        "correta": true,
+        "porque": "A AWS opera o hardware do EC2, enquanto a equipe conserva o controle sobre as extensões e o software do banco."
+      },
+      {
+        "texto": "Deixar as atualizações do sistema operacional convidado com a AWS e continuar instalando as extensões.",
+        "correta": false,
+        "porque": "No EC2, o sistema operacional convidado permanece sob a administração do cliente."
+      }
+    ],
+    "explicacao": "A nuvem dispensa a fábrica de manter a infraestrutura física sem exigir que ela abra mão do controle do software. Esse ganho de produtividade não equivale a contratar um banco de dados gerenciado.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+  },
+  {
+    "id": "D1-adva-019",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Um acervo no Amazon S3 exige que as imagens continuem acessíveis se uma Availability Zone inteira ficar indisponível. Também deve ser possível desfazer a substituição acidental de uma imagem por um arquivo errado. Quais recursos da nuvem dão suporte direto a essas duas exigências? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Entrega das imagens pelo Amazon CloudFront com cache nas bordas.",
+        "correta": false,
+        "porque": "Nem todo objeto estará no cache quando a origem falhar, e o cache não conserva versões para restauração."
+      },
+      {
+        "texto": "Armazenamento das imagens na classe S3 Standard.",
+        "correta": true,
+        "porque": "Essa classe armazena os dados em múltiplas zonas e mantém disponibilidade mesmo com a perda de uma delas."
+      },
+      {
+        "texto": "Validação das transferências com somas de verificação dos objetos.",
+        "correta": false,
+        "porque": "Uma soma de verificação detecta corrupção, mas não restaura um objeto substituído nem mantém cópias em outras zonas."
+      },
+      {
+        "texto": "Versionamento do S3 ativado no bucket do acervo.",
+        "correta": true,
+        "porque": "O versionamento conserva as versões anteriores e permite recuperá-las depois que uma gravação válida substitui o objeto atual."
+      },
+      {
+        "texto": "Armazenamento das imagens na classe S3 One Zone-IA.",
+        "correta": false,
+        "porque": "A redundância dentro de uma única zona não preserva a disponibilidade na perda dessa zona."
+      }
+    ],
+    "explicacao": "Redundância entre zonas e versionamento protegem contra eventos diferentes. As réplicas internas da classe de armazenamento não são, por si sós, um histórico de alterações válidas ao objeto.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html"
+  },
+  {
+    "id": "D1-adva-020",
+    "dominio": 1,
+    "task": "1.1",
+    "tipo": "unica",
+    "enunciado": "Uma empresa testa cada versão em infraestrutura dedicada e precisa da aprovação de um auditor antes de publicar. Hoje, o auditor só recebe a versão quando o ambiente de teste fica pronto, após semanas de espera por servidores. Qual previsão traduz a agilidade que o uso da AWS pode trazer?",
+    "alternativas": [
+      {
+        "texto": "O provisionamento sob demanda permite reduzir a duração da auditoria depois que ela começa.",
+        "correta": false,
+        "porque": "A rapidez para criar o ambiente não reduz por si só o tempo de trabalho do auditor."
+      },
+      {
+        "texto": "A equipe pode começar os testes mais cedo e manter o mesmo processo de aprovação.",
+        "correta": true,
+        "porque": "A agilidade reduz a espera pela infraestrutura sem remover etapas de validação exigidas."
+      },
+      {
+        "texto": "O ajuste da capacidade durante o teste permite remover a espera pela aprovação do auditor.",
+        "correta": false,
+        "porque": "A elasticidade pode ajustar recursos durante o teste, mas não substitui a aprovação exigida antes de publicar."
+      },
+      {
+        "texto": "A distribuição por zonas permite reduzir a frequência das avaliações de novas versões.",
+        "correta": false,
+        "porque": "A disponibilidade da infraestrutura não muda o requisito de avaliação de cada versão."
+      }
+    ],
+    "explicacao": "O benefício de agilidade recai sobre o atraso de infraestrutura. Como o ambiente pode ser provisionado mais rapidamente, o fluxo chega antes às etapas seguintes sem alterar sua duração ou obrigatoriedade.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+  },
+  {
+    "id": "D1-adva-021",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Uma cooperativa quer publicar hoje um catálogo para parceiros. Ela prevê novos formatos de integração, mas só conhecerá seus requisitos após a primeira fase e não pode interromper o acesso dos parceiros atuais quando eles chegarem. Qual decisão aplica o princípio Well-Architected de permitir que a arquitetura evolua?",
+    "alternativas": [
+      {
+        "texto": "Manter o contrato atual estável e permitir a introdução gradual de novas versões da integração.",
+        "correta": true,
+        "porque": "A arquitetura ganha um caminho para mudar com os requisitos, preservando contratos em uso durante a transição."
+      },
+      {
+        "texto": "Fechar o contrato da integração após mapear previamente os formatos previstos para todas as fases.",
+        "correta": false,
+        "porque": "Os formatos ainda não são conhecidos, e depender de um desenho completo antecipado impede incorporar aprendizado futuro."
+      },
+      {
+        "texto": "Criar uma cópia de recuperação da integração atual e sincronizar suas configurações regularmente.",
+        "correta": false,
+        "porque": "Uma cópia preserva a integração diante de falhas, mas não cria um processo para evoluir seu contrato."
+      },
+      {
+        "texto": "Publicar o formato atual e trocar seu contrato de uma vez quando os novos requisitos chegarem.",
+        "correta": false,
+        "porque": "A troca de uma vez não preserva a compatibilidade exigida para os parceiros que ainda usam o contrato anterior."
+      }
+    ],
+    "explicacao": "No Well-Architected Framework, uma arquitetura evolutiva pode se adaptar a novos requisitos sem depender de um desenho definitivo antecipado. Preservar contratos em uso viabiliza essa evolução gradual.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/design-principles.html"
+  },
+  {
+    "id": "D1-adva-022",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Ao registrar a expedição de um pedido, a confirmação pode se perder mesmo depois de a operação ter sido aceita. A equipe quer que o sistema tente de novo após falhas breves sem sobrecarregar o serviço nem registrar o mesmo pedido duas vezes. Quais práticas de Confiabilidade atendem a essas condições? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Repetir cada chamada sem resposta assim que possível até receber uma confirmação.",
+        "correta": false,
+        "porque": "Tentativas imediatas e sem limite podem intensificar a sobrecarga de um serviço já degradado."
+      },
+      {
+        "texto": "Aumentar o tempo de espera por confirmação para acomodar atrasos do serviço de expedição.",
+        "correta": false,
+        "porque": "Um prazo maior pode evitar novas chamadas prematuras, mas não permite retomar uma chamada cuja confirmação se perdeu."
+      },
+      {
+        "texto": "Limitar as tentativas para falhas transitórias e distribuí-las ao longo do tempo.",
+        "correta": true,
+        "porque": "Tentativas limitadas e espaçadas permitem recuperar-se de falhas breves sem gerar uma rajada de chamadas."
+      },
+      {
+        "texto": "Distribuir as chamadas entre mais executores para que novas tentativas encontrem capacidade livre.",
+        "correta": false,
+        "porque": "Mais executores não controlam a pressão das tentativas sobre o destino nem evitam registro duplicado."
+      },
+      {
+        "texto": "Tratar repetições da mesma solicitação como a mesma operação de expedição.",
+        "correta": true,
+        "porque": "Uma operação idempotente produz o efeito de um único registro mesmo se a solicitação chegar mais de uma vez."
+      }
+    ],
+    "explicacao": "O controle de tentativas protege o serviço de carga adicional, enquanto a idempotência protege o resultado de duplicidade. Uma prática não substitui a outra.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_mitigate_interaction_failure_limit_retries.html"
+  },
+  {
+    "id": "D1-adva-023",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "No caixa de uma loja, o sistema confirma o preço vigente do produto pelo código. Relatórios históricos leem muitos registros de uma vez e podem usar os dados do dia anterior, mas hoje disputam recursos com as consultas do caixa. Qual decisão segue o pilar de Eficiência de Performance respeitando a atualidade exigida em cada fluxo?",
+    "alternativas": [
+      {
+        "texto": "Centralizar as consultas do caixa e dos relatórios em uma única cópia atualizada por dia.",
+        "correta": false,
+        "porque": "A cópia diária atende ao relatório, mas pode retornar ao caixa dados desatualizados para a venda."
+      },
+      {
+        "texto": "Concentrar relatórios e vendas em uma cópia transacional replicada sobretudo para failover.",
+        "correta": false,
+        "porque": "A réplica de failover melhora a recuperação, mas não isola os padrões de acesso enquanto ambos usam a cópia transacional."
+      },
+      {
+        "texto": "Manter as duas consultas no banco transacional e ampliar a retenção para abranger todo o histórico.",
+        "correta": false,
+        "porque": "Ter mais histórico disponível não reduz a disputa de recursos entre varreduras e consultas rápidas."
+      },
+      {
+        "texto": "Manter o caixa na fonte atual e separar a leitura histórica em uma cópia voltada aos relatórios.",
+        "correta": true,
+        "porque": "A separação permite otimizar cada padrão de acesso e aproveitar a tolerância a dados do dia anterior no relatório."
+      }
+    ],
+    "explicacao": "A escolha orientada pelo padrão de acesso evita que consultas pontuais concorram com leituras extensas. Isolar relatórios em dados adequados à sua janela de atualização não sacrifica o frescor necessário no caixa.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/perf03-bp01.html"
+  },
+  {
+    "id": "D1-adva-024",
+    "dominio": 1,
+    "task": "1.2",
+    "tipo": "unica",
+    "enunciado": "Um serviço interativo atinge seu pico às 18h, horário em que a equipe costuma iniciar os relatórios em lote. Os relatórios precisam estar prontos na manhã seguinte e podem terminar a tempo em períodos de menor uso interativo. Qual decisão de Otimização de Custos reduz o pico combinado sem prejudicar as metas?",
+    "alternativas": [
+      {
+        "texto": "Manter o início dos relatórios e procurar um desconto para a capacidade do horário de pico.",
+        "correta": false,
+        "porque": "O desconto pode reduzir a tarifa praticada, mas não diminui o pico combinado de demanda."
+      },
+      {
+        "texto": "Mover uma parte do tráfego interativo para outra Região no horário em que os relatórios começam.",
+        "correta": false,
+        "porque": "Transferir parte do tráfego entre Regiões não torna menor a demanda simultânea total das duas cargas."
+      },
+      {
+        "texto": "Despachar os relatórios nas janelas de menor demanda e monitorar o prazo de entrega.",
+        "correta": true,
+        "porque": "Flexibilizar a demanda dos lotes evita sua coincidência com o pico sem atrasar usuários ou a entrega acordada."
+      },
+      {
+        "texto": "Limitar o conjunto a sua capacidade média e colocar requisições interativas excedentes em espera.",
+        "correta": false,
+        "porque": "O limite pode reduzir capacidade de pico, mas faz os usuários interativos absorverem o atraso que os lotes toleram."
+      }
+    ],
+    "explicacao": "Gerenciar a demanda pode exigir mudar quando o trabalho acontece, não apenas trocar o tipo de capacidade ou o preço. Os relatórios têm flexibilidade de horário; o serviço interativo, não.",
+    "servicos": [
+      "AWS Well-Architected Framework"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost08.html"
+  }
+]

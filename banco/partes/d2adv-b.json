@@ -1,0 +1,1205 @@
+[
+  {
+    "id": "D2-advb-001",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "O time de dados vai criar IAM roles em uma conta compartilhada. A segurança já exige que as novas roles sejam criadas com um controle aprovado e quer que esse controle limite as permissões de cada role sem conceder acesso por si só. Qual controle deve ser exigido na criação?",
+    "alternativas": [
+      {
+        "texto": "Uma política de permissões com as ações comuns do time",
+        "correta": false,
+        "porque": "A política concede as ações descritas e não limita o que outras políticas de identidade podem conceder."
+      },
+      {
+        "texto": "Um limite de permissões do IAM aplicado à role",
+        "correta": true,
+        "porque": "O limite restringe o que políticas de identidade podem conceder à role sem conceder ações por conta própria."
+      },
+      {
+        "texto": "Uma política de sessão no acesso do criador da role",
+        "correta": false,
+        "porque": "Ela limita a sessão do criador, não as permissões futuras da role que ele cria."
+      },
+      {
+        "texto": "Uma política de confiança aprovada para assumir a role",
+        "correta": false,
+        "porque": "A confiança determina quem pode assumir a role, não o teto das ações que ela pode executar."
+      }
+    ],
+    "explicacao": "Um permissions boundary do IAM define o teto das permissões concedidas à role por políticas de identidade. A segurança pode condicionar a delegação de criação de roles ao uso desse limite.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html"
+  },
+  {
+    "id": "D2-advb-002",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "O IAM Identity Center usa um provedor de identidade corporativo externo via SAML. A empresa quer reforçar o MFA no login inicial de quem acessa o portal da AWS, sem trocar a origem das identidades. Onde deve aplicar a exigência?",
+    "alternativas": [
+      {
+        "texto": "Nas configurações de MFA do diretório do IAM Identity Center",
+        "correta": false,
+        "porque": "Essas configurações não controlam a autenticação quando o provedor de identidade é externo."
+      },
+      {
+        "texto": "Na política de senha do IAM em cada conta atribuída",
+        "correta": false,
+        "porque": "A política de senha do IAM não rege o login federado feito fora da conta."
+      },
+      {
+        "texto": "Na configuração da sessão de cada conjunto de permissões",
+        "correta": false,
+        "porque": "A duração da sessão limita a validade do acesso concedido, não os fatores exigidos no login."
+      },
+      {
+        "texto": "Nas regras de autenticação do provedor corporativo",
+        "correta": true,
+        "porque": "O provedor externo autentica o usuário antes de enviar a asserção SAML ao IAM Identity Center."
+      }
+    ],
+    "explicacao": "Com uma origem de identidade externa via SAML, o provedor de identidade controla a autenticação e o MFA. O IAM Identity Center continua responsável pelas atribuições de acesso.",
+    "servicos": [
+      "IAM Identity Center",
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/singlesignon/latest/userguide/enable-mfa.html"
+  },
+  {
+    "id": "D2-advb-003",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 7,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma equipe vai associar uma nova IAM role de execução a uma função do AWS Lambda que lê uma tabela do Amazon DynamoDB na mesma conta. O implantador já está autorizado a associar a role; a tabela não tem política de recurso, e nenhum limite de permissões ou SCP restringe a role. Quais condições a configuração da role precisa atender? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A política de confiança da role autoriza o serviço AWS Lambda a assumi-la.",
+        "correta": true,
+        "porque": "A função precisa que o serviço AWS Lambda possa assumir a role de execução."
+      },
+      {
+        "texto": "O limite de permissões da role contém as ações de leitura da tabela.",
+        "correta": false,
+        "porque": "A role não precisa de um limite de permissões para conceder o acesso à tabela."
+      },
+      {
+        "texto": "Uma política de permissões da role autoriza as ações de leitura na tabela.",
+        "correta": true,
+        "porque": "A role precisa de permissões para ler a tabela após ser assumida pelo serviço."
+      },
+      {
+        "texto": "A política de confiança da role autoriza o DynamoDB a assumi-la.",
+        "correta": false,
+        "porque": "DynamoDB é o destino da chamada, não o serviço que assume a role de execução."
+      },
+      {
+        "texto": "A política de permissões da role autoriza a invocação da função Lambda.",
+        "correta": false,
+        "porque": "Invocar a função é uma permissão do chamador, não uma condição para a função ler a tabela."
+      }
+    ],
+    "explicacao": "A política de confiança permite que o Lambda assuma a role. Uma política de permissões separada define o que a função pode fazer com as credenciais dessa role.",
+    "servicos": [
+      "IAM",
+      "Lambda",
+      "DynamoDB"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html"
+  },
+  {
+    "id": "D2-advb-004",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Um fornecedor de inventário assume IAM roles nas contas de vários clientes usando a mesma conta AWS do fornecedor. Cada cliente já limita a própria role a operações de inventário, mas quer que o fornecedor também identifique em nome de qual cliente está solicitando cada sessão. Qual configuração atende a esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Exigir um nome de sessão padronizado para todas as contas do fornecedor",
+        "correta": false,
+        "porque": "Um nome comum ajuda a reconhecer o fornecedor, mas não distingue em nome de qual cliente ele atua."
+      },
+      {
+        "texto": "Exigir uma condição que compare a organização AWS à qual pertence o fornecedor",
+        "correta": false,
+        "porque": "Identificar a organização do chamador não distingue os clientes atendidos pela mesma conta."
+      },
+      {
+        "texto": "Exigir na confiança da role o identificador externo que o fornecedor atribuiu ao cliente",
+        "correta": true,
+        "porque": "O fornecedor apresenta o external ID associado ao cliente, além de assumir a role com a própria identidade autorizada."
+      },
+      {
+        "texto": "Exigir uma política de sessão com as ações de inventário aprovadas pelo cliente",
+        "correta": false,
+        "porque": "Uma política de sessão reduz as ações disponíveis depois que a role é assumida; não indica o cliente na relação de confiança."
+      }
+    ],
+    "explicacao": "O external ID é um identificador por cliente definido pelo fornecedor. A condição na política de confiança permite à AWS verificar se a solicitação da conta do fornecedor corresponde ao cliente daquela role.",
+    "servicos": [
+      "IAM",
+      "STS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html"
+  },
+  {
+    "id": "D2-advb-005",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma aplicação opera em duas Regiões e usa a mesma credencial de um provedor externo, já armazenada no AWS Secrets Manager. As instâncias devem ler o segredo na própria Região, mas a atualização da credencial deve ser feita uma vez, na Região primária. Qual configuração atende com menos manutenção?",
+    "alternativas": [
+      {
+        "texto": "Replicar o segredo do Secrets Manager na Região secundária",
+        "correta": true,
+        "porque": "A réplica é acessível na Região secundária e acompanha as alterações do segredo primário."
+      },
+      {
+        "texto": "Criar um segredo independente em cada Região e manter a rotação no primário",
+        "correta": false,
+        "porque": "Segredos independentes não recebem automaticamente as alterações do segredo primário."
+      },
+      {
+        "texto": "Usar uma chave de várias Regiões do AWS KMS para o segredo primário",
+        "correta": false,
+        "porque": "Replicar uma chave não cria na outra Região uma cópia do segredo criptografado com ela."
+      },
+      {
+        "texto": "Fazer as aplicações das duas Regiões consultarem o segredo primário",
+        "correta": false,
+        "porque": "Mantém um ponto único de atualização, mas obriga a aplicação secundária a ler o segredo em outra Região."
+      }
+    ],
+    "explicacao": "A replicação do Secrets Manager mantém o primário como ponto de atualização e disponibiliza uma réplica regional. Uma chave multirregional do KMS, por si só, não replica os dados protegidos.",
+    "servicos": [
+      "Secrets Manager",
+      "KMS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/replicate-secrets.html"
+  },
+  {
+    "id": "D2-advb-006",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma aplicação já usa AWS WAF em produção. A equipe quer medir em tráfego real o que uma nova regra identificaria, mantendo as regras posteriores livres para decidir se cada requisição será permitida ou bloqueada. Qual ação deve configurar para a nova regra durante o teste?",
+    "alternativas": [
+      {
+        "texto": "Allow na nova regra",
+        "correta": false,
+        "porque": "Allow encerra a avaliação para a requisição correspondente, o que pode contornar regras posteriores."
+      },
+      {
+        "texto": "Challenge na nova regra",
+        "correta": false,
+        "porque": "Challenge pode interromper a avaliação e exigir um desafio para requisições sem token válido."
+      },
+      {
+        "texto": "Block na nova regra",
+        "correta": false,
+        "porque": "Block encerra a avaliação e rejeita a requisição correspondente em vez de observar seu efeito."
+      },
+      {
+        "texto": "Count na nova regra",
+        "correta": true,
+        "porque": "Count registra a correspondência e deixa o AWS WAF continuar avaliando as regras seguintes."
+      }
+    ],
+    "explicacao": "Count é uma ação não terminante do AWS WAF. Ela permite testar correspondências sem dar à regra em avaliação a decisão final sobre a requisição.",
+    "servicos": [
+      "WAF"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-action.html"
+  },
+  {
+    "id": "D2-advb-007",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma equipe usa a detecção básica de ameaças do Amazon GuardDuty nas instâncias EC2, mas não tem uma trilha do CloudTrail nem VPC Flow Logs próprios. Agora precisa manter a detecção e reter, separadamente, os registros de chamadas administrativas e fluxos de rede para auditoria. Qual abordagem atende?",
+    "alternativas": [
+      {
+        "texto": "Manter a detecção do GuardDuty e configurar a coleta e retenção próprias dos dois tipos de log.",
+        "correta": true,
+        "porque": "O GuardDuty recebe esses sinais de fontes próprias; a equipe configura as duas coletas para ter cópias dos registros para auditoria."
+      },
+      {
+        "texto": "Manter a detecção do GuardDuty e exportar seus achados para reter os eventos de origem.",
+        "correta": false,
+        "porque": "Exportar achados conserva os resultados da análise, não os registros de origem das duas fontes."
+      },
+      {
+        "texto": "Criar uma trilha do CloudTrail e usar os detalhes dos achados do GuardDuty como registro dos fluxos de rede.",
+        "correta": false,
+        "porque": "A trilha fornece os eventos administrativos, mas os achados não substituem a coleta dos registros de fluxo."
+      },
+      {
+        "texto": "Coletar ambos os tipos de registro e desativar o GuardDuty após começar a recebê-los.",
+        "correta": false,
+        "porque": "A coleta permite auditoria, mas não substitui a análise gerenciada que gera os achados do GuardDuty."
+      }
+    ],
+    "explicacao": "O GuardDuty analisa seus próprios fluxos de eventos de gerenciamento do CloudTrail e de VPC Flow Logs. A detecção e a retenção dos registros para auditoria são controles separados.",
+    "servicos": [
+      "GuardDuty",
+      "CloudTrail",
+      "VPC"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_data-sources.html"
+  },
+  {
+    "id": "D2-advb-008",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Os times de uma organização podem criar os próprios security groups. A segurança quer preservar essa autonomia, mas também quer retirar automaticamente regras de entrada que violem critérios centrais, inclusive em novos grupos no escopo, sem manter automações próprias. Qual opção se encaixa melhor?",
+    "alternativas": [
+      {
+        "texto": "Distribuir security groups de referência com uma política de grupos comuns do AWS Firewall Manager e replicá-los",
+        "correta": false,
+        "porque": "Grupos comuns aplicam regras padronizadas; não são o mecanismo de inspeção e correção das regras dos grupos dos times."
+      },
+      {
+        "texto": "Usar uma política de auditoria de conteúdo de security groups do AWS Firewall Manager com correção automática",
+        "correta": true,
+        "porque": "A política compara as regras dos grupos no escopo com critérios centrais e pode corrigir violações."
+      },
+      {
+        "texto": "Bloquear globalmente a edição de regras de security groups com uma SCP do AWS Organizations",
+        "correta": false,
+        "porque": "Bloquear edições não preserva a autonomia dos times nem corrige regras já existentes."
+      },
+      {
+        "texto": "Centralizar avaliações de regras de security groups com um agregador do AWS Config",
+        "correta": false,
+        "porque": "O agregador centraliza resultados de avaliação, mas não executa a correção das regras por si só."
+      }
+    ],
+    "explicacao": "Uma política de auditoria de conteúdo do Firewall Manager fiscaliza as regras dos grupos incluídos e pode remover violações. É diferente de distribuir grupos comuns ou consolidar resultados de auditoria.",
+    "servicos": [
+      "Firewall Manager",
+      "Organizations",
+      "Config",
+      "VPC"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/waf/latest/developerguide/security-group-policies.html"
+  },
+  {
+    "id": "D2-advb-009",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma equipe recebeu a informação de que a AWS publicou um aviso público de segurança sobre um produto. Ela precisa localizar o comunicado da AWS com a avaliação do impacto e as recomendações aos clientes, mesmo que não haja um evento específico na sua conta. Onde deve procurar primeiro?",
+    "alternativas": [
+      {
+        "texto": "Na seção de eventos da conta do AWS Health Dashboard",
+        "correta": false,
+        "porque": "A seção é útil para eventos específicos da conta, mas não é o índice dos comunicados públicos de segurança de produtos."
+      },
+      {
+        "texto": "No catálogo de relatórios do AWS Artifact",
+        "correta": false,
+        "porque": "Os relatórios do Artifact tratam de conformidade e auditoria, não do acompanhamento desses comunicados."
+      },
+      {
+        "texto": "Na página AWS Security Bulletins",
+        "correta": true,
+        "porque": "Os boletins reúnem os avisos públicos de segurança da AWS e as orientações pertinentes aos clientes."
+      },
+      {
+        "texto": "Na coleção de artigos do AWS Knowledge Center",
+        "correta": false,
+        "porque": "A coleção responde dúvidas comuns de uso, mas não é o índice oficial desses avisos."
+      }
+    ],
+    "explicacao": "Os AWS Security Bulletins são a fonte dos avisos públicos de segurança. O painel de eventos da conta e os artigos de suporte têm finalidades diferentes.",
+    "servicos": [
+      "AWS Security Center",
+      "AWS Health Dashboard",
+      "Artifact",
+      "AWS Knowledge Center"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/security/security-bulletins/"
+  },
+  {
+    "id": "D2-advb-010",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 7,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "A segurança definiu duas prioridades para servidores EC2 elegíveis: identificar continuamente pacotes com vulnerabilidades conhecidas no sistema operacional e detectar atividade suspeita em processos dentro das instâncias em execução. Quais recursos gerenciados cobrem, cada um, uma dessas prioridades? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Varredura de instâncias EC2 do Amazon Inspector",
+        "correta": true,
+        "porque": "Verifica os pacotes instalados nas instâncias elegíveis em busca de vulnerabilidades conhecidas."
+      },
+      {
+        "texto": "Proteção de instâncias EC2 contra malware do Amazon GuardDuty",
+        "correta": false,
+        "porque": "A varredura de volumes EBS detecta arquivos maliciosos; não monitora processos em execução nem inventaria vulnerabilidades de pacotes."
+      },
+      {
+        "texto": "Verificações de controles do AWS Security Hub CSPM",
+        "correta": false,
+        "porque": "Avaliam a postura de segurança; não são a fonte que observa processos ou examina pacotes instalados."
+      },
+      {
+        "texto": "Monitoramento de runtime para EC2 do Amazon GuardDuty",
+        "correta": true,
+        "porque": "O agente de segurança coleta eventos de runtime, incluindo atividade de processos, para detectar ameaças."
+      },
+      {
+        "texto": "Avaliação de conformidade de instâncias pelo AWS Config",
+        "correta": false,
+        "porque": "Avalia configurações dos recursos; não monitora processos nem procura vulnerabilidades em pacotes instalados."
+      }
+    ],
+    "explicacao": "O Inspector identifica vulnerabilidades nos pacotes instalados; o GuardDuty Runtime Monitoring detecta ameaças observando o comportamento da carga em execução. São sinais independentes.",
+    "servicos": [
+      "Inspector",
+      "GuardDuty",
+      "Security Hub CSPM",
+      "Config",
+      "EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html"
+  },
+  {
+    "id": "D2-advb-011",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Os operadores entram no portal do IAM Identity Center e abrem o console de produção por um conjunto de permissões dedicado. A segurança quer encurtar a duração de cada nova sessão de trabalho nessa conta, sem alterar a duração do login no portal nem as permissões concedidas. Onde deve fazer a mudança?",
+    "alternativas": [
+      {
+        "texto": "Na duração da sessão do conjunto de permissões de produção",
+        "correta": true,
+        "porque": "A duração desse conjunto determina por quanto tempo as novas sessões da role de produção são válidas."
+      },
+      {
+        "texto": "Na duração da sessão do portal de acesso da AWS",
+        "correta": false,
+        "porque": "Isso altera a validade do login no portal, não o ajuste específico da sessão na conta de produção."
+      },
+      {
+        "texto": "Nos requisitos de reautenticação do provedor de identidade",
+        "correta": false,
+        "porque": "Controlam a autenticação no provedor, não a duração das novas sessões emitidas para a conta de produção."
+      },
+      {
+        "texto": "Na duração da senha definida pela política do IAM da conta",
+        "correta": false,
+        "porque": "A política de senha do IAM rege usuários locais, não as sessões federadas na role."
+      }
+    ],
+    "explicacao": "O login no portal e a sessão aberta para uma conta AWS são controles separados. IAM Identity Center usa a duração do conjunto de permissões para limitar as novas sessões na role dessa conta.",
+    "servicos": [
+      "IAM Identity Center",
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/singlesignon/latest/userguide/howtosessionduration.html"
+  },
+  {
+    "id": "D2-advb-012",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Dois times usam o IAM Identity Center. Ambos precisam das mesmas permissões de diagnóstico, mas cada time pode atuar apenas na sua respectiva conta AWS. A equipe quer manter uma única definição das permissões sem abrir o acesso à conta do outro time. Como organizar as atribuições?",
+    "alternativas": [
+      {
+        "texto": "Atribuir um grupo comum dos dois times às duas contas com o mesmo conjunto de permissões",
+        "correta": false,
+        "porque": "O grupo comum ganharia o conjunto de permissões nas duas contas, eliminando a separação entre times."
+      },
+      {
+        "texto": "Criar conjuntos de permissões distintos e atribuí-los aos grupos nas contas correspondentes",
+        "correta": false,
+        "porque": "A separação pode ser obtida com conjuntos distintos, mas passam a existir duas definições para manter."
+      },
+      {
+        "texto": "Atribuir o mesmo conjunto de permissões a cada grupo apenas na conta correspondente",
+        "correta": true,
+        "porque": "O conjunto pode ser reutilizado, enquanto cada atribuição liga um grupo à respectiva conta."
+      },
+      {
+        "texto": "Atribuir o conjunto aos dois grupos em uma conta central, deixando as contas dos times sem atribuições",
+        "correta": false,
+        "porque": "A atribuição na conta central não habilita por si só sessões nas contas dos times."
+      }
+    ],
+    "explicacao": "O conjunto de permissões descreve o acesso concedido, mas a atribuição determina quem o recebe em qual conta. Reutilizar o conjunto não compartilha automaticamente as contas entre grupos.",
+    "servicos": [
+      "IAM Identity Center"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/singlesignon/latest/userguide/permissionsetsconcept.html"
+  },
+  {
+    "id": "D2-advb-013",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma conta usa o Amazon S3 para trocar arquivos com uma IAM role de um parceiro identificado. A equipe quer bloquear concessões públicas, mesmo que alguém tente configurá-las em um bucket, sem impedir o compartilhamento privado com a role autorizada. Qual abordagem atende?",
+    "alternativas": [
+      {
+        "texto": "Preferir ACLs por bucket para autorizar o parceiro, desativando as restrições no nível da conta",
+        "correta": false,
+        "porque": "A concessão para um parceiro não impede que outro bucket receba uma concessão pública."
+      },
+      {
+        "texto": "Ativar S3 Block Public Access na conta e manter a política de bucket restrita à role do parceiro",
+        "correta": true,
+        "porque": "O controle impede concessões públicas sem transformar uma concessão a um principal fixo em acesso público."
+      },
+      {
+        "texto": "Atribuir ao parceiro URLs pré-assinadas, sem usar bloqueio de concessões públicas na conta",
+        "correta": false,
+        "porque": "As URLs viabilizam acesso temporário, mas não impedem que um bucket receba política ou ACL pública."
+      },
+      {
+        "texto": "Ativar Bucket owner enforced e usar apenas políticas de bucket para as concessões",
+        "correta": false,
+        "porque": "Bucket owner enforced desabilita ACLs; ainda é necessário proteger os buckets contra políticas públicas."
+      }
+    ],
+    "explicacao": "S3 Block Public Access pode impor restrições na conta. Uma política que concede acesso a uma IAM role fixa e não contém concessões públicas pode coexistir com esse controle, desde que o acesso autorizado esteja configurado nos dois lados.",
+    "servicos": [
+      "S3",
+      "IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html"
+  },
+  {
+    "id": "D2-advb-014",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Administradores usam IAM users cuja autenticação tem MFA. A empresa quer que o segundo fator não possa ser capturado e reaproveitado por uma página falsa que imite o login da AWS. Qual opção de MFA atende?",
+    "alternativas": [
+      {
+        "texto": "Dispositivo de hardware TOTP entregue a cada administrador",
+        "correta": false,
+        "porque": "O dispositivo gera códigos TOTP, que podem ser digitados em uma página falsa e reutilizados."
+      },
+      {
+        "texto": "Aplicativo autenticador virtual em celulares corporativos gerenciados",
+        "correta": false,
+        "porque": "Gerenciar o celular não muda o fato de o código TOTP ser digitável em outro site."
+      },
+      {
+        "texto": "Dois dispositivos MFA virtuais registrados por administrador",
+        "correta": false,
+        "porque": "Dispositivos adicionais melhoram a recuperação, mas os códigos virtuais continuam sem vínculo com o site."
+      },
+      {
+        "texto": "Chave de segurança FIDO2 conectada ao computador do administrador",
+        "correta": true,
+        "porque": "A credencial FIDO2 é vinculada à origem legítima, então uma página falsa não obtém uma resposta válida."
+      }
+    ],
+    "explicacao": "O fator FIDO2 reduz o risco de phishing por vincular a credencial à origem. Tokens físicos e aplicativos TOTP têm formatos diferentes, mas ambos geram códigos digitáveis, e registrar mais dispositivos não muda essa propriedade.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html"
+  },
+  {
+    "id": "D2-advb-015",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 8,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Com o acesso root centralizado já habilitado no AWS Organizations, uma empresa quer eliminar o login direto de root nas contas-membro que ainda têm credenciais. Também precisa preservar a execução autorizada de tarefas privilegiadas compatíveis nas contas-membro. Quais ações atendem, cada uma, a um desses objetivos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Trocar as senhas de root das contas-membro e guardá-las em um cofre central.",
+        "correta": false,
+        "porque": "O cofre muda a custódia das senhas, mas preserva credenciais de login direto."
+      },
+      {
+        "texto": "Remover as credenciais de root existentes das contas-membro pelo gerenciamento central.",
+        "correta": true,
+        "porque": "Sem as credenciais de root, o login direto nessas contas não fica disponível."
+      },
+      {
+        "texto": "Atribuir acesso administrativo comum aos operadores pelo IAM Identity Center.",
+        "correta": false,
+        "porque": "Acesso administrativo não se torna uma sessão root para tarefas que exigem esse nível de privilégio."
+      },
+      {
+        "texto": "Restaurar a recuperação de senha do root das contas-membro como acesso de plantão.",
+        "correta": false,
+        "porque": "Essa opção reabre um caminho para login direto, que a empresa quer eliminar."
+      },
+      {
+        "texto": "Autorizar operadores centrais a solicitar sessões root temporárias com escopo de tarefa.",
+        "correta": true,
+        "porque": "Sessões privilegiadas de curta duração permitem executar operações root compatíveis sem manter credenciais permanentes na conta-membro."
+      }
+    ],
+    "explicacao": "O acesso root centralizado separa a remoção de credenciais permanentes nas contas-membro da autorização para executar tarefas privilegiadas com sessões de curta duração e escopo limitado.",
+    "servicos": [
+      "IAM",
+      "Organizations",
+      "STS",
+      "IAM Identity Center"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html"
+  },
+  {
+    "id": "D2-advb-016",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma equipe já filtra requisições no Amazon CloudFront com o AWS WAF. Ela precisa aplicar os mesmos critérios a uma segunda aplicação que recebe tráfego diretamente em um Application Load Balancer regional, sem passar pelo CloudFront. Como deve organizar as ACLs web?",
+    "alternativas": [
+      {
+        "texto": "Manter a ACL do CloudFront e associar a mesma ACL ao Application Load Balancer",
+        "correta": false,
+        "porque": "Uma ACL de escopo CloudFront não pode ser associada a um recurso regional."
+      },
+      {
+        "texto": "Criar uma ACL regional e migrar as duas aplicações para essa ACL",
+        "correta": false,
+        "porque": "Uma distribuição CloudFront não pode usar uma ACL de escopo regional."
+      },
+      {
+        "texto": "Manter a ACL do CloudFront e criar outra equivalente, regional, para o Application Load Balancer",
+        "correta": true,
+        "porque": "Cada ponto de entrada recebe uma ACL compatível com o seu escopo, preservando os critérios de filtragem."
+      },
+      {
+        "texto": "Manter a ACL no CloudFront e replicar os critérios no security group do Application Load Balancer",
+        "correta": false,
+        "porque": "O security group controla conexões por parâmetros de rede, não os atributos HTTP avaliados pelo WAF."
+      }
+    ],
+    "explicacao": "As ACLs web para CloudFront têm escopo distinto das ACLs para recursos regionais. Os mesmos critérios HTTP podem ser configurados nos dois escopos, mas não com uma única ACL compartilhada.",
+    "servicos": [
+      "WAF",
+      "CloudFront",
+      "Elastic Load Balancing",
+      "VPC"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-associating-aws-resource.html"
+  },
+  {
+    "id": "D2-advb-017",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Clientes enviam anexos a um bucket do Amazon S3 já escolhido para receber uploads. A equipe quer examinar automaticamente os novos objetos elegíveis em busca de malware, sem operar servidores de análise. Qual recurso atende?",
+    "alternativas": [
+      {
+        "texto": "Malware Protection for S3 do Amazon GuardDuty",
+        "correta": true,
+        "porque": "O recurso verifica novos objetos no bucket protegido em busca de conteúdo malicioso."
+      },
+      {
+        "texto": "S3 Protection do Amazon GuardDuty",
+        "correta": false,
+        "porque": "O recurso analisa atividade das APIs do S3 para detectar comportamento suspeito; não examina o conteúdo dos arquivos."
+      },
+      {
+        "texto": "Descoberta automatizada de dados confidenciais do Amazon Macie",
+        "correta": false,
+        "porque": "A descoberta busca dados sensíveis; não classifica arquivos como malware."
+      },
+      {
+        "texto": "Varredura de instâncias EC2 do Amazon Inspector",
+        "correta": false,
+        "porque": "A varredura de instâncias procura vulnerabilidades em workloads elegíveis, não malware em novos objetos do bucket."
+      }
+    ],
+    "explicacao": "Malware Protection for S3 examina o conteúdo de objetos novos. S3 Protection observa atividade de acesso e o Macie classifica dados confidenciais, que são objetivos diferentes.",
+    "servicos": [
+      "GuardDuty",
+      "S3",
+      "Macie",
+      "Inspector"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/guardduty/latest/ug/gdu-malware-protection-s3.html"
+  },
+  {
+    "id": "D2-advb-018",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma distribuição do Amazon CloudFront já está protegida pelo AWS Shield Advanced e tem uma ACL web do AWS WAF. Durante um ataque de camada de aplicação, a operação não quer depender de uma pessoa para analisar o tráfego e escrever regras. O que deve habilitar?",
+    "alternativas": [
+      {
+        "texto": "Uma regra de taxa do AWS WAF com limite fixo por endereço de origem",
+        "correta": false,
+        "porque": "A regra controla tráfego segundo um limite definido pela equipe; não habilita as regras que o Shield pode aplicar com base no evento detectado."
+      },
+      {
+        "texto": "A mitigação de camada de aplicação do Shield Advanced em modo de bloqueio",
+        "correta": true,
+        "porque": "O Shield Advanced pode gerenciar regras de mitigação na ACL web compatível para bloquear tráfego associado ao ataque."
+      },
+      {
+        "texto": "Um health check do Amazon Route 53 associado à proteção do Shield Advanced",
+        "correta": false,
+        "porque": "O health check acrescenta um sinal sobre a saúde do recurso, mas não habilita a criação automática dessas regras."
+      },
+      {
+        "texto": "A correção de associações de ACL web por uma política do Firewall Manager",
+        "correta": false,
+        "porque": "A aplicação de uma política garante a associação esperada, mas não habilita a mitigação dinâmica do Shield na distribuição."
+      }
+    ],
+    "explicacao": "Em um recurso compatível protegido pelo Shield Advanced, a mitigação automática de camada de aplicação usa uma ACL web do AWS WAF para lidar com padrões de tráfego identificados pelo Shield. O modo de bloqueio permite agir em vez de apenas observar.",
+    "servicos": [
+      "Shield",
+      "WAF",
+      "CloudFront",
+      "Route 53",
+      "Firewall Manager"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-automatic-app-layer-response.html"
+  },
+  {
+    "id": "D2-advb-019",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma equipe protege sua aplicação com AWS WAF e escolheu um fornecedor de segurança listado no AWS Marketplace. Ela quer que as regras desse fornecedor passem a filtrar o tráfego na proteção atual, com as atualizações feitas pelo próprio fornecedor e sem operar outro firewall. Como deve adquirir a proteção?",
+    "alternativas": [
+      {
+        "texto": "Comprar a AMI de firewall do fornecedor e posicioná-la à frente da aplicação",
+        "correta": false,
+        "porque": "Uma imagem entrega um firewall separado para operar; não incorpora as regras do fornecedor ao AWS WAF existente."
+      },
+      {
+        "texto": "Assinar o produto do fornecedor e copiar suas regras como regras personalizadas",
+        "correta": false,
+        "porque": "As regras copiadas pela equipe não acompanham automaticamente as atualizações do fornecedor."
+      },
+      {
+        "texto": "Habilitar um grupo de regras gerenciadas da AWS e contratar à parte o suporte do fornecedor",
+        "correta": false,
+        "porque": "O grupo da AWS é mantido pela AWS, não pelo fornecedor escolhido."
+      },
+      {
+        "texto": "Assinar o grupo de regras gerenciadas do fornecedor e referenciá-lo na ACL web atual",
+        "correta": true,
+        "porque": "A assinatura permite usar na ACL web o grupo mantido pelo fornecedor, sem implantar um appliance."
+      }
+    ],
+    "explicacao": "O Marketplace oferece grupos gerenciados de terceiros para o AWS WAF, além de produtos que exigem implantação separada. A assinatura do grupo permite usá-lo diretamente na ACL web.",
+    "servicos": [
+      "AWS Marketplace",
+      "WAF"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-managed-rule-groups.html"
+  },
+  {
+    "id": "D2-advb-020",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 8,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Após ativar uma regra em uma ACL web, a equipe quer um alarme quando o volume de bloqueios subir. Ela também precisa investigar uma requisição que pode não aparecer na amostra do console, identificando a regra que determinou o bloqueio. Quais recursos do AWS WAF atendem, cada um, a um desses objetivos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Métricas de bloqueio publicadas no Amazon CloudWatch.",
+        "correta": true,
+        "porque": "As métricas agregam contagens de bloqueios e podem alimentar um alarme."
+      },
+      {
+        "texto": "Visão de requisições amostradas no console do AWS WAF.",
+        "correta": false,
+        "porque": "A amostra pode mostrar detalhes, mas a requisição que precisa ser investigada pode não estar nela."
+      },
+      {
+        "texto": "Métricas de proteção contra DDoS associadas ao recurso protegido.",
+        "correta": false,
+        "porque": "Sinais de DDoS não representam a contagem de bloqueios da regra da ACL web nem fornecem a decisão por requisição."
+      },
+      {
+        "texto": "Logs da ACL web configurados para incluir as requisições bloqueadas.",
+        "correta": true,
+        "porque": "Os logs contêm detalhes por requisição e identificam a regra terminante que determinou o bloqueio."
+      },
+      {
+        "texto": "Histórico de alterações das regras da ACL web no AWS CloudTrail.",
+        "correta": false,
+        "porque": "O histórico registra alterações administrativas; não mostra quais requisições foram bloqueadas por uma regra."
+      }
+    ],
+    "explicacao": "Métricas do CloudWatch acompanham o volume e servem como entrada para alarmes. Os logs do AWS WAF dão a evidência por requisição que uma amostra ou métrica agregada não garante.",
+    "servicos": [
+      "WAF",
+      "CloudWatch",
+      "CloudTrail",
+      "Shield"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/waf/latest/developerguide/logging-fields.html"
+  },
+  {
+    "id": "D2-advb-021",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma IAM role é usada por prestadores em janelas curtas de manutenção. Depois de descobrir que credenciais temporárias foram copiadas, a equipe já suspendeu novas sessões e precisa invalidar as credenciais já emitidas antes que expirem. Qual ação atende diretamente?",
+    "alternativas": [
+      {
+        "texto": "Reduzir a duração máxima das sessões da IAM role",
+        "correta": false,
+        "porque": "Alterar a duração máxima afeta novas sessões, não o vencimento das credenciais já emitidas."
+      },
+      {
+        "texto": "Remover da confiança da role o provedor usado pelos prestadores",
+        "correta": false,
+        "porque": "A confiança rege novas solicitações para assumir a role, não as sessões já iniciadas."
+      },
+      {
+        "texto": "Remover a permissão de assumir a role da identidade de origem",
+        "correta": false,
+        "porque": "Isso impede novas tentativas pela identidade, mas não invalida suas credenciais temporárias já emitidas."
+      },
+      {
+        "texto": "Revogar as sessões ativas da IAM role",
+        "correta": true,
+        "porque": "O IAM pode negar o uso das credenciais das sessões emitidas antes da revogação."
+      }
+    ],
+    "explicacao": "Impedir novas sessões e invalidar as existentes são controles diferentes. A revogação na role aplica uma negação às sessões abrangidas sem esperar que as credenciais cheguem ao vencimento.",
+    "servicos": [
+      "IAM",
+      "STS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_revoke-sessions.html"
+  },
+  {
+    "id": "D2-advb-022",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "O time de segurança investiga um bucket do Amazon S3 que nunca foi compartilhado fora da organização. Antes de aprovar a migração de dados, ele quer identificar quais IAM users e roles da própria organização têm acesso ao bucket pelas políticas vigentes, mesmo sem tê-lo acessado ainda. Qual recurso deve usar?",
+    "alternativas": [
+      {
+        "texto": "Análise de acesso interno do IAM Access Analyzer para o bucket",
+        "correta": true,
+        "porque": "A análise avalia políticas para identificar caminhos de acesso de identidades de dentro da zona de confiança a recursos especificados."
+      },
+      {
+        "texto": "Análise de acesso externo do IAM Access Analyzer no nível da organização",
+        "correta": false,
+        "porque": "Ela sinaliza acesso vindo de fora da organização, não as identidades internas que o time precisa identificar."
+      },
+      {
+        "texto": "Relatório de último acesso de serviço disponível no IAM",
+        "correta": false,
+        "porque": "A informação histórica mostra tentativas de acesso ao serviço, não quem ainda pode acessar aquele bucket."
+      },
+      {
+        "texto": "Histórico de eventos de dados do Amazon S3 registrado no AWS CloudTrail",
+        "correta": false,
+        "porque": "O histórico mostra operações que ocorreram, não permissões existentes para identidades que ainda não fizeram chamadas."
+      }
+    ],
+    "explicacao": "A análise de acesso interno verifica as políticas para revelar acesso potencial ao recurso a partir da zona de confiança. Eventos históricos e achados de acesso externo respondem a perguntas diferentes.",
+    "servicos": [
+      "IAM",
+      "S3",
+      "CloudTrail"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-findings.html"
+  },
+  {
+    "id": "D2-advb-023",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Um IAM user legado entra no console com senha e é usado por uma integração com uma access key ativa. A senha expirou pela política do IAM, o usuário tem permissão para trocar a própria senha e a chave não foi alterada. O que acontece na próxima tentativa de uso dessas credenciais?",
+    "alternativas": [
+      {
+        "texto": "O console volta a aceitar a senha se a integração usar a access key com sucesso.",
+        "correta": false,
+        "porque": "O uso programático não renova a senha que expirou."
+      },
+      {
+        "texto": "As duas credenciais precisam de troca porque a expiração é da identidade.",
+        "correta": false,
+        "porque": "A expiração é da senha, não de todas as credenciais do usuário."
+      },
+      {
+        "texto": "O console exige a troca da senha, e a integração pode seguir usando a access key ativa.",
+        "correta": true,
+        "porque": "A política de senha não afeta as chaves de acesso do IAM user."
+      },
+      {
+        "texto": "A access key fica suspensa até que a senha do console seja substituída.",
+        "correta": false,
+        "porque": "O estado da chave não fica condicionado à renovação da senha."
+      }
+    ],
+    "explicacao": "Senhas do console e access keys têm ciclos de vida distintos. O vencimento da senha bloqueia o uso normal do console até a alteração, mas não faz a rotação nem desativa a chave de acesso.",
+    "servicos": [
+      "IAM"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html"
+  },
+  {
+    "id": "D2-advb-024",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma equipe mantém um parâmetro avançado de configuração no AWS Systems Manager Parameter Store. Times de outras contas devem lê-lo, enquanto o proprietário continua sendo o único que pode alterá-lo. As aplicações devem usar suas identidades de origem, e mudanças futuras não podem exigir sincronizar cópias. Qual abordagem atende?",
+    "alternativas": [
+      {
+        "texto": "Criar um parâmetro local por conta e usar a mesma política IAM para ler as cópias",
+        "correta": false,
+        "porque": "Padronizar quem lê as cópias não mantém seus valores sincronizados com o original."
+      },
+      {
+        "texto": "Compartilhar o parâmetro avançado pelo AWS Resource Access Manager com as contas consumidoras",
+        "correta": true,
+        "porque": "As contas autorizadas podem ler o parâmetro mantido no proprietário, com permissões apropriadas em suas identidades."
+      },
+      {
+        "texto": "Conceder acesso de leitura ao parâmetro a uma role assumível na conta proprietária",
+        "correta": false,
+        "porque": "A leitura usa o mesmo parâmetro, mas as aplicações teriam de assumir credenciais em outra conta."
+      },
+      {
+        "texto": "Adicionar o parâmetro a um agrupamento do AWS Organizations com as contas consumidoras",
+        "correta": false,
+        "porque": "Ter contas na mesma organização não compartilha automaticamente um parâmetro entre elas."
+      }
+    ],
+    "explicacao": "Um parâmetro avançado compartilhado pelo AWS RAM continua sob controle do proprietário. Os consumidores autorizados leem o valor compartilhado, não variações locais copiadas do original.",
+    "servicos": [
+      "Systems Manager",
+      "Resource Access Manager",
+      "IAM",
+      "Organizations"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html"
+  },
+  {
+    "id": "D2-advb-025",
+    "dominio": 2,
+    "task": "2.3",
+    "rodada": 9,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Antes de publicar uma nova versão de uma política de identidade, uma revisão automatizada do IAM Access Analyzer deve garantir duas coisas: que ela não conceda nada além da versão em produção e que ela não conceda a exclusão de trilhas do CloudTrail nem a criação de usuários IAM, ainda que a versão em produção já as conceda. Quais verificações, combinadas, atendem às duas garantias? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Comparar a política proposta com a versão em vigor para detectar permissões acrescentadas.",
+        "correta": true,
+        "porque": "A comparação detecta acesso acrescentado em relação à política de referência."
+      },
+      {
+        "texto": "Gerar uma política a partir da atividade registrada no AWS CloudTrail.",
+        "correta": false,
+        "porque": "A geração sugere permissões com base no uso; não verifica as duas condições sobre a política proposta."
+      },
+      {
+        "texto": "Revisar achados de acesso externo para recursos compartilhados fora da organização.",
+        "correta": false,
+        "porque": "Achados externos não detectam todas as ampliações de permissões de uma política de identidade proposta."
+      },
+      {
+        "texto": "Executar a validação de políticas para checar a gramática e as boas práticas do IAM.",
+        "correta": false,
+        "porque": "A validação geral não compara com a política em vigor nem verifica uma lista de ações proibidas definida pela empresa."
+      },
+      {
+        "texto": "Testar a política proposta contra uma lista de ações que ela não deve permitir.",
+        "correta": true,
+        "porque": "A verificação por ações especificadas detecta a permissão proibida mesmo quando ela já existia na versão em vigor."
+      }
+    ],
+    "explicacao": "As verificações personalizadas do IAM Access Analyzer permitem comparar o acesso de duas políticas ou testar se uma política concede ações específicas. Não adicionar acesso novo não é evidência de que uma permissão antiga indesejada tenha sido retirada.",
+    "servicos": [
+      "IAM",
+      "CloudTrail"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-custom-policy-checks.html"
+  },
+  {
+    "id": "D2-advb-026",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma conta AWS vai passar por uma revisão preventiva antes da entrada em produção. A equipe quer começar por uma lista pronta de recomendações de segurança e de otimização de custos da própria conta, sem desenvolver regras nem investigar atividade maliciosa. Qual recurso usar primeiro?",
+    "alternativas": [
+      {
+        "texto": "Padrões de segurança do AWS Security Hub CSPM",
+        "correta": false,
+        "porque": "Os padrões tratam de postura de segurança, não da lista combinada de segurança e otimização de custos."
+      },
+      {
+        "texto": "Pacotes de conformidade do AWS Config",
+        "correta": false,
+        "porque": "Os pacotes avaliam regras de configuração selecionadas, não oferecem por si a lista combinada de recomendações solicitada."
+      },
+      {
+        "texto": "Verificações do AWS Trusted Advisor",
+        "correta": true,
+        "porque": "O Trusted Advisor oferece verificações e recomendações de boas práticas em categorias que incluem segurança e custos."
+      },
+      {
+        "texto": "Recomendações do AWS Compute Optimizer",
+        "correta": false,
+        "porque": "O Compute Optimizer recomenda ajustes nos recursos compatíveis, mas não cobre a revisão de configuração de segurança da conta."
+      }
+    ],
+    "explicacao": "O Trusted Advisor é o ponto de partida para verificações prontas em várias categorias, como segurança e otimização de custos. Ferramentas especializadas complementam a revisão quando é preciso aprofundar um desses temas.",
+    "servicos": [
+      "Trusted Advisor",
+      "Security Hub CSPM",
+      "Config",
+      "Compute Optimizer"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html"
+  },
+  {
+    "id": "D2-advb-027",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma equipe publica imagens de contêineres em um repositório privado do Amazon ECR. As imagens elegíveis podem ficar semanas sem novo envio; se surgir uma vulnerabilidade conhecida em um pacote, a equipe quer que o risco seja reavaliado mesmo sem enviar a imagem novamente. Qual opção atende?",
+    "alternativas": [
+      {
+        "texto": "Varredura aprimorada contínua das imagens do ECR com Amazon Inspector",
+        "correta": true,
+        "porque": "A varredura aprimorada contínua reavalia imagens cobertas quando surgem novas informações de vulnerabilidade relevantes."
+      },
+      {
+        "texto": "Varredura básica das imagens do ECR a cada envio",
+        "correta": false,
+        "porque": "O novo envio aciona a verificação; uma imagem que não é enviada novamente não ganha reavaliação contínua por esse ajuste."
+      },
+      {
+        "texto": "Varredura aprimorada das imagens do ECR com frequência limitada ao envio",
+        "correta": false,
+        "porque": "O modo aprimorado pode ser configurado apenas no envio, o que não atende ao requisito de nova avaliação sem envio."
+      },
+      {
+        "texto": "Monitoramento de runtime do GuardDuty nas cargas que usam as imagens",
+        "correta": false,
+        "porque": "O recurso observa comportamento de cargas em execução, não reavalia pacotes de imagens armazenadas conforme novas vulnerabilidades são publicadas."
+      }
+    ],
+    "explicacao": "No ECR, varredura aprimorada e frequência contínua são escolhas complementares. A integração com o Inspector reavalia as imagens elegíveis mesmo sem um novo envio quando surgem informações relevantes de vulnerabilidade.",
+    "servicos": [
+      "Elastic Container Registry",
+      "Inspector",
+      "GuardDuty"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning-enhanced.html"
+  },
+  {
+    "id": "D2-advb-028",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "O AWS Security Hub CSPM está habilitado em três Regiões e já recebe achados dos serviços de segurança em cada uma. Os analistas precisam consultar no próprio Security Hub CSPM as atualizações de todas essas Regiões a partir de uma Região de referência, sem mover os detectores. Qual configuração atende?",
+    "alternativas": [
+      {
+        "texto": "Usar a mesma conta de administração delegada nas três Regiões",
+        "correta": false,
+        "porque": "Centralizar a administração por conta não configura a cópia dos achados entre Regiões."
+      },
+      {
+        "texto": "Definir uma Região de agregação e vincular a ela as outras duas",
+        "correta": true,
+        "porque": "A agregação disponibiliza na Região inicial os achados e as atualizações das Regiões vinculadas."
+      },
+      {
+        "texto": "Exportar os achados das três Regiões para o mesmo bucket do S3",
+        "correta": false,
+        "porque": "Uma exportação pode centralizar arquivos, mas não faz os achados aparecerem na visão regional do Security Hub CSPM."
+      },
+      {
+        "texto": "Habilitar os mesmos padrões de segurança nas três Regiões ativas",
+        "correta": false,
+        "porque": "Padronizar verificações não distribui os achados já recebidos de uma Região para outra."
+      }
+    ],
+    "explicacao": "A agregação entre Regiões do Security Hub CSPM replica achados das Regiões vinculadas para uma Região inicial. Ela complementa a delegação administrativa, que consolida responsabilidades entre contas, não entre Regiões.",
+    "servicos": [
+      "Security Hub CSPM",
+      "S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation.html"
+  },
+  {
+    "id": "D2-advb-029",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma aplicação move o tráfego legítimo de um Application Load Balancer para outro a cada implantação. Ambos já são protegidos pelo AWS Shield Advanced, mas os picos repentinos em um único balanceador geram falsos positivos. Como usar o tráfego combinado dos dois recursos na detecção do próprio Shield?",
+    "alternativas": [
+      {
+        "texto": "Associar um health check do Route 53 à proteção de cada balanceador",
+        "correta": false,
+        "porque": "Os sinais de saúde podem enriquecer a avaliação de cada recurso, mas não combinam o tráfego dos balanceadores."
+      },
+      {
+        "texto": "Somar as métricas dos balanceadores em um alarme do CloudWatch com agregação Sum",
+        "correta": false,
+        "porque": "O alarme pode observar os dois recursos, mas não altera como o Shield detecta eventos."
+      },
+      {
+        "texto": "Associar os balanceadores à mesma ACL web e padronizar as regras de taxa",
+        "correta": false,
+        "porque": "A ACL padroniza a filtragem das requisições, mas não configura a detecção conjunta no Shield Advanced."
+      },
+      {
+        "texto": "Colocar os balanceadores no mesmo grupo de proteção do Shield Advanced",
+        "correta": true,
+        "porque": "Um grupo permite avaliar o tráfego agregado dos recursos protegidos para lidar com picos individuais em trocas de tráfego."
+      }
+    ],
+    "explicacao": "Grupos de proteção permitem que o Shield Advanced avalie recursos protegidos como um conjunto. Quando os balanceadores alternam a carga, o tráfego combinado pode ser estável mesmo que cada um apresente grandes variações.",
+    "servicos": [
+      "Shield",
+      "Route 53",
+      "WAF",
+      "CloudWatch",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-protection-groups.html"
+  },
+  {
+    "id": "D2-advb-030",
+    "dominio": 2,
+    "task": "2.4",
+    "rodada": 9,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa já usa o monitoramento fundamental do Amazon GuardDuty. Ela quer acrescentar detecção de tentativas suspeitas de login em uma instância RDS compatível e de chamadas suspeitas à API do Kubernetes de um cluster Amazon EKS. Quais planos de proteção fornecem esses sinais específicos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "RDS Protection, para analisar atividade de login no banco de dados.",
+        "correta": true,
+        "porque": "Esse plano examina eventos de login em bancos RDS compatíveis em busca de atividade anômala."
+      },
+      {
+        "texto": "Runtime Monitoring para EKS, para analisar a atividade dos processos nos nós.",
+        "correta": false,
+        "porque": "Observar processos nos nós não substitui a análise dos logs de auditoria da API do Kubernetes."
+      },
+      {
+        "texto": "EKS Protection, para analisar os logs de auditoria do Kubernetes.",
+        "correta": true,
+        "porque": "Esse plano usa os logs de auditoria do plano de controle do EKS para detectar atividade suspeita na API do Kubernetes."
+      },
+      {
+        "texto": "Lambda Protection, para analisar a atividade de rede das funções que consultam o banco.",
+        "correta": false,
+        "porque": "Sinais de rede das funções não são eventos de autenticação registrados pelo banco de dados."
+      },
+      {
+        "texto": "Análise de eventos de gerenciamento do CloudTrail para o RDS e o EKS.",
+        "correta": false,
+        "porque": "Esses eventos registram operações das APIs da AWS, não logins no banco ou chamadas à API do Kubernetes."
+      }
+    ],
+    "explicacao": "RDS Protection avalia a atividade de login do banco. EKS Protection acrescenta os logs de auditoria do Kubernetes, distintos dos eventos de runtime dos processos que integram as cargas.",
+    "servicos": [
+      "GuardDuty",
+      "RDS",
+      "Elastic Kubernetes Service",
+      "Lambda",
+      "CloudTrail"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+  }
+]

@@ -24,13 +24,13 @@ Each simulation is followed by a per-alternative explanation. Success means arri
 
 ## Positioning
 
-A sanitized and validated question bank of 405 questions. The bank carries:
+A validated question bank of 600 questions, including 195 original questions for three advanced practice exams. The bank carries:
 - current naming (support plans Business Support+ / Unified Operations, Amazon Quick, WorkSpaces Applications);
 - an out-of-scope list from the official guide;
 - answer keys reviewed adversarially.
 
 On top of it:
-- 6 fixed exams with no repeated questions;
+- 9 fixed exams with no repeated questions, including three advanced rounds (S7–S9);
 - random exams stratified by domain;
 - a mistakes notebook.
 
@@ -61,7 +61,7 @@ The user explicitly allowed creativity for correct/incorrect states "as long as 
 
 ## Evidence on Hand
 
-Real bank of 405 questions with justifications (`banco/`), official guide (`docs/01-escopo-oficial-clf-c02.md`). There is no real performance data: history only exists once the user takes exams.
+Bank of 600 practice questions with justifications (`banco/`), with official AWS references for the 195 advanced items and scope mapped to the CLF-C02 exam guide (`docs/01-escopo-oficial-clf-c02.md`). There is no real performance data: history only exists once the user takes exams.
 
 ## Product Principles
 

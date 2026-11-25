@@ -1,0 +1,934 @@
+[
+  {
+    "id": "D3-adva-001",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Uma equipe vai alterar uma stack do AWS CloudFormation que já está em produção. A aprovação depende de saber se a alteração proposta substituirá algum recurso existente, sem aplicar a mudança para descobrir. O que a equipe deve usar para embasar a revisão?",
+    "alternativas": [
+      {
+        "texto": "Uma análise de desvio da stack em produção",
+        "correta": false,
+        "porque": "O desvio compara o estado atual com o esperado, não antecipa o efeito da alteração proposta."
+      },
+      {
+        "texto": "Um change set para a atualização da stack",
+        "correta": true,
+        "porque": "O change set indica se a proposta pode substituir recursos antes de a atualização ser executada."
+      },
+      {
+        "texto": "Uma validação isolada do novo template",
+        "correta": false,
+        "porque": "Validar o template não compara sua aplicação à stack atual para determinar possíveis substituições."
+      },
+      {
+        "texto": "O histórico de eventos da stack em produção",
+        "correta": false,
+        "porque": "Os eventos descrevem operações da stack; não são uma previsão de uma atualização futura."
+      }
+    ],
+    "explicacao": "Um change set permite revisar o impacto previsto no contexto da stack existente. Ele não aplica a atualização nem garante que sua execução terá sucesso.",
+    "servicos": [
+      "AWS CloudFormation"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html"
+  },
+  {
+    "id": "D3-adva-002",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma fábrica precisa avaliar as medições de cada etapa antes de liberar a próxima, inclusive durante quedas de internet. A diretoria também quer consolidar os totais de várias fábricas usando a plataforma analítica já disponível na AWS; essa consolidação pode esperar pela volta da conexão. Quais decisões atendem aos requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Processar localmente as medições que condicionam a liberação da produção",
+        "correta": true,
+        "porque": "A operação da fábrica pode tomar a decisão mesmo sem alcançar um serviço na nuvem."
+      },
+      {
+        "texto": "Enviar as medições à AWS para a validação que autoriza a próxima etapa",
+        "correta": false,
+        "porque": "Essa validação colocaria a conectividade externa no caminho crítico da operação local."
+      },
+      {
+        "texto": "Manter a consolidação em cada fábrica e usar a AWS para arquivar os totais",
+        "correta": false,
+        "porque": "Arquivar resultados na AWS não usa a plataforma analítica para consolidar as várias fábricas."
+      },
+      {
+        "texto": "Consolidar os totais na AWS após o recebimento dos dados das fábricas",
+        "correta": true,
+        "porque": "A consolidação usa a plataforma existente e aceita o atraso causado pela indisponibilidade da rede."
+      },
+      {
+        "texto": "Usar a última decisão recebida da nuvem para liberar novas etapas durante a interrupção",
+        "correta": false,
+        "porque": "A decisão anterior não avalia as novas medições exigidas para liberar a produção."
+      }
+    ],
+    "explicacao": "A implantação híbrida separa operações com necessidades diferentes: o caminho crítico roda no local e a consolidação tolerante a atraso roda na AWS.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://aws.amazon.com/types-of-cloud-computing/"
+  },
+  {
+    "id": "D3-adva-003",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Dois sistemas estão em contas AWS diferentes, na mesma Região, e precisam ficar em Zonas de Disponibilidade fisicamente distintas. Cada equipe anexou ao relatório a designação de zona que vê em sua conta. Que informação permite verificar a separação sem assumir que essas designações têm o mesmo mapeamento?",
+    "alternativas": [
+      {
+        "texto": "A letra no final do nome da zona em cada conta",
+        "correta": false,
+        "porque": "O mapeamento dos nomes de zona pode divergir entre contas."
+      },
+      {
+        "texto": "O identificador de cada sub-rede das aplicações",
+        "correta": false,
+        "porque": "Sub-redes com identificadores diferentes podem pertencer à mesma zona física."
+      },
+      {
+        "texto": "O AZ ID associado à zona em cada conta",
+        "correta": true,
+        "porque": "O AZ ID identifica a mesma localização física entre contas; IDs distintos indicam zonas distintas."
+      },
+      {
+        "texto": "O código da Região selecionada em cada conta",
+        "correta": false,
+        "porque": "A Região é compartilhada pelas zonas e não distingue em qual delas está cada aplicação."
+      }
+    ],
+    "explicacao": "Para comparar o posicionamento físico dentro da mesma Região entre contas AWS, use o AZ ID, que é consistente entre contas mesmo quando o nome visível não é.",
+    "servicos": [
+      "Amazon VPC"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/ram/latest/userguide/working-with-az-ids.html"
+  },
+  {
+    "id": "D3-adva-004",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Uma plataforma de cursos usa uma distribuição do Amazon CloudFront. Requisições encaminhadas ao mesmo ponto de presença têm latências diferentes: arquivos populares são entregues rapidamente, mas um arquivo recém-publicado demorou mais no primeiro acesso. Qual interpretação explica os resultados sem supor que a distribuição mudou de Região?",
+    "alternativas": [
+      {
+        "texto": "O ponto de presença amplia sua capacidade conforme o arquivo fica mais popular",
+        "correta": false,
+        "porque": "O contraste descrito é explicado pela presença ou ausência do objeto em cache, não por uma expansão de capacidade por arquivo."
+      },
+      {
+        "texto": "O ponto de presença muda a origem do arquivo após a primeira solicitação",
+        "correta": false,
+        "porque": "Uma nova solicitação não altera por si só a configuração da origem da distribuição."
+      },
+      {
+        "texto": "O ponto de presença recebe os arquivos novos em sincronia com a publicação na origem",
+        "correta": false,
+        "porque": "Publicar um arquivo na origem não o distribui imediatamente aos caches da rede."
+      },
+      {
+        "texto": "O ponto de presença atende acertos localmente e encaminha faltas a montante",
+        "correta": true,
+        "porque": "Um acerto evita a busca adicional; uma falta segue para outro cache, quando aplicável, ou para a origem."
+      }
+    ],
+    "explicacao": "A proximidade do ponto de presença reduz parte da latência. Quando o objeto não está no cache que atende a requisição, a busca na cadeia até a origem pode acrescentar tempo.",
+    "servicos": [
+      "Amazon CloudFront"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html"
+  },
+  {
+    "id": "D3-adva-005",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Terminais de uma parceira abrem conexões TCP com um protocolo que não usa HTTP. A empresa precisa de um balanceador gerenciado para distribuir essas conexões entre instâncias Amazon EC2 saudáveis e de endereços IP estáticos no próprio balanceador para a lista de permissão da parceira. Qual opção se encaixa?",
+    "alternativas": [
+      {
+        "texto": "Network Load Balancer",
+        "correta": true,
+        "porque": "Balanceia conexões TCP e disponibiliza um endereço IP estático por zona habilitada."
+      },
+      {
+        "texto": "Application Load Balancer",
+        "correta": false,
+        "porque": "Trata tráfego de aplicação como HTTP e HTTPS, não o protocolo TCP genérico descrito."
+      },
+      {
+        "texto": "Gateway Load Balancer",
+        "correta": false,
+        "porque": "Distribui tráfego para appliances de rede, não é um listener TCP para clientes desse serviço."
+      },
+      {
+        "texto": "Classic Load Balancer",
+        "correta": false,
+        "porque": "Pode balancear TCP, mas não oferece os endereços IP estáticos exigidos para o balanceador."
+      }
+    ],
+    "explicacao": "O protocolo TCP sem HTTP e a necessidade de endereços fixos no balanceador indicam um Network Load Balancer. O suporte a TCP, sozinho, não satisfaz o segundo requisito.",
+    "servicos": [
+      "Amazon EC2",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html"
+  },
+  {
+    "id": "D3-adva-006",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Um serviço usa AWS Lambda para validar requisições independentes. Durante os picos, cada validação continua rápida e usa pouca memória, mas a equipe observa rejeições ao atingir o limite de execuções simultâneas. Qual decisão trata a causa indicada?",
+    "alternativas": [
+      {
+        "texto": "Dar mais memória a cada ambiente de execução",
+        "correta": false,
+        "porque": "Memória muda os recursos de uma execução; não eleva o limite de execuções em paralelo."
+      },
+      {
+        "texto": "Rever o limite de concorrência disponível para a função",
+        "correta": true,
+        "porque": "A concorrência limita quantas invocações da função podem ser atendidas ao mesmo tempo."
+      },
+      {
+        "texto": "Aumentar o tempo limite de cada invocação",
+        "correta": false,
+        "porque": "Um tempo limite maior permite execuções mais longas, mas não oferece mais vagas simultâneas."
+      },
+      {
+        "texto": "Manter ambientes inicializados com Provisioned Concurrency",
+        "correta": false,
+        "porque": "Pré-inicializar ambientes reduz atrasos no início, mas não aumenta o teto de concorrência atingido."
+      }
+    ],
+    "explicacao": "Conforme a concorrência disponível, o Lambda executa requisições em paralelo. Rejeições no teto simultâneo pedem revisar a concorrência, e não o tempo ou os recursos de cada execução.",
+    "servicos": [
+      "AWS Lambda"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html"
+  },
+  {
+    "id": "D3-adva-007",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma rotina gravou valores incorretos em um banco Amazon RDS às 14h. A equipe precisa consultar o estado das linhas às 13h59, dentro da janela dos backups automatizados, sem interromper o banco ativo, que já recebeu outras gravações válidas. Qual opção atende aos dois requisitos?",
+    "alternativas": [
+      {
+        "texto": "Direcionar a leitura ao standby de uma implantação Multi-AZ com uma instância de espera",
+        "correta": false,
+        "porque": "O standby não atende consultas e a replicação de alta disponibilidade não preserva uma visão histórica."
+      },
+      {
+        "texto": "Promover uma réplica de leitura existente do banco ativo",
+        "correta": false,
+        "porque": "Promover a réplica não permite escolher um instante passado; as gravações incorretas podem já ter chegado."
+      },
+      {
+        "texto": "Restaurar o ponto no tempo desejado em uma nova instância",
+        "correta": true,
+        "porque": "O RDS recupera o estado do instante selecionado em uma instância separada do banco ativo."
+      },
+      {
+        "texto": "Restaurar o snapshot manual do começo do dia em uma nova instância",
+        "correta": false,
+        "porque": "A nova instância preservaria o banco ativo, mas o snapshot representa o começo do dia, não 13h59."
+      }
+    ],
+    "explicacao": "A restauração para um ponto no tempo é apropriada para consultar o estado anterior a um erro lógico sem reverter as transações posteriores no banco de produção.",
+    "servicos": [
+      "Amazon RDS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html"
+  },
+  {
+    "id": "D3-adva-008",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Cupons do Amazon DynamoDB deixam de valer no horário gravado em cada item. A aplicação precisa recusar um cupom vencido de imediato, mas a exclusão física pode ocorrer nos dias seguintes sem uma rotina própria de limpeza. Quais decisões atendem aos requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Usar leitura fortemente consistente para dispensar a verificação de validade",
+        "correta": false,
+        "porque": "A consistência da leitura não força a remoção de um item nem garante que ele ainda seja válido."
+      },
+      {
+        "texto": "Verificar na aplicação a validade do cupom mesmo se o item ainda existir",
+        "correta": true,
+        "porque": "Isso impede usar um cupom vencido durante o intervalo entre a expiração e a exclusão."
+      },
+      {
+        "texto": "Atribuir ao cache da aplicação a limpeza dos itens vencidos na tabela",
+        "correta": false,
+        "porque": "Expirar uma entrada de cache, por si só, não exclui o item gravado no DynamoDB."
+      },
+      {
+        "texto": "Usar o horário de expiração como garantia de que uma busca não retornará o item",
+        "correta": false,
+        "porque": "Um item expirado ainda pode aparecer nas leituras até que a exclusão ocorra."
+      },
+      {
+        "texto": "Delegar ao recurso Time to Live a remoção posterior dos itens",
+        "correta": true,
+        "porque": "O recurso Time to Live limpa itens expirados de forma assíncrona, sem um processo próprio de exclusão."
+      }
+    ],
+    "explicacao": "A hora em que a aplicação deixa de aceitar o cupom não precisa ser a hora da remoção física. O DynamoDB TTL cuida da limpeza posterior; a lógica de negócio impõe o vencimento imediato.",
+    "servicos": [
+      "Amazon DynamoDB"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html"
+  },
+  {
+    "id": "D3-adva-009",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Uma auditoria exige evidência de que uma configuração de um recurso do AWS CloudFormation não foi alterada fora da stack. O recurso e a propriedade são compatíveis com a detecção de desvio, mas o template omite essa propriedade e usa o padrão do serviço. Como interpretar um relatório que não aponta desvio nesse recurso?",
+    "alternativas": [
+      {
+        "texto": "O relatório confirma que o valor atual corresponde ao padrão do serviço",
+        "correta": false,
+        "porque": "O CloudFormation não usa automaticamente o valor padrão como referência para essa comparação."
+      },
+      {
+        "texto": "O relatório exclui mudanças feitas no console, mas não mudanças feitas pela API",
+        "correta": false,
+        "porque": "A cobertura depende do que está declarado, e não da interface usada para mudar o recurso."
+      },
+      {
+        "texto": "O relatório cobre a propriedade porque o tipo de recurso permite detectar desvio",
+        "correta": false,
+        "porque": "A compatibilidade do tipo não estende a comparação a propriedades omitidas no template."
+      },
+      {
+        "texto": "O relatório não comprova o estado da propriedade porque seu valor não foi declarado",
+        "correta": true,
+        "porque": "A detecção compara valores de propriedades declarados explicitamente, não valores implícitos por padrão."
+      }
+    ],
+    "explicacao": "Uma stack sem desvio detectado não é evidência de que todos os padrões do serviço continuam intactos. Para acompanhar uma propriedade compatível com detecção de desvio, seu valor esperado deve fazer parte da definição.",
+    "servicos": [
+      "AWS CloudFormation"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html"
+  },
+  {
+    "id": "D3-adva-010",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Três equipes usam AWS CDK e mantêm aplicações com stacks independentes. A plataforma quer publicar um componente que agrupe configuração de armazenamento e monitoramento, aceite parâmetros de cada aplicação e possa ser atualizado sem cada equipe reescrever sua definição. O que a plataforma deve distribuir?",
+    "alternativas": [
+      {
+        "texto": "O template sintetizado e copiado da primeira aplicação",
+        "correta": false,
+        "porque": "Copiar o resultado não compartilha a definição parametrizável do componente no código CDK."
+      },
+      {
+        "texto": "Um construct versionado que encapsule a configuração comum",
+        "correta": true,
+        "porque": "Um construct pode agrupar recursos, aceitar parâmetros e ser compartilhado como código."
+      },
+      {
+        "texto": "Uma stack central com os recursos usados por todas as equipes",
+        "correta": false,
+        "porque": "Centralizar os recursos não permite a cada aplicação instanciar o componente e manter seu próprio ciclo de vida."
+      },
+      {
+        "texto": "Um change set criado para a stack da primeira aplicação",
+        "correta": false,
+        "porque": "Um change set é uma proposta de alteração para uma stack, não um componente reutilizável por aplicações."
+      }
+    ],
+    "explicacao": "Um construct permite reutilizar uma decisão de infraestrutura no código, sem compartilhar o mesmo recurso em execução nem manter cópias manuais da definição.",
+    "servicos": [
+      "AWS CDK",
+      "AWS CloudFormation"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/cdk/v2/guide/constructs.html"
+  },
+  {
+    "id": "D3-adva-011",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "multipla",
+    "selecionar": 3,
+    "enunciado": "Um portal de pedidos tem uma implantação Multi-AZ. A empresa precisa voltar a atender o volume normal de pedidos após a perda de toda a Região primária, sem esperar que ela volte, e manterá um ambiente funcional de capacidade reduzida em outra Região. Quais verificações sustentam esse plano de recuperação? (Selecione TRÊS.)",
+    "alternativas": [
+      {
+        "texto": "A Região primária tem zonas suficientes para criar mais uma cópia da aplicação",
+        "correta": false,
+        "porque": "Capacidade extra na Região primária não fica disponível no cenário de perda da Região inteira."
+      },
+      {
+        "texto": "O ambiente de recuperação consegue usar uma cópia regionalmente independente dos dados",
+        "correta": true,
+        "porque": "O portal precisa acessar seus dados mesmo quando a fonte da Região primária está indisponível."
+      },
+      {
+        "texto": "A capacidade de processamento pode crescer na Região de recuperação para receber a demanda",
+        "correta": true,
+        "porque": "A capacidade reduzida precisa escalar para absorver o tráfego previsto após a interrupção."
+      },
+      {
+        "texto": "O cache do portal nas edge locations permanece habilitado durante a recuperação",
+        "correta": false,
+        "porque": "Servir objetos em cache não recupera os fluxos dinâmicos de pedidos que dependem de uma aplicação funcional."
+      },
+      {
+        "texto": "O tráfego dos usuários pode ser direcionado à Região de recuperação",
+        "correta": true,
+        "porque": "A existência da aplicação na segunda Região não faz com que os usuários passem a alcançá-la por si só."
+      },
+      {
+        "texto": "O ambiente de recuperação tem exatamente a mesma quantidade de zonas que o ambiente primário",
+        "correta": false,
+        "porque": "A possibilidade de recuperar os pedidos não exige que a topologia da segunda Região seja idêntica à da primeira."
+      }
+    ],
+    "explicacao": "Em warm standby entre Regiões, o ambiente de recuperação tem dados acessíveis, capacidade para escalar e um modo de assumir o tráfego. Multi-AZ protege contra falhas zonais, mas não substitui esses preparativos.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+  },
+  {
+    "id": "D3-adva-012",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Uma rede de clínicas vai hospedar o aplicativo de recepção em uma AWS Local Zone perto de suas unidades. A cada atendimento, o aplicativo precisa consultar um cadastro na Região pai, pois a dependência não está disponível na Local Zone escolhida. Que conclusão deve orientar o teste de latência?",
+    "alternativas": [
+      {
+        "texto": "A proximidade do aplicativo ajuda em parte, mas a consulta ao cadastro ainda percorre o caminho até a Região",
+        "correta": true,
+        "porque": "A Local Zone aproxima os recursos que hospeda; o local de execução da dependência continua influenciando o tempo total."
+      },
+      {
+        "texto": "O vínculo com a Região pai faz o cadastro operar na Local Zone com a mesma latência do aplicativo",
+        "correta": false,
+        "porque": "O vínculo não transfere para a Local Zone os recursos de um serviço indisponível ali."
+      },
+      {
+        "texto": "A latência entre o aplicativo e o cadastro basta para medir a experiência completa nas clínicas",
+        "correta": false,
+        "porque": "A experiência também inclui o caminho entre os usuários e o aplicativo e o processamento da aplicação."
+      },
+      {
+        "texto": "A conexão com a Região pai faz até o acesso das clínicas ao aplicativo passar por essa Região",
+        "correta": false,
+        "porque": "Recursos na Local Zone podem servir usuários localmente; vincular-se à Região não obriga todo tráfego a percorrê-la."
+      }
+    ],
+    "explicacao": "Uma Local Zone é uma extensão de sua Região que aproxima serviços selecionados. Para uma interação que depende de componentes em ambos os locais, meça o percurso completo, não apenas o tempo até a Local Zone.",
+    "servicos": [
+      "AWS Local Zones"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html"
+  },
+  {
+    "id": "D3-adva-013",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma universidade abrirá inscrições em três datas já anunciadas, espalhadas pelo semestre e sem precedente no histórico de tráfego. O grupo de Amazon EC2 Auto Scaling só reage quando chegam requisições, e as instâncias demoram para ficar prontas. Qual decisão deixa a capacidade disponível no início de cada abertura sem pagar por ela entre as datas?",
+    "alternativas": [
+      {
+        "texto": "Ativar o escalonamento preditivo para antecipar os picos pelo histórico de carga",
+        "correta": false,
+        "porque": "A previsão se baseia em padrões recorrentes do histórico, que não contém esses eventos."
+      },
+      {
+        "texto": "Elevar a capacidade mínima do grupo da primeira até a última data de abertura",
+        "correta": false,
+        "porque": "A capacidade fica disponível, mas o grupo permanece ampliado e é cobrado entre as datas."
+      },
+      {
+        "texto": "Reduzir o aquecimento padrão das instâncias antes de cada data de abertura",
+        "correta": false,
+        "porque": "Mudar como a política contabiliza o aquecimento não antecipa a inicialização real das instâncias."
+      },
+      {
+        "texto": "Criar ações agendadas que ampliem e reduzam o grupo em torno de cada abertura",
+        "correta": true,
+        "porque": "O escalonamento programado usa as datas conhecidas para ampliar o grupo com antecedência e reduzi-lo depois."
+      }
+    ],
+    "explicacao": "Para picos em horários conhecidos e sem padrão histórico, o escalonamento programado ajusta o grupo antes que a métrica reaja. O escalonamento preditivo depende de padrões recorrentes, e as políticas dinâmicas continuam úteis para variações fora do previsto.",
+    "servicos": [
+      "Amazon EC2 Auto Scaling"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html"
+  },
+  {
+    "id": "D3-adva-014",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Uma equipe usa o AWS Batch para produzir dois arquivos em jobs independentes, que devem ser gerados em paralelo. Um terceiro job só pode iniciar se ambos terminarem com sucesso. Qual recurso do AWS Batch expressa essa regra?",
+    "alternativas": [
+      {
+        "texto": "Dependências do terceiro job apontando para os IDs dos dois produtores",
+        "correta": true,
+        "porque": "O consumidor só inicia após o sucesso das duas dependências, que podem executar em paralelo."
+      },
+      {
+        "texto": "Job de array com os três jobs como filhos em dependência sequencial",
+        "correta": false,
+        "porque": "A dependência sequencial faz cada filho esperar o anterior, serializando a produção que deveria ser paralela."
+      },
+      {
+        "texto": "Estratégia de novas tentativas nos produtores com condições de saída",
+        "correta": false,
+        "porque": "Novas tentativas tratam falhas do próprio job, mas não impedem o terceiro job de iniciar."
+      },
+      {
+        "texto": "Política de agendamento por compartilhamento justo priorizando os produtores",
+        "correta": false,
+        "porque": "A prioridade orienta a ordem de agendamento, mas não exige o sucesso dos produtores antes do consumidor."
+      }
+    ],
+    "explicacao": "Dependências de jobs registram uma regra de precedência baseada em sucesso sem serializar jobs independentes. Jobs de array sequenciais, novas tentativas e políticas de agendamento resolvem outros aspectos da execução em lote.",
+    "servicos": [
+      "AWS Batch"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/batch/latest/userguide/job_dependencies.html"
+  },
+  {
+    "id": "D3-adva-015",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Um sistema de reservas já usa um cluster Amazon Aurora compatível com PostgreSQL e depende de transações SQL. Nos períodos de procura alta, o gargalo é a capacidade de computação do gravador, não o armazenamento nem as consultas de leitura. Qual escolha permite ajustar essa capacidade automaticamente conforme a carga e preservar o mecanismo atual?",
+    "alternativas": [
+      {
+        "texto": "Adicionar réplicas de leitura ao cluster Aurora",
+        "correta": false,
+        "porque": "Réplicas acrescentam capacidade para leitura, não ajustam a capacidade da instância que recebe as gravações."
+      },
+      {
+        "texto": "Apoiar-se no crescimento automático do volume do cluster Aurora",
+        "correta": false,
+        "porque": "O volume pode acompanhar o crescimento dos dados, mas isso não dimensiona a computação do gravador."
+      },
+      {
+        "texto": "Usar uma instância de gravação Aurora serverless",
+        "correta": true,
+        "porque": "A instância ajusta sua capacidade de computação entre limites definidos, mantendo o mecanismo Aurora."
+      },
+      {
+        "texto": "Escolher uma instância Aurora provisionada de maior porte",
+        "correta": false,
+        "porque": "A instância maior aumenta a capacidade fixa, mas não dimensiona a computação automaticamente conforme a carga."
+      }
+    ],
+    "explicacao": "Aurora serverless pode dimensionar a instância de gravação conforme a atividade. Isso é distinto de expandir o armazenamento ou de adicionar destinos para consultas de leitura.",
+    "servicos": [
+      "Amazon Aurora"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html"
+  },
+  {
+    "id": "D3-adva-016",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma plataforma usa DynamoDB Accelerator (DAX) como caminho de acesso ao Amazon DynamoDB. Na vitrine, uma descrição brevemente desatualizada é aceitável; já a equipe financeira precisa que a leitura de confirmação de uma chave na tabela base reflita a gravação concluída por outro sistema. Quais decisões são compatíveis com esses requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Permitir que as leituras da vitrine sejam atendidas pelo cache DAX",
+        "correta": true,
+        "porque": "A vitrine tolera consistência eventual, então pode se beneficiar de respostas do cache."
+      },
+      {
+        "texto": "Fazer a leitura financeira no cache DAX após reduzir o tempo de expiração",
+        "correta": false,
+        "porque": "Um tempo menor reduz a duração potencial de dados desatualizados, mas não garante refletir uma gravação concluída."
+      },
+      {
+        "texto": "Solicitar consistência forte na leitura financeira, que passa pelo DAX até a tabela",
+        "correta": true,
+        "porque": "O DAX encaminha a leitura fortemente consistente ao DynamoDB em vez de atendê-la a partir do cache."
+      },
+      {
+        "texto": "Usar consistência eventual para a confirmação financeira quando a gravação retornar sucesso",
+        "correta": false,
+        "porque": "Uma leitura eventual ainda pode retornar uma versão anterior, mesmo após a gravação ter sido confirmada."
+      },
+      {
+        "texto": "Pedir consistência forte nas leituras da vitrine para manter os resultados no cache",
+        "correta": false,
+        "porque": "O DAX não armazena em cache as respostas de leituras fortemente consistentes."
+      }
+    ],
+    "explicacao": "A política de leitura depende da consequência de obter um valor antigo. O DAX acelera leituras em cache com consistência eventual e encaminha as leituras fortes ao DynamoDB.",
+    "servicos": [
+      "Amazon DynamoDB",
+      "DynamoDB Accelerator (DAX)"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.consistency.html"
+  },
+  {
+    "id": "D3-adva-017",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "unica",
+    "enunciado": "Uma organização AWS já mantém um template aprovado para os recursos básicos de suas contas. A governança precisa aplicar esse padrão às contas de uma unidade organizacional, incluindo as que entrarem nela no futuro, sem abrir uma implantação separada para cada conta. Qual opção resolve essa necessidade de distribuição?",
+    "alternativas": [
+      {
+        "texto": "Stacks aninhadas em uma stack da conta de governança",
+        "correta": false,
+        "porque": "Stacks aninhadas organizam uma implantação, mas não a expandem automaticamente para novas contas da unidade."
+      },
+      {
+        "texto": "CloudFormation StackSets com permissões autogerenciadas",
+        "correta": false,
+        "porque": "Esse modo pode distribuir stacks, mas não usa a associação com a unidade organizacional para incluir novas contas automaticamente."
+      },
+      {
+        "texto": "StackSets com permissões do serviço e implantação automática",
+        "correta": true,
+        "porque": "A integração com AWS Organizations permite direcionar a unidade e implantar em contas adicionadas a ela."
+      },
+      {
+        "texto": "Um módulo CloudFormation publicado para as contas da organização",
+        "correta": false,
+        "porque": "O módulo encapsula configuração reutilizável, mas a publicação não provisiona recursos nas contas de destino."
+      }
+    ],
+    "explicacao": "StackSets com permissões gerenciadas pelo serviço permitem tratar uma unidade organizacional como destino. Com implantação automática, a inclusão de contas pode gerar instâncias de stack sem uma implantação por conta iniciada manualmente.",
+    "servicos": [
+      "AWS CloudFormation",
+      "AWS Organizations"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html"
+  },
+  {
+    "id": "D3-adva-018",
+    "dominio": 3,
+    "task": "3.1",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma rotina interna apenas consulta recursos por meio de um AWS SDK que usa o modo de retentativa padrão (standard). A equipe quer aproveitar esse mecanismo quando uma nova tentativa pode resolver a falha sem mudar a requisição ou a autorização. Em quais situações essa expectativa é apropriada? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A solicitação contém um parâmetro com valor inválido",
+        "correta": false,
+        "porque": "Uma nova tentativa com os mesmos parâmetros não corrige a requisição rejeitada na validação."
+      },
+      {
+        "texto": "A identidade não tem autorização para a operação solicitada",
+        "correta": false,
+        "porque": "Tentar novamente não concede a permissão que falta à identidade."
+      },
+      {
+        "texto": "O cliente recebe um erro transitório de comunicação, como um timeout de rede",
+        "correta": true,
+        "porque": "O modo standard permite repetir solicitações após erros transitórios de comunicação."
+      },
+      {
+        "texto": "O identificador consultado aponta para um recurso que já foi excluído",
+        "correta": false,
+        "porque": "Repetir a consulta não recria o recurso excluído nem corrige seu identificador."
+      },
+      {
+        "texto": "O serviço rejeita temporariamente a solicitação por excesso de requisições",
+        "correta": true,
+        "porque": "O modo standard trata throttling com retentativas espaçadas, até os limites configurados."
+      }
+    ],
+    "explicacao": "O modo standard do SDK distingue falhas transitórias e throttling de erros que exigem corrigir a solicitação ou a configuração. Uma retentativa pode resolver o primeiro grupo, mas não substitui a correção do segundo.",
+    "servicos": [
+      "AWS SDKs"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html"
+  },
+  {
+    "id": "D3-adva-019",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "A conta de testes já usa uma Região da AWS que exige habilitação explícita. Outra conta da mesma organização vai receber a carga de produção nessa Região; ela ainda não usa essa Região, embora opere normalmente em outras. Qual condição precisa ser verificada no planejamento?",
+    "alternativas": [
+      {
+        "texto": "Se a habilitação na conta de testes cobriu a primeira Zona de Disponibilidade da produção",
+        "correta": false,
+        "porque": "Habilitar uma Região não é uma operação por zona e não se estende da conta de testes à de produção."
+      },
+      {
+        "texto": "Se a opção de Região padrão da ferramenta de implantação foi registrada nas duas contas",
+        "correta": false,
+        "porque": "Uma Região padrão seleciona um alvo para chamadas, mas não altera a habilitação da Região na conta."
+      },
+      {
+        "texto": "Se a Região foi habilitada na conta de gerenciamento da organização",
+        "correta": false,
+        "porque": "Habilitá-la na conta de gerenciamento para uso próprio não confirma a habilitação na conta membro de produção."
+      },
+      {
+        "texto": "Se a Região está habilitada também para a conta de produção",
+        "correta": true,
+        "porque": "O status de habilitação de uma Região opt-in é específico da conta que usará seus recursos."
+      }
+    ],
+    "explicacao": "Disponibilidade de uma Região na AWS e habilitação dessa Região para determinada conta são questões distintas. A organização não torna automática a extensão da habilitação de uma conta para outra.",
+    "servicos": [
+      "AWS Organizations"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html"
+  },
+  {
+    "id": "D3-adva-020",
+    "dominio": 3,
+    "task": "3.2",
+    "tipo": "unica",
+    "enunciado": "Uma editora usa Amazon CloudFront para atender leitores no mundo todo. Ela aceita maior latência em alguns mercados para reduzir o custo de entrega, desde que seus leitores nesses mercados continuem podendo acessar o conteúdo e a origem permaneça onde está. Qual mudança atende a esse compromisso?",
+    "alternativas": [
+      {
+        "texto": "Escolher uma classe de preço que não inclua todas as localidades de borda",
+        "correta": true,
+        "porque": "A classe de preço permite aceitar pontos de entrega potencialmente mais distantes sem bloquear leitores por país."
+      },
+      {
+        "texto": "Aplicar restrições geográficas aos países atendidos pelas localidades de custo mais alto",
+        "correta": false,
+        "porque": "Uma restrição geográfica negaria o acesso de leitores que devem continuar atendidos."
+      },
+      {
+        "texto": "Escolher uma Região diferente para os servidores que originam o conteúdo",
+        "correta": false,
+        "porque": "Isso muda a localização da origem e não seleciona o conjunto de localidades de borda para entrega."
+      },
+      {
+        "texto": "Criar um grupo de origens para alternar conforme a disponibilidade do servidor",
+        "correta": false,
+        "porque": "O grupo de origens melhora a continuidade em caso de falha, não define a cobertura da rede de borda para reduzir o custo."
+      }
+    ],
+    "explicacao": "A classe de preço altera o conjunto de localidades normalmente usado para entregar conteúdo. Restrições geográficas controlam quem pode acessar e a Região da origem determina onde o conteúdo é buscado em caso de falta no cache.",
+    "servicos": [
+      "Amazon CloudFront"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html#cloudfront-Type-DistributionConfig-PriceClass"
+  },
+  {
+    "id": "D3-adva-021",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Um agente de inventário precisa permanecer ligado em uma instância Amazon EC2. A CPU fica ociosa na maior parte do dia e sobe por breves intervalos quando o agente consolida resultados; memória, disco e rede não apresentam gargalos. Qual perfil de instância aproveita especificamente os intervalos de baixa utilização para suportar esses picos?",
+    "alternativas": [
+      {
+        "texto": "Uso geral com desempenho de CPU fixo",
+        "correta": false,
+        "porque": "Pode atender aos picos se dimensionado para eles, mas não usa os períodos ociosos para acumular créditos de CPU."
+      },
+      {
+        "texto": "Desempenho expansível com créditos de CPU",
+        "correta": true,
+        "porque": "A instância acumula créditos quando usa menos que a linha de base e pode consumi-los acima dela."
+      },
+      {
+        "texto": "Otimizada para computação de uso sustentado",
+        "correta": false,
+        "porque": "É voltada para cargas que exigem desempenho de processamento sustentado, não para aproveitar períodos ociosos com créditos."
+      },
+      {
+        "texto": "Computação acelerada com recursos especializados",
+        "correta": false,
+        "porque": "Aceleradores ajudam cargas compatíveis, mas não são uma forma de acumular capacidade de CPU nos intervalos de baixa atividade."
+      }
+    ],
+    "explicacao": "O perfil da carga importa tanto quanto o recurso usado no pico. Instâncias de desempenho expansível são adequadas quando a demanda de CPU é baixa por longos períodos e aumenta em rajadas.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html"
+  },
+  {
+    "id": "D3-adva-022",
+    "dominio": 3,
+    "task": "3.3",
+    "tipo": "unica",
+    "enunciado": "Um serviço em contêineres já é orquestrado pelo Amazon ECS. Uma nova versão precisa de um módulo proprietário instalado no kernel do sistema operacional do host e a equipe não pretende trocar de orquestrador. Qual opção de computação atende ao novo requisito?",
+    "alternativas": [
+      {
+        "texto": "Orquestrar com Amazon ECS sobre instâncias Amazon EC2 gerenciadas pela equipe",
+        "correta": true,
+        "porque": "O ECS mantém a orquestração, e a equipe controla o sistema operacional das instâncias que hospedam os contêineres."
+      },
+      {
+        "texto": "Orquestrar com Amazon EKS sobre instâncias Amazon EC2 gerenciadas pela equipe",
+        "correta": false,
+        "porque": "O controle dos hosts é possível, mas o Amazon EKS usaria um orquestrador diferente do exigido."
+      },
+      {
+        "texto": "Orquestrar com Amazon ECS sobre capacidade gerenciada pelo AWS Fargate",
+        "correta": false,
+        "porque": "Mantém o ECS, mas o Fargate gerencia a infraestrutura e não permite à equipe instalar módulos no host."
+      },
+      {
+        "texto": "Executar contêineres diretamente em instâncias Amazon EC2 sem um orquestrador",
+        "correta": false,
+        "porque": "Permite personalizar o host, mas não mantém a orquestração do Amazon ECS."
+      }
+    ],
+    "explicacao": "O orquestrador e a capacidade de execução são decisões separadas. O Amazon ECS pode usar instâncias Amazon EC2 quando o cliente precisa personalizar o sistema operacional do host.",
+    "servicos": [
+      "Amazon ECS",
+      "Amazon EC2",
+      "Amazon EKS",
+      "AWS Fargate"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html"
+  },
+  {
+    "id": "D3-adva-023",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa está criando duas tabelas do Amazon DynamoDB. A tabela de uma campanha nova não tem previsão de tráfego, e a equipe quer pagar por requisições sem definir unidades de capacidade; já a tabela de um coletor tem taxa estável, e a equipe quer definir unidades de leitura e gravação com base nessa taxa. Quais escolhas atendem aos objetivos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Na tabela da campanha, usar capacidade sob demanda com o throughput ajustado pelo serviço",
+        "correta": true,
+        "porque": "Nesse modo a equipe não planeja unidades provisionadas e paga pelas requisições de leitura e gravação."
+      },
+      {
+        "texto": "Na tabela da campanha, usar capacidade provisionada com unidades definidas antes do lançamento",
+        "correta": false,
+        "porque": "Capacidade provisionada fixa exige dimensionar unidades para a demanda que a campanha ainda não consegue prever."
+      },
+      {
+        "texto": "Na tabela do coletor, usar capacidade provisionada com unidades calculadas pela taxa observada",
+        "correta": true,
+        "porque": "Esse modo permite definir quantas unidades de leitura e gravação serão provisionadas a partir da taxa conhecida."
+      },
+      {
+        "texto": "Na tabela do coletor, usar capacidade sob demanda com teto de throughput igual à taxa observada",
+        "correta": false,
+        "porque": "O teto de throughput limita as requisições aceitas; não estabelece unidades de capacidade provisionadas."
+      },
+      {
+        "texto": "Na tabela da campanha, usar capacidade provisionada com auto scaling desde o lançamento",
+        "correta": false,
+        "porque": "O auto scaling ajusta as unidades provisionadas, mas não transforma o modo em cobrança por requisição."
+      }
+    ],
+    "explicacao": "A escolha do modo é feita por tabela. Sob demanda evita planejar unidades de capacidade, ao passo que o modo provisionado permite adequar unidades de leitura e gravação a uma taxa conhecida.",
+    "servicos": [
+      "Amazon DynamoDB"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/capacity-mode.html"
+  },
+  {
+    "id": "D3-adva-024",
+    "dominio": 3,
+    "task": "3.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa usa AWS Database Migration Service (AWS DMS) para migrar um banco. O esquema do destino já está pronto, mas antes de mudar a aplicação a equipe precisa saber se as linhas que chegaram ao destino correspondem às da origem, inclusive nos casos em que as tabelas têm a mesma quantidade de linhas. Qual recurso aborda esse requisito?",
+    "alternativas": [
+      {
+        "texto": "As estatísticas de quantidade de linhas processadas pelo AWS DMS",
+        "correta": false,
+        "porque": "As contagens não revelam valores divergentes entre tabelas com o mesmo número de linhas."
+      },
+      {
+        "texto": "As métricas de latência da replicação contínua do AWS DMS",
+        "correta": false,
+        "porque": "A latência indica atraso de replicação, mas não verifica igualdade dos valores das linhas."
+      },
+      {
+        "texto": "A avaliação da tarefa do AWS DMS antes da migração",
+        "correta": false,
+        "porque": "A avaliação prévia aponta problemas potenciais de configuração e compatibilidade, não confere o conteúdo transferido."
+      },
+      {
+        "texto": "A validação de dados migrados do AWS DMS",
+        "correta": true,
+        "porque": "A validação compara os dados de origem e destino e reporta divergências nas tabelas elegíveis."
+      }
+    ],
+    "explicacao": "Verificar o conteúdo após a migração é diferente de validar seu esquema, observar a taxa de transferência ou medir atraso. A validação de dados do AWS DMS compara as linhas correspondentes onde há suporte.",
+    "servicos": [
+      "AWS Database Migration Service"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Validating.html"
+  }
+]

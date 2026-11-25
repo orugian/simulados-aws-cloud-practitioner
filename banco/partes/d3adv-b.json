@@ -1,0 +1,961 @@
+[
+  {
+    "id": "D3-advb-001",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Na mesma VPC, um serviço de dados deve aceitar conexões apenas das instâncias de uma aplicação. Essas instâncias compartilham subnets com outras cargas, mudam de endereço ao escalar e recebem um grupo de segurança próprio ao iniciar. Como autorizar a entrada no serviço de dados sem atualizar regras a cada mudança de IP?",
+    "alternativas": [
+      {
+        "texto": "Referenciar o grupo da aplicação na regra de entrada do grupo de segurança do serviço de dados.",
+        "correta": true,
+        "porque": "A referência autoriza conexões dos recursos associados ao grupo da aplicação, sem listar seus IPs."
+      },
+      {
+        "texto": "Permitir os blocos das subnets da aplicação na network ACL da subnet de dados.",
+        "correta": false,
+        "porque": "As outras cargas nessas mesmas subnets também estão incluídas nos blocos autorizados."
+      },
+      {
+        "texto": "Referenciar o próprio grupo do serviço de dados na regra de entrada dele.",
+        "correta": false,
+        "porque": "A referência ao próprio grupo permite conexões entre recursos associados a ele, mas não inclui o grupo distinto da aplicação."
+      },
+      {
+        "texto": "Permitir os IPs atuais da aplicação no grupo de segurança do serviço de dados.",
+        "correta": false,
+        "porque": "A lista identifica as instâncias de hoje, mas precisa ser atualizada quando forem substituídas ou quando a aplicação escalar."
+      }
+    ],
+    "explicacao": "A referência ao grupo de segurança torna a associação ao grupo o critério de rede. Assim a regra acompanha a frota, mesmo quando ela divide subnets com cargas que não devem acessar os dados.",
+    "servicos": [
+      "Amazon VPC",
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html#security-group-referencing"
+  },
+  {
+    "id": "D3-advb-002",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Terminais de parceiros usam um protocolo TCP que não é HTTP. Cada parceiro autoriza um conjunto fixo de IPs públicos de destino, que deve continuar igual mesmo se a aplicação deixar de ser atendida em uma das duas Regiões. Qual opção atende a essas condições?",
+    "alternativas": [
+      {
+        "texto": "Amazon Route 53 com roteamento de failover entre os endpoints regionais",
+        "correta": false,
+        "porque": "O failover DNS troca a resposta para o endpoint alternativo; não mantém um conjunto global de IPs de entrada à frente dos dois."
+      },
+      {
+        "texto": "AWS Global Accelerator com os dois endpoints regionais",
+        "correta": true,
+        "porque": "O serviço recebe TCP em endereços IP estáticos e continua usando esses endereços de entrada ao mudar o endpoint regional."
+      },
+      {
+        "texto": "Amazon CloudFront com as duas origens regionais",
+        "correta": false,
+        "porque": "A distribuição não é um proxy para o protocolo TCP não HTTP dos terminais."
+      },
+      {
+        "texto": "Network Load Balancer com IPs estáticos nas subnets de uma Região",
+        "correta": false,
+        "porque": "Os IPs desse balanceador fornecem entrada regional; por si só ele não preserva uma entrada disponível se sua Região inteira ficar indisponível."
+      }
+    ],
+    "explicacao": "Os parceiros autorizam os IPs do acelerador, não os IPs dos endpoints. O encaminhamento do tráfego TCP pode mudar de Região sem alterar o destino permitido nos terminais.",
+    "servicos": [
+      "AWS Global Accelerator",
+      "Amazon Route 53",
+      "Amazon CloudFront",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+  },
+  {
+    "id": "D3-advb-003",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Um portal já tem um nome público. A empresa quer que as cargas de trabalho de uma VPC resolvam esse mesmo nome para um balanceador interno, sem alterar a resposta que usuários de fora recebem nem publicar o destino interno. Qual abordagem atende ao requisito?",
+    "alternativas": [
+      {
+        "texto": "Acrescentar um registro ponderado na zona pública existente",
+        "correta": false,
+        "porque": "A distribuição por peso não dá visibilidade privada ao novo destino."
+      },
+      {
+        "texto": "Acrescentar um registro por geolocalização na zona pública",
+        "correta": false,
+        "porque": "A origem geográfica de uma consulta não é o mesmo que pertencer à VPC, e a zona continuaria pública."
+      },
+      {
+        "texto": "Manter a zona pública e associar uma zona hospedada privada à VPC",
+        "correta": true,
+        "porque": "A zona privada pode responder pelo nome na VPC, enquanto a zona pública continua atendendo os demais clientes."
+      },
+      {
+        "texto": "Manter a zona pública e apontar o registro existente para o balanceador interno",
+        "correta": false,
+        "porque": "A alteração também mudaria a resposta pública para um destino que não atende os usuários externos."
+      }
+    ],
+    "explicacao": "A resolução DNS com visões pública e privada mantém o mesmo nome com respostas diferentes, sem incluir o endereço interno na zona pública.",
+    "servicos": [
+      "Amazon Route 53",
+      "Amazon VPC",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zone-private-considerations.html"
+  },
+  {
+    "id": "D3-advb-004",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 7,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma fábrica quer manter a comunicação entre seu roteador e as redes privadas da AWS fora da internet no dia a dia. Se o circuito dedicado falhar, a contingência deve usar um túnel criptografado pelo provedor de internet independente que já atende a fábrica; o orçamento não admite outro circuito dedicado. Quais opções atendem aos papéis de caminho principal e de contingência? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Usar AWS Direct Connect como caminho principal.",
+        "correta": true,
+        "porque": "O link dedicado fornece o caminho principal sem depender da internet pública."
+      },
+      {
+        "texto": "Usar AWS Client VPN como ligação de contingência do roteador.",
+        "correta": false,
+        "porque": "Client VPN atende clientes individuais; não é a opção gerenciada para conectar as duas redes por meio do roteador."
+      },
+      {
+        "texto": "Usar uma segunda interface virtual no mesmo circuito como contingência.",
+        "correta": false,
+        "porque": "A segunda interface virtual continua dependente do circuito cuja falha deve ser coberta."
+      },
+      {
+        "texto": "Usar AWS Site-to-Site VPN pela internet como contingência.",
+        "correta": true,
+        "porque": "O túnel IPsec liga as redes pelo provedor alternativo sem depender do circuito dedicado."
+      },
+      {
+        "texto": "Usar um attachment de VPC no AWS Transit Gateway como contingência externa.",
+        "correta": false,
+        "porque": "O attachment liga a VPC ao hub; não cria o túnel entre a fábrica e a AWS."
+      }
+    ],
+    "explicacao": "A combinação separa os caminhos físicos: Direct Connect no tráfego normal e Site-to-Site VPN pela internet independente quando o circuito falha.",
+    "servicos": [
+      "AWS Direct Connect",
+      "AWS Site-to-Site VPN",
+      "AWS Client VPN",
+      "AWS Transit Gateway"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/wellarchitected/2024-06-27/framework/rel_planning_network_topology_ha_conn_private_networks.html"
+  },
+  {
+    "id": "D3-advb-005",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma aplicação precisa de um volume em bloco pequeno para dados transacionais. A equipe quer aumentar as IOPS sustentadas acima do desempenho incluído sem aumentar a capacidade do volume, manter um SSD de uso geral e não depender de créditos de desempenho. Qual opção atende a esses requisitos?",
+    "alternativas": [
+      {
+        "texto": "Volume General Purpose SSD (gp2) do Amazon EBS",
+        "correta": false,
+        "porque": "O desempenho de base depende do tamanho do volume, e volumes menores usam créditos para os picos de IOPS."
+      },
+      {
+        "texto": "Volume General Purpose SSD (gp3) do Amazon EBS",
+        "correta": true,
+        "porque": "Permite provisionar IOPS separadamente do tamanho do volume e não depende de créditos de desempenho."
+      },
+      {
+        "texto": "Volume Provisioned IOPS SSD (io2) do Amazon EBS",
+        "correta": false,
+        "porque": "Permite provisionar IOPS, mas pertence à categoria Provisioned IOPS SSD, não à de uso geral pedida."
+      },
+      {
+        "texto": "Volume Throughput Optimized HDD (st1) do Amazon EBS",
+        "correta": false,
+        "porque": "É um HDD voltado a throughput sequencial e não ao perfil de IOPS do SSD solicitado."
+      }
+    ],
+    "explicacao": "O gp3 desacopla capacidade e desempenho dentro da categoria de SSDs de uso geral. Isso permite manter o volume pequeno sem recorrer a picos dependentes de créditos.",
+    "servicos": [
+      "Amazon EBS"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/ebs/latest/userguide/general-purpose.html"
+  },
+  {
+    "id": "D3-advb-006",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Um editor mantém arquivos em um sistema Amazon EFS Regional. Para contingência, precisa de um segundo sistema EFS em outra Região, mantido em sincronia de forma assíncrona pelo próprio serviço e disponível para leitura antes de um incidente, sem restaurar pontos de backup. Qual opção atende ao requisito?",
+    "alternativas": [
+      {
+        "texto": "Criar cópias inter-regionais de pontos de recuperação com AWS Backup.",
+        "correta": false,
+        "porque": "As cópias são pontos de recuperação: é necessário restaurá-las para obter um sistema de arquivos utilizável."
+      },
+      {
+        "texto": "Armazenar os arquivos na classe EFS Infrequent Access.",
+        "correta": false,
+        "porque": "A classe altera o nível de armazenamento dos arquivos no sistema existente, sem criar outro sistema em uma Região distinta."
+      },
+      {
+        "texto": "Manter o sistema EFS Regional com pontos de montagem em várias Zonas de Disponibilidade.",
+        "correta": false,
+        "porque": "O alcance de um EFS Regional entre Zonas de Disponibilidade não cria uma réplica em outra Região."
+      },
+      {
+        "texto": "Usar a replicação do Amazon EFS para um sistema na Região de contingência.",
+        "correta": true,
+        "porque": "O EFS replica os dados de forma assíncrona e mantém um sistema de destino que pode ser lido durante a replicação."
+      }
+    ],
+    "explicacao": "O destino da replicação é outro sistema EFS, não um backup a restaurar. Enquanto a replicação está ativa, o destino é somente leitura.",
+    "servicos": [
+      "Amazon EFS",
+      "AWS Backup"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html"
+  },
+  {
+    "id": "D3-advb-007",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Um acervo em S3 Standard já usa Cross-Region Replication para novas gravações. A próxima auditoria também exige que os objetos gravados antes da configuração cheguem ao destino reconhecidos pelo próprio S3 como réplicas da origem, com relatório da operação e sem regravar os originais. Qual recurso atende a essa lacuna?",
+    "alternativas": [
+      {
+        "texto": "S3 Inventory com a lista das versões existentes",
+        "correta": false,
+        "porque": "Pode identificar as versões, mas gerar o inventário não as replica."
+      },
+      {
+        "texto": "S3 Batch Operations copiando as versões existentes",
+        "correta": false,
+        "porque": "A cópia produz novas gravações, mas não aplica a configuração de replicação às versões como réplicas do S3."
+      },
+      {
+        "texto": "S3 Batch Replication aplicado às versões existentes",
+        "correta": true,
+        "porque": "Executa a replicação de objetos existentes sem regravá-los na origem e oferece relatório de conclusão."
+      },
+      {
+        "texto": "Regra ativa de Cross-Region Replication reaplicada às versões existentes",
+        "correta": false,
+        "porque": "A regra de replicação contínua trata gravações posteriores e não replica retroativamente as versões existentes."
+      }
+    ],
+    "explicacao": "A replicação contínua trata as gravações novas; Batch Replication aplica a replicação ao acervo anterior e permite acompanhar o resultado do lote.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html"
+  },
+  {
+    "id": "D3-advb-008",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 7,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Em um bucket S3 versionado, as versões dos comprovantes precisam ficar protegidas contra exclusão até o fim de um prazo obrigatório que nem administradores podem encurtar. Algumas versões também estarão sujeitas a investigações de duração indefinida; a proteção adicional deve continuar após o prazo normal e ser removível por pessoal autorizado. Quais controles atendem a esses requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Aplicar o modo Governance do S3 Object Lock aos prazos obrigatórios.",
+        "correta": false,
+        "porque": "A retenção Governance pode ser contornada por quem tem a permissão apropriada."
+      },
+      {
+        "texto": "Aplicar o modo Compliance do S3 Object Lock aos prazos obrigatórios.",
+        "correta": true,
+        "porque": "A retenção não pode ser encurtada nem a versão protegida excluída durante o prazo, inclusive por administradores."
+      },
+      {
+        "texto": "Aplicar retenções com uma data estimada de encerramento para as investigações.",
+        "correta": false,
+        "porque": "Um prazo estimado termina em uma data, mesmo que a investigação continue aberta."
+      },
+      {
+        "texto": "Usar regras do S3 Lifecycle para expirar versões após o prazo obrigatório.",
+        "correta": false,
+        "porque": "A expiração trata a eliminação programada, não a proteção contra a exclusão solicitada antes do prazo ou durante a investigação."
+      },
+      {
+        "texto": "Aplicar um legal hold do S3 Object Lock às versões sob investigação.",
+        "correta": true,
+        "porque": "O bloqueio não tem data final, é independente do prazo de retenção e pode ser removido por pessoal autorizado."
+      }
+    ],
+    "explicacao": "Compliance garante o prazo fixo não abreviável. O legal hold é uma proteção separada por versão e continua até sua remoção, mesmo que o prazo fixo já tenha terminado.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html"
+  },
+  {
+    "id": "D3-advb-009",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma empresa oferece um serviço interno a clientes que têm suas próprias VPCs, algumas com faixas de IP sobrepostas às do fornecedor. Os clientes devem iniciar conexões privadas com esse serviço, sem ganhar conectividade de rede com o restante da VPC do fornecedor. Qual opção atende às condições?",
+    "alternativas": [
+      {
+        "texto": "VPC peering entre o fornecedor e cada cliente",
+        "correta": false,
+        "porque": "Peering exige faixas não sobrepostas e oferece conectividade IP entre as redes conforme o roteamento."
+      },
+      {
+        "texto": "AWS Transit Gateway compartilhado entre fornecedor e clientes",
+        "correta": false,
+        "porque": "Um hub de roteamento não resolve por si só a sobreposição de faixas nem oferece a abstração de um endpoint exclusivo para o serviço."
+      },
+      {
+        "texto": "AWS Site-to-Site VPN entre as redes do fornecedor e dos clientes",
+        "correta": false,
+        "porque": "Os túneis ligam redes por rotas; não apresentam o serviço via um endpoint local na VPC cliente sem lidar com a sobreposição."
+      },
+      {
+        "texto": "AWS PrivateLink com um serviço de endpoint e endpoints de interface",
+        "correta": true,
+        "porque": "Cada cliente conecta-se ao endpoint na própria VPC, sem precisar de roteamento para a faixa do fornecedor."
+      }
+    ],
+    "explicacao": "PrivateLink dá acesso privado a um serviço específico, sem interligar as faixas das VPCs. Esse modelo permite atender clientes cujas faixas de IP se sobrepõem às do fornecedor.",
+    "servicos": [
+      "AWS PrivateLink",
+      "Amazon VPC",
+      "AWS Transit Gateway",
+      "AWS Site-to-Site VPN"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html"
+  },
+  {
+    "id": "D3-advb-010",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma equipe tem dois endpoints saudáveis para o mesmo nome DNS e quer aumentar gradualmente a exposição da nova versão. A equipe aceita que a proporção se aplique às respostas DNS, não a cada requisição dos usuários, e não quer acrescentar um proxy. Qual política do Amazon Route 53 se encaixa?",
+    "alternativas": [
+      {
+        "texto": "Roteamento ponderado",
+        "correta": true,
+        "porque": "Seleciona respostas segundo pesos relativos, que podem ser alterados para mudar a exposição."
+      },
+      {
+        "texto": "Roteamento por latência",
+        "correta": false,
+        "porque": "Favorece a Região de menor latência em vez de seguir uma proporção escolhida pela equipe."
+      },
+      {
+        "texto": "Roteamento de failover",
+        "correta": false,
+        "porque": "Mantém o primário enquanto saudável no modelo ativo-passivo, sem dividir as respostas segundo a proporção desejada."
+      },
+      {
+        "texto": "Roteamento com respostas de múltiplos valores",
+        "correta": false,
+        "porque": "Pode responder com vários registros saudáveis, mas não distribui as respostas de acordo com pesos definidos."
+      }
+    ],
+    "explicacao": "Os pesos controlam a distribuição das respostas do Route 53. O cache DNS pode fazer com que a proporção observada nas requisições da aplicação seja diferente.",
+    "servicos": [
+      "Amazon Route 53"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-weighted.html"
+  },
+  {
+    "id": "D3-advb-011",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "As instâncias de uma VPC acessam o Amazon S3 por um endpoint de gateway. Servidores da matriz já chegam aos IPs privados da VPC pelo Direct Connect e também precisam chamar a API do S3 por IPs privados, sem operar um proxy na VPC. Qual opção atende aos servidores da matriz?",
+    "alternativas": [
+      {
+        "texto": "Acesso pelo endpoint de gateway do S3 que já atende à VPC",
+        "correta": false,
+        "porque": "O acesso pelo endpoint de gateway não se estende diretamente à rede on-premises pelo Direct Connect."
+      },
+      {
+        "texto": "Acesso por um endpoint de interface do Amazon S3 na VPC",
+        "correta": true,
+        "porque": "O endpoint fornece IPs privados da VPC alcançáveis pelo Direct Connect para as chamadas à API do S3."
+      },
+      {
+        "texto": "Acesso aos endpoints públicos do S3 por uma interface virtual pública do Direct Connect",
+        "correta": false,
+        "porque": "O tráfego pode evitar a internet pública, mas o destino continua sendo um endpoint de IP público."
+      },
+      {
+        "texto": "Acesso ao endpoint de gateway do S3 por um attachment do AWS Transit Gateway",
+        "correta": false,
+        "porque": "O hub estende a conectividade IP entre redes, mas não permite usar o endpoint de gateway do S3 de fora da VPC."
+      }
+    ],
+    "explicacao": "A ligação privada com a VPC não torna o endpoint de gateway utilizável pelos servidores da matriz. Para chamar a API pelo caminho privado e com IPs privados, eles podem usar um endpoint de interface do S3.",
+    "servicos": [
+      "Amazon VPC",
+      "Amazon S3",
+      "AWS Direct Connect",
+      "AWS Transit Gateway"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html"
+  },
+  {
+    "id": "D3-advb-012",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 8,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma VPC e a matriz já se comunicam por uma ligação privada. A matriz precisa resolver nomes da zona privada da VPC, e as instâncias na VPC precisam resolver nomes do DNS corporativo; cada lado deve continuar hospedando a própria zona, sem publicá-la nem duplicar seus registros. Quais opções completam a resolução DNS nos dois sentidos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Encaminhar as consultas da matriz a um endpoint de entrada do Route 53 VPC Resolver.",
+        "correta": true,
+        "porque": "O endpoint recebe as consultas originadas fora da VPC e permite resolver os nomes privados da AWS."
+      },
+      {
+        "texto": "Replicar os registros do DNS corporativo em uma zona hospedada privada.",
+        "correta": false,
+        "porque": "Criaria uma segunda cópia da zona corporativa em vez de consultar o DNS que já a hospeda."
+      },
+      {
+        "texto": "Encaminhar as consultas da VPC pelo endpoint de saída do Route 53 VPC Resolver ao DNS corporativo.",
+        "correta": true,
+        "porque": "O endpoint de saída encaminha as consultas selecionadas da VPC ao resolvedor que conhece os nomes corporativos."
+      },
+      {
+        "texto": "Encaminhar as consultas da matriz diretamente ao resolvedor padrão da VPC.",
+        "correta": false,
+        "porque": "O endereço reservado do resolvedor padrão não substitui um endpoint de entrada para consultas da rede on-premises."
+      },
+      {
+        "texto": "Associar a zona privada a uma VPC adicional ligada à matriz.",
+        "correta": false,
+        "porque": "A associação estende a resolução da zona a essa VPC, mas não encaminha consultas entre o DNS da matriz e o da AWS."
+      }
+    ],
+    "explicacao": "A ligação entre as redes não integra o DNS por si só. A entrada permite consultar a zona privada a partir da matriz; a saída permite encaminhar consultas da VPC para o DNS da matriz.",
+    "servicos": [
+      "Amazon Route 53",
+      "Amazon VPC"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html"
+  },
+  {
+    "id": "D3-advb-013",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma equipe sobrescreve catálogos em um bucket S3 versionado. O catálogo atual deve ficar acessível mesmo que passe meses sem receber atualizações, mas o histórico antigo não precisa continuar ocupando espaço após uma janela de reversão contada a partir da substituição de cada versão. Qual política atende ao requisito?",
+    "alternativas": [
+      {
+        "texto": "Expirar as versões atuais depois da janela usando S3 Lifecycle.",
+        "correta": false,
+        "porque": "A ação atinge o catálogo atual mesmo quando ele não foi substituído."
+      },
+      {
+        "texto": "Transicionar as versões não atuais para S3 Glacier Flexible Retrieval.",
+        "correta": false,
+        "porque": "A transição reduz o custo do histórico, mas mantém as versões antigas armazenadas."
+      },
+      {
+        "texto": "Suspender o versionamento e manter o histórico que já existe.",
+        "correta": false,
+        "porque": "A suspensão não elimina versões antigas e não preserva o mesmo histórico de novas sobrescritas."
+      },
+      {
+        "texto": "Expirar as versões não atuais depois da janela usando S3 Lifecycle.",
+        "correta": true,
+        "porque": "A regra age sobre a versão substituída, contando sua idade como versão não atual, sem expirar a atual."
+      }
+    ],
+    "explicacao": "A ação para versões não atuais preserva o catálogo em uso e remove o histórico depois da janela de recuperação, independentemente da idade da versão atual.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html"
+  },
+  {
+    "id": "D3-advb-014",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma empresa já protege volumes EBS e sistemas EFS com AWS Backup. A auditoria não aceita o status de criação da cópia como evidência: exige que o serviço execute restaurações de amostra regularmente e registre o resultado sem substituir os recursos de produção. Qual recurso atende à exigência?",
+    "alternativas": [
+      {
+        "texto": "Executar planos de teste de restauração do AWS Backup.",
+        "correta": true,
+        "porque": "Os planos agendam restaurações de teste, criam recursos restaurados e permitem acompanhar os resultados dos trabalhos."
+      },
+      {
+        "texto": "Avaliar a frequência das cópias com AWS Backup Audit Manager.",
+        "correta": false,
+        "porque": "Um controle de frequência mede a criação de cópias e não executa a restauração exigida."
+      },
+      {
+        "texto": "Proteger os pontos de recuperação com AWS Backup Vault Lock.",
+        "correta": false,
+        "porque": "A proteção contra mudanças na retenção não comprova que foram feitas restaurações de amostra."
+      },
+      {
+        "texto": "Copiar regularmente os pontos de recuperação para outro cofre.",
+        "correta": false,
+        "porque": "Uma cópia adicional protege a disponibilidade dos backups, mas continua sendo um ponto de recuperação, não o resultado de um teste."
+      }
+    ],
+    "explicacao": "O teste observa o resultado de uma restauração real e separada da produção. Isso valida a recuperabilidade no nível do serviço, diferentemente do status de criação ou cópia do backup.",
+    "servicos": [
+      "AWS Backup",
+      "Amazon EBS",
+      "Amazon EFS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing.html"
+  },
+  {
+    "id": "D3-advb-015",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma equipe cria snapshots de volumes EBS antes de cada implantação. Para um grupo de snapshots, ela quer permitir a exclusão no fluxo normal, mas poder desfazer uma exclusão dentro de uma janela curta, sem manter uma segunda cópia dos snapshots. Qual recurso atende a esse objetivo?",
+    "alternativas": [
+      {
+        "texto": "Arquivamento de snapshots do Amazon EBS",
+        "correta": false,
+        "porque": "Arquivar muda a camada de armazenamento; não desfaz uma exclusão dentro de uma janela de retenção pós-exclusão."
+      },
+      {
+        "texto": "Fast Snapshot Restore do Amazon EBS",
+        "correta": false,
+        "porque": "Acelera a inicialização de volumes criados de um snapshot disponível; não recupera um snapshot excluído."
+      },
+      {
+        "texto": "Recycle Bin com uma regra de retenção para os snapshots",
+        "correta": true,
+        "porque": "Retém os snapshots excluídos que correspondem à regra e permite recuperá-los dentro da janela."
+      },
+      {
+        "texto": "Bloqueio dos snapshots do Amazon EBS pelo mesmo prazo",
+        "correta": false,
+        "porque": "Impede a exclusão enquanto o bloqueio vigora, em vez de permitir a exclusão com uma janela para desfazê-la."
+      }
+    ],
+    "explicacao": "A janela do Recycle Bin começa quando um recurso correspondente é excluído. Suspender a exclusão com um bloqueio é útil em outro cenário, mas não preserva o fluxo desejado.",
+    "servicos": [
+      "Amazon EBS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html"
+  },
+  {
+    "id": "D3-advb-016",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 8,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Dois conjuntos de documentos estão em S3 Glacier Flexible Retrieval. O primeiro deve ficar legível apenas durante uma perícia; o segundo precisa de uma cópia legível por tempo indeterminado, sem novas recuperações. Os originais dos dois conjuntos devem continuar arquivados. Quais ações atendem aos objetivos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Transicionar o segundo conjunto para S3 Standard por uma regra de S3 Lifecycle.",
+        "correta": false,
+        "porque": "Lifecycle não transiciona objetos de Glacier Flexible Retrieval de volta para S3 Standard."
+      },
+      {
+        "texto": "Restaurar o primeiro conjunto pelo período necessário à perícia.",
+        "correta": true,
+        "porque": "A restauração disponibiliza uma cópia temporária para leitura sem mover os originais da classe de arquivo."
+      },
+      {
+        "texto": "Usar a recuperação Expedited para manter o segundo conjunto legível por tempo indeterminado.",
+        "correta": false,
+        "porque": "Expedited controla o tempo para disponibilizar a cópia restaurada, não sua permanência."
+      },
+      {
+        "texto": "Restaurar o segundo conjunto e copiá-lo para uma classe de acesso imediato.",
+        "correta": true,
+        "porque": "Cada cópia é um objeto independente e permanece legível sem nova recuperação do arquivo."
+      },
+      {
+        "texto": "Estender o prazo de retenção do primeiro conjunto com S3 Object Lock.",
+        "correta": false,
+        "porque": "O prazo do Object Lock protege contra exclusão, mas não deixa o conteúdo arquivado disponível para leitura."
+      }
+    ],
+    "explicacao": "A restauração temporária atende à perícia. Para o uso contínuo, é preciso criar novos objetos em outra classe após a restauração; os originais permanecem arquivados.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html"
+  },
+  {
+    "id": "D3-advb-017",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Um catálogo usa o mesmo nome DNS em todos os países. A empresa quer direcionar o público de certos países para catálogos comerciais distintos, inclusive quando o endpoint de outro catálogo ofereça menor latência. Qual política do Amazon Route 53 deve orientar a escolha?",
+    "alternativas": [
+      {
+        "texto": "Roteamento por latência",
+        "correta": false,
+        "porque": "O endpoint com melhor latência pode corresponder ao catálogo de outro país."
+      },
+      {
+        "texto": "Roteamento por geoproximidade",
+        "correta": false,
+        "porque": "Equilibra a área de influência dos recursos pela proximidade geográfica e pelo ajuste de viés, não por mapeamentos explícitos de país."
+      },
+      {
+        "texto": "Roteamento ponderado",
+        "correta": false,
+        "porque": "Controla a participação relativa dos endpoints nas respostas, sem mapear países a catálogos."
+      },
+      {
+        "texto": "Roteamento por geolocalização",
+        "correta": true,
+        "porque": "Permite escolher a resposta com base na localização geográfica associada à consulta, com regras por país."
+      }
+    ],
+    "explicacao": "O critério de negócio é o país, não a distância ao recurso nem o tempo de rede. A política de geolocalização permite mapear países para catálogos específicos no DNS.",
+    "servicos": [
+      "Amazon Route 53"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html"
+  },
+  {
+    "id": "D3-advb-018",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Instâncias EC2 de uma subnet privada chamam a API pública de um parceiro. As instâncias podem ser substituídas sem aviso, mas o parceiro deve continuar vendo o mesmo IP público de origem e não precisa iniciar conexões com elas. Qual opção atende ao requisito de rede?",
+    "alternativas": [
+      {
+        "texto": "Um NAT Gateway público com um Elastic IP, para a saída das instâncias",
+        "correta": true,
+        "porque": "No acesso à internet, o NAT Gateway público traduz as conexões iniciadas pelas instâncias para seu Elastic IP."
+      },
+      {
+        "texto": "Um Network Load Balancer público com IP fixo, à frente das instâncias",
+        "correta": false,
+        "porque": "O IP fixo identifica a entrada no balanceador; não é o IP de origem de conexões que as instâncias iniciam."
+      },
+      {
+        "texto": "Um Internet Gateway com as instâncias usando seus IPs privados",
+        "correta": false,
+        "porque": "O Internet Gateway não transforma o conjunto de IPs privados das instâncias em um IP público compartilhado de saída."
+      },
+      {
+        "texto": "Um NAT Gateway privado para a saída das instâncias",
+        "correta": false,
+        "porque": "O NAT privado não usa Elastic IP para saída pela internet, ao contrário do NAT público."
+      }
+    ],
+    "explicacao": "O endereço que o parceiro autoriza é o de saída do NAT público, não o endereço de entrada de um balanceador ou o de uma instância individual.",
+    "servicos": [
+      "Amazon VPC",
+      "Amazon EC2",
+      "Elastic Load Balancing"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html"
+  },
+  {
+    "id": "D3-advb-019",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Um painel de atendimento deve enviar ações do operador ao backend e receber atualizações espontâneas na mesma conexão, sem consultas periódicas. A equipe já usa funções AWS Lambda e quer que um serviço gerenciado mantenha as conexões dos navegadores, sem operar um servidor para isso. Qual opção atende ao cenário?",
+    "alternativas": [
+      {
+        "texto": "API HTTP do Amazon API Gateway com integração Lambda",
+        "correta": false,
+        "porque": "O modelo HTTP dessa API é de requisição e resposta; ela não mantém sessões bidirecionais para o backend iniciar envios."
+      },
+      {
+        "texto": "API WebSocket do Amazon API Gateway com integração Lambda",
+        "correta": true,
+        "porque": "O serviço mantém a conexão bidirecional e permite ao backend enviar mensagens para clientes conectados."
+      },
+      {
+        "texto": "Application Load Balancer com um target group de funções Lambda",
+        "correta": false,
+        "porque": "O suporte do ALB a WebSocket não se aplica a destinos Lambda."
+      },
+      {
+        "texto": "Distribuição do Amazon CloudFront com API HTTP como origem",
+        "correta": false,
+        "porque": "CloudFront pode encaminhar WebSocket a uma origem compatível, mas não cria uma sessão bidirecional se a origem for uma API HTTP desse tipo."
+      }
+    ],
+    "explicacao": "Uma API WebSocket mantém um canal para o cliente enviar ações e o backend enviar atualizações por iniciativa própria, enquanto o API Gateway gerencia as conexões.",
+    "servicos": [
+      "Amazon API Gateway",
+      "AWS Lambda",
+      "Elastic Load Balancing",
+      "Amazon CloudFront"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-overview.html"
+  },
+  {
+    "id": "D3-advb-020",
+    "dominio": 3,
+    "task": "3.5",
+    "rodada": 9,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Um catálogo é servido via CloudFront por duas origens com a mesma coleção de arquivos. A empresa quer manter o cache e, quando a origem principal responder com erro de indisponibilidade a uma leitura, que essa mesma leitura seja atendida pela outra origem. Além disso, um arquivo apagado das duas origens deve parar de ser entregue pelas bordas antes de seu TTL expirar. Quais ações atendem a esses requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Criar um grupo de origens no CloudFront com failover por códigos de erro do servidor.",
+        "correta": true,
+        "porque": "Em uma falha de cache (cache miss), o CloudFront busca na origem principal e, se ela retornar um código configurado, como 503, repete a requisição na origem secundária."
+      },
+      {
+        "texto": "Criar um registro de failover no Route 53 com verificação de saúde da origem principal.",
+        "correta": false,
+        "porque": "O failover por DNS depende da verificação de saúde e da resolução de nomes; não reencaminha a requisição que já falhou."
+      },
+      {
+        "texto": "Reduzir o TTL de cache de erros do CloudFront para os caminhos excluídos.",
+        "correta": false,
+        "porque": "O TTL de erros não remove uma resposta bem-sucedida que já está em cache."
+      },
+      {
+        "texto": "Criar uma invalidação no CloudFront para os caminhos excluídos.",
+        "correta": true,
+        "porque": "Uma invalidação remove do cache do CloudFront as cópias correspondentes sem esperar sua expiração natural."
+      },
+      {
+        "texto": "Reduzir o TTL dos registros DNS que apontam para as duas origens.",
+        "correta": false,
+        "porque": "A expiração DNS afeta endereços resolvidos, não cópias do conteúdo nas bordas do CloudFront."
+      }
+    ],
+    "explicacao": "O failover de origens trata falhas ao buscar um arquivo. A invalidação trata o conteúdo que já foi entregue ao cache e precisa ser removido antes de expirar.",
+    "servicos": [
+      "Amazon CloudFront",
+      "Amazon Route 53"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ConfiguringCaching.html"
+  },
+  {
+    "id": "D3-advb-021",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma auditoria pede um arquivo periódico com uma linha por versão de objeto de um bucket S3, incluindo classe de armazenamento e tamanho. O relatório pode ter atraso, mas a equipe não quer manter um processo que faça varreduras na API para listar as versões. Qual recurso atende ao pedido?",
+    "alternativas": [
+      {
+        "texto": "Métricas diárias de armazenamento do Amazon S3 no CloudWatch",
+        "correta": false,
+        "porque": "As métricas de volume armazenado são agregadas e não trazem uma linha para cada versão."
+      },
+      {
+        "texto": "Exportação de métricas do Amazon S3 Storage Lens",
+        "correta": false,
+        "porque": "A exportação contém métricas de uso agregadas, não a relação das versões dos objetos."
+      },
+      {
+        "texto": "Relatório programado do Amazon S3 Inventory",
+        "correta": true,
+        "porque": "O inventário pode ser configurado para listar todas as versões periodicamente, com metadados como classe e tamanho."
+      },
+      {
+        "texto": "Registro de eventos de dados do S3 no AWS CloudTrail",
+        "correta": false,
+        "porque": "Os eventos descrevem ações sobre os objetos, não entregam um inventário periódico das versões existentes."
+      }
+    ],
+    "explicacao": "O S3 Inventory produz um retrato periódico em arquivo. O Storage Lens e o CloudWatch resumem o uso; o CloudTrail registra operações em vez de enumerar o estado do bucket.",
+    "servicos": [
+      "Amazon S3",
+      "Amazon CloudWatch",
+      "AWS CloudTrail"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html"
+  },
+  {
+    "id": "D3-advb-022",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma aplicação de cluster já coordena as gravações concorrentes entre seus nós e exige que ambos vejam o mesmo dispositivo de bloco, não um compartilhamento de arquivos. Os nós usam instâncias EC2 compatíveis na mesma Zona de Disponibilidade. Qual opção preserva esse modelo?",
+    "alternativas": [
+      {
+        "texto": "Criar um volume EBS separado por nó a partir do mesmo snapshot.",
+        "correta": false,
+        "porque": "Os volumes começariam com os mesmos dados, mas cada um teria suas próprias gravações."
+      },
+      {
+        "texto": "Montar um sistema de arquivos Amazon EFS nos dois nós.",
+        "correta": false,
+        "porque": "EFS compartilha arquivos via NFS, não apresenta o mesmo dispositivo de bloco a ambos."
+      },
+      {
+        "texto": "Usar um volume EBS gp3 comum ligado às duas instâncias.",
+        "correta": false,
+        "porque": "Volumes gp3 não suportam a conexão simultânea com Multi-Attach."
+      },
+      {
+        "texto": "Usar um volume EBS io2 com Multi-Attach.",
+        "correta": true,
+        "porque": "Um volume io2 compatível pode ser ligado a várias instâncias compatíveis da mesma Zona, preservando o acesso em bloco."
+      }
+    ],
+    "explicacao": "Multi-Attach permite o compartilhamento do mesmo volume em bloco. A aplicação ainda precisa coordenar o acesso concorrente, responsabilidade que o cenário já prevê.",
+    "servicos": [
+      "Amazon EBS",
+      "Amazon EFS",
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html"
+  },
+  {
+    "id": "D3-advb-023",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Um aplicativo no escritório precisa continuar gravando em um compartilhamento SMB com cache local. Depois do envio, um serviço de relatórios na AWS deve ler os arquivos como objetos de um bucket S3, sem um trabalho separado de exportação a partir de um sistema de arquivos. Qual opção se encaixa?",
+    "alternativas": [
+      {
+        "texto": "Amazon S3 File Gateway instalado no escritório",
+        "correta": true,
+        "porque": "Fornece compartilhamento SMB com cache local e armazena os arquivos enviados como objetos acessíveis no bucket."
+      },
+      {
+        "texto": "Amazon FSx for Windows File Server acessado por VPN",
+        "correta": false,
+        "porque": "Atende ao acesso SMB, mas grava em um sistema de arquivos FSx, não diretamente como objetos no bucket."
+      },
+      {
+        "texto": "AWS DataSync com agente local e destino no Amazon S3",
+        "correta": false,
+        "porque": "O DataSync é um mecanismo de transferência separado; não fornece ao aplicativo o compartilhamento com cache local."
+      },
+      {
+        "texto": "Volume Gateway no modo de volumes em cache",
+        "correta": false,
+        "porque": "Fornece volumes em bloco via iSCSI, não um compartilhamento SMB que grave objetos acessíveis no bucket."
+      }
+    ],
+    "explicacao": "O S3 File Gateway permite que a aplicação trabalhe com arquivos pelo protocolo existente enquanto o serviço de relatórios consome os objetos resultantes no S3.",
+    "servicos": [
+      "AWS Storage Gateway",
+      "Amazon S3",
+      "Amazon FSx",
+      "AWS DataSync"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html"
+  },
+  {
+    "id": "D3-advb-024",
+    "dominio": 3,
+    "task": "3.6",
+    "rodada": 9,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Duas contas da mesma organização AWS mantêm produção e recuperação de desastres separadas. A conta de recuperação deve ter uma cópia recuperável de um volume EBS não criptografado, que continue utilizável se o ponto de recuperação original for excluído; não se deseja manter um volume já restaurado. Quais abordagens, cada uma por si, atendem ao requisito? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Copiar um ponto de recuperação com AWS Backup para um cofre na conta de recuperação.",
+        "correta": true,
+        "porque": "A cópia entre contas cria no cofre de destino um ponto de recuperação independente do original."
+      },
+      {
+        "texto": "Compartilhar o snapshot do EBS para que a conta de recuperação possa criar volumes a partir dele.",
+        "correta": false,
+        "porque": "O compartilhamento dá acesso ao snapshot original, que deixaria de servir à conta de destino se fosse excluído."
+      },
+      {
+        "texto": "Copiar um snapshot do volume para outra Região e mantê-lo na conta de produção.",
+        "correta": false,
+        "porque": "A cópia ganha independência regional, mas não fica na conta de recuperação exigida."
+      },
+      {
+        "texto": "Transferir um snapshot compartilhado por meio de uma cópia executada na conta de recuperação.",
+        "correta": true,
+        "porque": "Copiar o snapshot compartilhado cria um novo snapshot pertencente à conta de recuperação."
+      },
+      {
+        "texto": "Conceder à conta de recuperação acesso ao cofre de produção por uma função IAM.",
+        "correta": false,
+        "porque": "A função pode permitir acesso ao original, mas acesso a um cofre não é uma cópia independente."
+      }
+    ],
+    "explicacao": "Tanto uma cópia entre contas no AWS Backup quanto uma cópia do snapshot EBS feita pela conta destinatária eliminam a dependência do original. Compartilhar permissões ou mudar apenas de Região não equivale a criar essa cópia na conta de recuperação.",
+    "servicos": [
+      "Amazon EBS",
+      "AWS Backup",
+      "AWS Organizations",
+      "AWS IAM"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copy-snapshot.html"
+  }
+]

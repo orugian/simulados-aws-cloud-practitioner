@@ -1,0 +1,953 @@
+[
+  {
+    "id": "D4-adva-001",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma aplicação EC2 permanecerá por um ano no mesmo tipo de instância e na mesma Availability Zone. A equipe quer que a mesma compra dê desconto de uso e assegure capacidade para relançar as instâncias nessa zona. Qual opção atende?",
+    "alternativas": [
+      {
+        "texto": "Comprar uma Reserved Instance regional para o tipo de instância.",
+        "correta": false,
+        "porque": "A reserva regional concede desconto, mas não reserva capacidade na zona."
+      },
+      {
+        "texto": "Comprar um EC2 Instance Savings Plan para a família na região.",
+        "correta": false,
+        "porque": "O Savings Plan dá desconto sobre uso elegível, mas não reserva capacidade."
+      },
+      {
+        "texto": "Comprar uma Reserved Instance zonal para a configuração usada.",
+        "correta": true,
+        "porque": "A reserva zonal combina benefício de cobrança e capacidade para a configuração na zona selecionada."
+      },
+      {
+        "texto": "Criar uma On-Demand Capacity Reservation para a configuração usada.",
+        "correta": false,
+        "porque": "A reserva de capacidade sob demanda não traz desconto por si só."
+      }
+    ],
+    "explicacao": "Para unir desconto e capacidade na mesma compra, use uma Reserved Instance com escopo zonal. O escopo regional dá flexibilidade entre zonas, mas não reserva capacidade.",
+    "servicos": [
+      "Amazon EC2",
+      "AWS Savings Plans"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-scope.html"
+  },
+  {
+    "id": "D4-adva-002",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma aplicação transacional usa um volume Amazon EBS gp2 maior do que os dados exigem, pois a equipe precisava elevar as IOPS de base. Ela quer manter um SSD de uso geral e evitar pagar por espaço ocioso para sustentar as IOPS. Qual opção atende?",
+    "alternativas": [
+      {
+        "texto": "Dimensionar um volume gp3 pelo espaço necessário e ajustar as IOPS do volume.",
+        "correta": true,
+        "porque": "No gp3, é possível provisionar o desempenho separadamente do espaço, sem sair da categoria de SSD de uso geral."
+      },
+      {
+        "texto": "Dimensionar um volume gp2 pelo espaço necessário e manter as IOPS de base atuais.",
+        "correta": false,
+        "porque": "As IOPS de base do gp2 escalam com o tamanho; no cenário, reduzir o tamanho comprometeria essa base."
+      },
+      {
+        "texto": "Dimensionar um volume io2 pelo espaço necessário e ajustar as IOPS do volume.",
+        "correta": false,
+        "porque": "O io2 separa IOPS e espaço, mas pertence à classe de SSD com IOPS provisionadas, não à de uso geral."
+      },
+      {
+        "texto": "Dimensionar um volume st1 pelo espaço necessário e contar com o desempenho de pico.",
+        "correta": false,
+        "porque": "O st1 usa HDD e é voltado a taxa de transferência sequencial, não ao perfil transacional solicitado."
+      }
+    ],
+    "explicacao": "Onde o gp2 obriga a pagar por espaço extra para elevar as IOPS de base, o gp3 permite dimensionar o armazenamento e provisionar separadamente o desempenho necessário. IOPS provisionadas além da base do gp3 podem ser cobradas.",
+    "servicos": [
+      "Amazon EBS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/ebs/latest/userguide/general-purpose.html"
+  },
+  {
+    "id": "D4-adva-003",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 7,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Objetos grandes que já estão no S3 Standard serão excluídos em poucas semanas. A equipe estuda movê-los agora para o S3 Glacier Deep Archive via S3 Lifecycle, sem nenhuma leitura até a exclusão. Além da tarifa de armazenamento por GB, que duas cobranças podem reduzir a economia prevista nessa mudança? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Recuperação dos objetos no momento em que a expiração os excluir.",
+        "correta": false,
+        "porque": "Expirar um objeto arquivado não requer restaurar seus dados."
+      },
+      {
+        "texto": "Solicitações de transição do S3 Lifecycle para a classe de destino.",
+        "correta": true,
+        "porque": "As transições para outra classe têm cobrança por solicitação."
+      },
+      {
+        "texto": "Monitoramento dos padrões de acesso nos objetos recém-arquivados.",
+        "correta": false,
+        "porque": "Essa cobrança pertence ao S3 Intelligent-Tiering, não ao S3 Glacier Deep Archive."
+      },
+      {
+        "texto": "Prazo mínimo de armazenamento não cumprido antes da exclusão.",
+        "correta": true,
+        "porque": "A exclusão antes da duração mínima gera uma cobrança proporcional ao período restante."
+      },
+      {
+        "texto": "Transferência de dados entre regiões na transição dos objetos.",
+        "correta": false,
+        "porque": "A transição de classe dentro do bucket não implica transferência entre regiões."
+      }
+    ],
+    "explicacao": "A tarifa mensal por GB não expressa todo o custo da migração: a transição é cobrada por solicitação e o prazo mínimo conta a partir da entrada na nova classe.",
+    "servicos": [
+      "Amazon S3",
+      "S3 Lifecycle"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/s3/pricing/"
+  },
+  {
+    "id": "D4-adva-004",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "No AWS Cost Categories, uma regra atribui a Vendas as despesas com uma determinada tag. Outra regra atribui a Plataforma as despesas de uma conta central, mas as despesas dessa conta que têm a tag aparecem em Vendas. O financeiro quer tudo da conta central em Plataforma, sem mudar o tratamento da tag nas outras contas. Que ajuste resolve?",
+    "alternativas": [
+      {
+        "texto": "Definir Plataforma como o valor padrão da categoria de custos.",
+        "correta": false,
+        "porque": "O valor padrão vale apenas para itens que não correspondem a nenhuma regra."
+      },
+      {
+        "texto": "Converter a regra da conta central em uma regra de valor herdado.",
+        "correta": false,
+        "porque": "A regra de valor herdado deriva o valor do nome da conta ou de uma tag e continua sujeita à ordem de avaliação."
+      },
+      {
+        "texto": "Configurar uma regra de rateio de custos de Vendas para Plataforma.",
+        "correta": false,
+        "porque": "O rateio redistribui custos para relatórios, mas não muda o valor atribuído pela primeira regra correspondente."
+      },
+      {
+        "texto": "Posicionar a regra da conta central acima da regra de tag.",
+        "correta": true,
+        "porque": "O valor é atribuído pela primeira regra correspondente, então a regra da conta passa a ter precedência."
+      }
+    ],
+    "explicacao": "As regras são avaliadas na ordem configurada. Com a regra da conta central primeiro, qualquer despesa dessa conta vai para Plataforma; o critério de tag continua disponível para despesas das demais contas.",
+    "servicos": [
+      "AWS Cost Categories",
+      "AWS Billing and Cost Management"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/create-cost-categories.html"
+  },
+  {
+    "id": "D4-adva-005",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 7,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Na mesma organização AWS, o financeiro só ativou hoje uma chave de tag para alocação de custos. Três meses atrás, parte dos recursos já tinha essa chave aplicada; o restante recebeu a chave agora. Quais afirmações sobre recuperar essa atribuição histórica são corretas? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A conta de gerenciamento pode solicitar a aplicação retroativa da ativação ao período.",
+        "correta": true,
+        "porque": "O backfill permite à conta de gerenciamento aplicar o status de ativação a meses anteriores elegíveis."
+      },
+      {
+        "texto": "Os recursos marcados agora recebem a atribuição histórica pelo valor atualmente aplicado.",
+        "correta": false,
+        "porque": "O backfill não cria, para uso passado, tags ausentes nos recursos naquele período."
+      },
+      {
+        "texto": "As tags que já estavam aplicadas aos recursos naquele período podem aparecer nos dados reprocessados.",
+        "correta": true,
+        "porque": "Os dados históricos podem passar a usar a chave se a tag já estava associada ao recurso no período."
+      },
+      {
+        "texto": "A conta membro que criou os recursos pode solicitar o backfill de forma independente.",
+        "correta": false,
+        "porque": "Em uma organização, a solicitação de backfill cabe à conta de gerenciamento."
+      },
+      {
+        "texto": "O backfill aplica aos gastos antigos o valor mais recente quando uma tag mudou de valor.",
+        "correta": false,
+        "porque": "A ativação retroativa não reescreve o valor que a tag tinha em cada período histórico."
+      }
+    ],
+    "explicacao": "Backfill retroage o status de ativação da chave na cobrança. Ele não altera as tags dos recursos nem atribui a meses anteriores um valor que só foi colocado depois.",
+    "servicos": [
+      "AWS Billing and Cost Management",
+      "AWS Organizations"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-allocation-backfill.html"
+  },
+  {
+    "id": "D4-adva-006",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "A área financeira quer simular a última fatura consolidada inteira, aplicando ao mesmo tempo um novo Savings Plan e a remoção de uma carga já desligada. A análise deve partir dos dados de uso já faturados, e não de uma previsão de volume nem de uma lista manual de serviços. Qual recurso é o mais adequado?",
+    "alternativas": [
+      {
+        "texto": "Uma previsão de custo mensal do AWS Cost Explorer.",
+        "correta": false,
+        "porque": "A previsão parte do histórico para projetar gastos futuros, não para simular uma fatura sob outro compromisso."
+      },
+      {
+        "texto": "Uma estimativa de fatura no AWS Pricing Calculator no console.",
+        "correta": true,
+        "porque": "A estimativa de fatura permite modelar mudanças de compromissos sobre uma base histórica de uso."
+      },
+      {
+        "texto": "Uma estimativa de carga no AWS Pricing Calculator no console.",
+        "correta": false,
+        "porque": "A estimativa de carga modela serviços e uso do cenário, mas não é o recurso para simular mudanças na carteira de compromissos sobre a fatura consolidada."
+      },
+      {
+        "texto": "Um relatório de cobertura de Savings Plans no AWS Cost Explorer.",
+        "correta": false,
+        "porque": "A cobertura mostra a parcela do uso coberta pelos planos existentes, não a fatura hipotética com uma compra diferente."
+      }
+    ],
+    "explicacao": "A estimativa de fatura (bill estimate) responde ao cenário contrafactual: mantém uma base de uso e permite modelar alterações em compromissos como Savings Plans.",
+    "servicos": [
+      "AWS Pricing Calculator",
+      "AWS Cost Explorer",
+      "AWS Savings Plans"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/cost-management/latest/userguide/pc-bill-estimate.html"
+  },
+  {
+    "id": "D4-adva-007",
+    "dominio": 4,
+    "task": "4.3",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "Uma equipe já sabe interpretar o conjunto completo de verificações do AWS Trusted Advisor. Agora quer também o AWS Trusted Advisor Priority para receber recomendações priorizadas com orientação da equipe de contas da AWS. Qual é o plano de menor custo que inclui esse recurso?",
+    "alternativas": [
+      {
+        "texto": "Basic Support.",
+        "correta": false,
+        "porque": "As verificações principais do Basic Support não incluem o Trusted Advisor Priority."
+      },
+      {
+        "texto": "AWS Business Support+.",
+        "correta": false,
+        "porque": "Inclui o conjunto completo de verificações, mas não o Trusted Advisor Priority."
+      },
+      {
+        "texto": "AWS Enterprise Support.",
+        "correta": true,
+        "porque": "É o primeiro nível do comparativo atual que inclui o Trusted Advisor Priority."
+      },
+      {
+        "texto": "AWS Unified Operations.",
+        "correta": false,
+        "porque": "Inclui o Trusted Advisor Priority, mas o recurso também está disponível no AWS Enterprise Support."
+      }
+    ],
+    "explicacao": "Ter acesso a todas as verificações do Trusted Advisor não equivale a ter o Priority. O AWS Enterprise Support e o AWS Unified Operations incluem o Priority; o AWS Enterprise Support atende com o menor custo entre eles.",
+    "servicos": [
+      "AWS Support",
+      "AWS Trusted Advisor"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/premiumsupport/plans/"
+  },
+  {
+    "id": "D4-adva-008",
+    "dominio": 4,
+    "task": "4.3",
+    "rodada": 7,
+    "tipo": "unica",
+    "enunciado": "A equipe de operações quer alimentar uma ferramenta interna via API com avisos da AWS sobre manutenções programadas que afetam seus recursos. Cada registro deve indicar quais contas membros foram atingidas, sem que a equipe consulte cada conta separadamente. Qual opção fornece esses dados?",
+    "alternativas": [
+      {
+        "texto": "Consultar os eventos organizacionais pela AWS Health API.",
+        "correta": true,
+        "porque": "A API da AWS Health permite listar eventos organizacionais e identificar as contas afetadas."
+      },
+      {
+        "texto": "Consultar os casos de suporte da organização pela AWS Support API.",
+        "correta": false,
+        "porque": "A API do Support não transforma eventos da AWS Health em casos de suporte."
+      },
+      {
+        "texto": "Consultar a visão organizacional do AWS Trusted Advisor.",
+        "correta": false,
+        "porque": "Essa visão agrega recomendações e verificações, não o inventário de eventos da AWS Health."
+      },
+      {
+        "texto": "Consultar os eventos públicos de serviços no AWS Health Dashboard.",
+        "correta": false,
+        "porque": "Eventos públicos não identificam as contas membros afetadas."
+      }
+    ],
+    "explicacao": "A visão organizacional da AWS Health agrega eventos de contas membros. Com acesso à API, é possível usar esses dados e a lista de contas afetadas em uma integração interna.",
+    "servicos": [
+      "AWS Health",
+      "AWS Organizations",
+      "AWS Support",
+      "AWS Trusted Advisor"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html"
+  },
+  {
+    "id": "D4-adva-009",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Um Compute Savings Plan cobre o consumo elegível de uma equipe nas horas de pouco movimento, quando parte do compromisso fica ociosa. Em horas de pico, o consumo ultrapassa o que o plano cobre. A organização não tem outro compromisso aplicável. Como essas horas entram na cobrança?",
+    "alternativas": [
+      {
+        "texto": "A folga das horas ociosas abate o excedente das horas de pico do mesmo dia.",
+        "correta": false,
+        "porque": "O compromisso não pode ser usado fora da hora a que se refere, ainda que no mesmo dia."
+      },
+      {
+        "texto": "A folga se perde em cada hora e o excedente do pico é cobrado a tarifas On-Demand.",
+        "correta": true,
+        "porque": "O plano é aplicado a cada hora e o uso elegível que exceder o compromisso paga a tarifa sob demanda."
+      },
+      {
+        "texto": "O compromisso fica limitado ao uso das horas ociosas e volta ao valor contratado no pico.",
+        "correta": false,
+        "porque": "Um volume menor de uso não reduz o valor comprometido naquela hora."
+      },
+      {
+        "texto": "O compromisso é recalculado pela média do mês e então aplicado ao volume de cada hora.",
+        "correta": false,
+        "porque": "A média mensal não redefine o compromisso horário contratado."
+      }
+    ],
+    "explicacao": "O valor comprometido é aproveitado dentro da própria hora. Dimensionar um Savings Plan usando apenas a média mensal pode levar a sobra de compromisso em algumas horas e uso On-Demand em outras.",
+    "servicos": [
+      "AWS Savings Plans"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-applying.html"
+  },
+  {
+    "id": "D4-adva-010",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Um portal guarda objetos de vários megabytes por anos. Não é possível prever quais ficarão meses sem acesso e quais voltarão a ser lidos com frequência; as leituras não podem esperar uma restauração. Que classe ajusta o preço de armazenamento conforme o acesso de cada objeto sem exigir que a equipe programe transições por idade?",
+    "alternativas": [
+      {
+        "texto": "S3 Standard com permanência dos objetos na classe original.",
+        "correta": false,
+        "porque": "Oferece leitura imediata, mas não ajusta a tarifa de armazenamento conforme o acesso."
+      },
+      {
+        "texto": "S3 Standard-IA com transição por Lifecycle após uma idade fixa.",
+        "correta": false,
+        "porque": "A idade do objeto não distingue quais objetos realmente esfriaram; o retorno de acessos também gera cobranças de recuperação."
+      },
+      {
+        "texto": "S3 Glacier Instant Retrieval com transição por Lifecycle após uma idade fixa.",
+        "correta": false,
+        "porque": "A leitura é imediata, mas a transição continua baseada em idade, não no padrão de acesso."
+      },
+      {
+        "texto": "S3 Intelligent-Tiering sem habilitar as camadas opcionais de acesso assíncrono.",
+        "correta": true,
+        "porque": "As camadas automáticas mantêm a leitura imediata e movem objetos elegíveis conforme o acesso."
+      }
+    ],
+    "explicacao": "O S3 Intelligent-Tiering monitora objetos elegíveis e os move entre camadas automáticas sem exigir uma regra por idade. As camadas opcionais Archive Access e Deep Archive Access ficam desativadas para preservar o acesso imediato.",
+    "servicos": [
+      "Amazon S3",
+      "S3 Lifecycle"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html"
+  },
+  {
+    "id": "D4-adva-011",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 8,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Um site usa uma distribuição do Amazon CloudFront com cobrança sob demanda e um bucket S3 Standard como origem. Alguns downloads são atendidos pelo cache; nos demais, o CloudFront lê o objeto no S3. Desconsiderando franquias e créditos, que duas cobranças podem compor o custo dessa entrega? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Transferência de dados do CloudFront para visitantes na internet.",
+        "correta": true,
+        "porque": "O tráfego do ponto de presença aos visitantes é uma dimensão de cobrança sob demanda do CloudFront."
+      },
+      {
+        "texto": "Transferência de dados do bucket S3 de origem para o CloudFront.",
+        "correta": false,
+        "porque": "A transferência entre uma origem AWS e o CloudFront não é cobrada nesse caminho."
+      },
+      {
+        "texto": "Solicitações de leitura feitas ao S3 quando o CloudFront consulta a origem.",
+        "correta": true,
+        "porque": "A isenção do tráfego da origem não elimina a cobrança das solicitações GET processadas pelo S3."
+      },
+      {
+        "texto": "Solicitações de leitura feitas ao S3 quando o CloudFront serve o objeto do cache.",
+        "correta": false,
+        "porque": "Servir o objeto do cache sem consultar a origem não gera uma solicitação GET ao S3."
+      },
+      {
+        "texto": "Recuperação de objetos arquivados no S3 para preencher o cache.",
+        "correta": false,
+        "porque": "O S3 Standard não é uma classe de arquivamento nem cobra recuperação por GB lido."
+      }
+    ],
+    "explicacao": "A isenção de transferência da origem AWS para o CloudFront não se estende às solicitações de leitura feitas à origem nem à entrega do CloudFront para a internet.",
+    "servicos": [
+      "Amazon CloudFront",
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/cloudfront/pricing/"
+  },
+  {
+    "id": "D4-adva-012",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma conta membro de uma organização recebeu um crédito promocional válido para certos serviços. O financeiro quer manter a fatura consolidada, mas o saldo deve abater somente o uso elegível dessa conta. Qual configuração atende?",
+    "alternativas": [
+      {
+        "texto": "Desativar, nas preferências de faturamento, o compartilhamento de créditos dessa conta.",
+        "correta": true,
+        "porque": "Com o compartilhamento de créditos desativado para a conta, o crédito se aplica ao uso elegível dela própria."
+      },
+      {
+        "texto": "Desativar, nas preferências de faturamento, o compartilhamento de descontos dessa conta.",
+        "correta": false,
+        "porque": "Essa preferência governa descontos de Reserved Instances e Savings Plans, não créditos promocionais."
+      },
+      {
+        "texto": "Aplicar à conta uma SCP que impeça outras contas de consumir o crédito.",
+        "correta": false,
+        "porque": "SCPs limitam permissões de ações nas contas, não a aplicação de créditos no faturamento consolidado."
+      },
+      {
+        "texto": "Isolar a conta com o crédito em um grupo de faturamento do AWS Billing Conductor.",
+        "correta": false,
+        "porque": "O Billing Conductor gera valores pro forma e não muda como os créditos são aplicados na fatura real."
+      }
+    ],
+    "explicacao": "O crédito promocional e os descontos de compromissos têm controles de compartilhamento distintos. A conta de gerenciamento pode restringir o crédito à conta beneficiária sem tirá-la do faturamento consolidado.",
+    "servicos": [
+      "AWS Organizations",
+      "AWS Billing and Cost Management"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-credits.html#consolidated-billing-credit-sharing-preferences"
+  },
+  {
+    "id": "D4-adva-013",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma equipe comprou compromissos de computação com pagamento antecipado. Sua diretoria quer comparar o custo dos meses operacionais sem atribuir o valor inteiro ao mês da compra. No AWS Cost Explorer, qual visão atende a essa análise?",
+    "alternativas": [
+      {
+        "texto": "Custos não combinados, agrupados por mês.",
+        "correta": false,
+        "porque": "Agrupar o custo não combinado por mês não distribui pagamentos antecipados ao longo do compromisso."
+      },
+      {
+        "texto": "Custos combinados, agrupados por mês.",
+        "correta": false,
+        "porque": "A combinação reflete a distribuição de tarifas na organização, não o reconhecimento do pagamento ao longo do prazo."
+      },
+      {
+        "texto": "Custos amortizados, agrupados por mês.",
+        "correta": true,
+        "porque": "A amortização distribui os pagamentos do compromisso durante o período correspondente."
+      },
+      {
+        "texto": "Custos não combinados líquidos, agrupados por mês.",
+        "correta": false,
+        "porque": "A visão líquida considera descontos aplicáveis, mas não amortiza a cobrança antecipada."
+      }
+    ],
+    "explicacao": "A visão amortizada é adequada para comparar períodos operacionais porque distribui o custo antecipado ao longo da vigência do compromisso. Ela não substitui os valores da fatura ao analisar desembolso.",
+    "servicos": [
+      "AWS Cost Explorer",
+      "AWS Savings Plans"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-advanced.html"
+  },
+  {
+    "id": "D4-adva-014",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 8,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma equipe com histórico de uso suficiente tem uma meta mensal em dinheiro para o Amazon S3. O volume de armazenamento sozinho não é uma boa medida porque o número de solicitações varia. Com o AWS Budgets, como avisar quando a estimativa de fechamento ultrapassar a meta sem incluir gastos de outros serviços? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Criar um orçamento de uso para o volume armazenado pelo Amazon S3.",
+        "correta": false,
+        "porque": "Esse volume não representa o custo em dinheiro nem incorpora o custo das solicitações."
+      },
+      {
+        "texto": "Definir um alerta pelo custo previsto para o fim do período mensal.",
+        "correta": true,
+        "porque": "O alerta de previsão compara a estimativa para o período com a meta definida."
+      },
+      {
+        "texto": "Adicionar um filtro de tipo de uso para os bytes armazenados no Amazon S3.",
+        "correta": false,
+        "porque": "O filtro por armazenamento tiraria da análise as cobranças por solicitações."
+      },
+      {
+        "texto": "Criar um orçamento de custo filtrado pelo serviço Amazon S3.",
+        "correta": true,
+        "porque": "O recorte por serviço acompanha o custo do S3 sem se limitar ao tipo de uso de armazenamento."
+      },
+      {
+        "texto": "Definir um alerta pelo custo acumulado comparado a uma fração da meta.",
+        "correta": false,
+        "porque": "Um limiar antecipado no gasto real não avalia se a estimativa do fechamento supera a meta."
+      }
+    ],
+    "explicacao": "O filtro por serviço delimita quais custos entram no orçamento, independentemente de serem de armazenamento ou de solicitações. O alerta de previsão testa a projeção de fechamento, e não uma fração arbitrária da meta.",
+    "servicos": [
+      "AWS Budgets",
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html"
+  },
+  {
+    "id": "D4-adva-015",
+    "dominio": 4,
+    "task": "4.3",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "Uma plataforma crítica já tem orientação estratégica de um Technical Account Manager designado. Na próxima renovação, a empresa exige que o próprio plano inclua engenheiros especialistas designados por domínio e engenheiros para coordenar incidentes críticos. Que oferta atende aos dois requisitos como parte do plano?",
+    "alternativas": [
+      {
+        "texto": "AWS Business Support+.",
+        "correta": false,
+        "porque": "Oferece acesso a atendimento técnico, mas não inclui essa composição dedicada de especialistas e engenheiros de incidentes."
+      },
+      {
+        "texto": "AWS Enterprise Support.",
+        "correta": false,
+        "porque": "Inclui TAM designado e orientação proativa, mas a composição adicional descrita é do Unified Operations."
+      },
+      {
+        "texto": "Basic Support.",
+        "correta": false,
+        "porque": "O plano básico não inclui a equipe de engenharia operacional descrita."
+      },
+      {
+        "texto": "AWS Unified Operations.",
+        "correta": true,
+        "porque": "Inclui Designated Domain Specialist Engineers e Incident Management Engineers para essas funções."
+      }
+    ],
+    "explicacao": "O AWS Unified Operations acrescenta funções distintas ao TAM: especialistas designados por domínio e engenheiros que coordenam a resolução de incidentes críticos.",
+    "servicos": [
+      "AWS Support"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/premiumsupport/unified-operations-team/"
+  },
+  {
+    "id": "D4-adva-016",
+    "dominio": 4,
+    "task": "4.3",
+    "rodada": 8,
+    "tipo": "unica",
+    "enunciado": "O atendimento interno quer padronizar respostas para erros que clientes da AWS encontram com frequência. A equipe precisa de artigos de resolução publicados pela própria AWS, não de discussões abertas nem de um novo caso de suporte. Qual recurso atende melhor?",
+    "alternativas": [
+      {
+        "texto": "A seção de perguntas da comunidade do AWS re:Post.",
+        "correta": false,
+        "porque": "Perguntas da comunidade trazem discussões e respostas de diferentes participantes, não a coleção solicitada."
+      },
+      {
+        "texto": "O AWS Knowledge Center no AWS re:Post.",
+        "correta": true,
+        "porque": "Reúne artigos da AWS que respondem a dúvidas e problemas recorrentes dos clientes."
+      },
+      {
+        "texto": "A coleção de padrões do AWS Prescriptive Guidance.",
+        "correta": false,
+        "porque": "Os padrões orientam a realização de projetos e tarefas, não são a coleção oficial de respostas a problemas frequentes."
+      },
+      {
+        "texto": "A lista de casos do AWS Support Center.",
+        "correta": false,
+        "porque": "O Support Center gerencia casos, em vez de publicar a base de artigos acessível à equipe."
+      }
+    ],
+    "explicacao": "O AWS Knowledge Center faz parte do AWS re:Post e reúne artigos de resolução e perguntas frequentes da AWS. A seção de perguntas da comunidade é um recurso diferente dentro do mesmo portal.",
+    "servicos": [
+      "AWS re:Post",
+      "AWS Knowledge Center",
+      "AWS Prescriptive Guidance",
+      "AWS Support"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://repost.aws/knowledge-center"
+  },
+  {
+    "id": "D4-adva-017",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma equipe já tem uma Standard Reserved Instance regional para EC2 da família M5 com Linux/UNIX e locação compartilhada. Ela vai redimensionar as instâncias dentro dessa família na mesma região e quer manter o benefício sem trocar a reserva nem comprar outro compromisso. Como o desconto pode ser aplicado após a mudança?",
+    "alternativas": [
+      {
+        "texto": "Pelo número de instâncias reservadas, com a mesma capacidade de desconto após a mudança.",
+        "correta": false,
+        "porque": "A cobertura flexível é comparada em unidades normalizadas, não pela contagem fixa de instâncias."
+      },
+      {
+        "texto": "Pela correspondência exata ao novo tamanho, após converter a reserva existente.",
+        "correta": false,
+        "porque": "A equipe possui uma Standard RI, não uma Convertible RI, e não precisa trocá-la para usar a flexibilidade de tamanho."
+      },
+      {
+        "texto": "Pelas unidades normalizadas de uso dos tamanhos elegíveis na família reservada.",
+        "correta": true,
+        "porque": "Nesse escopo, plataforma e locação, tamanhos elegíveis da família podem consumir as unidades normalizadas da reserva."
+      },
+      {
+        "texto": "Pelo valor de uso por hora, com um teto calculado a partir do preço da reserva.",
+        "correta": false,
+        "porque": "Um compromisso de valor por hora caracteriza Savings Plans; a flexibilidade de tamanho da RI usa unidades normalizadas."
+      }
+    ],
+    "explicacao": "A flexibilidade de tamanho de uma RI regional elegível usa fatores de normalização. Isso permite aplicar o desconto na mesma família sem trocar a RI, mas um tamanho maior consome mais unidades.",
+    "servicos": [
+      "Amazon EC2",
+      "AWS Savings Plans"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-scope.html"
+  },
+  {
+    "id": "D4-adva-018",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma empresa mantém alocado um EC2 Dedicated Host sob demanda para voltar a usar o mesmo servidor físico no próximo mês. Todas as instâncias nesse host serão paradas durante o intervalo. Sem considerar armazenamento ou rede, o que ocorre com a cobrança do host nesse período?",
+    "alternativas": [
+      {
+        "texto": "A cobrança continua pelo host físico enquanto ele permanecer alocado.",
+        "correta": true,
+        "porque": "O Dedicated Host sob demanda é cobrado pelo tempo de alocação do servidor, mesmo sem instâncias em execução."
+      },
+      {
+        "texto": "A cobrança é suspensa junto com a execução das instâncias no servidor.",
+        "correta": false,
+        "porque": "Parar as instâncias não libera o host nem interrompe sua cobrança de alocação."
+      },
+      {
+        "texto": "A cobrança é reduzida à fração do host correspondente às instâncias paradas.",
+        "correta": false,
+        "porque": "A cobrança é pelo servidor alocado, não por uma fração associada ao estado das instâncias."
+      },
+      {
+        "texto": "A cobrança é calculada por instância com a tarifa de Dedicated Instances.",
+        "correta": false,
+        "porque": "Dedicated Instances e Dedicated Hosts são ofertas diferentes; não há troca de modelo de cobrança ao parar as instâncias."
+      }
+    ],
+    "explicacao": "O custo do Dedicated Host sob demanda acompanha o tempo de alocação do servidor físico. Parar as instâncias não libera essa capacidade dedicada.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/ec2/dedicated-hosts/pricing/"
+  },
+  {
+    "id": "D4-adva-019",
+    "dominio": 4,
+    "task": "4.1",
+    "rodada": 9,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Para uma auditoria, uma equipe solicita restauração com a opção Standard de objetos no S3 Glacier Deep Archive. As cópias restauradas ficarão acessíveis por alguns dias, e os originais permanecerão arquivados. Que dois componentes a equipe deve acrescentar ao custo que já paga para manter os dados arquivados? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Armazenamento dos metadados dos objetos enquanto eles permanecerem arquivados.",
+        "correta": false,
+        "porque": "Esse custo já existe para cada objeto arquivado antes da restauração."
+      },
+      {
+        "texto": "Armazenamento temporário das cópias restauradas à tarifa do S3 Standard.",
+        "correta": true,
+        "porque": "As cópias acessíveis são cobradas como armazenamento S3 Standard enquanto existirem."
+      },
+      {
+        "texto": "Transição permanente dos objetos originais para a classe S3 Standard.",
+        "correta": false,
+        "porque": "A restauração deixa o original arquivado e não executa uma transição de classe."
+      },
+      {
+        "texto": "Dias restantes do prazo mínimo de armazenamento dos originais após restaurá-los.",
+        "correta": false,
+        "porque": "A restauração não exclui nem substitui os originais e, portanto, não aciona cobrança por saída antecipada da classe."
+      },
+      {
+        "texto": "Solicitações de restauração e volume de dados recuperados do arquivo.",
+        "correta": true,
+        "porque": "Restaurar do Deep Archive com a opção Standard tem cobrança pelas solicitações e pelo volume recuperado."
+      }
+    ],
+    "explicacao": "O arquivamento do original continua sendo cobrado. Para a auditoria, acrescente a restauração e o armazenamento da cópia temporária, que não muda a classe do original.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://aws.amazon.com/s3/pricing/"
+  },
+  {
+    "id": "D4-adva-020",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma empresa já agrupa despesas por unidade de negócio no AWS Billing and Cost Management, com regras que combinam contas, serviços e tags, pois nenhuma tag isolada cobre todo o gasto da unidade Varejo. A conta de gerenciamento quer detectar desvios no total dessa unidade, sem incluir despesas de outras unidades que usam as mesmas contas. Qual configuração do AWS Cost Anomaly Detection atende?",
+    "alternativas": [
+      {
+        "texto": "Um monitor de serviços AWS com assinatura de alertas para a equipe de Varejo.",
+        "correta": false,
+        "porque": "A assinatura define a entrega dos alertas; o recorte por serviço também abrange gastos de outras unidades."
+      },
+      {
+        "texto": "Um monitor de categoria de custos para o valor Varejo.",
+        "correta": true,
+        "porque": "O valor da categoria delimita o gasto da unidade mesmo quando ele se distribui por contas, serviços e tags."
+      },
+      {
+        "texto": "Um monitor de contas vinculadas que agrupe as contas usadas por Varejo.",
+        "correta": false,
+        "porque": "Essas contas também contêm custos de outras unidades, que não seriam excluídos pelo recorte."
+      },
+      {
+        "texto": "Um monitor de tag de alocação de custos para a tag de Varejo.",
+        "correta": false,
+        "porque": "Nenhuma tag isolada cobre todo o gasto da unidade, então parte das despesas ficaria fora do monitor."
+      }
+    ],
+    "explicacao": "O monitor define quais despesas têm seu padrão analisado. Ao selecionar o valor de uma categoria de custos, a empresa monitora o recorte financeiro da unidade, não a soma de contas ou serviços compartilhados.",
+    "servicos": [
+      "AWS Cost Anomaly Detection",
+      "AWS Cost Categories",
+      "AWS Organizations"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/cost-management/latest/userguide/getting-started-ad.html#monitor-type-def"
+  },
+  {
+    "id": "D4-adva-021",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "O financeiro quer enviar a uma equipe um relatório por unidade de negócio. Há um grupo de custos compartilhados já identificado no AWS Cost Categories; a liderança quer rateá-lo por percentuais acordados e consultar o resultado no próprio console, sem alterar a fatura. Qual abordagem atende?",
+    "alternativas": [
+      {
+        "texto": "Criar uma regra de correspondência por conta para os gastos compartilhados.",
+        "correta": false,
+        "porque": "A regra classifica itens em uma categoria, mas não distribui um grupo de custos por percentuais."
+      },
+      {
+        "texto": "Agrupar os gastos por tag de centro de custo no AWS Cost Explorer.",
+        "correta": false,
+        "porque": "O agrupamento mostra custos por valor da tag e não rateia os custos compartilhados por percentuais."
+      },
+      {
+        "texto": "Aplicar uma regra de rateio proporcional ao custo de cada unidade.",
+        "correta": false,
+        "porque": "O método proporcional deriva as parcelas do custo dos destinos, não de proporções previamente acordadas."
+      },
+      {
+        "texto": "Aplicar uma regra de rateio fixo do AWS Cost Categories entre as unidades.",
+        "correta": true,
+        "porque": "O método fixo aceita percentuais definidos para os destinos e mostra o rateio na página da categoria."
+      }
+    ],
+    "explicacao": "O rateio fixo distribui o grupo de custos segundo os percentuais definidos. O resultado aparece nos detalhes da categoria de custos e não modifica a fatura.",
+    "servicos": [
+      "AWS Cost Categories",
+      "AWS Cost Explorer"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/splitcharge-cost-categories.html"
+  },
+  {
+    "id": "D4-adva-022",
+    "dominio": 4,
+    "task": "4.2",
+    "rodada": 9,
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma organização quer alertar o financeiro quando o gasto registrado de uma conta de testes passar da meta mensal. Separadamente, deve proibir nessa conta o lançamento de tipos de instância EC2 fora da lista aprovada, inclusive no início do mês. Quais dois controles atendem? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Configurar no AWS Budgets um alerta de custo real para a conta de testes.",
+        "correta": true,
+        "porque": "Um orçamento filtrado pela conta pode notificar sobre o gasto acumulado registrado."
+      },
+      {
+        "texto": "Configurar no AWS Budgets uma ação de bloqueio ao atingir a meta mensal.",
+        "correta": false,
+        "porque": "O bloqueio condicionado ao orçamento não impede lançamentos fora da lista antes do limite."
+      },
+      {
+        "texto": "Aplicar à conta de testes uma SCP que negue tipos EC2 fora da lista.",
+        "correta": true,
+        "porque": "A SCP limita as permissões da conta membro independentemente do custo registrado."
+      },
+      {
+        "texto": "Configurar no AWS Cost Anomaly Detection um alerta para a conta de testes.",
+        "correta": false,
+        "porque": "A ferramenta analisa desvios do padrão esperado, em vez de alertar pelo cruzamento da meta mensal total."
+      },
+      {
+        "texto": "Configurar uma política de tags para os tipos EC2 da lista aprovada.",
+        "correta": false,
+        "porque": "A política de tags trata da conformidade das tags, não da restrição do tipo solicitado no lançamento."
+      }
+    ],
+    "explicacao": "Um alerta de custo acompanha a meta financeira, mas não impede a criação de recursos. A SCP restringe os tipos de instância antes do provisionamento, independentemente do orçamento.",
+    "servicos": [
+      "AWS Budgets",
+      "AWS Organizations",
+      "Amazon EC2",
+      "AWS Cost Anomaly Detection"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html#scp-effects-on-permissions"
+  },
+  {
+    "id": "D4-adva-023",
+    "dominio": 4,
+    "task": "4.3",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Uma empresa já encontrou no AWS Marketplace o produto de software que quer comprar. Ela negociou com o fornecedor preço e condições específicos para sua conta e quer aceitar esses termos dentro do próprio Marketplace. Qual opção atende?",
+    "alternativas": [
+      {
+        "texto": "Aceitar a oferta pública do produto no catálogo do AWS Marketplace.",
+        "correta": false,
+        "porque": "A oferta pública não contém os termos negociados especificamente para a conta."
+      },
+      {
+        "texto": "Aceitar uma oferta privada do fornecedor no AWS Marketplace.",
+        "correta": true,
+        "porque": "Uma oferta privada permite disponibilizar condições negociadas para a conta compradora."
+      },
+      {
+        "texto": "Incluir o produto no catálogo do AWS Private Marketplace da empresa.",
+        "correta": false,
+        "porque": "A inclusão no catálogo interno controla a aprovação de produtos; não substitui uma oferta com termos negociados."
+      },
+      {
+        "texto": "Distribuir os direitos do produto às contas usando o AWS License Manager.",
+        "correta": false,
+        "porque": "A distribuição trata do uso de licenças, não da aceitação dos termos comerciais negociados."
+      }
+    ],
+    "explicacao": "Uma oferta privada registra as condições comerciais do fornecedor para a conta compradora. Ela é diferente do Private Marketplace, que controla quais produtos podem ser adquiridos.",
+    "servicos": [
+      "AWS Marketplace",
+      "AWS License Manager"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/marketplace/latest/buyerguide/buyer-private-offers.html"
+  },
+  {
+    "id": "D4-adva-024",
+    "dominio": 4,
+    "task": "4.3",
+    "rodada": 9,
+    "tipo": "unica",
+    "enunciado": "Antes de escolher como recuperar suas cargas de trabalho em um desastre, um comitê quer citar um documento oficial da AWS que compare as estratégias possíveis de acordo com objetivos de recuperação, custos e complexidade. Qual fonte oferece essa comparação sem pressupor uma estratégia já escolhida?",
+    "alternativas": [
+      {
+        "texto": "A página de cotas do AWS Backup em cada Região usada pela empresa.",
+        "correta": false,
+        "porque": "As cotas ajudam a validar limites de uma solução, mas não comparam estratégias de recuperação."
+      },
+      {
+        "texto": "Um padrão do AWS Prescriptive Guidance para implantar uma estratégia de DR específica.",
+        "correta": false,
+        "porque": "O padrão detalha como aplicar uma decisão já tomada, não compara as estratégias pedidas pelo comitê."
+      },
+      {
+        "texto": "O whitepaper Disaster Recovery of Workloads on AWS.",
+        "correta": true,
+        "porque": "A publicação compara estratégias de recuperação e seus compromissos entre objetivos, custo e complexidade."
+      },
+      {
+        "texto": "Um artigo do AWS Knowledge Center sobre falhas ao restaurar backups no AWS Backup.",
+        "correta": false,
+        "porque": "O artigo resolve um problema específico de restauração, não orienta a escolha entre estratégias."
+      }
+    ],
+    "explicacao": "O whitepaper Disaster Recovery of Workloads on AWS apresenta alternativas de recuperação e os fatores de decisão entre elas. Documentos de execução ou de resolução de falhas atendem a etapas posteriores.",
+    "servicos": [
+      "AWS Prescriptive Guidance",
+      "AWS Knowledge Center"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-workloads-on-aws.html"
+  }
+]

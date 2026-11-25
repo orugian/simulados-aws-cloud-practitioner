@@ -1,0 +1,906 @@
+[
+  {
+    "id": "D1-advb-001",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Após migrar seu sistema de entregas, uma transportadora ainda digita os dados dos comprovantes em dois sistemas. Ela quer diminuir as divergências de registro sem mudar o serviço prestado nem a organização das equipes. Qual iniciativa atende à meta e exemplifica a transformação de processos do AWS CAF?",
+    "alternativas": [
+      {
+        "texto": "Modernizar o armazenamento dos comprovantes e manter a digitação em cada sistema.",
+        "correta": false,
+        "porque": "Trocar o armazenamento não elimina a entrada duplicada que causa as divergências."
+      },
+      {
+        "texto": "Oferecer aos clientes um produto de rastreamento com acesso aos comprovantes digitais.",
+        "correta": false,
+        "porque": "Amplia a oferta comercial, mas não corrige a duplicidade na entrada de dados."
+      },
+      {
+        "texto": "Capturar os dados uma vez e repassá-los automaticamente aos sistemas que os consomem.",
+        "correta": true,
+        "porque": "Digitaliza a troca de informações e evita que o segundo lançamento introduza divergências."
+      },
+      {
+        "texto": "Unificar as equipes de atendimento e logística sob um responsável pelos comprovantes.",
+        "correta": false,
+        "porque": "Muda a estrutura das equipes sem remover a dupla digitação."
+      }
+    ],
+    "explicacao": "No AWS CAF, a transformação de processos digitaliza ou automatiza operações de negócio. Neste caso, o ganho vem de alterar o fluxo de registro, não de mudar onde os comprovantes são armazenados.",
+    "servicos": [
+      "AWS Cloud Adoption Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/accelerating-business-outcomes.html"
+  },
+  {
+    "id": "D1-advb-002",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Dois sistemas mantidos por equipes diferentes atualizam as mesmas tabelas de estoque na mesma transação. Nos testes, separá-los entre o data center e a AWS estourou o tempo de resposta aceito, e a empresa não vai desacoplá-los antes da migração. Como agrupar as cargas nas ondas de migração?",
+    "alternativas": [
+      {
+        "texto": "Planejar a transição dos dois sistemas e do banco como um grupo na mesma onda.",
+        "correta": true,
+        "porque": "O grupo preserva a dependência de execução durante a transição."
+      },
+      {
+        "texto": "Migrar o banco primeiro e completar a transição dos sistemas nas ondas de cada equipe.",
+        "correta": false,
+        "porque": "Separa temporariamente as aplicações do banco, mantendo o problema de latência testado."
+      },
+      {
+        "texto": "Mover os servidores do sistema mais simples primeiro e usar sua operação como piloto.",
+        "correta": false,
+        "porque": "A simplicidade de um sistema isolado não elimina a dependência com o banco e o outro sistema."
+      },
+      {
+        "texto": "Organizar as ondas pelo tipo de servidor e coordenar as mudanças de cada equipe separadamente.",
+        "correta": false,
+        "porque": "O tipo de servidor não indica quais componentes precisam permanecer juntos."
+      }
+    ],
+    "explicacao": "As ondas devem respeitar as dependências que impedem a operação em ambientes separados. A estrutura interna das equipes e a facilidade de mover um servidor não substituem esse critério.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/prescriptive-guidance/latest/application-portfolio-assessment-guide/wave-planning.html"
+  },
+  {
+    "id": "D1-advb-003",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Na fase Launch do AWS CAF, uma distribuidora pretende validar se um novo fluxo de atendimento em nuvem reduz o tempo de resolução sem aumentar a reabertura de chamados. A diretoria precisa de evidência antes de financiar a expansão. Quais duas decisões de desenho do piloto ajudam a produzir essa evidência? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Selecionar a unidade com menos chamados, ainda que ela não receba os tipos de caso mais comuns.",
+        "correta": false,
+        "porque": "O baixo volume reduz a exposição, mas a ausência de casos comuns prejudica a validação do fluxo."
+      },
+      {
+        "texto": "Executar o novo fluxo com usuários reais em um grupo que receba os tipos de chamados relevantes.",
+        "correta": true,
+        "porque": "O grupo limita o alcance do piloto sem excluir o trabalho que ele precisa representar."
+      },
+      {
+        "texto": "Adotar a disponibilidade da infraestrutura como critério decisivo para aprovar a expansão.",
+        "correta": false,
+        "porque": "Disponibilidade não mede a velocidade da resolução nem a qualidade expressa nas reaberturas."
+      },
+      {
+        "texto": "Comparar os chamados simples do piloto com todos os chamados atendidos no período anterior.",
+        "correta": false,
+        "porque": "A diferença na complexidade pode explicar o ganho atribuído ao novo fluxo."
+      },
+      {
+        "texto": "Fixar uma referência inicial e comparar tempo e reaberturas em conjuntos equivalentes de chamados.",
+        "correta": true,
+        "porque": "A comparação mede os dois resultados e reduz a influência da composição dos chamados."
+      }
+    ],
+    "explicacao": "A fase Launch usa pilotos em produção para mostrar valor de forma limitada. Um piloto representativo e uma comparação definida antes da execução ajudam a verificar se houve ganho sem piorar a qualidade.",
+    "servicos": [
+      "AWS Cloud Adoption Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/your-cloud-transformation-journey.html"
+  },
+  {
+    "id": "D1-advb-004",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "A equipe de uma plataforma de reservas planeja voltar ao ambiente original se o destino na AWS apresentar problemas após a abertura ao público. A origem ficará disponível, mas não receberá as reservas gravadas na AWS após a troca. O que o plano de retorno precisa prever para não perder reservas confirmadas?",
+    "alternativas": [
+      {
+        "texto": "Restaurar na origem o backup validado logo antes de transferir o tráfego.",
+        "correta": false,
+        "porque": "O backup anterior à troca não inclui as reservas confirmadas depois dela."
+      },
+      {
+        "texto": "Transferir o tráfego de volta e deixar as próximas gravações no banco original.",
+        "correta": false,
+        "porque": "Redirecionar o acesso não recupera as gravações já feitas no destino."
+      },
+      {
+        "texto": "Manter ativa a replicação original, do data center para a AWS, durante o retorno.",
+        "correta": false,
+        "porque": "Esse sentido de cópia não leva à origem os dados novos gravados na AWS."
+      },
+      {
+        "texto": "Copiar para a origem o que foi gravado na AWS e validar antes de reativá-la.",
+        "correta": true,
+        "porque": "Incorporar à origem as mudanças feitas no destino, antes de ela voltar a receber gravações, preserva os dados confirmados."
+      }
+    ],
+    "explicacao": "A primeira gravação no destino muda o que é necessário para voltar. O plano precisa controlar as gravações na transição e incorporar os dados do destino à origem; manter o ambiente anterior acessível não resolve a diferença de estado.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-migration-cutover/cutover-stage.html#rollback-with-the-changed-data.c9ef3111-a4b0-54c7-b52b-6e3d9e65c31d"
+  },
+  {
+    "id": "D1-advb-005",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Um sistema na AWS tem carga estável ao longo do dia. Durante os fechamentos mensais, usa quase toda a memória, embora ainda sobre CPU; nesses períodos, paginação adicional faria o sistema descumprir sua meta de resposta. Como buscar uma configuração de menor custo sem comprometer os fechamentos?",
+    "alternativas": [
+      {
+        "texto": "Reduzir um tamanho na mesma família e validar CPU e memória com a carga típica de um dia.",
+        "correta": false,
+        "porque": "Um dia típico não revela se o tamanho reduzido terá memória suficiente no fechamento."
+      },
+      {
+        "texto": "Testar um perfil com mais memória por vCPU e comparar o custo sob a carga de fechamento.",
+        "correta": true,
+        "porque": "Reduzir capacidade de CPU não exige reduzir memória na mesma proporção ao mudar de família."
+      },
+      {
+        "texto": "Testar instâncias com CPU expansível e usar a folga de CPU para estimar o custo mensal.",
+        "correta": false,
+        "porque": "Rajadas de CPU não resolvem o requisito crítico de memória."
+      },
+      {
+        "texto": "Escolher a família com menor preço por vCPU e manter o número de vCPUs no fechamento.",
+        "correta": false,
+        "porque": "O preço por vCPU não garante memória suficiente nem o menor custo da configuração que atende à carga."
+      }
+    ],
+    "explicacao": "Rightsizing considera o conjunto de requisitos, inclusive nos períodos críticos. Mudar a proporção entre memória e CPU permite avaliar opções mais econômicas do que reduzir ou manter ambos os recursos em bloco.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost06-bp02.html"
+  },
+  {
+    "id": "D1-advb-006",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "O contrato de uma empresa permite usar suas licenças perpétuas na AWS nas instâncias que atendem à demanda contínua. Nesse grupo, a opção com as licenças próprias já se mostrou mais barata; o contrato não cobre as instâncias extras, usadas por poucos dias, e comprar novas licenças custa mais do que usar o mesmo software com licença incluída nesses dias. Qual combinação minimiza o custo e respeita o contrato?",
+    "alternativas": [
+      {
+        "texto": "Usar licença incluída no grupo contínuo e comprar licenças próprias para as instâncias extras.",
+        "correta": false,
+        "porque": "Coloca a opção mais cara nos dois grupos sob as condições dadas."
+      },
+      {
+        "texto": "Usar licença incluída no grupo contínuo e nas instâncias extras.",
+        "correta": false,
+        "porque": "Atende ao contrato, mas não aproveita o custo menor das licenças próprias para a base."
+      },
+      {
+        "texto": "Usar licenças próprias no grupo contínuo e adquirir licenças adicionais para os picos.",
+        "correta": false,
+        "porque": "A compra adicional custa mais do que a alternativa por uso para os poucos dias dos picos."
+      },
+      {
+        "texto": "Usar licenças próprias no grupo contínuo e licença incluída nas instâncias extras.",
+        "correta": true,
+        "porque": "Aproveita os direitos existentes na base e evita comprar licenças para uso breve."
+      }
+    ],
+    "explicacao": "BYOL depende dos direitos de uso existentes. Quando a base e os picos têm perfis de utilização diferentes, comparar o custo e a cobertura contratual de cada grupo pode justificar combinar os modelos.",
+    "servicos": [
+      "Amazon EC2"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-microsoft-workloads-aws/licensing-microsoft-workloads.html"
+  },
+  {
+    "id": "D1-advb-007",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma indústria avalia os desembolsos incrementais de migrar agora em vez de esperar o fim do contrato do data center. Até o vencimento, o aluguel será igual nos dois planos, mas a migração imediata permitirá desligar servidores e reduzir uma parte da conta de energia medida por consumo. Quais entradas diferenciam os dois planos no período até o vencimento? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "A redução na cobrança de energia que varia com as horas de equipamentos ligados.",
+        "correta": true,
+        "porque": "Essa parcela do desembolso local muda quando os equipamentos são desligados mais cedo."
+      },
+      {
+        "texto": "A compra dos servidores que já foram pagos e não têm valor de revenda.",
+        "correta": false,
+        "porque": "O pagamento passado não muda entre migrar agora e esperar."
+      },
+      {
+        "texto": "As mensalidades contratuais do espaço que serão pagas até o vencimento.",
+        "correta": false,
+        "porque": "O aluguel é uma saída de caixa, mas seu valor é igual nos dois planos no período."
+      },
+      {
+        "texto": "As cobranças da AWS pelo consumo das cargas que já estiverem em execução na nuvem.",
+        "correta": true,
+        "porque": "Migrar agora antecipa custos de consumo que não existiriam no plano de espera durante esse período."
+      },
+      {
+        "texto": "O valor residual contábil do hardware no primeiro dia do período.",
+        "correta": false,
+        "porque": "Um valor no balanço não representa, por si só, um desembolso incremental."
+      }
+    ],
+    "explicacao": "Uma comparação incremental separa os desembolsos que mudam dos que são comuns aos planos. A migração antecipa cobranças na nuvem e pode evitar parte da energia local sem que isso libere a empresa de seu contrato vigente.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+  },
+  {
+    "id": "D1-advb-008",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa lê intensamente os relatórios de vários megabytes gerados no Amazon S3 durante o primeiro mês. Depois, guarda cada relatório por seis anos para auditorias raras que aceitam restauração não imediata; ao fim da guarda, o objeto não tem outro uso. Como ajustar os gastos a esse padrão automaticamente?",
+    "alternativas": [
+      {
+        "texto": "Enviar os relatórios diretamente para uma classe de arquivamento e configurar a expiração ao fim da guarda.",
+        "correta": false,
+        "porque": "O arquivamento desde a criação não atende adequadamente às leituras intensivas do primeiro mês."
+      },
+      {
+        "texto": "Manter os relatórios na classe de acesso frequente e configurar a expiração ao fim da guarda.",
+        "correta": false,
+        "porque": "Automatiza a exclusão, mas mantém o perfil de custo de acesso frequente durante toda a guarda."
+      },
+      {
+        "texto": "Configurar regras para arquivar após o uso frequente e expirar quando a guarda terminar.",
+        "correta": true,
+        "porque": "Usa a idade do objeto para ajustar seu custo de armazenamento e encerrar a cobrança ao fim da guarda."
+      },
+      {
+        "texto": "Transicionar os relatórios para arquivamento no fim da guarda e manter os objetos nessa classe.",
+        "correta": false,
+        "porque": "Perde a oportunidade de arquivar durante a guarda e continua pagando por objetos sem uso."
+      }
+    ],
+    "explicacao": "O S3 Lifecycle automatiza transições de classe e expiração. Com uso inicial intenso e acesso tardio raro, a transição deve acompanhar a mudança de demanda; a expiração atende a uma etapa diferente, após a retenção.",
+    "servicos": [
+      "Amazon S3"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html"
+  },
+  {
+    "id": "D1-advb-009",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Um fabricante aprovou migrar seu canal de pedidos esperando que mais clientes concluam as compras iniciadas. Na data da transição, o projeto estava no orçamento e todos os componentes funcionavam, mas ninguém ficou responsável por verificar o efeito nas vendas. Que medida da perspectiva de Governança do AWS CAF corrige essa lacuna?",
+    "alternativas": [
+      {
+        "texto": "Atribuir ao líder de tecnologia os prazos e as dependências das ondas restantes.",
+        "correta": false,
+        "porque": "Melhora o acompanhamento da execução, mas não atribui a verificação do efeito comercial."
+      },
+      {
+        "texto": "Atribuir a Finanças o acompanhamento do gasto real em relação ao orçamento da nuvem.",
+        "correta": false,
+        "porque": "Medir gasto e orçamento não verifica se mais clientes concluem a compra."
+      },
+      {
+        "texto": "Atribuir a Operações o registro de falhas e tempos de recuperação do novo canal.",
+        "correta": false,
+        "porque": "São medidas operacionais úteis, mas não estabelecem a realização do resultado esperado."
+      },
+      {
+        "texto": "Atribuir à área comercial a comparação da taxa de conversão antes e depois da mudança.",
+        "correta": true,
+        "porque": "Dá um responsável e uma medida ao benefício pretendido, além da entrega técnica."
+      }
+    ],
+    "explicacao": "A gestão de benefícios do AWS CAF acompanha a realização dos resultados do investimento. Um projeto entregue no prazo e no orçamento não comprova, por si só, que a conversão de compras melhorou.",
+    "servicos": [
+      "AWS Cloud Adoption Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/governance-perspective.html"
+  },
+  {
+    "id": "D1-advb-010",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma rede migra o sistema de balcão para a AWS. Cada filial tem dados independentes, pode mudar de ambiente sem afetar as demais e gera volume suficiente para validar a operação. O destino já passou pelos testes internos; como começar a usá-lo com clientes reais e limitar o impacto inicial de um problema?",
+    "alternativas": [
+      {
+        "texto": "Transferir todas as filiais na madrugada e monitorar as primeiras horas de operação.",
+        "correta": false,
+        "porque": "Uma janela de menor movimento não limita a exposição a um subconjunto de filiais."
+      },
+      {
+        "texto": "Transferir um pequeno grupo de filiais, verificar a operação e avançar em novos grupos.",
+        "correta": true,
+        "porque": "O grupo produz evidência em uso real sem expor toda a rede no primeiro passo."
+      },
+      {
+        "texto": "Enviar cópias das requisições ao destino e manter os atendimentos no sistema atual.",
+        "correta": false,
+        "porque": "O tráfego espelhado testa o destino, mas não o coloca à frente do atendimento real."
+      },
+      {
+        "texto": "Transferir as consultas de todas as filiais e deixar as vendas no ambiente original.",
+        "correta": false,
+        "porque": "Abrange toda a rede desde o início e não valida o atendimento completo no destino."
+      }
+    ],
+    "explicacao": "Uma transição gradual por grupos independentes limita o alcance dos problemas e valida o fluxo completo antes da próxima etapa. Isso é diferente de apenas observar tráfego no ambiente de destino.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-migration-cutover/cutover-stage.html#phased-approach--canary-deployments-.2821e50e-d99e-5060-ae39-02c2a3d0a7d2"
+  },
+  {
+    "id": "D1-advb-011",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Na fase Envision do AWS CAF, uma autarquia tem várias ideias para adoção da nuvem, mas não decidiu quais merecem investimento. A equipe precisa levar ao comitê uma proposta ligada às prioridades institucionais, antes de avaliar a prontidão para executá-la. Quais ações pertencem a esse trabalho inicial? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Identificar lacunas de competências e dependências entre as capacidades das áreas.",
+        "correta": false,
+        "porque": "O diagnóstico de prontidão é trabalho de Align, posterior à visão inicial."
+      },
+      {
+        "texto": "Identificar as pessoas com autoridade e interesse nos resultados de cada oportunidade.",
+        "correta": true,
+        "porque": "O AWS CAF recomenda identificar as principais partes interessadas ainda em Envision."
+      },
+      {
+        "texto": "Implantar uma versão inicial em produção para comprovar o resultado de cada oportunidade.",
+        "correta": false,
+        "porque": "Pilotos em produção servem para testar valor em Launch, após a priorização."
+      },
+      {
+        "texto": "Ordenar as iniciativas pelo efeito esperado em metas como prazo e qualidade do atendimento.",
+        "correta": true,
+        "porque": "A priorização em Envision relaciona as oportunidades aos objetivos estratégicos mensuráveis."
+      },
+      {
+        "texto": "Documentar práticas de pilotos bem-sucedidos para aplicá-las nas demais unidades.",
+        "correta": false,
+        "porque": "A medida pressupõe pilotos concluídos e serve para disseminar o que foi validado."
+      }
+    ],
+    "explicacao": "Envision estabelece por que a organização pretende transformar-se e quem precisa participar. Isso embasa a escolha das oportunidades antes de trabalhar lacunas de capacidade ou executar pilotos.",
+    "servicos": [
+      "AWS Cloud Adoption Framework"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/your-cloud-transformation-journey.html"
+  },
+  {
+    "id": "D1-advb-012",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Uma empresa que segue o AWS Migration Acceleration Program (MAP) já aprovou o caso de negócio e identificou as lacunas de prontidão. Pretende migrar dezenas de cargas em ondas, mas ainda não tem a base de contas, conectividade e operação para recebê-las. Qual ação aplica o objetivo da fase Mobilize?",
+    "alternativas": [
+      {
+        "texto": "Construir a base de nuvem e validar o modelo de operação com uma migração inicial.",
+        "correta": true,
+        "porque": "Mobilize cria a fundação e usa experiência inicial para preparar a execução em escala."
+      },
+      {
+        "texto": "Refazer a projeção financeira e usar seu resultado para decidir se o programa começa.",
+        "correta": false,
+        "porque": "Volta à decisão do caso de negócio sem resolver a preparação já identificada."
+      },
+      {
+        "texto": "Migrar o portfólio por ondas e ajustar a base de operação conforme cada carga entrar.",
+        "correta": false,
+        "porque": "Inicia a execução em escala antes de estabelecer a fundação comum."
+      },
+      {
+        "texto": "Priorizar a modernização das primeiras aplicações e usar o ganho previsto para definir a base.",
+        "correta": false,
+        "porque": "Muda o foco para a evolução das aplicações, sem preparar e validar primeiro o ambiente compartilhado."
+      }
+    ],
+    "explicacao": "No MAP, Mobilize segue a avaliação e prepara as bases técnicas e operacionais para migrar em escala. A migração inicial não substitui as ondas do portfólio; ajuda a testar como executá-las.",
+    "servicos": [
+      "AWS Migration Acceleration Program"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/prescriptive-guidance/latest/strategy-migration/mobilize-phase.html"
+  },
+  {
+    "id": "D1-advb-013",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Um portal recebe uma primeira onda de acessos em horário anunciado, quando abre inscrições. As instâncias demoram a ficar prontas; o volume das horas seguintes varia entre eventos, e manter o máximo reservado o dia inteiro geraria ociosidade. Como atender à abertura e ajustar o gasto depois?",
+    "alternativas": [
+      {
+        "texto": "Aumentar ou reduzir a capacidade a partir de métricas observadas após a chegada dos primeiros acessos.",
+        "correta": false,
+        "porque": "A reação começa tarde para atender à primeira onda, dado o tempo de preparação."
+      },
+      {
+        "texto": "Agendar a capacidade máxima histórica para toda a janela e retornar à base ao fim dela.",
+        "correta": false,
+        "porque": "Atende à abertura, mas mantém o máximo mesmo quando as horas seguintes exigem menos."
+      },
+      {
+        "texto": "Agendar capacidade para a abertura e usar métricas de carga para ajustar as horas seguintes.",
+        "correta": true,
+        "porque": "Antecipa a etapa de início conhecido e atende à parte variável sem mantê-la fixa no máximo."
+      },
+      {
+        "texto": "Manter a capacidade média dos eventos e revisar o tamanho após cada janela de inscrições.",
+        "correta": false,
+        "porque": "A revisão posterior não ajusta a capacidade durante o evento nem assegura o atendimento inicial."
+      }
+    ],
+    "explicacao": "Uma ação agendada coloca recursos à disposição antes de um evento conhecido; o escalonamento dinâmico ajusta a quantidade usada ao comportamento que não é conhecido com precisão.",
+    "servicos": [
+      "Amazon EC2 Auto Scaling"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html"
+  },
+  {
+    "id": "D1-advb-014",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Duas opções de banco na AWS atendem aos requisitos da empresa. O banco gerenciado tem cobrança direta mais alta, mas elimina tarefas repetitivas que hoje atrasam entregas; a folha não diminuirá, pois a mesma equipe será mantida e há trabalho de produto aguardando. Como comparar economicamente as opções sem confundir benefícios com saídas de caixa?",
+    "alternativas": [
+      {
+        "texto": "Comparar a cobrança direta e avaliar separadamente o valor do trabalho que a equipe pode assumir.",
+        "correta": true,
+        "porque": "O tempo liberado tem valor produtivo, embora não gere redução imediata na folha."
+      },
+      {
+        "texto": "Subtrair o valor integral dos salários dos operadores da cobrança do banco gerenciado.",
+        "correta": false,
+        "porque": "A equipe permanece e a cobrança do serviço não é reduzida pelos salários."
+      },
+      {
+        "texto": "Classificar todo o tempo liberado como economia mensal de caixa na operação do banco.",
+        "correta": false,
+        "porque": "Horas realocadas não desaparecem da folha; elas permitem executar outras atividades."
+      },
+      {
+        "texto": "Comparar a cobrança dos bancos e deixar a realocação fora da avaliação econômica.",
+        "correta": false,
+        "porque": "O custo direto importa, mas essa análise desconsidera entregas viabilizadas pela escolha."
+      }
+    ],
+    "explicacao": "Serviços gerenciados podem liberar capacidade de trabalho ao assumir tarefas operacionais. Quando não há redução de pessoal, avaliar essa capacidade como benefício distinto evita contar o mesmo salário como economia de caixa.",
+    "servicos": [
+      "Amazon RDS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost05-bp03.html"
+  },
+  {
+    "id": "D1-advb-015",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Após uma otimização na AWS, a despesa mensal subiu, mas a plataforma processou mais pedidos de dois tipos com custos muito diferentes. A equipe também alterou o volume de tentativas automáticas para pedidos com falha. Quais ajustes ajudam a saber se o custo por resultado melhorou? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Comparar o custo por pedido concluído dentro de cada tipo nos dois períodos.",
+        "correta": true,
+        "porque": "A comparação separa o efeito da nova proporção de tipos do ganho em cada tipo."
+      },
+      {
+        "texto": "Usar o custo mensal da plataforma como indicador de eficiência, mesmo com volumes diferentes.",
+        "correta": false,
+        "porque": "Um mês mais caro pode corresponder a um custo menor por pedido concluído."
+      },
+      {
+        "texto": "Dividir a despesa pelo número de tentativas registradas, contando os reprocessamentos.",
+        "correta": false,
+        "porque": "Mais tentativas por pedido podem baixar esse indicador sem entregar mais pedidos."
+      },
+      {
+        "texto": "Excluir da despesa os recursos usados pelos pedidos que falharam antes de serem concluídos.",
+        "correta": false,
+        "porque": "O desperdício também é custo de entregar o conjunto de resultados e não deve desaparecer da análise."
+      },
+      {
+        "texto": "Incluir o custo das novas tentativas no custo que a plataforma incorre para processar pedidos.",
+        "correta": true,
+        "porque": "Os reprocessamentos consomem recursos e seu custo pode mudar com a otimização."
+      }
+    ],
+    "explicacao": "Uma métrica unitária relaciona o custo ao que foi efetivamente entregue. Separar os tipos e manter no numerador o custo de reprocessar evita confundir mudança de volume ou esforço com ganho de eficiência.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-design-principles.html"
+  },
+  {
+    "id": "D1-advb-016",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Ao encerrar ambientes temporários, uma equipe encontra volumes Amazon EBS que ficaram alocados e geram custos sem uso. Volumes desanexados ainda podem conter dados que precisam ser preservados, e é possível registrar o responsável e a política de retenção de cada volume na criação. Qual automação reduz o desperdício recorrente sem ignorar esse requisito?",
+    "alternativas": [
+      {
+        "texto": "Excluir volumes desanexados depois de um prazo geral, usando a idade como critério de guarda.",
+        "correta": false,
+        "porque": "O tempo desanexado não indica o prazo de retenção nem se existe autorização para excluir."
+      },
+      {
+        "texto": "Aplicar a regra de descarte registrada aos volumes sem uso e revisar os casos sem regra.",
+        "correta": true,
+        "porque": "A rotina remove o que tiver descarte autorizado e protege os casos sem informação suficiente."
+      },
+      {
+        "texto": "Mover volumes desanexados para um tipo de menor custo e manter a mesma política de exclusão manual.",
+        "correta": false,
+        "porque": "Reduz o preço de parte da capacidade, mas não trata o acúmulo recorrente de recursos descartáveis."
+      },
+      {
+        "texto": "Inventariar o gasto por volume e enviar o total mensal para o responsável pelo orçamento.",
+        "correta": false,
+        "porque": "Mostra o gasto, mas não identifica quais volumes podem sair com segurança nem automatiza o tratamento."
+      }
+    ],
+    "explicacao": "Automatizar a desativação combina identificação de recursos ociosos com regras sobre quem pode descartá-los e quando. Um volume sem instância associada ainda pode ser necessário para preservar dados.",
+    "servicos": [
+      "Amazon EBS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost03-bp02.html"
+  },
+  {
+    "id": "D1-advb-017",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Dois hospitais validaram em produção um fluxo de agendamento em nuvem que diminui a espera dos pacientes. A rede quer difundir a prática em unidades com regras locais, mas a equipe temporária do piloto será dissolvida após a expansão. Segundo o AWS CAF, que abordagem ajuda a sustentar a adoção?",
+    "alternativas": [
+      {
+        "texto": "Autorizar cada hospital a desenvolver seu próprio fluxo e compartilhar o resultado após a implantação.",
+        "correta": false,
+        "porque": "Dá autonomia local, mas recomeça o trabalho sem aproveitar as práticas validadas."
+      },
+      {
+        "texto": "Converter o fluxo do piloto em regra única e atribuir sua manutenção à equipe de infraestrutura.",
+        "correta": false,
+        "porque": "Define manutenção técnica, mas não trata as variações do processo nem a responsabilidade local pelo atendimento."
+      },
+      {
+        "texto": "Ampliar o piloto com a equipe temporária e definir quem operará o fluxo ao fim da implantação.",
+        "correta": false,
+        "porque": "Adia a transferência de conhecimento e responsabilidade até a saída da equipe que detém a experiência."
+      },
+      {
+        "texto": "Formar responsáveis locais durante a expansão e adaptar com eles as práticas validadas.",
+        "correta": true,
+        "porque": "Preserva o aprendizado do piloto e estabelece quem poderá manter o processo em cada hospital."
+      }
+    ],
+    "explicacao": "Na fase Scale, a organização amplia os pilotos em produção e sustenta seus benefícios. Transferir as práticas validadas aos responsáveis permanentes durante a expansão preserva o aprendizado e permite adaptação local.",
+    "servicos": [
+      "AWS Cloud Adoption Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/your-cloud-transformation-journey.html"
+  },
+  {
+    "id": "D1-advb-018",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "As equipes de um grupo editorial já demonstraram que sabem operar suas aplicações na AWS. Mesmo assim, após a migração, mudanças de baixo risco esperam aprovação de uma área central porque a organização não definiu quem pode decidir e quem responde pelo resultado. Que ação da perspectiva de Pessoas do AWS CAF trata a causa da demora?",
+    "alternativas": [
+      {
+        "texto": "Aprofundar o treinamento em nuvem das equipes que propõem as mudanças.",
+        "correta": false,
+        "porque": "As competências já foram demonstradas; treinamento não redistribui a autoridade."
+      },
+      {
+        "texto": "Redefinir papéis, dando às equipes autoridade dentro de limites acordados.",
+        "correta": true,
+        "porque": "O alinhamento organizacional define quem decide e quem responde pelas decisões."
+      },
+      {
+        "texto": "Padronizar os indicadores de mudança e manter as decisões na área central.",
+        "correta": false,
+        "porque": "A medição torna a espera visível, mas não corrige o modelo de decisão."
+      },
+      {
+        "texto": "Automatizar a abertura e a distribuição de pedidos aos aprovadores atuais.",
+        "correta": false,
+        "porque": "Agiliza o encaminhamento, mas conserva a dependência de autorização central."
+      }
+    ],
+    "explicacao": "A perspectiva de Pessoas inclui alinhamento organizacional, não apenas fluência em nuvem. Neste caso, clarificar papéis e delegar decisões dentro de limites ataca o gargalo sem depender de mais treinamento técnico.",
+    "servicos": [
+      "AWS Cloud Adoption Framework"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/people-perspective.html"
+  },
+  {
+    "id": "D1-advb-019",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa migra para um mecanismo de banco de dados diferente. A cópia de ensaio trouxe a quantidade esperada de registros, mas o sistema depende de procedimentos armazenados e a área de negócio exige os mesmos resultados em operações críticas. Quais ações tratam o risco que a contagem de registros não cobre? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Sincronizar inserções e atualizações do banco de origem até a janela de transição.",
+        "correta": false,
+        "porque": "Sincronização mantém dados atualizados, mas não demonstra equivalência de comportamento entre mecanismos."
+      },
+      {
+        "texto": "Dimensionar o banco de destino com base no volume de dados e na taxa de crescimento.",
+        "correta": false,
+        "porque": "O dimensionamento atende à capacidade, não à compatibilidade da lógica existente."
+      },
+      {
+        "texto": "Avaliar a conversão de esquema e adaptar a lógica que o mecanismo de destino não comportar da mesma forma.",
+        "correta": true,
+        "porque": "O exame dos objetos, inclusive procedimentos, identifica e resolve diferenças entre mecanismos."
+      },
+      {
+        "texto": "Executar operações de negócio representativas no destino e comparar seus resultados com os da origem.",
+        "correta": true,
+        "porque": "A validação funcional verifica se o sistema mantém o comportamento esperado com o novo mecanismo."
+      },
+      {
+        "texto": "Comparar amostras de valores nas tabelas de origem e de destino após a última cópia.",
+        "correta": false,
+        "porque": "Valida conteúdo transferido, mas não testa o resultado da execução da lógica da aplicação."
+      }
+    ],
+    "explicacao": "Mover dados e migrar lógica são trabalhos distintos ao trocar de mecanismo. Conversão e adaptação preparam os objetos; a validação com operações reais confirma que o resultado esperado foi preservado.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/dms/latest/userguide/CHAP_SchemaConversion.html"
+  },
+  {
+    "id": "D1-advb-020",
+    "dominio": 1,
+    "task": "1.3",
+    "tipo": "unica",
+    "enunciado": "Um portal legado não recebe mais pedidos, e o inventário confirmou que nenhum outro sistema depende dele. Por exigência regulatória, seus relatórios finais assinados devem continuar íntegros e recuperáveis, mas podem ser consultados fora do portal. Qual estratégia evita migrar uma aplicação sem função operacional e mantém a obrigação de guarda?",
+    "alternativas": [
+      {
+        "texto": "Arquivar os relatórios, validar a recuperação e depois desativar o portal.",
+        "correta": true,
+        "porque": "A guarda dos relatórios não depende de preservar o software que os gerou."
+      },
+      {
+        "texto": "Rehospedar o portal em uma instância menor e manter seu banco em modo de leitura.",
+        "correta": false,
+        "porque": "Leva à AWS uma aplicação que pode ser desativada depois de proteger os dados."
+      },
+      {
+        "texto": "Manter o portal no ambiente atual e reavaliar a desativação quando a guarda terminar.",
+        "correta": false,
+        "porque": "Conserva a operação do legado apesar de o requisito não depender dela."
+      },
+      {
+        "texto": "Adotar um novo produto de relatórios e converter a função de consulta do portal.",
+        "correta": false,
+        "porque": "Substitui uma função que não precisa ser executada para cumprir a obrigação."
+      }
+    ],
+    "explicacao": "Retire não significa apagar dados que ainda têm valor ou retenção obrigatória. Quando a consulta pode ser desvinculada do software, validar o arquivo permite retirar a aplicação do portfólio com segurança.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/best-practices.html"
+  },
+  {
+    "id": "D1-advb-021",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Hospitais enviam grandes lotes de imagens quase ao mesmo tempo, e o recebimento precisa ser aceito imediatamente. A análise pode terminar até a manhã seguinte, e os testes mostram que há tempo para concluí-la com uma capacidade bem menor que a exigida para processar tudo na chegada. Como aproveitar essa flexibilidade para reduzir a necessidade de capacidade simultânea?",
+    "alternativas": [
+      {
+        "texto": "Dimensionar o processamento para o maior lote e reduzir a capacidade logo após cada envio.",
+        "correta": false,
+        "porque": "Evita manter o pico o dia inteiro, mas ainda dimensiona o processamento simultâneo pela chegada."
+      },
+      {
+        "texto": "Limitar a taxa de recebimento para que os hospitais enviem no ritmo da capacidade disponível.",
+        "correta": false,
+        "porque": "Transfere a espera para o envio e não preserva o recebimento imediato."
+      },
+      {
+        "texto": "Enfileirar a análise na chegada e ajustar o consumo da fila ao prazo de conclusão.",
+        "correta": true,
+        "porque": "Separa recebimento de processamento e usa o intervalo permitido para distribuir o trabalho."
+      },
+      {
+        "texto": "Pré-aquecer a capacidade de pico nos horários de envio e desligá-la quando as filas esvaziarem.",
+        "correta": false,
+        "porque": "Antecipa o pico de processamento sem aproveitar a janela maior para reduzir a capacidade simultânea."
+      }
+    ],
+    "explicacao": "Uma fila pode absorver a chegada concentrada e permitir que o processamento siga um ritmo compatível com o prazo. O objetivo não é atrasar o recebimento, mas aproveitar a tolerância a atraso na etapa de análise.",
+    "servicos": [
+      "Amazon SQS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost08-bp02.html"
+  },
+  {
+    "id": "D1-advb-022",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Duas áreas mantêm frotas de processamento dedicadas para cargas compatíveis. Os picos raramente coincidem e já foi confirmado que ambas podem usar a mesma capacidade sem violar isolamento nem metas de atendimento. Que medida reduz a capacidade total necessária sem depender de um desconto no preço unitário?",
+    "alternativas": [
+      {
+        "texto": "Consolidar a cobrança das duas frotas e manter a capacidade dedicada de cada área.",
+        "correta": false,
+        "porque": "Muda a forma de faturar, mas deixa a mesma capacidade separada para cada pico."
+      },
+      {
+        "texto": "Redimensionar cada frota pela sua demanda média e manter os recursos exclusivos por área.",
+        "correta": false,
+        "porque": "Uma média por frota não garante capacidade durante seu pico e mantém a separação."
+      },
+      {
+        "texto": "Padronizar o tipo de instância e dimensionar cada frota para o máximo da sua própria carga.",
+        "correta": false,
+        "porque": "Padronizar o tipo não permite que a folga de uma área seja usada pela outra."
+      },
+      {
+        "texto": "Compartilhar a capacidade e dimensioná-la pelo perfil da demanda simultânea das duas áreas.",
+        "correta": true,
+        "porque": "A capacidade livre de uma área atende à outra, evitando somar picos que não coincidem."
+      }
+    ],
+    "explicacao": "Compartilhar capacidade compatível reduz a necessidade de prover o pico individual de cada área. O perfil combinado deve contemplar os momentos de sobreposição, em vez de supor a ausência de picos simultâneos.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost06-bp04.html"
+  },
+  {
+    "id": "D1-advb-023",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma equipe tem orçamento para automatizar verificações operacionais na AWS. Ela quer priorizar a redução de trabalho repetitivo e de retrabalho neste trimestre, mas algumas decisões ainda exigem julgamento humano. Que dois critérios ajudam a escolher o que automatizar primeiro? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Priorizar verificações frequentes que acumulam muitas horas de execução e correção manual.",
+        "correta": true,
+        "porque": "A repetição e o retrabalho acumulado aumentam o benefício potencial dentro do período."
+      },
+      {
+        "texto": "Priorizar processos raros pelo tempo de uma única execução, sem considerar sua frequência.",
+        "correta": false,
+        "porque": "A duração isolada pode superestimar o trabalho que se consegue evitar no trimestre."
+      },
+      {
+        "texto": "Escolher verificações com critérios estáveis e encaminhar as exceções para avaliação humana.",
+        "correta": true,
+        "porque": "Critérios claros permitem automatizar a rotina sem tentar substituir julgamento nos casos que o exigem."
+      },
+      {
+        "texto": "Começar pelo processo cuja regra muda mais e redesenhar a automação a cada nova versão.",
+        "correta": false,
+        "porque": "Mudanças constantes elevam a manutenção e reduzem o ganho líquido no prazo proposto."
+      },
+      {
+        "texto": "Ordenar as verificações pela fatura dos recursos envolvidos, sem medir o esforço da equipe.",
+        "correta": false,
+        "porque": "Cobrança alta de infraestrutura não revela quanto trabalho ou retrabalho aquela verificação consome."
+      }
+    ],
+    "explicacao": "O retorno da automação depende do trabalho evitado ao longo do tempo e da estabilidade das regras. Automatizar o caminho comum e manter análise humana nas exceções permite ganhar escala sem aumentar o retrabalho.",
+    "servicos": [],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost10-bp01.html"
+  },
+  {
+    "id": "D1-advb-024",
+    "dominio": 1,
+    "task": "1.4",
+    "tipo": "unica",
+    "enunciado": "Uma empresa copia arquivos brutos entre duas Regiões da AWS todo dia para gerar resumos em um painel. O painel precisa permanecer na Região de destino e pode receber apenas os resumos; os testes confirmaram que gerá-los junto aos arquivos custa o mesmo. Qual mudança reduz diretamente a parcela da cobrança associada ao volume transferido, sem mudar o painel?",
+    "alternativas": [
+      {
+        "texto": "Reduzir a capacidade dos servidores de análise no destino e manter a cópia dos arquivos brutos.",
+        "correta": false,
+        "porque": "Muda o custo de computação, mas preserva a quantidade de dados enviada entre as Regiões."
+      },
+      {
+        "texto": "Processar os arquivos na origem e transferir apenas os resumos para a Região do painel.",
+        "correta": true,
+        "porque": "A transformação antes do envio reduz os bytes que cruzam o limite regional."
+      },
+      {
+        "texto": "Concentrar as cópias dos arquivos brutos em uma janela e manter a análise no destino.",
+        "correta": false,
+        "porque": "Concentrar transferências no tempo não reduz o volume de dados enviado."
+      },
+      {
+        "texto": "Arquivar os arquivos no destino após a análise e manter a mesma rotina de cópia.",
+        "correta": false,
+        "porque": "Pode reduzir a cobrança de armazenamento, mas o volume já cruzou as Regiões."
+      }
+    ],
+    "explicacao": "O custo variável de transferência depende do caminho e do volume. Ao reduzir o volume antes da travessia regional, a empresa diminui essa parcela sem depender de mudar o painel ou reduzir a capacidade de computação.",
+    "servicos": [],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost04-bp03.html"
+  }
+]

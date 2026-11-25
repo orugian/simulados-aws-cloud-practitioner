@@ -199,7 +199,9 @@
       return `<tr><td><span class="nome">${esc(nome)}</span><span class="sub">${sub}</span></td><td>${estado}</td><td class="acoes-td"><div class="acoes">${acoes}</div></td></tr>`;
     };
     const histDe = sid => S.historico.filter(h => h.sid === sid);
-    const linhas = SIMS.map(s => linhaSim(s.id, s.nome, '65 questões fixas · 16/19/22/8 por domínio', S.sessoes[s.id], histDe(s.id))).join('') +
+    const linhas = SIMS.map(s => linhaSim(s.id, s.nome, s.nivel === 'avancado'
+      ? '<span class="chip">Avançado</span> · 65 questões inéditas · 90 min'
+      : '65 questões fixas · 16/19/22/8 por domínio', S.sessoes[s.id], histDe(s.id))).join('') +
       linhaSim('AL', 'Prova aleatória', '65 questões sorteadas do banco, priorizando as que você viu menos', S.sessoes.AL, histDe('AL'));
 
     // Estudo
@@ -245,7 +247,7 @@
 
       <section class="sec" id="simulados" aria-labelledby="t-sim"><h2 id="t-sim">Simulados</h2>
         <table class="tabela"><thead><tr><th>Prova</th><th>Situação</th><th></th></tr></thead><tbody>${linhas}</tbody></table>
-        <p class="nota">Os simulados 1 a 6 não repetem questões entre si. No modo prova não há correção até o envio, e o relógio continua contando mesmo com a página fechada. A ordem das questões e das alternativas muda a cada tentativa.</p>
+        <p class="nota">Os simulados fixos não repetem questões entre si. As rodadas 7 a 9 são avançadas, com cenários e alternativas mais próximas. No modo prova não há correção até o envio, e o relógio continua contando mesmo com a página fechada.</p>
       </section>
 
       <section class="sec" id="estudo" aria-labelledby="t-est"><h2 id="t-est">Modo estudo</h2>
@@ -366,9 +368,11 @@
 
   function feedbackHTML(q, resp) {
     const ok = acertou(q, resp), branco = !resp || !resp.length;
+    const referencia = /^https:\/\/(docs\.aws\.amazon\.com|aws\.amazon\.com|repost\.aws)\//i.test(q.ref || '')
+      ? `<p class="nota"><a href="${esc(q.ref)}" target="_blank" rel="noopener noreferrer">Consultar documentação da AWS</a></p>` : '';
     return `<div class="feedback" role="status">
       <span class="res ${branco ? 'nada' : ok ? 'ok' : 'err'}">${branco ? 'Em branco' : ok ? ic('check') + 'Acertou' : ic('x') + 'Errou'}</span>
-      <div><h3>Conceito-chave</h3><p>${esc(q.explicacao)}</p>
+      <div><h3>Conceito-chave</h3><p>${esc(q.explicacao)}</p>${referencia}
       <div class="meta-q"><span class="chip">D${q.dominio} · ${q.task} ${esc(TASK[q.task])}</span>${(q.servicos || []).map(x => `<span class="chip mono">${esc(x)}</span>`).join('')}</div></div></div>`;
   }
 

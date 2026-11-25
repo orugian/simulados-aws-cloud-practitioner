@@ -1,0 +1,712 @@
+[
+  {
+    "id": "D3-advc-001",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma equipe guarda relatórios de manutenção com descrições livres de defeitos. Ao investigar uma falha, o técnico precisa localizar relatos com termos próximos, ordená-los por relevância e restringir os resultados ao modelo do equipamento. Qual serviço é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "Amazon Athena",
+        "correta": false,
+        "porque": "Consulta arquivos com SQL e pode filtrar por modelo, mas não é um mecanismo de busca textual com ranking de relevância."
+      },
+      {
+        "texto": "Amazon OpenSearch Service",
+        "correta": true,
+        "porque": "Indexa descrições para busca textual por relevância e permite filtrar os resultados por campos estruturados."
+      },
+      {
+        "texto": "Amazon Comprehend",
+        "correta": false,
+        "porque": "Pode extrair termos e entidades dos relatos, mas não fornece a busca interativa no acervo."
+      },
+      {
+        "texto": "Amazon Quick (antigo QuickSight)",
+        "correta": false,
+        "porque": "Cria visualizações e permite filtrar dados por modelo, mas não é o mecanismo de busca textual por relevância."
+      }
+    ],
+    "explicacao": "A equipe precisa recuperar documentos individuais por similaridade textual e filtrar por um atributo. Isso é diferente de consultar os arquivos por SQL, extrair entidades ou apresentar indicadores em painéis.",
+    "servicos": [
+      "Amazon OpenSearch Service"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/searching.html"
+  },
+  {
+    "id": "D3-advc-002",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma organização mantém arquivos analíticos no Amazon S3. Os usuários do Amazon Athena e do Amazon EMR devem usar as mesmas definições de tabelas, colunas e partições, sem produzir cópias dos arquivos ou manter metadados separados por ferramenta. Qual recurso atende ao requisito?",
+    "alternativas": [
+      {
+        "texto": "Workgroup do Amazon Athena",
+        "correta": false,
+        "porque": "Organiza a execução de consultas no Athena; não é o repositório compartilhado das definições de tabela."
+      },
+      {
+        "texto": "Dataset do Amazon Quick",
+        "correta": false,
+        "porque": "Define dados para análises no Quick; não é o metastore compartilhado entre Athena e EMR."
+      },
+      {
+        "texto": "Datashare do Amazon Redshift",
+        "correta": false,
+        "porque": "Compartilha objetos de bancos de dados do Redshift; não é a fonte de definições de tabela pedida para os dois mecanismos."
+      },
+      {
+        "texto": "AWS Glue Data Catalog",
+        "correta": true,
+        "porque": "Mantém metadados de tabelas e partições que os dois mecanismos podem consultar sem duplicar os arquivos."
+      }
+    ],
+    "explicacao": "Os arquivos continuam no Amazon S3. O AWS Glue Data Catalog mantém a definição lógica dos dados em um local comum para os mecanismos de consulta e processamento.",
+    "servicos": [
+      "AWS Glue",
+      "Amazon Athena",
+      "Amazon EMR",
+      "Amazon S3"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html"
+  },
+  {
+    "id": "D3-advc-003",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma equipe editorial recebe notas já digitadas em inglês e espanhol. Ela precisa obter versões em português para revisão e, independentemente, identificar nomes de pessoas e organizações citados nas notas originais. Quais serviços atendem a essas necessidades? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Amazon Textract",
+        "correta": false,
+        "porque": "Extrai conteúdo de documentos, mas as notas já são texto e os resultados pedidos são tradução e entidades."
+      },
+      {
+        "texto": "Amazon Comprehend",
+        "correta": true,
+        "porque": "Pode detectar entidades como pessoas e organizações no texto original, nos idiomas compatíveis."
+      },
+      {
+        "texto": "Amazon Polly",
+        "correta": false,
+        "porque": "Gera áudio a partir de texto; a equipe precisa de versões escritas e da identificação de nomes."
+      },
+      {
+        "texto": "Amazon Transcribe",
+        "correta": false,
+        "porque": "Produz texto a partir de áudio; nesta tarefa o material de origem já está digitado."
+      },
+      {
+        "texto": "Amazon Translate",
+        "correta": true,
+        "porque": "Gera uma versão escrita no idioma de destino a partir do texto original."
+      }
+    ],
+    "explicacao": "São dois resultados distintos: Amazon Translate produz a tradução; Amazon Comprehend identifica entidades no texto de origem, sem que a tradução seja um pré-requisito para a extração.",
+    "servicos": [
+      "Amazon Translate",
+      "Amazon Comprehend"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/translate/latest/dg/what-is.html#what-is-use-cases"
+  },
+  {
+    "id": "D3-advc-004",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Um sistema de reservas entrega alterações pendentes a processos que trabalham em ritmos diferentes. Cada processo deve buscar trabalho quando estiver livre, e alterações da mesma reserva devem ser recebidas na ordem de envio, sem impor uma ordem global entre reservas. Qual serviço atende à combinação de requisitos?",
+    "alternativas": [
+      {
+        "texto": "Amazon SQS com uma fila FIFO",
+        "correta": true,
+        "porque": "Os consumidores buscam trabalho da fila e a ordem é preservada dentro de cada grupo de mensagens, que pode representar uma reserva."
+      },
+      {
+        "texto": "Amazon SNS com um tópico FIFO",
+        "correta": false,
+        "porque": "Pode manter a ordem na distribuição aos destinos compatíveis, mas os processos não buscam trabalho diretamente do tópico."
+      },
+      {
+        "texto": "Amazon SQS com uma fila Standard",
+        "correta": false,
+        "porque": "Os consumidores buscam trabalho da fila, mas ela não garante a ordem de recebimento das mensagens de uma reserva."
+      },
+      {
+        "texto": "Amazon EventBridge com um barramento de eventos",
+        "correta": false,
+        "porque": "Encaminha eventos a destinos por regras; não é uma fila consultada pelos processos com garantia de ordem por reserva."
+      }
+    ],
+    "explicacao": "O requisito combina consumo sob demanda e ordenação por reserva. No Amazon SQS FIFO, mensagens de grupos diferentes podem avançar de forma independente, preservando a ordem dentro de cada grupo.",
+    "servicos": [
+      "Amazon SQS",
+      "Amazon SNS",
+      "Amazon EventBridge"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-fifo-queues.html"
+  },
+  {
+    "id": "D3-advc-005",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "A equipe de uma biblioteca de software quer repetir, sob demanda, a compilação e os testes automatizados que hoje executa em notebooks. O resultado será um artefato para revisão; nenhum ambiente será atualizado e a equipe não quer manter servidores de execução. Qual serviço é o MAIS adequado para realizar esse trabalho diretamente?",
+    "alternativas": [
+      {
+        "texto": "AWS CodePipeline",
+        "correta": false,
+        "porque": "Coordena etapas do processo de entrega, mas delega a execução da compilação e dos testes a um serviço de execução."
+      },
+      {
+        "texto": "AWS Amplify",
+        "correta": false,
+        "porque": "Pode compilar aplicações como parte da hospedagem gerenciada, mas o resultado pedido é um artefato de biblioteca, não um site hospedado."
+      },
+      {
+        "texto": "AWS CodeBuild",
+        "correta": true,
+        "porque": "Executa compilação e testes em um ambiente gerenciado e produz o artefato, sem exigir um fluxo de publicação."
+      },
+      {
+        "texto": "AWS Batch",
+        "correta": false,
+        "porque": "Executa trabalhos em lote; para este caso, não oferece o mesmo fluxo nativo de compilação, testes e artefatos de software."
+      }
+    ],
+    "explicacao": "O problema é executar e obter o resultado da compilação, não coordenar uma sequência de liberações. O AWS CodeBuild também pode ser usado sem um pipeline.",
+    "servicos": [
+      "AWS CodeBuild",
+      "AWS CodePipeline"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html"
+  },
+  {
+    "id": "D3-advc-006",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Analistas alternam entre computadores do escritório e de casa durante projetos de vários meses. Cada pessoa deve voltar sempre ao mesmo desktop na nuvem, dedicado a ela, com os programas que ela mesma instalou e as preferências que personalizou, sem que a equipe de TI administre servidores de desktop remoto. Qual oferta atende melhor?",
+    "alternativas": [
+      {
+        "texto": "Amazon WorkSpaces Secure Browser",
+        "correta": false,
+        "porque": "Oferece sessões de navegador gerenciadas, não um ambiente completo para manter as ferramentas de desktop de cada pessoa."
+      },
+      {
+        "texto": "Amazon WorkSpaces Personal",
+        "correta": true,
+        "porque": "Oferece a cada pessoa um desktop virtual persistente e dedicado, acessível de dispositivos diferentes."
+      },
+      {
+        "texto": "Amazon WorkSpaces Applications",
+        "correta": false,
+        "porque": "Pode transmitir ferramentas ou um desktop de uma frota, mas não é a oferta de desktop persistente provisionado para uso exclusivo de cada pessoa."
+      },
+      {
+        "texto": "Amazon WorkSpaces Pools",
+        "correta": false,
+        "porque": "Oferece desktops virtuais de um pool, sem manter um desktop dedicado e persistente por usuário."
+      }
+    ],
+    "explicacao": "Não basta abrir as mesmas aplicações em outro dispositivo: o ambiente inteiro deve continuar atribuído a cada pessoa. O Amazon WorkSpaces Personal oferece esse desktop persistente; o WorkSpaces Pools atribui sessões em infraestrutura não persistente.",
+    "servicos": [
+      "Amazon WorkSpaces"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 7,
+    "ref": "https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html"
+  },
+  {
+    "id": "D3-advc-007",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Dois sistemas analisam as mesmas leituras de máquinas conforme elas chegam. Uma nova versão de um dos sistemas precisa reler registros ainda retidos a partir do horário da última atualização, sem interromper nem fazer o outro sistema voltar ao mesmo ponto. Qual serviço atende melhor a esse padrão de consumo?",
+    "alternativas": [
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "Uma fila distribui trabalho e permite excluir mensagens processadas; a leitura de um histórico compartilhado por consumidores independentes não é seu modelo."
+      },
+      {
+        "texto": "Amazon EventBridge",
+        "correta": false,
+        "porque": "Pode arquivar e reemitir eventos no barramento, mas não oferece a cada aplicação a leitura independente do fluxo a partir de uma posição própria."
+      },
+      {
+        "texto": "AWS Glue",
+        "correta": false,
+        "porque": "Processa dados em fluxo quando conectado à fonte, mas não fornece o fluxo retido que os dois sistemas possam reler."
+      },
+      {
+        "texto": "Amazon Kinesis Data Streams",
+        "correta": true,
+        "porque": "Mantém registros durante a janela de retenção e permite que cada aplicação leia os mesmos dados e retome a leitura em uma posição própria."
+      }
+    ],
+    "explicacao": "O requisito decisivo é reler o mesmo fluxo preservando a posição de cada consumidor. Uma fila de trabalho ou o reenvio de eventos a um barramento resolve outro padrão de distribuição.",
+    "servicos": [
+      "Amazon Kinesis Data Streams",
+      "Amazon SQS",
+      "Amazon EventBridge"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html"
+  },
+  {
+    "id": "D3-advc-008",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "O grupo comercial mantém tabelas no seu data warehouse. O grupo financeiro precisa consultar os dados atualizados nessas mesmas tabelas a partir de outro data warehouse, usando a capacidade de processamento dele e sem criar uma cópia periódica. Qual serviço oferece esse recurso nativamente entre seus data warehouses?",
+    "alternativas": [
+      {
+        "texto": "Amazon Redshift",
+        "correta": true,
+        "porque": "Seu compartilhamento de dados dá acesso a objetos atualizados do produtor sem cópia; o consumidor pode usar seu próprio processamento."
+      },
+      {
+        "texto": "Amazon Athena",
+        "correta": false,
+        "porque": "Pode consultar fontes externas, mas não fornece dois data warehouses próprios com compartilhamento nativo de objetos entre eles."
+      },
+      {
+        "texto": "AWS Glue",
+        "correta": false,
+        "porque": "Pode expor metadados comuns a diferentes equipes, mas não é o data warehouse que disponibiliza as tabelas de um ambiente ao outro."
+      },
+      {
+        "texto": "Amazon Quick (antigo QuickSight)",
+        "correta": false,
+        "porque": "Pode compartilhar análises sobre uma fonte, mas não dá a outro data warehouse acesso nativo às tabelas do produtor."
+      }
+    ],
+    "explicacao": "O compartilhamento do Redshift mantém os dados no ambiente produtor e permite ao consumidor consultá-los com capacidade separada. O objetivo não é criar um novo painel nem executar um processo de replicação.",
+    "servicos": [
+      "Amazon Redshift"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html"
+  },
+  {
+    "id": "D3-advc-009",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma rede de museus publica roteiros aprovados e quer disponibilizá-los como audioguias. A equipe precisa produzir novas faixas quando um roteiro for corrigido e controlar a pronúncia dos nomes locais, sem regravar as faixas com locutores nem criar uma interface de diálogo. Qual serviço atende?",
+    "alternativas": [
+      {
+        "texto": "Amazon Lex",
+        "correta": false,
+        "porque": "Pode responder por voz durante conversas com um bot, mas a equipe precisa gerar faixas de narração a partir dos roteiros, sem uma conversa."
+      },
+      {
+        "texto": "Amazon Translate",
+        "correta": false,
+        "porque": "Pode gerar versões escritas dos roteiros em outros idiomas, mas não produz as faixas de áudio."
+      },
+      {
+        "texto": "Amazon Polly",
+        "correta": true,
+        "porque": "Gera áudio a partir de texto e permite controlar a pronúncia de termos específicos usando léxicos."
+      },
+      {
+        "texto": "Amazon Transcribe",
+        "correta": false,
+        "porque": "Pode reconhecer termos específicos em uma gravação com vocabulário personalizado, mas sua saída é texto, não a faixa narrada."
+      }
+    ],
+    "explicacao": "O material aprovado é o roteiro, e a saída é uma faixa de voz reutilizável, não uma resposta em um diálogo. O Amazon Polly realiza a síntese e oferece mecanismos para ajustar a pronúncia.",
+    "servicos": [
+      "Amazon Polly"
+    ],
+    "dificuldade": 2,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html"
+  },
+  {
+    "id": "D3-advc-010",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma empresa quer guardar em um bucket os e-mails originais enviados por parceiros a um endereço do seu domínio. Separadamente, a equipe de software quer interromper o fluxo já automatizado entre testes e produção até que um revisor aprove a liberação. Quais propostas atribuem cada requisito a um recurso nativo? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Usar uma regra de recebimento do Amazon SES para arquivar os e-mails.",
+        "correta": true,
+        "porque": "Uma ação da regra pode entregar a mensagem recebida ao Amazon S3."
+      },
+      {
+        "texto": "Usar uma assinatura por e-mail do Amazon SNS para arquivar os e-mails.",
+        "correta": false,
+        "porque": "Uma assinatura desse tipo envia notificações ao endereço; ela não recebe os e-mails enviados a ele."
+      },
+      {
+        "texto": "Usar uma ação de aprovação do AWS CodePipeline para controlar a liberação.",
+        "correta": true,
+        "porque": "A ação de aprovação manual pausa a execução e só deixa a revisão aprovada seguir para a próxima ação."
+      },
+      {
+        "texto": "Usar uma aprovação do AWS CodeBuild para controlar a liberação.",
+        "correta": false,
+        "porque": "O CodeBuild executa compilações e testes; o ponto de aprovação entre ações da entrega é do CodePipeline."
+      },
+      {
+        "texto": "Usar uma fila do Amazon SQS para arquivar os e-mails.",
+        "correta": false,
+        "porque": "A fila pode receber mensagens de aplicações, mas não recebe e-mails destinados ao domínio nem os grava diretamente em um bucket."
+      }
+    ],
+    "explicacao": "Os requisitos pertencem a fluxos independentes: armazenar mensagens originais recebidas é uma ação de recebimento do Amazon SES, enquanto bloquear uma etapa de liberação até a revisão é uma ação de aprovação do AWS CodePipeline.",
+    "servicos": [
+      "Amazon SES",
+      "Amazon S3",
+      "AWS CodePipeline"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/codepipeline/latest/userguide/approvals.html"
+  },
+  {
+    "id": "D3-advc-011",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Para emitir um parecer, um sistema consulta três validadores independentes em paralelo. A etapa de consolidação deve começar depois que as três respostas da mesma solicitação estiverem disponíveis, sem que os validadores precisem se comunicar entre si. Qual serviço oferece essa coordenação nativamente?",
+    "alternativas": [
+      {
+        "texto": "Amazon EventBridge",
+        "correta": false,
+        "porque": "Pode encaminhar eventos dos validadores, mas suas regras não mantêm o andamento da solicitação nem reúnem as três respostas."
+      },
+      {
+        "texto": "AWS Step Functions",
+        "correta": true,
+        "porque": "Executa ramificações em paralelo e reúne suas saídas antes de passar o resultado à etapa seguinte do mesmo fluxo."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "Pode armazenar respostas para leitura posterior, mas a fila não sabe quando as três respostas de uma solicitação chegaram."
+      },
+      {
+        "texto": "Amazon SNS",
+        "correta": false,
+        "porque": "Pode distribuir a solicitação aos três validadores, mas o tópico não espera pelas respostas nem reúne os resultados."
+      }
+    ],
+    "explicacao": "A distribuição inicial é apenas parte do requisito. O AWS Step Functions pode aguardar o término de todos os ramos daquela execução e passar seus resultados juntos à etapa de consolidação.",
+    "servicos": [
+      "AWS Step Functions",
+      "Amazon EventBridge",
+      "Amazon SQS",
+      "Amazon SNS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/step-functions/latest/dg/state-parallel.html"
+  },
+  {
+    "id": "D3-advc-012",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Controladores em campo passam horas desconectados. Durante esse período, o operador precisa consultar a última configuração reportada e registrar a configuração que deverá estar disponível ao controlador quando ele voltar a se conectar. Qual serviço oferece esse modelo de estado como recurso gerenciado?",
+    "alternativas": [
+      {
+        "texto": "Amazon DynamoDB",
+        "correta": false,
+        "porque": "Pode guardar as duas configurações, mas a aplicação teria de implementar como o dispositivo as reporta e consulta ao se reconectar."
+      },
+      {
+        "texto": "Amazon EventBridge",
+        "correta": false,
+        "porque": "Pode encaminhar notificações de mudança, mas não mantém uma representação consultável do estado atual de cada dispositivo."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "Pode reter comandos pendentes, mas a fila não fornece uma representação das configurações desejada e reportada do dispositivo."
+      },
+      {
+        "texto": "AWS IoT Core",
+        "correta": true,
+        "porque": "O Device Shadow mantém na nuvem os estados reportado e desejado, mesmo na ausência de conexão com o dispositivo."
+      }
+    ],
+    "explicacao": "O Device Shadow preserva uma representação do dispositivo separada da conexão. O operador pode consultar o que o dispositivo reportou e definir o estado desejado para reconciliação quando ele voltar à rede.",
+    "servicos": [
+      "AWS IoT Core"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 8,
+    "ref": "https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html"
+  },
+  {
+    "id": "D3-advc-013",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma equipe quer conferir se os pagamentos arquivados em arquivos no Amazon S3 correspondem aos pedidos de um banco Amazon RDS for PostgreSQL. Ela quer cruzar os dados nas fontes existentes por consulta SQL sob demanda, sem criar um data warehouse nem preparar jobs de integração de dados. Qual serviço é o MAIS adequado?",
+    "alternativas": [
+      {
+        "texto": "Amazon Athena",
+        "correta": true,
+        "porque": "Pode consultar os arquivos no S3 e, por consulta federada, cruzá-los com os dados do banco PostgreSQL por meio de um conector."
+      },
+      {
+        "texto": "AWS Glue",
+        "correta": false,
+        "porque": "Pode catalogar ou integrar as fontes, mas isso não entrega por si só a interface de consulta SQL federada pedida pela equipe."
+      },
+      {
+        "texto": "Amazon Redshift",
+        "correta": false,
+        "porque": "Pode consultar fontes externas, mas a consulta partiria de um data warehouse Redshift, que a equipe não quer criar."
+      },
+      {
+        "texto": "Amazon OpenSearch Service",
+        "correta": false,
+        "porque": "É adequado à busca em documentos, não à consulta SQL federada que cruza essas duas fontes relacionais e de arquivos."
+      }
+    ],
+    "explicacao": "O Amazon Athena permite combinar dados do S3 com dados de fontes externas compatíveis em SQL. Neste caso, consultar o banco existente via conector evita uma carga periódica em outra base ou em um data warehouse.",
+    "servicos": [
+      "Amazon Athena",
+      "Amazon S3",
+      "Amazon RDS",
+      "Amazon Redshift"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/athena/latest/ug/federated-queries.html"
+  },
+  {
+    "id": "D3-advc-014",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "unica",
+    "enunciado": "Uma rede de clínicas quer distribuir o mesmo painel e o mesmo conjunto de dados a todos os supervisores. Como leitores do painel, os supervisores devem ver somente os registros das unidades que gerenciam, sem receber credenciais do banco de origem. Qual proposta aplica a restrição na ferramenta de BI?",
+    "alternativas": [
+      {
+        "texto": "Atribuir um workgroup do Amazon Athena a cada supervisor.",
+        "correta": false,
+        "porque": "Workgroups separam configurações e execução de consultas; não aplicam por si só um filtro de linhas de acordo com o leitor do painel."
+      },
+      {
+        "texto": "Definir políticas por linha no banco do Amazon Redshift.",
+        "correta": false,
+        "porque": "Essas políticas valem para as identidades que consultam o banco; não reconhecem por si só cada leitor de um conjunto de dados compartilhado no painel."
+      },
+      {
+        "texto": "Aplicar regras de segurança em nível de linha no Amazon Quick.",
+        "correta": true,
+        "porque": "As regras limitam quais registros o usuário vê no conjunto de dados compartilhado, de acordo com a identidade dele no serviço."
+      },
+      {
+        "texto": "Gerenciar permissões de compartilhamento do painel no Amazon Quick.",
+        "correta": false,
+        "porque": "O compartilhamento define quem abre o painel, mas não diferencia quais linhas cada leitor autorizado pode ver."
+      }
+    ],
+    "explicacao": "A autorização precisa variar por registro e por leitor no próprio conjunto de dados do painel. Restringir o acesso ao painel inteiro ou separar a execução de consultas não fornece essa distinção.",
+    "servicos": [
+      "Amazon Quick",
+      "Amazon Athena",
+      "Amazon Redshift"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/quick/latest/userguide/restrict-access-to-a-data-set-using-row-level-security.html"
+  },
+  {
+    "id": "D3-advc-015",
+    "dominio": 3,
+    "task": "3.7",
+    "tipo": "multipla",
+    "selecionar": 2,
+    "enunciado": "Uma plataforma de ensino recebe imagens enviadas pelo público e gravações de debates em que as vozes estão misturadas em um canal. A equipe quer marcar imagens impróprias para revisão humana e obter o texto dos debates indicando onde cada participante começa a falar, sem identificar ninguém pelo nome. Quais propostas atendem a esses requisitos? (Selecione DUAS.)",
+    "alternativas": [
+      {
+        "texto": "Usar Amazon Textract para classificar as imagens pela adequação do conteúdo.",
+        "correta": false,
+        "porque": "O serviço extrai texto e estrutura de documentos; não classifica imagens por categorias de conteúdo impróprio."
+      },
+      {
+        "texto": "Usar Amazon Rekognition para moderar as imagens antes da publicação.",
+        "correta": true,
+        "porque": "O serviço detecta categorias de conteúdo potencialmente impróprio em imagens para triagem humana."
+      },
+      {
+        "texto": "Usar Amazon Comprehend para separar as falas por pessoa após converter o áudio.",
+        "correta": false,
+        "porque": "O serviço analisa o texto recebido, mas não recupera a identidade de voz que se perdeu na conversão."
+      },
+      {
+        "texto": "Usar Amazon Transcribe com rotulagem de falantes nas gravações.",
+        "correta": true,
+        "porque": "O serviço transcreve o áudio e pode rotular os trechos do texto de acordo com o falante detectado."
+      },
+      {
+        "texto": "Usar Amazon Lex para registrar as falas de cada pessoa nas gravações.",
+        "correta": false,
+        "porque": "O serviço interpreta entradas de voz em interações com um bot, não transforma uma gravação de debate em texto separado por falante."
+      }
+    ],
+    "explicacao": "Os resultados são independentes: Amazon Rekognition sinaliza conteúdo visual para revisão, e Amazon Transcribe pode separar as falas no texto sem identificar nominalmente os participantes.",
+    "servicos": [
+      "Amazon Rekognition",
+      "Amazon Transcribe"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/transcribe/latest/dg/diarization.html"
+  },
+  {
+    "id": "D3-advc-016",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Uma equipe de produto quer que revisores abram, pelo navegador, uma versão isolada do site para cada proposta de mudança no repositório. A prévia deve acompanhar os commits da proposta sem publicar essas mudanças no site principal, e a equipe não quer montar um fluxo separado de hospedagem. Qual serviço oferece essa integração nativamente?",
+    "alternativas": [
+      {
+        "texto": "AWS CodeBuild",
+        "correta": false,
+        "porque": "Pode compilar as mudanças propostas, mas o artefato de compilação não se torna por si só uma prévia hospedada para o revisor."
+      },
+      {
+        "texto": "Amazon CloudFront",
+        "correta": false,
+        "porque": "Pode entregar uma prévia já publicada em uma origem, mas não cria prévias a partir de propostas no repositório."
+      },
+      {
+        "texto": "AWS CodePipeline",
+        "correta": false,
+        "porque": "Pode coordenar compilação e publicação, mas precisaria de uma etapa de hospedagem configurada para entregar a prévia isolada."
+      },
+      {
+        "texto": "AWS Amplify",
+        "correta": true,
+        "porque": "Oferece hospedagem de prévias web associadas a pull requests, separadas da versão principal do site."
+      }
+    ],
+    "explicacao": "A equipe não quer apenas verificar se a alteração compila; quer uma versão navegável e isolada durante a revisão. O AWS Amplify Hosting oferece essa prévia vinculada à proposta de mudança.",
+    "servicos": [
+      "AWS Amplify",
+      "AWS CodeBuild",
+      "AWS CodePipeline"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/amplify/latest/userguide/pr-previews.html"
+  },
+  {
+    "id": "D3-advc-017",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Uma central quer permitir que, em horários de pico, pessoas aguardando atendimento telefônico desliguem e recebam uma chamada de volta quando for sua vez. A central quer que o retorno continue sujeito à distribuição para os agentes disponíveis, sem manter uma aplicação própria de telefonia. Qual serviço oferece esse recurso?",
+    "alternativas": [
+      {
+        "texto": "Amazon Lex",
+        "correta": false,
+        "porque": "Pode conversar com o cliente e coletar o número, mas não administra a fila de contatos nem distribui o retorno a agentes."
+      },
+      {
+        "texto": "Amazon Connect",
+        "correta": true,
+        "porque": "Permite enfileirar uma chamada de retorno e encaminhá-la a um agente conforme as regras de atendimento."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "Pode enfileirar pedidos de retorno, mas não faz a chamada nem gerencia a disponibilidade dos agentes."
+      },
+      {
+        "texto": "AWS Step Functions",
+        "correta": false,
+        "porque": "Pode orquestrar etapas e esperar por uma resposta, mas não fornece telefonia integrada ao controle de fila de agentes."
+      }
+    ],
+    "explicacao": "A fila deve administrar contatos telefônicos e disponibilidade de pessoas, não apenas mensagens entre sistemas. O Amazon Connect oferece retorno de chamada integrado à distribuição do atendimento.",
+    "servicos": [
+      "Amazon Connect",
+      "Amazon Lex",
+      "Amazon SQS"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/connect/latest/adminguide/setup-queued-cb.html"
+  },
+  {
+    "id": "D3-advc-018",
+    "dominio": 3,
+    "task": "3.8",
+    "tipo": "unica",
+    "enunciado": "Um serviço de operações publica avisos com a unidade e a gravidade como atributos. Cada gerente quer receber diretamente por e-mail os avisos que correspondem à sua unidade e à gravidade escolhida. Qual serviço pode aplicar critérios distintos para cada destinatário sem que o produtor crie um canal por gerente?",
+    "alternativas": [
+      {
+        "texto": "Amazon SNS",
+        "correta": true,
+        "porque": "Assinaturas de e-mail no mesmo tópico podem ter políticas de filtragem diferentes sobre os atributos da mensagem."
+      },
+      {
+        "texto": "Amazon EventBridge",
+        "correta": false,
+        "porque": "As regras filtram eventos, mas a entrega por e-mail a assinantes exigiria um destino ou integração adicional."
+      },
+      {
+        "texto": "Amazon SES",
+        "correta": false,
+        "porque": "Envia e-mails aos destinatários indicados; a seleção de assinantes por atributos de mensagens publicadas não é seu modelo de distribuição."
+      },
+      {
+        "texto": "Amazon SQS",
+        "correta": false,
+        "porque": "Retém mensagens para que aplicações as consultem; não entrega avisos filtrados diretamente a assinantes de e-mail."
+      }
+    ],
+    "explicacao": "A distinção está no filtro por destinatário: cada assinatura do mesmo tópico pode selecionar mensagens diferentes e entregá-las por e-mail. O produtor não precisa conhecer as preferências dos gerentes.",
+    "servicos": [
+      "Amazon SNS",
+      "Amazon EventBridge",
+      "Amazon SES"
+    ],
+    "dificuldade": 3,
+    "fonte": "autoral",
+    "rodada": 9,
+    "ref": "https://docs.aws.amazon.com/sns/latest/dg/sns-subscription-filter-policies.html"
+  }
+]
